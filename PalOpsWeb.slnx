@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/PalOps.Web/PalOps.Web.csproj" />
+  <Project Path="tools/PalOps.Tooling/PalOps.Tooling.csproj" />
+</Solution>

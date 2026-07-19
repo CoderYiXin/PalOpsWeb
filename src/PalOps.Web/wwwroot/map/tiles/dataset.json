@@ -1,0 +1,5744 @@
+{
+  "schemaVersion": 1,
+  "gameVersion": "1.0",
+  "datasetVersion": "palworld-1.0-thgl-2026-07-16",
+  "defaultLayerId": "palpagos",
+  "sourceDefinitionSha256": "2a6460ecde91756406ea146edfdeb57742b1f7a8394e567403b7fc86c95a57c3",
+  "fetchedAt": "2026-07-17T09:03:39.0848319+00:00",
+  "completeLayerIds": [
+    "palpagos",
+    "world-tree"
+  ],
+  "layers": [
+    {
+      "id": "palpagos",
+      "displayName": "Palpagos",
+      "localDirectory": "palpagos",
+      "localUrlTemplate": "/map/tiles/palpagos/{z}/{x}/{y}.webp",
+      "format": "webp",
+      "tileSize": 512,
+      "minimumZoom": 0,
+      "maximumZoom": 4,
+      "worldBounds": {
+        "minimumX": -1099399,
+        "maximumX": 349399,
+        "minimumY": -724399,
+        "maximumY": 724399
+      },
+      "mapBounds": {
+        "minimumX": -1922.43790849673,
+        "maximumX": 1233.98474945534,
+        "minimumY": -2125.2962962963,
+        "maximumY": 1031.12636165577
+      },
+      "worldToMap": {
+        "a": 0,
+        "b": 0.00217864923747277,
+        "c": -344.226579520697,
+        "d": 0.00217864923747277,
+        "e": 0,
+        "f": 269.908496732026
+      },
+      "mapToPixel": {
+        "a": 0.162208724461623,
+        "b": 0,
+        "c": 311.83655438984,
+        "d": 0,
+        "e": -0.162208724461623,
+        "f": 167.258045278851
+      },
+      "leafletTransformation": {
+        "a": 0.162208724461623,
+        "b": 311.83655438984,
+        "c": -0.162208724461623,
+        "d": 167.258045278851
+      },
+      "zoomRanges": [
+        {
+          "zoom": 0,
+          "minimumX": 0,
+          "maximumX": 0,
+          "minimumY": 0,
+          "maximumY": 0,
+          "count": 1
+        },
+        {
+          "zoom": 1,
+          "minimumX": 0,
+          "maximumX": 1,
+          "minimumY": 0,
+          "maximumY": 1,
+          "count": 4
+        },
+        {
+          "zoom": 2,
+          "minimumX": 0,
+          "maximumX": 3,
+          "minimumY": 0,
+          "maximumY": 3,
+          "count": 16
+        },
+        {
+          "zoom": 3,
+          "minimumX": 0,
+          "maximumX": 7,
+          "minimumY": 0,
+          "maximumY": 7,
+          "count": 64
+        },
+        {
+          "zoom": 4,
+          "minimumX": 0,
+          "maximumX": 15,
+          "minimumY": 0,
+          "maximumY": 15,
+          "count": 256
+        }
+      ],
+      "calibrationSamples": [
+        {
+          "name": "south-west",
+          "worldX": -1099399,
+          "worldY": -724399,
+          "mapX": -1922.43790849673,
+          "mapY": -2125.2962962963,
+          "pixelX": 0,
+          "pixelY": 512,
+          "tolerance": 0.01
+        },
+        {
+          "name": "south-east",
+          "worldX": -1099399,
+          "worldY": 724399,
+          "mapX": 1233.98474945534,
+          "mapY": -2125.2962962963,
+          "pixelX": 512,
+          "pixelY": 512,
+          "tolerance": 0.01
+        },
+        {
+          "name": "north-west",
+          "worldX": 349399,
+          "worldY": -724399,
+          "mapX": -1922.43790849673,
+          "mapY": 1031.12636165577,
+          "pixelX": 0,
+          "pixelY": 0,
+          "tolerance": 0.01
+        }
+      ],
+      "source": {
+        "name": "The Hidden Gaming Lair",
+        "pageUrl": "https://palworld.th.gl/maps/Palpagos%20Island",
+        "mapUpdatedAt": "2026-07-16T12:22:12.704Z",
+        "verifiedAt": "2026-07-17",
+        "rightsNotice": "",
+        "redistributionAllowed": false
+      },
+      "status": "ready",
+      "reason": "",
+      "calibrationStatus": "valid",
+      "maximumCalibrationError": 0.0030810753077168715,
+      "expectedTileCount": 341,
+      "actualTileCount": 341,
+      "missingTileCount": 0,
+      "invalidTiles": [],
+      "extraTiles": [],
+      "tiles": [
+        {
+          "zoom": 0,
+          "x": 0,
+          "y": 0,
+          "relativePath": "palpagos/0/0/0.webp",
+          "length": 20532,
+          "sha256": "5563edc2e37121b112660963ec36a448f5a2509e3ea1e7004beeedb494c76a3c"
+        },
+        {
+          "zoom": 1,
+          "x": 0,
+          "y": 0,
+          "relativePath": "palpagos/1/0/0.webp",
+          "length": 11298,
+          "sha256": "b6eab19c87a00f8bbc7c4c274dc66b00cc2ac0359cb6a93839626fa322ba60cd"
+        },
+        {
+          "zoom": 1,
+          "x": 0,
+          "y": 1,
+          "relativePath": "palpagos/1/0/1.webp",
+          "length": 20094,
+          "sha256": "f6f25c6269791313ed2d5552a670f6899a393bd6eedaa4a72e7bf65a82d585dd"
+        },
+        {
+          "zoom": 1,
+          "x": 1,
+          "y": 0,
+          "relativePath": "palpagos/1/1/0.webp",
+          "length": 27946,
+          "sha256": "7ed1c690cf3072e037debdbd8f36fd93db43f2e7ede8233b326ea6ce73416fe9"
+        },
+        {
+          "zoom": 1,
+          "x": 1,
+          "y": 1,
+          "relativePath": "palpagos/1/1/1.webp",
+          "length": 5908,
+          "sha256": "df59c4397d6d3ca956e9db911f5768501eb4c504d23bb98be48ed7d88ce9e04c"
+        },
+        {
+          "zoom": 2,
+          "x": 0,
+          "y": 0,
+          "relativePath": "palpagos/2/0/0.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 2,
+          "x": 0,
+          "y": 1,
+          "relativePath": "palpagos/2/0/1.webp",
+          "length": 1640,
+          "sha256": "fcd864a9e60e9c0b8cd26c7cc30ad8de3c35f3286ce260f6a05d1225e1b947a0"
+        },
+        {
+          "zoom": 2,
+          "x": 0,
+          "y": 2,
+          "relativePath": "palpagos/2/0/2.webp",
+          "length": 11796,
+          "sha256": "087f7ec199c80d135178bd3dc487cf2654a7e5388d7b17d2e80d8e2b3fd2d56d"
+        },
+        {
+          "zoom": 2,
+          "x": 0,
+          "y": 3,
+          "relativePath": "palpagos/2/0/3.webp",
+          "length": 11836,
+          "sha256": "86e01f060a28ee1fb46f60743e0f7305d8e9e8eecac7f0e8ff9f048bcfcc1ee3"
+        },
+        {
+          "zoom": 2,
+          "x": 1,
+          "y": 0,
+          "relativePath": "palpagos/2/1/0.webp",
+          "length": 8048,
+          "sha256": "f1ecd00fb5593b8e63e6cb19a3a02e80d31d7c29191fda3b7f9247b1dd4986a7"
+        },
+        {
+          "zoom": 2,
+          "x": 1,
+          "y": 1,
+          "relativePath": "palpagos/2/1/1.webp",
+          "length": 27342,
+          "sha256": "53910bfc85ab130657bd322267dceb3727b9185a216972b86f5c4e85aca685e1"
+        },
+        {
+          "zoom": 2,
+          "x": 1,
+          "y": 2,
+          "relativePath": "palpagos/2/1/2.webp",
+          "length": 31170,
+          "sha256": "bcec9cb4b973296a0d7b07514719d70f8190e15aab7494ce6bcded35d8d904f8"
+        },
+        {
+          "zoom": 2,
+          "x": 1,
+          "y": 3,
+          "relativePath": "palpagos/2/1/3.webp",
+          "length": 10810,
+          "sha256": "c2e5a374b8fccd68b392b740f3d121397c83b27f8ddbb898078b7099c59e68ff"
+        },
+        {
+          "zoom": 2,
+          "x": 2,
+          "y": 0,
+          "relativePath": "palpagos/2/2/0.webp",
+          "length": 26208,
+          "sha256": "4dda76ce962c38029dfcb830a8c04855a22103ae3a123fef9e02fe11f4e03ad3"
+        },
+        {
+          "zoom": 2,
+          "x": 2,
+          "y": 1,
+          "relativePath": "palpagos/2/2/1.webp",
+          "length": 51448,
+          "sha256": "42636f05e767c4f74acfc3152cc635e2338ff54fec168a5bd58453a6774719d9"
+        },
+        {
+          "zoom": 2,
+          "x": 2,
+          "y": 2,
+          "relativePath": "palpagos/2/2/2.webp",
+          "length": 8468,
+          "sha256": "d09474efaf69cfde0c4c7d7bfe04d371a9a865de52aeffbbcb63d18855dd45a8"
+        },
+        {
+          "zoom": 2,
+          "x": 2,
+          "y": 3,
+          "relativePath": "palpagos/2/2/3.webp",
+          "length": 5192,
+          "sha256": "2808d2fe14668d43563dd227cf713348265fcd3736d9abe7d3112b81d89ca2eb"
+        },
+        {
+          "zoom": 2,
+          "x": 3,
+          "y": 0,
+          "relativePath": "palpagos/2/3/0.webp",
+          "length": 7808,
+          "sha256": "4d4aed333a0e7df7b2e78141e1f9f1a5f21dc401cbbcfacc8298b33717a6eeb1"
+        },
+        {
+          "zoom": 2,
+          "x": 3,
+          "y": 1,
+          "relativePath": "palpagos/2/3/1.webp",
+          "length": 10180,
+          "sha256": "1f3983fa0c2ac4ea52468fff3b99ac4b0c8f35490e3db423f9248b161bb15ee0"
+        },
+        {
+          "zoom": 2,
+          "x": 3,
+          "y": 2,
+          "relativePath": "palpagos/2/3/2.webp",
+          "length": 2600,
+          "sha256": "354ecf436db164146ea95ae95ae7db58358b2a69b24040317164a5d44eb96deb"
+        },
+        {
+          "zoom": 2,
+          "x": 3,
+          "y": 3,
+          "relativePath": "palpagos/2/3/3.webp",
+          "length": 824,
+          "sha256": "65175b27f6fb86b11c1f4f520c6921f9de730846091d09aec8c8d44af3818b7e"
+        },
+        {
+          "zoom": 3,
+          "x": 0,
+          "y": 0,
+          "relativePath": "palpagos/3/0/0.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 3,
+          "x": 0,
+          "y": 1,
+          "relativePath": "palpagos/3/0/1.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 3,
+          "x": 0,
+          "y": 2,
+          "relativePath": "palpagos/3/0/2.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 3,
+          "x": 0,
+          "y": 3,
+          "relativePath": "palpagos/3/0/3.webp",
+          "length": 708,
+          "sha256": "0044b07278e1a85840dbeee5a21ea3d52e22d6c48b5ad0e414f2cdd5bbe57887"
+        },
+        {
+          "zoom": 3,
+          "x": 0,
+          "y": 4,
+          "relativePath": "palpagos/3/0/4.webp",
+          "length": 4622,
+          "sha256": "ed668bc9b66294e04047d40439f7d3ab3d280e6e0b5b41abf8caba1b4d8b502e"
+        },
+        {
+          "zoom": 3,
+          "x": 0,
+          "y": 5,
+          "relativePath": "palpagos/3/0/5.webp",
+          "length": 3388,
+          "sha256": "af8c287c4a6e6076a1919610bb07eabb17c5a4b7e508a0d4d26532ef8e62eb02"
+        },
+        {
+          "zoom": 3,
+          "x": 0,
+          "y": 6,
+          "relativePath": "palpagos/3/0/6.webp",
+          "length": 3074,
+          "sha256": "b0c5fb38ad18d32ae79245957a6f1b19528baf7c1965af825df5fbe482845e8c"
+        },
+        {
+          "zoom": 3,
+          "x": 0,
+          "y": 7,
+          "relativePath": "palpagos/3/0/7.webp",
+          "length": 1382,
+          "sha256": "472512e64036c74db287200d6bc5432a11bf9e79a4fe9c0e47b66fcd23ddeb15"
+        },
+        {
+          "zoom": 3,
+          "x": 1,
+          "y": 0,
+          "relativePath": "palpagos/3/1/0.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 3,
+          "x": 1,
+          "y": 1,
+          "relativePath": "palpagos/3/1/1.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 3,
+          "x": 1,
+          "y": 2,
+          "relativePath": "palpagos/3/1/2.webp",
+          "length": 1166,
+          "sha256": "2d5979d5d9138631e67b7a52955dbacd88553778de66594d4aef193b6afa94c0"
+        },
+        {
+          "zoom": 3,
+          "x": 1,
+          "y": 3,
+          "relativePath": "palpagos/3/1/3.webp",
+          "length": 2996,
+          "sha256": "6e3bb8c06d00056224042e3a065178c8609f5da9aff8a197f385a9faaa75c3e3"
+        },
+        {
+          "zoom": 3,
+          "x": 1,
+          "y": 4,
+          "relativePath": "palpagos/3/1/4.webp",
+          "length": 7442,
+          "sha256": "4903fc533f95f922ead130d1acbc7fc0aef97e5cb31be23d2214a6cf57903b88"
+        },
+        {
+          "zoom": 3,
+          "x": 1,
+          "y": 5,
+          "relativePath": "palpagos/3/1/5.webp",
+          "length": 23234,
+          "sha256": "5234c1c2a1030035d6fe93a612ae636aa2f796f2b1b77402e94541dd76587d2a"
+        },
+        {
+          "zoom": 3,
+          "x": 1,
+          "y": 6,
+          "relativePath": "palpagos/3/1/6.webp",
+          "length": 30602,
+          "sha256": "8d18e1e2ffb199284eb60a6dcb4baa3ac946d77f9ebb769faada2f7db28f3503"
+        },
+        {
+          "zoom": 3,
+          "x": 1,
+          "y": 7,
+          "relativePath": "palpagos/3/1/7.webp",
+          "length": 8018,
+          "sha256": "43d7dfcf96b8cd21d7668e21892463182a6fb5e38dfdf5e1e89955a709fe7a6e"
+        },
+        {
+          "zoom": 3,
+          "x": 2,
+          "y": 0,
+          "relativePath": "palpagos/3/2/0.webp",
+          "length": 2408,
+          "sha256": "28973f25bd54162fd2409c8501b3fa8258722748fa2da8ffe0329484c68afdc9"
+        },
+        {
+          "zoom": 3,
+          "x": 2,
+          "y": 1,
+          "relativePath": "palpagos/3/2/1.webp",
+          "length": 3074,
+          "sha256": "9f75c3b324c6266fd1b1e055a61106a19cd87ca00356c14a080c5dadfc0e5474"
+        },
+        {
+          "zoom": 3,
+          "x": 2,
+          "y": 2,
+          "relativePath": "palpagos/3/2/2.webp",
+          "length": 4250,
+          "sha256": "643bc696424e8b2cd0f9d365ffbb6f08f717488e0b7904d1fca81b7126e45db2"
+        },
+        {
+          "zoom": 3,
+          "x": 2,
+          "y": 3,
+          "relativePath": "palpagos/3/2/3.webp",
+          "length": 14106,
+          "sha256": "2d67bae08a98bfc36e18f007e23b68209412c1adcb58c4d001c22d3db5d29e3c"
+        },
+        {
+          "zoom": 3,
+          "x": 2,
+          "y": 4,
+          "relativePath": "palpagos/3/2/4.webp",
+          "length": 16264,
+          "sha256": "2c8d75a5003667f7a79d6f9edba702a8544e56a76fa96393d81c9e04f72cb87a"
+        },
+        {
+          "zoom": 3,
+          "x": 2,
+          "y": 5,
+          "relativePath": "palpagos/3/2/5.webp",
+          "length": 54746,
+          "sha256": "504584380ddfef3d5988190d01c272f81e195edb514e452da29782437f7f6996"
+        },
+        {
+          "zoom": 3,
+          "x": 2,
+          "y": 6,
+          "relativePath": "palpagos/3/2/6.webp",
+          "length": 16456,
+          "sha256": "4b5be580a8c651b4dfca8fa90d012bce2f763cea91f96706f689a5d0d8a4a352"
+        },
+        {
+          "zoom": 3,
+          "x": 2,
+          "y": 7,
+          "relativePath": "palpagos/3/2/7.webp",
+          "length": 4410,
+          "sha256": "ddce8841758b9cf8687efd77a8268facac55378abf5660daa59b81e46acfaa97"
+        },
+        {
+          "zoom": 3,
+          "x": 3,
+          "y": 0,
+          "relativePath": "palpagos/3/3/0.webp",
+          "length": 3446,
+          "sha256": "612987c0b758a43d74faac48eb7b86f6b383e563dd1293a61bc66350d1b827ae"
+        },
+        {
+          "zoom": 3,
+          "x": 3,
+          "y": 1,
+          "relativePath": "palpagos/3/3/1.webp",
+          "length": 17122,
+          "sha256": "988ceb3b163ecc81ce04fbd8a002e0f357e509170d7a6233bb9f1350e2a2d0d2"
+        },
+        {
+          "zoom": 3,
+          "x": 3,
+          "y": 2,
+          "relativePath": "palpagos/3/3/2.webp",
+          "length": 26980,
+          "sha256": "6d45dbc5b7dad6455602422ea8a18cbd4b8a5a9195d5b668f7beb8e52c44d8fd"
+        },
+        {
+          "zoom": 3,
+          "x": 3,
+          "y": 3,
+          "relativePath": "palpagos/3/3/3.webp",
+          "length": 52166,
+          "sha256": "ba26becb63d83020774227766be4ebe70809f7f31f6d9e89442bac235e20cb44"
+        },
+        {
+          "zoom": 3,
+          "x": 3,
+          "y": 4,
+          "relativePath": "palpagos/3/3/4.webp",
+          "length": 26586,
+          "sha256": "90f4ae5c7bafcabbebde09e84204542689aecdfe7865ab5a75fe55806ff3d7bf"
+        },
+        {
+          "zoom": 3,
+          "x": 3,
+          "y": 5,
+          "relativePath": "palpagos/3/3/5.webp",
+          "length": 9220,
+          "sha256": "4c065a09b85912e5a2724e7b2ec4353201db24ef44d4e48e924e70def881b822"
+        },
+        {
+          "zoom": 3,
+          "x": 3,
+          "y": 6,
+          "relativePath": "palpagos/3/3/6.webp",
+          "length": 14602,
+          "sha256": "f2724cd91ca5c501da7dac8b9e865e1af55ef36ac52df6c1bc67a4c96eb93a2b"
+        },
+        {
+          "zoom": 3,
+          "x": 3,
+          "y": 7,
+          "relativePath": "palpagos/3/3/7.webp",
+          "length": 1564,
+          "sha256": "874e778826ffbf5b9bb9ff624ab147d2809cfa465205f39a6b9714e05fdde1ac"
+        },
+        {
+          "zoom": 3,
+          "x": 4,
+          "y": 0,
+          "relativePath": "palpagos/3/4/0.webp",
+          "length": 5460,
+          "sha256": "1129f57c9fa9cdd46daee0daa59f34c5c69c9ff768e30f703d1f3ff3f0c3950b"
+        },
+        {
+          "zoom": 3,
+          "x": 4,
+          "y": 1,
+          "relativePath": "palpagos/3/4/1.webp",
+          "length": 59082,
+          "sha256": "2d96bff5c6423a3a5d1fc07a3ed63eb29cf2f886c947fd37975a1a07ace6b22b"
+        },
+        {
+          "zoom": 3,
+          "x": 4,
+          "y": 2,
+          "relativePath": "palpagos/3/4/2.webp",
+          "length": 36496,
+          "sha256": "993bc32aedf68fb962687a9a537006bd720b87186442a4cecea23c50d93a2077"
+        },
+        {
+          "zoom": 3,
+          "x": 4,
+          "y": 3,
+          "relativePath": "palpagos/3/4/3.webp",
+          "length": 55286,
+          "sha256": "4de8d1f798f9e620bab6ff705f7dd1d3b09197b9025d0783713426681f3aba97"
+        },
+        {
+          "zoom": 3,
+          "x": 4,
+          "y": 4,
+          "relativePath": "palpagos/3/4/4.webp",
+          "length": 16734,
+          "sha256": "cdd1bf38c354518668b698df2e0b50e0ebe9597d3aca965c62ff848f6ddaaa4e"
+        },
+        {
+          "zoom": 3,
+          "x": 4,
+          "y": 5,
+          "relativePath": "palpagos/3/4/5.webp",
+          "length": 2730,
+          "sha256": "2b5812029f5405618601411e3da9db07e6189e13bacd37571630216ae7d844e0"
+        },
+        {
+          "zoom": 3,
+          "x": 4,
+          "y": 6,
+          "relativePath": "palpagos/3/4/6.webp",
+          "length": 9692,
+          "sha256": "6429e7de7bb26875df49a72f7dde400fc5cdc8f6af76ceecbc4283a00221e2a4"
+        },
+        {
+          "zoom": 3,
+          "x": 4,
+          "y": 7,
+          "relativePath": "palpagos/3/4/7.webp",
+          "length": 2836,
+          "sha256": "2bcad7a56ec120613e1e3723a6946dfa3ceb7e2c7090969c5011b1f1cd93160b"
+        },
+        {
+          "zoom": 3,
+          "x": 5,
+          "y": 0,
+          "relativePath": "palpagos/3/5/0.webp",
+          "length": 5688,
+          "sha256": "1ec864a1e82399f14e050cf856ef725d60dc04429d38aaedff4f5cd3bd5625a4"
+        },
+        {
+          "zoom": 3,
+          "x": 5,
+          "y": 1,
+          "relativePath": "palpagos/3/5/1.webp",
+          "length": 23702,
+          "sha256": "b47d7657ac91cf3c6d49731547b5abb76f113aee6467d7395b8d93b4aad77505"
+        },
+        {
+          "zoom": 3,
+          "x": 5,
+          "y": 2,
+          "relativePath": "palpagos/3/5/2.webp",
+          "length": 42382,
+          "sha256": "2edf116031e2a653228c11fccea2de91a13665fe108a2ee78d4777be57d0fb70"
+        },
+        {
+          "zoom": 3,
+          "x": 5,
+          "y": 3,
+          "relativePath": "palpagos/3/5/3.webp",
+          "length": 42182,
+          "sha256": "5f590d35c3f9cd0ae252e73cc24b7ab569dba5c09dfde8a3cc9f3a4f46de3bec"
+        },
+        {
+          "zoom": 3,
+          "x": 5,
+          "y": 4,
+          "relativePath": "palpagos/3/5/4.webp",
+          "length": 6212,
+          "sha256": "59b273b6d12bea329a757957d5b2e6fd655a779217282ebb59a56d40ae76bd1e"
+        },
+        {
+          "zoom": 3,
+          "x": 5,
+          "y": 5,
+          "relativePath": "palpagos/3/5/5.webp",
+          "length": 946,
+          "sha256": "74228ebc707fd90fcac85d442a349b43d972add9cb72533da7e7c76c7fc8bbc9"
+        },
+        {
+          "zoom": 3,
+          "x": 5,
+          "y": 6,
+          "relativePath": "palpagos/3/5/6.webp",
+          "length": 2542,
+          "sha256": "ab73685a761295d9a17fd41ffac768914d1b3b825fa00758fc8123eff6def14d"
+        },
+        {
+          "zoom": 3,
+          "x": 5,
+          "y": 7,
+          "relativePath": "palpagos/3/5/7.webp",
+          "length": 1314,
+          "sha256": "cb36c099e1721c333c833c5625c81bf0f682b10d2f19f00f16879e239d99c9ae"
+        },
+        {
+          "zoom": 3,
+          "x": 6,
+          "y": 0,
+          "relativePath": "palpagos/3/6/0.webp",
+          "length": 4932,
+          "sha256": "c1481993e9b4ace96676299f491ce1542d89af356c82c3c5174a04e113adf7d3"
+        },
+        {
+          "zoom": 3,
+          "x": 6,
+          "y": 1,
+          "relativePath": "palpagos/3/6/1.webp",
+          "length": 17300,
+          "sha256": "dbbcd72b79860da69480570cb0d52912f4f160d267f6f535e610efd4de409160"
+        },
+        {
+          "zoom": 3,
+          "x": 6,
+          "y": 2,
+          "relativePath": "palpagos/3/6/2.webp",
+          "length": 18330,
+          "sha256": "17ffaf6ef678615ded70fe5e35675977b9371a7664e6480b0f7cb2393f7240a6"
+        },
+        {
+          "zoom": 3,
+          "x": 6,
+          "y": 3,
+          "relativePath": "palpagos/3/6/3.webp",
+          "length": 6828,
+          "sha256": "1d7bec1bf234bd1963ab582dbf3f8f2de941c101473b8ee91f234a519f35eabb"
+        },
+        {
+          "zoom": 3,
+          "x": 6,
+          "y": 4,
+          "relativePath": "palpagos/3/6/4.webp",
+          "length": 1770,
+          "sha256": "5959434ba443d4803812152fbcebcec5ed4a2ab03f617855b7399e69a081fc3a"
+        },
+        {
+          "zoom": 3,
+          "x": 6,
+          "y": 5,
+          "relativePath": "palpagos/3/6/5.webp",
+          "length": 2826,
+          "sha256": "b7693317f2788605ae9246caaf6f0f7f838b92696fe41ce9faee48304d367bf2"
+        },
+        {
+          "zoom": 3,
+          "x": 6,
+          "y": 6,
+          "relativePath": "palpagos/3/6/6.webp",
+          "length": 1346,
+          "sha256": "be557d859d1652d2a0ca69aef7605096299b8dac6e0555355777f6126a3ca57c"
+        },
+        {
+          "zoom": 3,
+          "x": 6,
+          "y": 7,
+          "relativePath": "palpagos/3/6/7.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 3,
+          "x": 7,
+          "y": 0,
+          "relativePath": "palpagos/3/7/0.webp",
+          "length": 1758,
+          "sha256": "09109b2c34d0a295327d624157f7b302842a7ebb91a5d564084a9126e29ef58d"
+        },
+        {
+          "zoom": 3,
+          "x": 7,
+          "y": 1,
+          "relativePath": "palpagos/3/7/1.webp",
+          "length": 1448,
+          "sha256": "b1de3817fe30497d03bdf431f4a5386d9e05cf97347522c1833e2ed72ad06ab5"
+        },
+        {
+          "zoom": 3,
+          "x": 7,
+          "y": 2,
+          "relativePath": "palpagos/3/7/2.webp",
+          "length": 5814,
+          "sha256": "14034f3da705f0a8ad2b009774dca413449048c4bf543e110e74765bfbadcd5a"
+        },
+        {
+          "zoom": 3,
+          "x": 7,
+          "y": 3,
+          "relativePath": "palpagos/3/7/3.webp",
+          "length": 1540,
+          "sha256": "d8d6728b7321da08459c2de4174817eb0f41ffab596f6f918a9988532d65b015"
+        },
+        {
+          "zoom": 3,
+          "x": 7,
+          "y": 4,
+          "relativePath": "palpagos/3/7/4.webp",
+          "length": 2568,
+          "sha256": "84f05985344ac614bf018185914194d3c636bf58754c360fa137092b98d20912"
+        },
+        {
+          "zoom": 3,
+          "x": 7,
+          "y": 5,
+          "relativePath": "palpagos/3/7/5.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 3,
+          "x": 7,
+          "y": 6,
+          "relativePath": "palpagos/3/7/6.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 3,
+          "x": 7,
+          "y": 7,
+          "relativePath": "palpagos/3/7/7.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 0,
+          "relativePath": "palpagos/4/0/0.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 1,
+          "relativePath": "palpagos/4/0/1.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 2,
+          "relativePath": "palpagos/4/0/2.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 3,
+          "relativePath": "palpagos/4/0/3.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 4,
+          "relativePath": "palpagos/4/0/4.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 5,
+          "relativePath": "palpagos/4/0/5.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 6,
+          "relativePath": "palpagos/4/0/6.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 7,
+          "relativePath": "palpagos/4/0/7.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 8,
+          "relativePath": "palpagos/4/0/8.webp",
+          "length": 568,
+          "sha256": "ff42f76885e02d10f61ea6d6e5fda8d0e169c869221e5d17708531deab55e27a"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 9,
+          "relativePath": "palpagos/4/0/9.webp",
+          "length": 4216,
+          "sha256": "d1ea6b896688dcf6698513c37dcd90a6b44d263d48559eef6da3592d9c3f199e"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 10,
+          "relativePath": "palpagos/4/0/10.webp",
+          "length": 2048,
+          "sha256": "d864e70b87eff25fcfe13377b030acbf881d11ebe3dabb160882a5b6caa546aa"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 11,
+          "relativePath": "palpagos/4/0/11.webp",
+          "length": 1224,
+          "sha256": "b52e9f2b9be07b9c0852ea488f75f311b0b78141d27d2a5e85c3c26caab65975"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 12,
+          "relativePath": "palpagos/4/0/12.webp",
+          "length": 3636,
+          "sha256": "7f4f062c5478c96822f1c8ebf4d37deb6d55fc97dcefce57d51935eeeabbfeaf"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 13,
+          "relativePath": "palpagos/4/0/13.webp",
+          "length": 1284,
+          "sha256": "41d9ebd7cc1c566910e12f7bd6d1bb28d3ab22b20e8cdd74fdb3edb1e22ea47d"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 14,
+          "relativePath": "palpagos/4/0/14.webp",
+          "length": 1206,
+          "sha256": "612441ab56b88e73505eb2351378f29da72af282235f5227dba562ea9cbcb8c2"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 15,
+          "relativePath": "palpagos/4/0/15.webp",
+          "length": 1474,
+          "sha256": "088d6ac9f43730305b50bead5ae2eeaa9985f95d1d9b689d621852aa68c8309e"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 0,
+          "relativePath": "palpagos/4/1/0.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 1,
+          "relativePath": "palpagos/4/1/1.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 2,
+          "relativePath": "palpagos/4/1/2.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 3,
+          "relativePath": "palpagos/4/1/3.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 4,
+          "relativePath": "palpagos/4/1/4.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 5,
+          "relativePath": "palpagos/4/1/5.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 6,
+          "relativePath": "palpagos/4/1/6.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 7,
+          "relativePath": "palpagos/4/1/7.webp",
+          "length": 1018,
+          "sha256": "a245fd4f4800f3c9f6b61d5d791f5ce01eb090ca5f74e22f6dda7176b658950c"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 8,
+          "relativePath": "palpagos/4/1/8.webp",
+          "length": 3592,
+          "sha256": "b7435ab6267a68417754c8b2041ee242e69331bc38f6a6860d9ee6084a4db3f1"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 9,
+          "relativePath": "palpagos/4/1/9.webp",
+          "length": 5230,
+          "sha256": "3440e743c3f551169295e31a8d4cbb718f23ccc87c27d85e6c0c96b60017304b"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 10,
+          "relativePath": "palpagos/4/1/10.webp",
+          "length": 6794,
+          "sha256": "23e6839cfa7edd6659aa6e65fb9ba519d85363bb13a61546bbb055f7026a45c1"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 11,
+          "relativePath": "palpagos/4/1/11.webp",
+          "length": 886,
+          "sha256": "81e6c634fdfeaba2832397b56895ca7411327fa2a0a06d6c8a62dc74a440e68a"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 12,
+          "relativePath": "palpagos/4/1/12.webp",
+          "length": 3058,
+          "sha256": "46d8ad59e6f66937d7b020d7e91047b222bc250b2ddb8869f7c4949ccd581a83"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 13,
+          "relativePath": "palpagos/4/1/13.webp",
+          "length": 1000,
+          "sha256": "4e53342b68fa9dce12a30bf39813a66cb8e53dc2133763cf6261e1ffae931ab0"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 14,
+          "relativePath": "palpagos/4/1/14.webp",
+          "length": 856,
+          "sha256": "623f32494c293049dd3ca2ab4c44b519c4d616920e12618da136559f42dc7759"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 15,
+          "relativePath": "palpagos/4/1/15.webp",
+          "length": 1238,
+          "sha256": "4b9e643193bc1fbec9728ca0af55657a3e1b198735b7b3807c4ea5e571f15f4e"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 0,
+          "relativePath": "palpagos/4/2/0.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 1,
+          "relativePath": "palpagos/4/2/1.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 2,
+          "relativePath": "palpagos/4/2/2.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 3,
+          "relativePath": "palpagos/4/2/3.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 4,
+          "relativePath": "palpagos/4/2/4.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 5,
+          "relativePath": "palpagos/4/2/5.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 6,
+          "relativePath": "palpagos/4/2/6.webp",
+          "length": 1608,
+          "sha256": "0ed54dfbec13e7e9acab3766dd0212895dd294b22cfa361c83567778434418fd"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 7,
+          "relativePath": "palpagos/4/2/7.webp",
+          "length": 3278,
+          "sha256": "21cf79323a55d2f129b5557897e2d29b5b4310c2451239e3fdd4e502f46ae489"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 8,
+          "relativePath": "palpagos/4/2/8.webp",
+          "length": 1132,
+          "sha256": "52e9a78794254515803782f6c1beb1db9c37595880f1ff627bcc1237e1e3b594"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 9,
+          "relativePath": "palpagos/4/2/9.webp",
+          "length": 1318,
+          "sha256": "52544e9bd30639e808466322590a65872fb087af6696886c580379f9c7f8211d"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 10,
+          "relativePath": "palpagos/4/2/10.webp",
+          "length": 10984,
+          "sha256": "fe491f915d7ab58e3ae9d601859b6271221c7af63cb320a281a8d795ad3917e9"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 11,
+          "relativePath": "palpagos/4/2/11.webp",
+          "length": 5472,
+          "sha256": "084620a8f5d6d7095a4b2775bcac68ee3e030b6874f850aa8c5938383effb697"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 12,
+          "relativePath": "palpagos/4/2/12.webp",
+          "length": 10528,
+          "sha256": "2077a5243a9778ddbe7c738f08a94941b46c519150d5938f71e905e0a039ef76"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 13,
+          "relativePath": "palpagos/4/2/13.webp",
+          "length": 7748,
+          "sha256": "4610b8671f45b8abf935c7a6d3c14077ec3d0a6776d5d48be072336e6ec07b98"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 14,
+          "relativePath": "palpagos/4/2/14.webp",
+          "length": 1124,
+          "sha256": "3e9aa9bc86b7ccf8c46177859e2dc3351bc074013caccf9a83687358614a8561"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 15,
+          "relativePath": "palpagos/4/2/15.webp",
+          "length": 1218,
+          "sha256": "ea46f79151bb04d92d9336cd6e507d095de4ae351b554d50395e2c46e1956c03"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 0,
+          "relativePath": "palpagos/4/3/0.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 1,
+          "relativePath": "palpagos/4/3/1.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 2,
+          "relativePath": "palpagos/4/3/2.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 3,
+          "relativePath": "palpagos/4/3/3.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 4,
+          "relativePath": "palpagos/4/3/4.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 5,
+          "relativePath": "palpagos/4/3/5.webp",
+          "length": 2178,
+          "sha256": "4667637db54b5dfda303b7aabd75fe68bab9af2770ea89b59854ee577d0e79f0"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 6,
+          "relativePath": "palpagos/4/3/6.webp",
+          "length": 2726,
+          "sha256": "68157b46a3066a759be1bd21e9495664538bb01a369e357d5515856479a024a0"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 7,
+          "relativePath": "palpagos/4/3/7.webp",
+          "length": 1056,
+          "sha256": "16805de85198e738bb26a5bfe54c648e9a7bd4bae0ac986cf3d4be6c89f16937"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 8,
+          "relativePath": "palpagos/4/3/8.webp",
+          "length": 10666,
+          "sha256": "385791f42311ac36cb999a35ff449512fd5b1d364dfe2b0df27339f28370931a"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 9,
+          "relativePath": "palpagos/4/3/9.webp",
+          "length": 10712,
+          "sha256": "ec3227c87437bb3235a1b2a9489b3a1357db773f1db4c50fffffd3f9ea61b43b"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 10,
+          "relativePath": "palpagos/4/3/10.webp",
+          "length": 27068,
+          "sha256": "2d9425131001a3a6b8218df0aee1848ed0e6d12de2d44eafe7e17760e4d54561"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 11,
+          "relativePath": "palpagos/4/3/11.webp",
+          "length": 35866,
+          "sha256": "24d3e479dc15109d258c89bebeb4b938757da4b63de6f01fc6c2447996fb02ea"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 12,
+          "relativePath": "palpagos/4/3/12.webp",
+          "length": 41262,
+          "sha256": "0460a35f69852badea287b6f9bbebb89ad8940ffee2c9de94edc023f59aa3fde"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 13,
+          "relativePath": "palpagos/4/3/13.webp",
+          "length": 46646,
+          "sha256": "885073853075de2d3bc3cd565cdc55ac7217e75f719c97dd3758dbeb234784ac"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 14,
+          "relativePath": "palpagos/4/3/14.webp",
+          "length": 15608,
+          "sha256": "d7907e003450c5ad750f7f6a47c33bdf1946904249368f7a19adeb524fdcd4f5"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 15,
+          "relativePath": "palpagos/4/3/15.webp",
+          "length": 12158,
+          "sha256": "94eb851a9232c45a5e2693fb1e4f2c3becc84584a30a2459069c7d582aefbf4b"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 0,
+          "relativePath": "palpagos/4/4/0.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 1,
+          "relativePath": "palpagos/4/4/1.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 2,
+          "relativePath": "palpagos/4/4/2.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 3,
+          "relativePath": "palpagos/4/4/3.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 4,
+          "relativePath": "palpagos/4/4/4.webp",
+          "length": 2766,
+          "sha256": "c55f3293eb49962b5c962290d82b6e8c6e3577bc3d9acf48aa7d624edc3a4610"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 5,
+          "relativePath": "palpagos/4/4/5.webp",
+          "length": 2322,
+          "sha256": "9627c0e032d423317cba44f3d9b214e7c56ff1bb9d262091acd76ef2d16f257c"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 6,
+          "relativePath": "palpagos/4/4/6.webp",
+          "length": 1040,
+          "sha256": "c39a1d521eba5b91d968983c3b932d269c98bb053426ad9befac57b8439b72a4"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 7,
+          "relativePath": "palpagos/4/4/7.webp",
+          "length": 1382,
+          "sha256": "329a07f7bc55ea5dd736be20e7f3af6fd099b1f0b7b90c3b5ee772558cb03dae"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 8,
+          "relativePath": "palpagos/4/4/8.webp",
+          "length": 1320,
+          "sha256": "442530a01e99146a96e26372219d5a0642df37be3bc7ee237c47d9fa0a55662d"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 9,
+          "relativePath": "palpagos/4/4/9.webp",
+          "length": 20532,
+          "sha256": "14fec599e31c47cf3c03b6b47ca1214358ccee3dc763fa5ed61c16e3db8780d3"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 10,
+          "relativePath": "palpagos/4/4/10.webp",
+          "length": 38130,
+          "sha256": "93ebeefacad88198d2079fabfb4cc9fa78ef592aeab2fef99bf12d667321ddb5"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 11,
+          "relativePath": "palpagos/4/4/11.webp",
+          "length": 44820,
+          "sha256": "63924678838eeff07a3ed355838ded36d10fdd568d2998f7322e7f66f9f02dcc"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 12,
+          "relativePath": "palpagos/4/4/12.webp",
+          "length": 33060,
+          "sha256": "c19f11c894453053188448bf43557af89b2c564df1a1f697a0ddf64fe7e423ec"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 13,
+          "relativePath": "palpagos/4/4/13.webp",
+          "length": 5548,
+          "sha256": "4e097cc68128b0bf7958a0a85b7cf94db7c7b45129f7694cb13cee5ef157fb5f"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 14,
+          "relativePath": "palpagos/4/4/14.webp",
+          "length": 4750,
+          "sha256": "43498b282b2001f9b2baffcf386ce8c0def5b361cc32382df6ad0132aee1c2d8"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 15,
+          "relativePath": "palpagos/4/4/15.webp",
+          "length": 10084,
+          "sha256": "f2ac1e7e4462da9e05ad6d598b1411a1a92ed182598d9eb37d73620e1553a631"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 0,
+          "relativePath": "palpagos/4/5/0.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 1,
+          "relativePath": "palpagos/4/5/1.webp",
+          "length": 6708,
+          "sha256": "ac3042a35071e17b28c1b170a5b3e9981895525922ec167bcf3d35ef5e8f8e79"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 2,
+          "relativePath": "palpagos/4/5/2.webp",
+          "length": 5282,
+          "sha256": "00668f6cbc3b4b985aa1aa61fee51c6f8e847b5184dea46c61640e4e36cdb345"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 3,
+          "relativePath": "palpagos/4/5/3.webp",
+          "length": 2640,
+          "sha256": "9a542d9ed7a947b0b46f9dad6e05ca7a83291b84883063353d8c84dd126642e3"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 4,
+          "relativePath": "palpagos/4/5/4.webp",
+          "length": 5630,
+          "sha256": "3fea3fb20718b195191cf222eda3f11d75c9acfd6e052b2f3be203bca636f1e5"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 5,
+          "relativePath": "palpagos/4/5/5.webp",
+          "length": 1496,
+          "sha256": "7efa689505f2a1f53283acff31b7f9aaefb55f7bf65ab5e2526a52c94f5aa13f"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 6,
+          "relativePath": "palpagos/4/5/6.webp",
+          "length": 18604,
+          "sha256": "fd5ced28b3cb9de84a54d48420b7c14212ac182a4530e41243bd10bb50fe47ae"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 7,
+          "relativePath": "palpagos/4/5/7.webp",
+          "length": 28066,
+          "sha256": "314685a54344a87e2ad0eefe9e05a9dc48292ae9691ea6a8c12f41adc07d3816"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 8,
+          "relativePath": "palpagos/4/5/8.webp",
+          "length": 13244,
+          "sha256": "5bdbc298946884d4deec6f433d6ee69c5e2a6d5d05c04b8f4ae7dc2456a82aae"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 9,
+          "relativePath": "palpagos/4/5/9.webp",
+          "length": 16796,
+          "sha256": "fe69dc000a2bfcf3dbaab79becaac6bc91a66dac56858e509789d9226b0a91d1"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 10,
+          "relativePath": "palpagos/4/5/10.webp",
+          "length": 46638,
+          "sha256": "8a088a9b003a7d00d38f00b8b1852bd396e8636bc589d6142684979697d4dea1"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 11,
+          "relativePath": "palpagos/4/5/11.webp",
+          "length": 46256,
+          "sha256": "ec5b4cca83004724739b4d937d318d48855cae68b498508fcd9f28dd18fda4a1"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 12,
+          "relativePath": "palpagos/4/5/12.webp",
+          "length": 15248,
+          "sha256": "882fc3c2a7ccf7d610751afc8ed18741ddd9970f7046e5aa63988df451fe13a8"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 13,
+          "relativePath": "palpagos/4/5/13.webp",
+          "length": 1322,
+          "sha256": "ca1f0c4669afdae17668283a5801e268709fdf990e9d2d466799c23cae7614d0"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 14,
+          "relativePath": "palpagos/4/5/14.webp",
+          "length": 854,
+          "sha256": "8df26fd603d92da282d3197d282f76767359cb90e789e9eb190b964dbab9c5c0"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 15,
+          "relativePath": "palpagos/4/5/15.webp",
+          "length": 1194,
+          "sha256": "b788616571a745175f5c6765e7a706b4a369b5ce1d48417355b9bca772f16396"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 0,
+          "relativePath": "palpagos/4/6/0.webp",
+          "length": 1086,
+          "sha256": "b5a4f3a2f0f51c04e7299e805581ac4f9cf539dea8ade366664e168fd0ed2088"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 1,
+          "relativePath": "palpagos/4/6/1.webp",
+          "length": 3666,
+          "sha256": "2d479608a56c27a3366b0afd290369d1128dab2db44162811f1f9310a22536ba"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 2,
+          "relativePath": "palpagos/4/6/2.webp",
+          "length": 1310,
+          "sha256": "d56b95d0ac9f5924ad4151122aa7e1cfc378580022c576d4a8274de9040287b9"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 3,
+          "relativePath": "palpagos/4/6/3.webp",
+          "length": 17810,
+          "sha256": "6631d926fca248a4a21562fba988f59b78d1ef2cb87f0a71ee430a7ba8ef2fb3"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 4,
+          "relativePath": "palpagos/4/6/4.webp",
+          "length": 29388,
+          "sha256": "a969c168984591424ae60cfebea82ff7e7dfef9fe137d1f588fe63b8f82015a1"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 5,
+          "relativePath": "palpagos/4/6/5.webp",
+          "length": 12902,
+          "sha256": "d25f6e5b40ff11ec18015e640c5336eecf3ec6ca6be0d283251e779917da793e"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 6,
+          "relativePath": "palpagos/4/6/6.webp",
+          "length": 33262,
+          "sha256": "41801b897664129402637fb674cc462a40952dc6daa40d7a685917d827377c58"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 7,
+          "relativePath": "palpagos/4/6/7.webp",
+          "length": 46436,
+          "sha256": "f42f149cbe7ab5671842da984b4c23a5ca0bf47a39c7bee13a7700e3fedb692a"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 8,
+          "relativePath": "palpagos/4/6/8.webp",
+          "length": 38494,
+          "sha256": "06428bcf8adb6f987d224cc6c561d360ea72a9583c9bf594d30337d774ac60d1"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 9,
+          "relativePath": "palpagos/4/6/9.webp",
+          "length": 6696,
+          "sha256": "466d2c1d86671abad57ce4c648a63ffde06ab96f55ba9f6ff92fcee344254f3d"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 10,
+          "relativePath": "palpagos/4/6/10.webp",
+          "length": 15684,
+          "sha256": "885ac181ad19c9771bea014e9db97d012687e63a7dd29872c8345f4f74ee8357"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 11,
+          "relativePath": "palpagos/4/6/11.webp",
+          "length": 8708,
+          "sha256": "5c7761daaaeb43c7da2d223e8c39ba19a28634b1d1d089bc099c31b2343af93a"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 12,
+          "relativePath": "palpagos/4/6/12.webp",
+          "length": 14672,
+          "sha256": "7d02add98dde21bcb5621668a5f8a391de2189480a50b526a75ecbb8aaddf39a"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 13,
+          "relativePath": "palpagos/4/6/13.webp",
+          "length": 3160,
+          "sha256": "73728b7e17b2a416014fc30e1d3a45400be9a1799425cae50317888fcd21c39f"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 14,
+          "relativePath": "palpagos/4/6/14.webp",
+          "length": 810,
+          "sha256": "4822002d77dd5003b6628c2adc074496fa1081d3a245d46d1acb876d0e4f37fd"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 15,
+          "relativePath": "palpagos/4/6/15.webp",
+          "length": 1196,
+          "sha256": "ce6e58508258405d3ea7049016143eef2c1cc4adc1364cbd45efe72cde587886"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 0,
+          "relativePath": "palpagos/4/7/0.webp",
+          "length": 3490,
+          "sha256": "93ccbaf6e6ff2b58e021d0470d4683adf5d6d7d2eefcf3d49b7c674add38a48c"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 1,
+          "relativePath": "palpagos/4/7/1.webp",
+          "length": 1306,
+          "sha256": "f6572fa97b4ff0853fad1131bef3876b8880df991399dcb1f80977f2dd66fb8d"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 2,
+          "relativePath": "palpagos/4/7/2.webp",
+          "length": 19848,
+          "sha256": "fd605d411ed5db968166702941079565656c8ea0f77a671c4d6c8dd1841b77b2"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 3,
+          "relativePath": "palpagos/4/7/3.webp",
+          "length": 18204,
+          "sha256": "abc5959a1fdedfda62b3308bcac5a1ab10524b5f72bc5edb207d203365dab000"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 4,
+          "relativePath": "palpagos/4/7/4.webp",
+          "length": 15246,
+          "sha256": "31038b24379cf69c1f24ebcb58dc434d32649c42ed94bf4c84df1b4f009b779e"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 5,
+          "relativePath": "palpagos/4/7/5.webp",
+          "length": 26046,
+          "sha256": "d96d47d9507dd6310cd254b3b0c6dc0a680555d1bf9a9ad3bfe40521d6d6bd7e"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 6,
+          "relativePath": "palpagos/4/7/6.webp",
+          "length": 31904,
+          "sha256": "7dbf9db9307a6e4cbee5f54a9ffa69c51fbd8aa4f741ff463d032e876c6a4fb5"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 7,
+          "relativePath": "palpagos/4/7/7.webp",
+          "length": 62526,
+          "sha256": "c12b04c2c97bd44ae54cb75e6131efb20de6856835b92569a46619e66633851e"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 8,
+          "relativePath": "palpagos/4/7/8.webp",
+          "length": 37910,
+          "sha256": "33ded3090f173a3990b76fb49164d0fbf4447dc97e7d0cea98b09c9be3a40ebc"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 9,
+          "relativePath": "palpagos/4/7/9.webp",
+          "length": 6082,
+          "sha256": "47c7e820931a65a80a7a6bdf967ad386596951a7623f1b9d9bc6a32c900d252f"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 10,
+          "relativePath": "palpagos/4/7/10.webp",
+          "length": 808,
+          "sha256": "235cfdbfc305d51302cd68c9cd469ff979396103db9f707c29d2af38092d6026"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 11,
+          "relativePath": "palpagos/4/7/11.webp",
+          "length": 3324,
+          "sha256": "c3bee4d588582df2e30c59918755f16770d73b59ecc62d77fdc9e171bed77800"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 12,
+          "relativePath": "palpagos/4/7/12.webp",
+          "length": 29240,
+          "sha256": "854604998c7b1de5f66e8c10000365e34043033a7ee64d83f6e432dc8e451dd5"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 13,
+          "relativePath": "palpagos/4/7/13.webp",
+          "length": 6932,
+          "sha256": "a89fda08e33ba671b5612da234ecb8f615331658f0394b8dcbc2bfdb82a7046d"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 14,
+          "relativePath": "palpagos/4/7/14.webp",
+          "length": 818,
+          "sha256": "86dc3c45c4ffec668825e2e11b624bd792eb97ae9938567062fd3d623f756844"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 15,
+          "relativePath": "palpagos/4/7/15.webp",
+          "length": 2158,
+          "sha256": "ba1388534839585a884207ae18ae88ae04075fa13d2eb7919fdb8f5014a484eb"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 0,
+          "relativePath": "palpagos/4/8/0.webp",
+          "length": 3228,
+          "sha256": "81d5e596ca98a09cd96b25212eb2e7204765176fd0ad98b2817275e296dd1c8f"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 1,
+          "relativePath": "palpagos/4/8/1.webp",
+          "length": 9860,
+          "sha256": "94b256fe3050d9c2b28982e1017f5d7b7a1597d4e7e6319d0828e7a294f6c4fd"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 2,
+          "relativePath": "palpagos/4/8/2.webp",
+          "length": 50944,
+          "sha256": "463eb5e422e045f166e4eaf1b74f412406d4ef60b68f64435bb7c1fd0c6497df"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 3,
+          "relativePath": "palpagos/4/8/3.webp",
+          "length": 55258,
+          "sha256": "c50d10123c8069cc4351629484c5125cda49de37d727d5507507c1d625482f37"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 4,
+          "relativePath": "palpagos/4/8/4.webp",
+          "length": 16018,
+          "sha256": "dd8925562cb81749248e9667dd4295c37de24b47569ce20bf5edc5756cf3df92"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 5,
+          "relativePath": "palpagos/4/8/5.webp",
+          "length": 34212,
+          "sha256": "c3625e14e01a07efdc49f05480b65ad34cca86df4deefd2a0cdd75477876247c"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 6,
+          "relativePath": "palpagos/4/8/6.webp",
+          "length": 47324,
+          "sha256": "fd38de9c7c4627c33120e35e2d76f865a1432f0deac7dda926783bea306f9359"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 7,
+          "relativePath": "palpagos/4/8/7.webp",
+          "length": 44228,
+          "sha256": "8acf178e5e4adfeca8bb4f4e21a75592fc5a2aae2bd5a9229e068ebf09228683"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 8,
+          "relativePath": "palpagos/4/8/8.webp",
+          "length": 35172,
+          "sha256": "9c5a2862e520d1812b3ed53ba91c9d751c626f62bb0f409c3ad8b809da4616d9"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 9,
+          "relativePath": "palpagos/4/8/9.webp",
+          "length": 1250,
+          "sha256": "f1d609b1c45c4b22baa81abc202a563fc7064b6187f2adb560240ca43ead2137"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 10,
+          "relativePath": "palpagos/4/8/10.webp",
+          "length": 844,
+          "sha256": "29b18dbbb7d1f50c9009392828329e38bf9a9fa27b2ff5a80d937e7b87851ae4"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 11,
+          "relativePath": "palpagos/4/8/11.webp",
+          "length": 918,
+          "sha256": "6c5a84b40d6fe79eff9ff69265cfaa68fb079cb4fe9a39edd60135558fc64e18"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 12,
+          "relativePath": "palpagos/4/8/12.webp",
+          "length": 26348,
+          "sha256": "e7d3f724c9d5862aeea6ed6ceb1fde97de19fb1f68ed3ab2bf17041b9d73868d"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 13,
+          "relativePath": "palpagos/4/8/13.webp",
+          "length": 5936,
+          "sha256": "13b0700e034b69179754e5f3cd8d4b61bdd32986181d5bc1331a3f21e381baaa"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 14,
+          "relativePath": "palpagos/4/8/14.webp",
+          "length": 1062,
+          "sha256": "1855be5cf40cf11944dbded9828773f66e81a1a70425934f660203275cc606fe"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 15,
+          "relativePath": "palpagos/4/8/15.webp",
+          "length": 3154,
+          "sha256": "7a81644f8b6bf6482853cb6fbd75eb36c7f893d5161cea2d730d5639c5534f31"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 0,
+          "relativePath": "palpagos/4/9/0.webp",
+          "length": 2262,
+          "sha256": "667d1c7fba34a59cf71890eaf013fddf1692b37fa489980163e3235f16becd03"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 1,
+          "relativePath": "palpagos/4/9/1.webp",
+          "length": 1742,
+          "sha256": "3f310f7f5cec18093d387850e04a2d97f629f8d87f4081b05362a2e558ced399"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 2,
+          "relativePath": "palpagos/4/9/2.webp",
+          "length": 33768,
+          "sha256": "1c51d026df46fd63c76d448082b31c4c2444822338f9cdff88fa27dc0d61b320"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 3,
+          "relativePath": "palpagos/4/9/3.webp",
+          "length": 50858,
+          "sha256": "9c6b8ba6f4c86110c827dca5fec1ec04f00481c4123122ab751029e95a9b6ae5"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 4,
+          "relativePath": "palpagos/4/9/4.webp",
+          "length": 49244,
+          "sha256": "3119ce6ff4b63fe7f22e6d8ad761872ad20f61e7597cce4de7d114ac57f32fe6"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 5,
+          "relativePath": "palpagos/4/9/5.webp",
+          "length": 22132,
+          "sha256": "4d169a72f14b510a6d838394b32c3ec046d10bd12e97b4fbe67bef23e0683edb"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 6,
+          "relativePath": "palpagos/4/9/6.webp",
+          "length": 39868,
+          "sha256": "c7a7857ca465e823714948610447d96a27a692ebb40314e9d3b7a28b5893098a"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 7,
+          "relativePath": "palpagos/4/9/7.webp",
+          "length": 47528,
+          "sha256": "96875d64f9c99c01a8e26c21486527357deade7b901331e06b5b31e660046b4b"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 8,
+          "relativePath": "palpagos/4/9/8.webp",
+          "length": 19348,
+          "sha256": "dd4dfff248289fa9337b95cdd3959fc101694560432d548d5347fd16e335621a"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 9,
+          "relativePath": "palpagos/4/9/9.webp",
+          "length": 1514,
+          "sha256": "d80e1ec336c732623ea84d89f85aa37331ed7a365f8401c8a1e484f9cf0ae895"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 10,
+          "relativePath": "palpagos/4/9/10.webp",
+          "length": 5996,
+          "sha256": "50e1a5b95aee0edfeea8426a7c820a2fbe334694c3cc85bad7377e310cca7f04"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 11,
+          "relativePath": "palpagos/4/9/11.webp",
+          "length": 810,
+          "sha256": "f31bb05bf20cdf4a54799ff74e4b2d6e2a5a27ca2253fb4f7fd9d49dc1fb35cf"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 12,
+          "relativePath": "palpagos/4/9/12.webp",
+          "length": 830,
+          "sha256": "3e8f5a967e51760718675569a77fde6432adc54e3ea4679fb1e1bff9149551a5"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 13,
+          "relativePath": "palpagos/4/9/13.webp",
+          "length": 834,
+          "sha256": "0a459e8df2e65c3ce6b848de90a78d0fa78f4b18578b8c7218f7efc9c85ab521"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 14,
+          "relativePath": "palpagos/4/9/14.webp",
+          "length": 3456,
+          "sha256": "3c7cef5810718853e9cf13046da7f238185ed8e93b45d762583c2f44af49887d"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 15,
+          "relativePath": "palpagos/4/9/15.webp",
+          "length": 552,
+          "sha256": "07ef86a54d34dd9ca1a3a488794ae7b4357afab2f5df48e0348c7033dfb81f64"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 0,
+          "relativePath": "palpagos/4/10/0.webp",
+          "length": 2170,
+          "sha256": "188095d5ed532cc124a1e3d52cd9cba4ab6e9da3f324b308c59585120c0b0fc9"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 1,
+          "relativePath": "palpagos/4/10/1.webp",
+          "length": 6420,
+          "sha256": "1e3f60d4bce698e6aef5e35698bb3bb6f72173e818d11f5e84bab7a2d9d91347"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 2,
+          "relativePath": "palpagos/4/10/2.webp",
+          "length": 7542,
+          "sha256": "c172713b04428b9a0204e76dca2b5df8217e253d603c3a52c9a054858792bced"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 3,
+          "relativePath": "palpagos/4/10/3.webp",
+          "length": 21442,
+          "sha256": "245d6a7845f4fee8b058c4ccc69e31316283710d8e7e588a9ba898a7c8cced69"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 4,
+          "relativePath": "palpagos/4/10/4.webp",
+          "length": 28498,
+          "sha256": "b4e3b1e49de63847eba2ad228b759563ce00f314582e74172fd4eae7a50221d8"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 5,
+          "relativePath": "palpagos/4/10/5.webp",
+          "length": 54300,
+          "sha256": "a06b38a5abd9a1e84a26943a8c740095202085e61a9fa66596644ed993a793ba"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 6,
+          "relativePath": "palpagos/4/10/6.webp",
+          "length": 38822,
+          "sha256": "cdf2f5fe1c4da692f87792fabdde55a65cdd56f27816a3c8444d2b2a6e909191"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 7,
+          "relativePath": "palpagos/4/10/7.webp",
+          "length": 45282,
+          "sha256": "df05e4d8989e284fdf55ea2e6bc9f88ffcaf990d226ab18148c0248b256cc17e"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 8,
+          "relativePath": "palpagos/4/10/8.webp",
+          "length": 11130,
+          "sha256": "ec209f312680d962608ea23c2932ef65249a09f6897c545311da41b8f7402496"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 9,
+          "relativePath": "palpagos/4/10/9.webp",
+          "length": 1310,
+          "sha256": "3968b4b0f23284bfcf43919a5f91ade8c952097f0637054e1ee6a3e6204ef69a"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 10,
+          "relativePath": "palpagos/4/10/10.webp",
+          "length": 766,
+          "sha256": "54296b25f5c6185f4ca7b0c30bbbca15a94cd2b2d9e02c109f24ce5d0cb86cab"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 11,
+          "relativePath": "palpagos/4/10/11.webp",
+          "length": 788,
+          "sha256": "a517b1c2a3aef91a02646f51920addad833fc3917fcf68061bc218cd9d823690"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 12,
+          "relativePath": "palpagos/4/10/12.webp",
+          "length": 782,
+          "sha256": "a1c5bbfaeba9e9c237dff8fc940acd653310bd2ecec0635dc40a403b7cba9fde"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 13,
+          "relativePath": "palpagos/4/10/13.webp",
+          "length": 1746,
+          "sha256": "6802b7e54b2fad4092c71e58b5a5fdf3746b583e0d8a48d0fd20c1e32f5578dd"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 14,
+          "relativePath": "palpagos/4/10/14.webp",
+          "length": 2462,
+          "sha256": "b16367676eaa60055b90d4c5a4c06b21986924512f5dd9a37819ce07ff3cc7d4"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 15,
+          "relativePath": "palpagos/4/10/15.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 0,
+          "relativePath": "palpagos/4/11/0.webp",
+          "length": 2364,
+          "sha256": "a57f367543d0053da6d29a386f9573be4047de19c881bf50dbf9886b2e781dc2"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 1,
+          "relativePath": "palpagos/4/11/1.webp",
+          "length": 6164,
+          "sha256": "0ec4eb0a1beac2f98f6ed4b43ea98c6bc01e16d587ab9c2ce54aab3c6a87bf9f"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 2,
+          "relativePath": "palpagos/4/11/2.webp",
+          "length": 26978,
+          "sha256": "304110cc6b7c4dd2cc843b050332c69bc7d177c855dc4a9c85d8fdfc326af0e1"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 3,
+          "relativePath": "palpagos/4/11/3.webp",
+          "length": 23882,
+          "sha256": "0c39a47b86d36a59efaa812ce689c221d56cf2aee69be002928b59e01e1c0bd6"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 4,
+          "relativePath": "palpagos/4/11/4.webp",
+          "length": 24172,
+          "sha256": "0669e88dcc5dde11870ddd4bdb7618c21730cd389f0875b793600ab405a5665d"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 5,
+          "relativePath": "palpagos/4/11/5.webp",
+          "length": 35270,
+          "sha256": "ba73e2d1e5547c74f8ea2a1a770452d087b6b19721ca7493053ef69fe194943a"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 6,
+          "relativePath": "palpagos/4/11/6.webp",
+          "length": 36738,
+          "sha256": "f0e6a5c062991517b20cdd11fa88c891d33bd8405a1e7292b0dd43cbd60a6f91"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 7,
+          "relativePath": "palpagos/4/11/7.webp",
+          "length": 14136,
+          "sha256": "1a7cb4a37b85712790e6481b726116131f500660ed0d902de34fdf921337620d"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 8,
+          "relativePath": "palpagos/4/11/8.webp",
+          "length": 5068,
+          "sha256": "06559eb82bca909fbab59fbb324a575a906bac8ba332e788f4086ef07fa5b555"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 9,
+          "relativePath": "palpagos/4/11/9.webp",
+          "length": 1558,
+          "sha256": "ddc03eef658e46e2bc37328bcb0ef9113162ccfae30cac96c7f72be657034d2e"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 10,
+          "relativePath": "palpagos/4/11/10.webp",
+          "length": 802,
+          "sha256": "8d0412895f6f1a71fb41cc1ec8d6b3033f8d1e52270f8bf786076fa9432befb4"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 11,
+          "relativePath": "palpagos/4/11/11.webp",
+          "length": 820,
+          "sha256": "4c29039ff70463bc6bc0188321cfa409f94ec5ab852f4c9ac5342b27869e54b7"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 12,
+          "relativePath": "palpagos/4/11/12.webp",
+          "length": 1556,
+          "sha256": "34c49830746fb3506a9ed96138377e1ec0c69b4268515c0662bb5ad4fd69b5a0"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 13,
+          "relativePath": "palpagos/4/11/13.webp",
+          "length": 3340,
+          "sha256": "d2ce5ba3d6a15a4c810c0a41dc4a0fbadcabed5441cd5c303021606949ac9e04"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 14,
+          "relativePath": "palpagos/4/11/14.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 15,
+          "relativePath": "palpagos/4/11/15.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 0,
+          "relativePath": "palpagos/4/12/0.webp",
+          "length": 2110,
+          "sha256": "7f2bf8adb128a101cc575e597a28cf0e0babe9447d9ea02323b0d5c4d3a6aa4a"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 1,
+          "relativePath": "palpagos/4/12/1.webp",
+          "length": 5626,
+          "sha256": "ff66470ad71a50a38b528749096e32f02aa546058b3e1169c6493c8bd288edf1"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 2,
+          "relativePath": "palpagos/4/12/2.webp",
+          "length": 11322,
+          "sha256": "7ae55621506a8b9261f11a88c1c50916d9fa02cce706a22afae1cd61eb53308f"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 3,
+          "relativePath": "palpagos/4/12/3.webp",
+          "length": 26632,
+          "sha256": "295b53122506a0cc6fbe5c8371dfeb861e5ba4ff578b97ddc0a24c2f9db97244"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 4,
+          "relativePath": "palpagos/4/12/4.webp",
+          "length": 31596,
+          "sha256": "157b3a213344bce60b74ffca778461e00963f4f3e865db8abe4ab4cfb15574f2"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 5,
+          "relativePath": "palpagos/4/12/5.webp",
+          "length": 17166,
+          "sha256": "2613a85cfcfa5552796aaf69193b260592c90637ed43b16249bcc45831bb4381"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 6,
+          "relativePath": "palpagos/4/12/6.webp",
+          "length": 14592,
+          "sha256": "9652202fde9403b76f79299cc8fcd2fc842c59f2e2c42c23df1507d93990e26f"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 7,
+          "relativePath": "palpagos/4/12/7.webp",
+          "length": 4210,
+          "sha256": "fecc97a90268035bd87e886cda52453d90b829005f5b5af97de9867a7bc123d6"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 8,
+          "relativePath": "palpagos/4/12/8.webp",
+          "length": 2296,
+          "sha256": "35aae006e9fc65c5ce17033fc0419f1b3e591641a18c79862211f2f24dad3df4"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 9,
+          "relativePath": "palpagos/4/12/9.webp",
+          "length": 1186,
+          "sha256": "7c5896e503240470d0b6865bcf2a2f61409621fdadb98f9cc9750610e03fd724"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 10,
+          "relativePath": "palpagos/4/12/10.webp",
+          "length": 838,
+          "sha256": "4a8c3eb42f56192ef819efc62444e4e281825d8cd122bb6046a95a703050698e"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 11,
+          "relativePath": "palpagos/4/12/11.webp",
+          "length": 2716,
+          "sha256": "9c52292087f075827eee7ac19894edd6c65f222fb8ebec057e262db9a16291ee"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 12,
+          "relativePath": "palpagos/4/12/12.webp",
+          "length": 2650,
+          "sha256": "b4fcfd7d783b6943a58433049d41996c559e6c46104fcb54bb665bff21d1f15f"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 13,
+          "relativePath": "palpagos/4/12/13.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 14,
+          "relativePath": "palpagos/4/12/14.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 15,
+          "relativePath": "palpagos/4/12/15.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 0,
+          "relativePath": "palpagos/4/13/0.webp",
+          "length": 2080,
+          "sha256": "87459f47d23f81cf5a842b14efb75008936e716db045a7ebcb47fb97f144ae21"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 1,
+          "relativePath": "palpagos/4/13/1.webp",
+          "length": 4950,
+          "sha256": "ec9729e3ff2df67017b1495f7f0eb6f3718774e21212358cd4e01f3a319eeb58"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 2,
+          "relativePath": "palpagos/4/13/2.webp",
+          "length": 10690,
+          "sha256": "b48c0063f99bc9d75e71d27672154dbaf420c3b21b9546007b86a12c2a501885"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 3,
+          "relativePath": "palpagos/4/13/3.webp",
+          "length": 10642,
+          "sha256": "809f98aa35f77c2ba63d1fd0789d243972d887b7222f52221075f766c123f6ed"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 4,
+          "relativePath": "palpagos/4/13/4.webp",
+          "length": 11538,
+          "sha256": "2d61fe0673bba3fc6a83c622363970972a5c40ea34d25f14e34254003db780e5"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 5,
+          "relativePath": "palpagos/4/13/5.webp",
+          "length": 2096,
+          "sha256": "0cb08d651e3181ea4228cc53a0ca17c33498c6607e7eecbe68107caacdc5734f"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 6,
+          "relativePath": "palpagos/4/13/6.webp",
+          "length": 1684,
+          "sha256": "9e5dbdbd7eebd830535ba477c84c9857d9c0d77af3bce04ee25125022e7aa9e6"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 7,
+          "relativePath": "palpagos/4/13/7.webp",
+          "length": 1144,
+          "sha256": "97f5531a90bd21ecc520109faa39571e45ddaa6caa38e130880bd99c1a2307c8"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 8,
+          "relativePath": "palpagos/4/13/8.webp",
+          "length": 920,
+          "sha256": "3f684dc750e24c0b078422149648bff1f44a82963f5709d7224a14b1796d8458"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 9,
+          "relativePath": "palpagos/4/13/9.webp",
+          "length": 1194,
+          "sha256": "f0103f7d0a720eb25bc4a7346ee389d2ac9f31e885b3a5f9eecf4e8ddfb39f56"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 10,
+          "relativePath": "palpagos/4/13/10.webp",
+          "length": 3404,
+          "sha256": "14259f85637213dba4ef3620f073c21de8011eb66a722fa25efa7658a31ceeb9"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 11,
+          "relativePath": "palpagos/4/13/11.webp",
+          "length": 1410,
+          "sha256": "903105354e2bf4403c92371e5daab1b09a6a2aed4d8fcb3ea111ec95e9b7c689"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 12,
+          "relativePath": "palpagos/4/13/12.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 13,
+          "relativePath": "palpagos/4/13/13.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 14,
+          "relativePath": "palpagos/4/13/14.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 15,
+          "relativePath": "palpagos/4/13/15.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 0,
+          "relativePath": "palpagos/4/14/0.webp",
+          "length": 1860,
+          "sha256": "2dce751aa6e15e0d34373ae11014164a5fc487120813b03e7aecb438d3ffe553"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 1,
+          "relativePath": "palpagos/4/14/1.webp",
+          "length": 1032,
+          "sha256": "81e1d265c0239414b66cc4c3f3539dceee44172e6d4052fb96251e1af5009e89"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 2,
+          "relativePath": "palpagos/4/14/2.webp",
+          "length": 1218,
+          "sha256": "11d3ceeb64c985c8bb663cce603148a0bde20045ae1c5b9d4d798e232c7353d4"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 3,
+          "relativePath": "palpagos/4/14/3.webp",
+          "length": 1282,
+          "sha256": "4adbade308838612ae1e0743e255a134f5fa2694ec5b86af35133b81c798c88a"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 4,
+          "relativePath": "palpagos/4/14/4.webp",
+          "length": 4950,
+          "sha256": "66c082bfea95162cb3daed706fd9d20b08b049b4fecfec98983b8c0caf12b1c1"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 5,
+          "relativePath": "palpagos/4/14/5.webp",
+          "length": 10978,
+          "sha256": "c123c52fb63bbb645543398cc2a19bb5eb1b2e6d716158b0be09780cea238739"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 6,
+          "relativePath": "palpagos/4/14/6.webp",
+          "length": 1170,
+          "sha256": "bbde5ef042a70791f1ef3fe3bc2df83fa8cb08403d86f5ee75ede9bbc9382b69"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 7,
+          "relativePath": "palpagos/4/14/7.webp",
+          "length": 806,
+          "sha256": "41f07a0d110784776bd814cda3616a43823f2885fd7a7fa4c62e684e4ae76b5b"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 8,
+          "relativePath": "palpagos/4/14/8.webp",
+          "length": 2368,
+          "sha256": "aad0257d8ab44a6ac5847226218abcf9c27ace234790fae681924887785e5ae2"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 9,
+          "relativePath": "palpagos/4/14/9.webp",
+          "length": 3072,
+          "sha256": "32feaa77db2f37a166d7bcb8ffaa7b6b56f3a91657ad284dcd2d51d6eea2fcfc"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 10,
+          "relativePath": "palpagos/4/14/10.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 11,
+          "relativePath": "palpagos/4/14/11.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 12,
+          "relativePath": "palpagos/4/14/12.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 13,
+          "relativePath": "palpagos/4/14/13.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 14,
+          "relativePath": "palpagos/4/14/14.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 15,
+          "relativePath": "palpagos/4/14/15.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 0,
+          "relativePath": "palpagos/4/15/0.webp",
+          "length": 894,
+          "sha256": "ec28acc12b1532327c563bbd7dcf6e49142839fd0857e1613df034c0b7001343"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 1,
+          "relativePath": "palpagos/4/15/1.webp",
+          "length": 1558,
+          "sha256": "47735758f8ca1f870ed18851a49fe60b3b1b4033c7a201818c384085e3563f01"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 2,
+          "relativePath": "palpagos/4/15/2.webp",
+          "length": 1156,
+          "sha256": "75418ae97c74b815cb477fc09f8b6278549126a473399d91cc1b875cb5417c5c"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 3,
+          "relativePath": "palpagos/4/15/3.webp",
+          "length": 1246,
+          "sha256": "c4192eadf9e2c8269a29924fc708d8cf20dd38bebedb75e8835a38a231c5bcd3"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 4,
+          "relativePath": "palpagos/4/15/4.webp",
+          "length": 1262,
+          "sha256": "b1b29dca61144f1121e63619d47d29e1b72087af9c8e50429e915272bdf49b71"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 5,
+          "relativePath": "palpagos/4/15/5.webp",
+          "length": 1224,
+          "sha256": "f16c5a91edcce560a06c95d2077ad2086452aa03d032208992461f4335edbc0e"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 6,
+          "relativePath": "palpagos/4/15/6.webp",
+          "length": 1176,
+          "sha256": "b533ee275d96d394618652e8bb9a15e41b750179734fa76d2021728554833df7"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 7,
+          "relativePath": "palpagos/4/15/7.webp",
+          "length": 1854,
+          "sha256": "9afd52d492af5faa7a4f5f3987b1336b749a0ea0035b7cb4dd9a3cf50a6d613b"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 8,
+          "relativePath": "palpagos/4/15/8.webp",
+          "length": 1826,
+          "sha256": "9167e7d6c357dfad9ad20eed94289712d9be52bcb193226ca2e7f20ea72b15d4"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 9,
+          "relativePath": "palpagos/4/15/9.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 10,
+          "relativePath": "palpagos/4/15/10.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 11,
+          "relativePath": "palpagos/4/15/11.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 12,
+          "relativePath": "palpagos/4/15/12.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 13,
+          "relativePath": "palpagos/4/15/13.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 14,
+          "relativePath": "palpagos/4/15/14.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 15,
+          "relativePath": "palpagos/4/15/15.webp",
+          "length": 544,
+          "sha256": "7e3ed76f688130c40ebc1c9ce5ebf55738a8c5be765bbdcadabd2e43bad6d090"
+        }
+      ]
+    },
+    {
+      "id": "world-tree",
+      "displayName": "World Tree",
+      "localDirectory": "world-tree",
+      "localUrlTemplate": "/map/tiles/world-tree/{z}/{x}/{y}.webp",
+      "format": "webp",
+      "tileSize": 512,
+      "minimumZoom": 0,
+      "maximumZoom": 4,
+      "worldBounds": {
+        "minimumX": 347352.5,
+        "maximumX": 689147.5,
+        "minimumY": -818196,
+        "maximumY": -476401
+      },
+      "mapBounds": {
+        "minimumX": -2126.78867102396,
+        "maximumX": -1382.13725490196,
+        "minimumY": 1026.66775599129,
+        "maximumY": 1771.31917211329
+      },
+      "worldToMap": {
+        "a": 0,
+        "b": 0.00217864923747277,
+        "c": -344.226579520697,
+        "d": 0.00217864923747277,
+        "e": 0,
+        "f": 269.908496732026
+      },
+      "mapToPixel": {
+        "a": 0.68756601140443,
+        "b": 0,
+        "c": 1462.30910160124,
+        "d": 0,
+        "e": -0.68756601140443,
+        "f": 1217.9003560593
+      },
+      "leafletTransformation": {
+        "a": 0.68756601140443,
+        "b": 1462.30910160124,
+        "c": -0.68756601140443,
+        "d": 1217.9003560593
+      },
+      "zoomRanges": [
+        {
+          "zoom": 0,
+          "minimumX": 0,
+          "maximumX": 0,
+          "minimumY": 0,
+          "maximumY": 0,
+          "count": 1
+        },
+        {
+          "zoom": 1,
+          "minimumX": 0,
+          "maximumX": 1,
+          "minimumY": 0,
+          "maximumY": 1,
+          "count": 4
+        },
+        {
+          "zoom": 2,
+          "minimumX": 0,
+          "maximumX": 3,
+          "minimumY": 0,
+          "maximumY": 3,
+          "count": 16
+        },
+        {
+          "zoom": 3,
+          "minimumX": 0,
+          "maximumX": 7,
+          "minimumY": 0,
+          "maximumY": 7,
+          "count": 64
+        },
+        {
+          "zoom": 4,
+          "minimumX": 0,
+          "maximumX": 15,
+          "minimumY": 0,
+          "maximumY": 15,
+          "count": 256
+        }
+      ],
+      "calibrationSamples": [
+        {
+          "name": "south-west",
+          "worldX": 347352.5,
+          "worldY": -818196,
+          "mapX": -2126.78867102396,
+          "mapY": 1026.66775599129,
+          "pixelX": 0,
+          "pixelY": 512,
+          "tolerance": 0.01
+        },
+        {
+          "name": "south-east",
+          "worldX": 347352.5,
+          "worldY": -476401,
+          "mapX": -1382.13725490196,
+          "mapY": 1026.66775599129,
+          "pixelX": 512,
+          "pixelY": 512,
+          "tolerance": 0.01
+        },
+        {
+          "name": "north-west",
+          "worldX": 689147.5,
+          "worldY": -818196,
+          "mapX": -2126.78867102396,
+          "mapY": 1771.31917211329,
+          "pixelX": 0,
+          "pixelY": 0,
+          "tolerance": 0.01
+        }
+      ],
+      "source": {
+        "name": "The Hidden Gaming Lair",
+        "pageUrl": "https://palworld.th.gl/maps/The%20World%20Tree",
+        "mapUpdatedAt": "2026-07-16T12:22:12.704Z",
+        "verifiedAt": "2026-07-17",
+        "rightsNotice": "",
+        "redistributionAllowed": false
+      },
+      "status": "ready",
+      "reason": "",
+      "calibrationStatus": "valid",
+      "maximumCalibrationError": 0.00308107530273277,
+      "expectedTileCount": 341,
+      "actualTileCount": 341,
+      "missingTileCount": 0,
+      "invalidTiles": [],
+      "extraTiles": [],
+      "tiles": [
+        {
+          "zoom": 0,
+          "x": 0,
+          "y": 0,
+          "relativePath": "world-tree/0/0/0.webp",
+          "length": 21262,
+          "sha256": "92a05a44b26244d777afc6fb2ee91cb01680c3439885941e8d0327b3c1ec9e2a"
+        },
+        {
+          "zoom": 1,
+          "x": 0,
+          "y": 0,
+          "relativePath": "world-tree/1/0/0.webp",
+          "length": 25056,
+          "sha256": "52faa8e844b8ea9318e56291877f46d425e3c71003dbb139f00244068dd68b1e"
+        },
+        {
+          "zoom": 1,
+          "x": 0,
+          "y": 1,
+          "relativePath": "world-tree/1/0/1.webp",
+          "length": 19342,
+          "sha256": "26d2d61c4b5b8316febc12927e70f2d85befcf30411a3e71143c43f1dd4a99bf"
+        },
+        {
+          "zoom": 1,
+          "x": 1,
+          "y": 0,
+          "relativePath": "world-tree/1/1/0.webp",
+          "length": 19902,
+          "sha256": "ea5d3f9c8277f6b316cedce8e7c96c6d3f6c1e898830903112c680de4f867ea8"
+        },
+        {
+          "zoom": 1,
+          "x": 1,
+          "y": 1,
+          "relativePath": "world-tree/1/1/1.webp",
+          "length": 8308,
+          "sha256": "3c84435fac72897fbaaf9ade3d734a3275c91329652d5273a6222727599d658a"
+        },
+        {
+          "zoom": 2,
+          "x": 0,
+          "y": 0,
+          "relativePath": "world-tree/2/0/0.webp",
+          "length": 8570,
+          "sha256": "f5149e6fc6394755d89716637fb851829a00aca35a4efcb5b2e2310a3fedc626"
+        },
+        {
+          "zoom": 2,
+          "x": 0,
+          "y": 1,
+          "relativePath": "world-tree/2/0/1.webp",
+          "length": 14624,
+          "sha256": "cd6f3bf8e63cdec105e5688577b201178a53d0af4bd0dcb5f0c315d1704c80c3"
+        },
+        {
+          "zoom": 2,
+          "x": 0,
+          "y": 2,
+          "relativePath": "world-tree/2/0/2.webp",
+          "length": 13562,
+          "sha256": "4033afbcfe9b8bd15ca53ceb6f00f77c663a2b4a0f7f60da46756da91bdbdac8"
+        },
+        {
+          "zoom": 2,
+          "x": 0,
+          "y": 3,
+          "relativePath": "world-tree/2/0/3.webp",
+          "length": 4918,
+          "sha256": "347a78742130b5f7fda5e8247c43d83a2472140bb362f63c59201e64f123c8d5"
+        },
+        {
+          "zoom": 2,
+          "x": 1,
+          "y": 0,
+          "relativePath": "world-tree/2/1/0.webp",
+          "length": 16476,
+          "sha256": "bbfd7d6a3607cd149cc7845c165ef993ecea30a7490b891e13fef7a4e4d9fef0"
+        },
+        {
+          "zoom": 2,
+          "x": 1,
+          "y": 1,
+          "relativePath": "world-tree/2/1/1.webp",
+          "length": 48752,
+          "sha256": "4813588615298e29fc295afacb02a4b50e4d7ccffc96417c78d21b71018ae201"
+        },
+        {
+          "zoom": 2,
+          "x": 1,
+          "y": 2,
+          "relativePath": "world-tree/2/1/2.webp",
+          "length": 49344,
+          "sha256": "9d4a91a35778ef088fed965c9fe8972e0c36a666512ed835818489b096df2df9"
+        },
+        {
+          "zoom": 2,
+          "x": 1,
+          "y": 3,
+          "relativePath": "world-tree/2/1/3.webp",
+          "length": 7090,
+          "sha256": "d22fa44c89f762466066fd8543f0f6ed2b1e8b304974efb8f7a39155f40b76c1"
+        },
+        {
+          "zoom": 2,
+          "x": 2,
+          "y": 0,
+          "relativePath": "world-tree/2/2/0.webp",
+          "length": 13662,
+          "sha256": "1e05a66d695926e263fdd3e2bfacf34b2f1027399565742d5eea3de3843c749f"
+        },
+        {
+          "zoom": 2,
+          "x": 2,
+          "y": 1,
+          "relativePath": "world-tree/2/2/1.webp",
+          "length": 51192,
+          "sha256": "fea9af6d676a75e0b267ce0a4f1a835a779c9182fb9f1af981358df73966f503"
+        },
+        {
+          "zoom": 2,
+          "x": 2,
+          "y": 2,
+          "relativePath": "world-tree/2/2/2.webp",
+          "length": 17842,
+          "sha256": "177cce73e0658e9abc6bdd4c495d75a1eefec5a0010fe5d8632dd812b23c2619"
+        },
+        {
+          "zoom": 2,
+          "x": 2,
+          "y": 3,
+          "relativePath": "world-tree/2/2/3.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 2,
+          "x": 3,
+          "y": 0,
+          "relativePath": "world-tree/2/3/0.webp",
+          "length": 666,
+          "sha256": "bce84e7c93cf9dcc3662c34867b9a8148a26611f494bc8aa4ce5f6e479ee48c4"
+        },
+        {
+          "zoom": 2,
+          "x": 3,
+          "y": 1,
+          "relativePath": "world-tree/2/3/1.webp",
+          "length": 12092,
+          "sha256": "afde07608a324346aa2d783788b6f966a371c10e8640b37b5881640275a488c3"
+        },
+        {
+          "zoom": 2,
+          "x": 3,
+          "y": 2,
+          "relativePath": "world-tree/2/3/2.webp",
+          "length": 10640,
+          "sha256": "abda01d9e44006916f81af531c09009615b0eb2148e80429733a9fa26d3a0330"
+        },
+        {
+          "zoom": 2,
+          "x": 3,
+          "y": 3,
+          "relativePath": "world-tree/2/3/3.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 3,
+          "x": 0,
+          "y": 0,
+          "relativePath": "world-tree/3/0/0.webp",
+          "length": 606,
+          "sha256": "2a4d3ceec8193ac8e57387e34143a5743f5efc25469244c3630399b6f20c99ce"
+        },
+        {
+          "zoom": 3,
+          "x": 0,
+          "y": 1,
+          "relativePath": "world-tree/3/0/1.webp",
+          "length": 2610,
+          "sha256": "05c6f204ed90e870f3800d3af270d30ea5710e5c30a14c2db000278aeb4dc8a9"
+        },
+        {
+          "zoom": 3,
+          "x": 0,
+          "y": 2,
+          "relativePath": "world-tree/3/0/2.webp",
+          "length": 2132,
+          "sha256": "0337557cfa2d88ee5f0dbc405944296761a45ae1f0c2d7960599405d36d91bc1"
+        },
+        {
+          "zoom": 3,
+          "x": 0,
+          "y": 3,
+          "relativePath": "world-tree/3/0/3.webp",
+          "length": 618,
+          "sha256": "c4fefb60c86c3c238edde72495d532e98a845efa46ec7e4db0e3a75fc35a896e"
+        },
+        {
+          "zoom": 3,
+          "x": 0,
+          "y": 4,
+          "relativePath": "world-tree/3/0/4.webp",
+          "length": 628,
+          "sha256": "48b43c111cc0896ae5fa99754eaf10ea2a01464f522b93b0dd9288460c9ffeed"
+        },
+        {
+          "zoom": 3,
+          "x": 0,
+          "y": 5,
+          "relativePath": "world-tree/3/0/5.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 3,
+          "x": 0,
+          "y": 6,
+          "relativePath": "world-tree/3/0/6.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 3,
+          "x": 0,
+          "y": 7,
+          "relativePath": "world-tree/3/0/7.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 3,
+          "x": 1,
+          "y": 0,
+          "relativePath": "world-tree/3/1/0.webp",
+          "length": 1030,
+          "sha256": "a606b0508da4431b36e001640e352e19d0c1ef7c178ca94bd049ed9e38f7e3c5"
+        },
+        {
+          "zoom": 3,
+          "x": 1,
+          "y": 1,
+          "relativePath": "world-tree/3/1/1.webp",
+          "length": 24564,
+          "sha256": "23d7c64587f3ae2811f3204816dcf8556de4c3e191cb84ded816d209244b58f6"
+        },
+        {
+          "zoom": 3,
+          "x": 1,
+          "y": 2,
+          "relativePath": "world-tree/3/1/2.webp",
+          "length": 25086,
+          "sha256": "31836419f7f15530cd6c81b5ac505103a8e77228e3f8e49efbb23bb59213cfdd"
+        },
+        {
+          "zoom": 3,
+          "x": 1,
+          "y": 3,
+          "relativePath": "world-tree/3/1/3.webp",
+          "length": 22060,
+          "sha256": "2e48b17f4b82b3ad79658949ef064b5aac4ad6f2fd9659a965d581de3f9481fc"
+        },
+        {
+          "zoom": 3,
+          "x": 1,
+          "y": 4,
+          "relativePath": "world-tree/3/1/4.webp",
+          "length": 29478,
+          "sha256": "687e4a28123264386dd4008651d5c127ed3a0843f2bc399a75e0d0afda161bd4"
+        },
+        {
+          "zoom": 3,
+          "x": 1,
+          "y": 5,
+          "relativePath": "world-tree/3/1/5.webp",
+          "length": 20032,
+          "sha256": "0322927842236af5c84ad1e6658b63a690f868ab88555fb336d85ffacfd0f4a3"
+        },
+        {
+          "zoom": 3,
+          "x": 1,
+          "y": 6,
+          "relativePath": "world-tree/3/1/6.webp",
+          "length": 15656,
+          "sha256": "9cd8e53fd1a89cea072a3dc9263695c1ba08871c624117882bbd3fab8218ad02"
+        },
+        {
+          "zoom": 3,
+          "x": 1,
+          "y": 7,
+          "relativePath": "world-tree/3/1/7.webp",
+          "length": 772,
+          "sha256": "e045c95a5744be971c571c1c272c54b32ececf6367ec818dba135feb15ed8c83"
+        },
+        {
+          "zoom": 3,
+          "x": 2,
+          "y": 0,
+          "relativePath": "world-tree/3/2/0.webp",
+          "length": 1036,
+          "sha256": "d3965b59f33d1e4d893f5de8569f0611fe3163722ce912617672d8960408d5d8"
+        },
+        {
+          "zoom": 3,
+          "x": 2,
+          "y": 1,
+          "relativePath": "world-tree/3/2/1.webp",
+          "length": 33534,
+          "sha256": "8fb617d3f06fe58ddc312e0075f2bcd7034b7e01042332b461879307ceff358d"
+        },
+        {
+          "zoom": 3,
+          "x": 2,
+          "y": 2,
+          "relativePath": "world-tree/3/2/2.webp",
+          "length": 35772,
+          "sha256": "64783f8aa0adbedb9db643526de95b410093ee968674700eca1be9992bb66aa2"
+        },
+        {
+          "zoom": 3,
+          "x": 2,
+          "y": 3,
+          "relativePath": "world-tree/3/2/3.webp",
+          "length": 54624,
+          "sha256": "ed432c0c891bc2e844dd7d5aed599936bc5228f15c52b4340e96b84803961fa0"
+        },
+        {
+          "zoom": 3,
+          "x": 2,
+          "y": 4,
+          "relativePath": "world-tree/3/2/4.webp",
+          "length": 45332,
+          "sha256": "01cadcbf56946a1301fb29a6be8eb5691cf6ed1e1b95928be14e847de54b1100"
+        },
+        {
+          "zoom": 3,
+          "x": 2,
+          "y": 5,
+          "relativePath": "world-tree/3/2/5.webp",
+          "length": 50078,
+          "sha256": "b1c658e75704b03fef9d381fca103009a2d0449722f8b5177fac47725766451a"
+        },
+        {
+          "zoom": 3,
+          "x": 2,
+          "y": 6,
+          "relativePath": "world-tree/3/2/6.webp",
+          "length": 23786,
+          "sha256": "6745c5f3b0628274adaedc3c8bc7e5759a782ef31637c512ca60cfc6e6975893"
+        },
+        {
+          "zoom": 3,
+          "x": 2,
+          "y": 7,
+          "relativePath": "world-tree/3/2/7.webp",
+          "length": 924,
+          "sha256": "176b30f670909801c30ad4ade8c662e3ebac92a262715c61120370667fd69484"
+        },
+        {
+          "zoom": 3,
+          "x": 3,
+          "y": 0,
+          "relativePath": "world-tree/3/3/0.webp",
+          "length": 640,
+          "sha256": "9f3c312f7690cf998a3a06a029e8074e6ef6cf23386f143e02fbe4e66040bd4a"
+        },
+        {
+          "zoom": 3,
+          "x": 3,
+          "y": 1,
+          "relativePath": "world-tree/3/3/1.webp",
+          "length": 25372,
+          "sha256": "d3775b72d343ba15ee6131e4920de429bd0d348df5d8cf98d804090148a0bd39"
+        },
+        {
+          "zoom": 3,
+          "x": 3,
+          "y": 2,
+          "relativePath": "world-tree/3/3/2.webp",
+          "length": 43832,
+          "sha256": "3f983e59929c2270f636b0e85ceb66ee91768e8ca642ea2f1ac769d36fdaf66e"
+        },
+        {
+          "zoom": 3,
+          "x": 3,
+          "y": 3,
+          "relativePath": "world-tree/3/3/3.webp",
+          "length": 34734,
+          "sha256": "dc59204a63f9c5687483b01535c7723f3f44b51c559d46bea75828a839f62d3c"
+        },
+        {
+          "zoom": 3,
+          "x": 3,
+          "y": 4,
+          "relativePath": "world-tree/3/3/4.webp",
+          "length": 47610,
+          "sha256": "659b174d24526ef66a7751953923778949f26001489a45e67b2cc3d05093d77d"
+        },
+        {
+          "zoom": 3,
+          "x": 3,
+          "y": 5,
+          "relativePath": "world-tree/3/3/5.webp",
+          "length": 28016,
+          "sha256": "6c30d4cb253325f22841ccbe6d87daf7e29aa2d7a77cb81dc0ef90a522b92279"
+        },
+        {
+          "zoom": 3,
+          "x": 3,
+          "y": 6,
+          "relativePath": "world-tree/3/3/6.webp",
+          "length": 1332,
+          "sha256": "87386db39ed7b8bf07048f6fbe83c0d3b6dc68c75b27a0edd17194f24f1f5972"
+        },
+        {
+          "zoom": 3,
+          "x": 3,
+          "y": 7,
+          "relativePath": "world-tree/3/3/7.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 3,
+          "x": 4,
+          "y": 0,
+          "relativePath": "world-tree/3/4/0.webp",
+          "length": 636,
+          "sha256": "e4aba1f985017903e7028b968917f31c591f94855b5c4a8f39558bbadb883df6"
+        },
+        {
+          "zoom": 3,
+          "x": 4,
+          "y": 1,
+          "relativePath": "world-tree/3/4/1.webp",
+          "length": 32846,
+          "sha256": "2ae2d54fff4deb069e06cab7d55e9e9c8cf572f44c6d636f073e383bb43ec38d"
+        },
+        {
+          "zoom": 3,
+          "x": 4,
+          "y": 2,
+          "relativePath": "world-tree/3/4/2.webp",
+          "length": 49330,
+          "sha256": "c31abe9bcebc9947694ed39b4249498d00cb919ce34e4a2d374c9ecd40f80a91"
+        },
+        {
+          "zoom": 3,
+          "x": 4,
+          "y": 3,
+          "relativePath": "world-tree/3/4/3.webp",
+          "length": 37332,
+          "sha256": "a157e5e4dae85798d99fb3711f9171857d93ec18e1d0cae3c363d1229c09bc81"
+        },
+        {
+          "zoom": 3,
+          "x": 4,
+          "y": 4,
+          "relativePath": "world-tree/3/4/4.webp",
+          "length": 32118,
+          "sha256": "cbd1dad71c9dca7dc5ba3a8b2aa9ee8c9de670177396cf01b5d00f8c47c07e9f"
+        },
+        {
+          "zoom": 3,
+          "x": 4,
+          "y": 5,
+          "relativePath": "world-tree/3/4/5.webp",
+          "length": 2406,
+          "sha256": "a01f6fdb9edf27733d1d29bfd3eed026b9be44d4dc63ac94659faa9939cafd75"
+        },
+        {
+          "zoom": 3,
+          "x": 4,
+          "y": 6,
+          "relativePath": "world-tree/3/4/6.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 3,
+          "x": 4,
+          "y": 7,
+          "relativePath": "world-tree/3/4/7.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 3,
+          "x": 5,
+          "y": 0,
+          "relativePath": "world-tree/3/5/0.webp",
+          "length": 554,
+          "sha256": "cb9e6663ca682efe276dc764683073a764c3f73dfe16152be113f5d2a44a3c10"
+        },
+        {
+          "zoom": 3,
+          "x": 5,
+          "y": 1,
+          "relativePath": "world-tree/3/5/1.webp",
+          "length": 15014,
+          "sha256": "5e6f1423dc52a0c3f6ca78123b36d6e9b5dee50fbe82466b7d862a52e4e75970"
+        },
+        {
+          "zoom": 3,
+          "x": 5,
+          "y": 2,
+          "relativePath": "world-tree/3/5/2.webp",
+          "length": 59606,
+          "sha256": "0c237890504f26f1f37d965cc0c90627620547f6f3673aacff61b7d96f79182b"
+        },
+        {
+          "zoom": 3,
+          "x": 5,
+          "y": 3,
+          "relativePath": "world-tree/3/5/3.webp",
+          "length": 36622,
+          "sha256": "7b9e96ea963ec97f2a2ec409c9fc51ab9a37ec1d863729853b9582b91d4cf7d7"
+        },
+        {
+          "zoom": 3,
+          "x": 5,
+          "y": 4,
+          "relativePath": "world-tree/3/5/4.webp",
+          "length": 33150,
+          "sha256": "621d2ccb9fc5402f2e682b6722ede22d7e94394726b2ae15bee4a148e79932a0"
+        },
+        {
+          "zoom": 3,
+          "x": 5,
+          "y": 5,
+          "relativePath": "world-tree/3/5/5.webp",
+          "length": 1496,
+          "sha256": "7cff3cffad145831c244f297681c7acc3b92586af94c8ddb7abbe7ffa401b919"
+        },
+        {
+          "zoom": 3,
+          "x": 5,
+          "y": 6,
+          "relativePath": "world-tree/3/5/6.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 3,
+          "x": 5,
+          "y": 7,
+          "relativePath": "world-tree/3/5/7.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 3,
+          "x": 6,
+          "y": 0,
+          "relativePath": "world-tree/3/6/0.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 3,
+          "x": 6,
+          "y": 1,
+          "relativePath": "world-tree/3/6/1.webp",
+          "length": 824,
+          "sha256": "5a8e79083a5316b427f2d72877276c57f3dc80da97a8a76c0ccfd8912bb3afc8"
+        },
+        {
+          "zoom": 3,
+          "x": 6,
+          "y": 2,
+          "relativePath": "world-tree/3/6/2.webp",
+          "length": 12386,
+          "sha256": "0f87f3fce86c5aaf8d8f9b28568a08179ed92f306b697f4cb1504e6b6ef50270"
+        },
+        {
+          "zoom": 3,
+          "x": 6,
+          "y": 3,
+          "relativePath": "world-tree/3/6/3.webp",
+          "length": 31672,
+          "sha256": "9c2cbdfe07ef06b224b96145eeaf107250d1da331f9fe647e2e1b211d2711f11"
+        },
+        {
+          "zoom": 3,
+          "x": 6,
+          "y": 4,
+          "relativePath": "world-tree/3/6/4.webp",
+          "length": 33460,
+          "sha256": "dad78acc6f5f7904db728167ba93d3dbf72d473daa48c1c5138ef6e289214cd9"
+        },
+        {
+          "zoom": 3,
+          "x": 6,
+          "y": 5,
+          "relativePath": "world-tree/3/6/5.webp",
+          "length": 948,
+          "sha256": "5dedc83411b2477bf1afdbf740f7e4efac70a3e1d9555518b67f8e512394eaf4"
+        },
+        {
+          "zoom": 3,
+          "x": 6,
+          "y": 6,
+          "relativePath": "world-tree/3/6/6.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 3,
+          "x": 6,
+          "y": 7,
+          "relativePath": "world-tree/3/6/7.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 3,
+          "x": 7,
+          "y": 0,
+          "relativePath": "world-tree/3/7/0.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 3,
+          "x": 7,
+          "y": 1,
+          "relativePath": "world-tree/3/7/1.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 3,
+          "x": 7,
+          "y": 2,
+          "relativePath": "world-tree/3/7/2.webp",
+          "length": 560,
+          "sha256": "b18495a2950fa57ac3eacfa1771ea60070d824d0b55d82f083dc1f016f57d350"
+        },
+        {
+          "zoom": 3,
+          "x": 7,
+          "y": 3,
+          "relativePath": "world-tree/3/7/3.webp",
+          "length": 2572,
+          "sha256": "c6ef7ffca9f78bac0b768c7177b44dfd036e063d0493c4406e7ff158b6bbc9a0"
+        },
+        {
+          "zoom": 3,
+          "x": 7,
+          "y": 4,
+          "relativePath": "world-tree/3/7/4.webp",
+          "length": 6244,
+          "sha256": "9d4798b827489910e0e84da8f6c1c0c44213f46b3df2f707de79987f3992c8cc"
+        },
+        {
+          "zoom": 3,
+          "x": 7,
+          "y": 5,
+          "relativePath": "world-tree/3/7/5.webp",
+          "length": 642,
+          "sha256": "614853d8cb0e81545f6e206518532b86fda727a9a784a922691460cb613d20c2"
+        },
+        {
+          "zoom": 3,
+          "x": 7,
+          "y": 6,
+          "relativePath": "world-tree/3/7/6.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 3,
+          "x": 7,
+          "y": 7,
+          "relativePath": "world-tree/3/7/7.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 0,
+          "relativePath": "world-tree/4/0/0.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 1,
+          "relativePath": "world-tree/4/0/1.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 2,
+          "relativePath": "world-tree/4/0/2.webp",
+          "length": 580,
+          "sha256": "759e00d59ad711464824a4714594f0099ba630a336e50724cf500c51c880906f"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 3,
+          "relativePath": "world-tree/4/0/3.webp",
+          "length": 576,
+          "sha256": "09e0e5963e2129f5631db6a7df1e785702e77b6f499f5cef054f0c53728123b6"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 4,
+          "relativePath": "world-tree/4/0/4.webp",
+          "length": 550,
+          "sha256": "42c922683153e50a3078042d2dfeff15674f4a9132f55170b03953c3e1e4b3ab"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 5,
+          "relativePath": "world-tree/4/0/5.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 6,
+          "relativePath": "world-tree/4/0/6.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 7,
+          "relativePath": "world-tree/4/0/7.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 8,
+          "relativePath": "world-tree/4/0/8.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 9,
+          "relativePath": "world-tree/4/0/9.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 10,
+          "relativePath": "world-tree/4/0/10.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 11,
+          "relativePath": "world-tree/4/0/11.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 12,
+          "relativePath": "world-tree/4/0/12.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 13,
+          "relativePath": "world-tree/4/0/13.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 14,
+          "relativePath": "world-tree/4/0/14.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 0,
+          "y": 15,
+          "relativePath": "world-tree/4/0/15.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 0,
+          "relativePath": "world-tree/4/1/0.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 1,
+          "relativePath": "world-tree/4/1/1.webp",
+          "length": 660,
+          "sha256": "ce6a49d0d6998521313d51972a76ffc4a0770c09ef49577899e7b864943e686a"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 2,
+          "relativePath": "world-tree/4/1/2.webp",
+          "length": 3400,
+          "sha256": "7b8c7289584acf55b0517e8fcd02c90cb8eae584caf2400dfdb7c83e554d529e"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 3,
+          "relativePath": "world-tree/4/1/3.webp",
+          "length": 3102,
+          "sha256": "b0589b005a936b78dbc67ade7361d0fb6eaeebd8710feb0290b3f2225771edff"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 4,
+          "relativePath": "world-tree/4/1/4.webp",
+          "length": 4594,
+          "sha256": "b1815e21afbf4427b1cac3214908cdba6ae8c3bfa8e2005710307bf0bf9760c8"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 5,
+          "relativePath": "world-tree/4/1/5.webp",
+          "length": 1046,
+          "sha256": "4b0abfd2a7fe37fb84687ad78d72894106beeaf557f57ab0ecfcdebc7170e5f6"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 6,
+          "relativePath": "world-tree/4/1/6.webp",
+          "length": 654,
+          "sha256": "dfb5f4afd60f4463b429655fb196b06c375b1abde34a44b239324876fee77bb6"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 7,
+          "relativePath": "world-tree/4/1/7.webp",
+          "length": 586,
+          "sha256": "6d49f1f7fb329d167099bf8e83dc68653fd57e0dd964574bc274176af9460ed7"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 8,
+          "relativePath": "world-tree/4/1/8.webp",
+          "length": 674,
+          "sha256": "2298e1011573349566b7929f95c3ad7aaaf6893016339c0216dcad07653a45e2"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 9,
+          "relativePath": "world-tree/4/1/9.webp",
+          "length": 602,
+          "sha256": "2993af2e69823e08229ba331749583914c594ec0ab90514bfe687ae907a3d98a"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 10,
+          "relativePath": "world-tree/4/1/10.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 11,
+          "relativePath": "world-tree/4/1/11.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 12,
+          "relativePath": "world-tree/4/1/12.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 13,
+          "relativePath": "world-tree/4/1/13.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 14,
+          "relativePath": "world-tree/4/1/14.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 1,
+          "y": 15,
+          "relativePath": "world-tree/4/1/15.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 0,
+          "relativePath": "world-tree/4/2/0.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 1,
+          "relativePath": "world-tree/4/2/1.webp",
+          "length": 904,
+          "sha256": "26c9c713b1f2ec951c9a23a1a3ef28efae7825f60b6ddc744f4f6cbec8b88d03"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 2,
+          "relativePath": "world-tree/4/2/2.webp",
+          "length": 12424,
+          "sha256": "3ecd15ab5d81f879d85a9d9112df9e306838e344174e55d2eeaf990734ce8f94"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 3,
+          "relativePath": "world-tree/4/2/3.webp",
+          "length": 18230,
+          "sha256": "78b05f42b4a415e227809fa3911506ad8d9a3c539f3d52075834f01b537bbec4"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 4,
+          "relativePath": "world-tree/4/2/4.webp",
+          "length": 20654,
+          "sha256": "8cf2606d41b0aa2a1d1abf838d7d89f5d718496540a5ba8bca7b71451458d608"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 5,
+          "relativePath": "world-tree/4/2/5.webp",
+          "length": 18824,
+          "sha256": "2e144b702586666c8c658023ce9cae541fd7bc378d251edee697beacb2f006af"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 6,
+          "relativePath": "world-tree/4/2/6.webp",
+          "length": 10522,
+          "sha256": "ab34133cbfd6a82fbc25ad2f79e778ee82863521f60a0509aa020f873510d663"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 7,
+          "relativePath": "world-tree/4/2/7.webp",
+          "length": 4142,
+          "sha256": "b84f99baf6fa59882e379febf69eb728003f20a8c0cf9bba8ec81d48679a4dc6"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 8,
+          "relativePath": "world-tree/4/2/8.webp",
+          "length": 14714,
+          "sha256": "584b66667ef58b036c8c66bafe00dcb2be6357f5a3e3ec70b7efb87397b46697"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 9,
+          "relativePath": "world-tree/4/2/9.webp",
+          "length": 7456,
+          "sha256": "d4e7fdaea2d9a9e394da877f90c785a9307b9b8e9085c13b8080f67cfbe35369"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 10,
+          "relativePath": "world-tree/4/2/10.webp",
+          "length": 1014,
+          "sha256": "2192f753babf7dca193febb673f146f9289067457c001ff8cd4fc87f906b3c26"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 11,
+          "relativePath": "world-tree/4/2/11.webp",
+          "length": 1048,
+          "sha256": "6578b9d1136ee191c73165ed63e4b432169ecdfde1fa812f5866127f8b49e87b"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 12,
+          "relativePath": "world-tree/4/2/12.webp",
+          "length": 1338,
+          "sha256": "7d9bd76d3bc3e4aee21c52d97c114e6947fbe7109f9e76e41e970ac8ad86bae0"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 13,
+          "relativePath": "world-tree/4/2/13.webp",
+          "length": 1120,
+          "sha256": "e83efeb0f424d5761d7e4e9ea40e756124eb7627bae8cede6b6cf4561a155a16"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 14,
+          "relativePath": "world-tree/4/2/14.webp",
+          "length": 568,
+          "sha256": "7f5f5e7e6aec33d3500f768b4ff9c599e1178ee401102406ef2875c57c20690d"
+        },
+        {
+          "zoom": 4,
+          "x": 2,
+          "y": 15,
+          "relativePath": "world-tree/4/2/15.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 0,
+          "relativePath": "world-tree/4/3/0.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 1,
+          "relativePath": "world-tree/4/3/1.webp",
+          "length": 1250,
+          "sha256": "300c7d26f0999603cb2a8276d90da20d4d35a2845d65cdf95644d448d91617e3"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 2,
+          "relativePath": "world-tree/4/3/2.webp",
+          "length": 24026,
+          "sha256": "0b9ab11f353d38f799617c4e2dd51031e218130e3b18564953c5fd56f3216230"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 3,
+          "relativePath": "world-tree/4/3/3.webp",
+          "length": 21600,
+          "sha256": "290a5bfd09fe32a532773ec89da74d6e63fa6f14499d34811cf07cff62c017e0"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 4,
+          "relativePath": "world-tree/4/3/4.webp",
+          "length": 15314,
+          "sha256": "b91c9cecae58e4a4f504d30d79a5c6d0d2a82732ddfd35c74afcd5d87299e82c"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 5,
+          "relativePath": "world-tree/4/3/5.webp",
+          "length": 21562,
+          "sha256": "6f68f1d90ed37bc95a64dea7826cff95f7a61bc8a38962dd017a636f3d66e540"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 6,
+          "relativePath": "world-tree/4/3/6.webp",
+          "length": 20040,
+          "sha256": "71e82e342f51cce32d4f25a7a3cdad0883eda7df6c46021b04c1c9336006a813"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 7,
+          "relativePath": "world-tree/4/3/7.webp",
+          "length": 34682,
+          "sha256": "1ecad329e734ac71503153e2d794cced411ffa911f20aff82ed2d6287ad00675"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 8,
+          "relativePath": "world-tree/4/3/8.webp",
+          "length": 39314,
+          "sha256": "7d5df32943f6cbd7a41546a8f04a338a30ac56faa1f3dde32fb86c050e23fc33"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 9,
+          "relativePath": "world-tree/4/3/9.webp",
+          "length": 33096,
+          "sha256": "d7e54a2b7d6dc4cb4e367627eb89b630834ab2838e264f7f250a6fd845378183"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 10,
+          "relativePath": "world-tree/4/3/10.webp",
+          "length": 32790,
+          "sha256": "66e6bebf3de4b987ecec53ecb3ed934a0f580fb283c5f597c6e6447aa537fd3b"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 11,
+          "relativePath": "world-tree/4/3/11.webp",
+          "length": 33694,
+          "sha256": "3ce7897afb96ee68c81534d86f20a5ae94d399b12ac230d9f6d37cb136979bcb"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 12,
+          "relativePath": "world-tree/4/3/12.webp",
+          "length": 36780,
+          "sha256": "06cf42f9cf7695126e9837c87baf3e8cb7510e9d125c2e8989c0d94c826e5e57"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 13,
+          "relativePath": "world-tree/4/3/13.webp",
+          "length": 20820,
+          "sha256": "f59e40e5f0a0e1b37fa412025155168a3bb296cfddc5ca5d9c62ead1bc77f7db"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 14,
+          "relativePath": "world-tree/4/3/14.webp",
+          "length": 1050,
+          "sha256": "1036382d77f8d236641cc914c834f1b032ef81e06abf4941e3c5b4d0dd3850ab"
+        },
+        {
+          "zoom": 4,
+          "x": 3,
+          "y": 15,
+          "relativePath": "world-tree/4/3/15.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 0,
+          "relativePath": "world-tree/4/4/0.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 1,
+          "relativePath": "world-tree/4/4/1.webp",
+          "length": 1294,
+          "sha256": "aebd19cef138f8ed035c1f26407a033a7782d1a3d04debc1561cf629c896cdf6"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 2,
+          "relativePath": "world-tree/4/4/2.webp",
+          "length": 29190,
+          "sha256": "02157173657dfa064409eb5362893d4cdde1c3dad53cd9120a5e0d06754d83e4"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 3,
+          "relativePath": "world-tree/4/4/3.webp",
+          "length": 24410,
+          "sha256": "9842f81e268ea0b65126331ed8428774ec9ff215ebce0fb0ed4ab0a5590fba57"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 4,
+          "relativePath": "world-tree/4/4/4.webp",
+          "length": 28974,
+          "sha256": "030bcaac4fdbe320fc1f946901693daa56a33d910eaef4f6f1298f78854275de"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 5,
+          "relativePath": "world-tree/4/4/5.webp",
+          "length": 29338,
+          "sha256": "0ee68734c3bd30d209b591954523ee305b75b88ca8538f91163b785f256638a6"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 6,
+          "relativePath": "world-tree/4/4/6.webp",
+          "length": 29908,
+          "sha256": "e9c312220a47df2b6d72f7f2edbb824f4eb9e05dcfc93b60ae781afad81353b2"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 7,
+          "relativePath": "world-tree/4/4/7.webp",
+          "length": 52044,
+          "sha256": "41d8a18e58cc30d9f1ae201c93f97f07466f7eb7186a868c971b29653ccee879"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 8,
+          "relativePath": "world-tree/4/4/8.webp",
+          "length": 36984,
+          "sha256": "add2f599c40ce180260b86df7055eeb05d5e54feb0df767381f70d476d227cc5"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 9,
+          "relativePath": "world-tree/4/4/9.webp",
+          "length": 44164,
+          "sha256": "2b63363f8bb1dc24aed376dfcf2f3a081ed079a9c5327259d6570e53d23405d2"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 10,
+          "relativePath": "world-tree/4/4/10.webp",
+          "length": 44594,
+          "sha256": "f78c0694559a267720d5a87d593b823306aee68e0dcaa24d31f0218410d7c96d"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 11,
+          "relativePath": "world-tree/4/4/11.webp",
+          "length": 39080,
+          "sha256": "229245575a55b5107f55e9268a421500a856f2a3b04d13636f7e69f56fd0a25d"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 12,
+          "relativePath": "world-tree/4/4/12.webp",
+          "length": 45510,
+          "sha256": "1c77eed07eaa16cb3321ae27be845cc1e0e3f994ab8740f06e2ae86bd828e5f9"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 13,
+          "relativePath": "world-tree/4/4/13.webp",
+          "length": 19174,
+          "sha256": "165d709df36d8350d54bea84743890cab6f1c00a25778c58930a564ce7828501"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 14,
+          "relativePath": "world-tree/4/4/14.webp",
+          "length": 1280,
+          "sha256": "b20ed51736ea51944ce5edb34312ba0d472777a5aadd95533bf4a17783244253"
+        },
+        {
+          "zoom": 4,
+          "x": 4,
+          "y": 15,
+          "relativePath": "world-tree/4/4/15.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 0,
+          "relativePath": "world-tree/4/5/0.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 1,
+          "relativePath": "world-tree/4/5/1.webp",
+          "length": 1146,
+          "sha256": "8e4f57924b6bbe88a82741efc995b79589b47bc91dc5956617ab51c77d58562e"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 2,
+          "relativePath": "world-tree/4/5/2.webp",
+          "length": 23142,
+          "sha256": "b5dbaad43a1355bd25b644c3fb6817185517ec954d6065c6991a07915a5a6ee4"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 3,
+          "relativePath": "world-tree/4/5/3.webp",
+          "length": 27448,
+          "sha256": "2ece4ea2b512c3c212fea12b759b8d11261384c70708555a87f4a9e210ae2295"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 4,
+          "relativePath": "world-tree/4/5/4.webp",
+          "length": 28022,
+          "sha256": "86d3ae1697bf89f1690fed69bbaccd8f18e9b06bdad782c8470a8b822722330d"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 5,
+          "relativePath": "world-tree/4/5/5.webp",
+          "length": 26278,
+          "sha256": "0d0b675f17f31083ff7251e29860429a2fd54f9a027e5ef2f16cd4ae0ed8f9ac"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 6,
+          "relativePath": "world-tree/4/5/6.webp",
+          "length": 38696,
+          "sha256": "2a43fd2bbe453d8fee5705fdf44ddd157944dcb0e8a255c1a116cfced1eab626"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 7,
+          "relativePath": "world-tree/4/5/7.webp",
+          "length": 55372,
+          "sha256": "a5a5b50e1c35d69ab2dc371560d4b8af4b9e24f27d3f8dfee78bd43f9ef4cd5b"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 8,
+          "relativePath": "world-tree/4/5/8.webp",
+          "length": 37824,
+          "sha256": "e2dcdaf3315c9a8e907018d87fcc9a6eab914df9a0f1ea2ea66c454b47873bee"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 9,
+          "relativePath": "world-tree/4/5/9.webp",
+          "length": 28256,
+          "sha256": "f3f16a76ce3ea014ff14f4511bfe859dbd20ce5da94f497ed137cc899659e6d8"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 10,
+          "relativePath": "world-tree/4/5/10.webp",
+          "length": 36320,
+          "sha256": "811cff638db9a457ee80160fb6438ae5a3a5f6098c2afb9e10dae8de002bed8d"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 11,
+          "relativePath": "world-tree/4/5/11.webp",
+          "length": 45396,
+          "sha256": "4e2d6ea9c276427e345c598edb4bb4ef646d99e443f404f7938ba4523dc429ee"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 12,
+          "relativePath": "world-tree/4/5/12.webp",
+          "length": 17608,
+          "sha256": "6364ac561c39095f9e7756908949ead043ebddb42f43a597f9ceae9f5e409d39"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 13,
+          "relativePath": "world-tree/4/5/13.webp",
+          "length": 1798,
+          "sha256": "3bfd965c81436f0f586715ac233d260de5528159154481dd3ead2644f04d7eba"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 14,
+          "relativePath": "world-tree/4/5/14.webp",
+          "length": 692,
+          "sha256": "3956e8d577ad6b75b5e6c7380422e72e5b46b21b98137d74fe790bf214eb9bfb"
+        },
+        {
+          "zoom": 4,
+          "x": 5,
+          "y": 15,
+          "relativePath": "world-tree/4/5/15.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 0,
+          "relativePath": "world-tree/4/6/0.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 1,
+          "relativePath": "world-tree/4/6/1.webp",
+          "length": 704,
+          "sha256": "1119cf2d7c5addfb1a44aae853111c7dba0e5e8a6f503cd6537b85779247a485"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 2,
+          "relativePath": "world-tree/4/6/2.webp",
+          "length": 12062,
+          "sha256": "5b4016455d31b657170c7e40544cae8a6cddd5f7d21fb44aa3135bf46387f100"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 3,
+          "relativePath": "world-tree/4/6/3.webp",
+          "length": 31790,
+          "sha256": "f91a171d402c5bd19e750574b932144b711a3be6b962b8fc2c4b927ca12896ed"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 4,
+          "relativePath": "world-tree/4/6/4.webp",
+          "length": 32562,
+          "sha256": "993d8d4d2762111edf1656b43b198ed4127509b1a66caa92d093bbff826632ae"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 5,
+          "relativePath": "world-tree/4/6/5.webp",
+          "length": 35436,
+          "sha256": "afeaf0afa7fcce8bd09e289ddbd9534dffc39b4a05bfb042603c0700d60ce8ae"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 6,
+          "relativePath": "world-tree/4/6/6.webp",
+          "length": 29528,
+          "sha256": "ba4982b4441b95520d1e710847ee8ee98207e4bb14c8243ec07c294d39669fef"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 7,
+          "relativePath": "world-tree/4/6/7.webp",
+          "length": 32546,
+          "sha256": "3760bcde52c6c85285779d07d6de6cbdc6fee60452b8baa7ec268680bca9c477"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 8,
+          "relativePath": "world-tree/4/6/8.webp",
+          "length": 42236,
+          "sha256": "7ebfc1ca45bd21d2b1ee96469f78798f91e677f7a0cb0541362a9a39af7d88dd"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 9,
+          "relativePath": "world-tree/4/6/9.webp",
+          "length": 41040,
+          "sha256": "d7c3f5b1d459a4a7d144033aa0d3b7afc079c07ae7b44751da7b274a4e1c4f0e"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 10,
+          "relativePath": "world-tree/4/6/10.webp",
+          "length": 46206,
+          "sha256": "287651dba65efd08adb3ce470e973764fbd0fd9144554448ace80af7f5ba5c1c"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 11,
+          "relativePath": "world-tree/4/6/11.webp",
+          "length": 25154,
+          "sha256": "941521ad7f1483c0f7e258dfbddc8b98069f7c136eb72b4fefabbd69636c5967"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 12,
+          "relativePath": "world-tree/4/6/12.webp",
+          "length": 2068,
+          "sha256": "ac010252c49e98cc6e3838e46322cc96256132255d99e510bcf3de7753dbb534"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 13,
+          "relativePath": "world-tree/4/6/13.webp",
+          "length": 660,
+          "sha256": "1bdecd14decb7a9f0b54aa249d51adffb19c721ee8df5f5f329b4308b7c1d5da"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 14,
+          "relativePath": "world-tree/4/6/14.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 6,
+          "y": 15,
+          "relativePath": "world-tree/4/6/15.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 0,
+          "relativePath": "world-tree/4/7/0.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 1,
+          "relativePath": "world-tree/4/7/1.webp",
+          "length": 572,
+          "sha256": "3aa656879e43a69afb3fab708b5a31b5dadca5efd92b456ed5981b539b4ca1cc"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 2,
+          "relativePath": "world-tree/4/7/2.webp",
+          "length": 4352,
+          "sha256": "4ba61d875f6f1c211525aa967bc8f3d32402ec5ee7efb78d581018707ab83ecb"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 3,
+          "relativePath": "world-tree/4/7/3.webp",
+          "length": 42504,
+          "sha256": "6290569e1321816ba4826da242d1b47ddf07cbef52ce921222dd5c50f9118d0a"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 4,
+          "relativePath": "world-tree/4/7/4.webp",
+          "length": 32412,
+          "sha256": "d1fa04bbe8ac8cfdfa7fbc45e1f7afb39bb56df6e2c88fcda06797de56e99c3e"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 5,
+          "relativePath": "world-tree/4/7/5.webp",
+          "length": 44696,
+          "sha256": "f2e0b8771c58e716c79a92496b4a11787726697c3c143dc5ecac6d90e2cea321"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 6,
+          "relativePath": "world-tree/4/7/6.webp",
+          "length": 28248,
+          "sha256": "6a95a08c56faa05827750366a36d72213a5c3ee8ebabeecaba331a6bb25b6863"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 7,
+          "relativePath": "world-tree/4/7/7.webp",
+          "length": 25828,
+          "sha256": "d3bd3abf116801de56d7897a923caee426f164021e13d903b56d17cc86f5693f"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 8,
+          "relativePath": "world-tree/4/7/8.webp",
+          "length": 34010,
+          "sha256": "305724b0a9082f907ae63f34069940baf25fd7b23cbc8c646dbe40b68752a485"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 9,
+          "relativePath": "world-tree/4/7/9.webp",
+          "length": 34514,
+          "sha256": "8a6a6617dfc3fff339ea44f4ab10d0da502e13a12e5fc6edcb428d73f58139ec"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 10,
+          "relativePath": "world-tree/4/7/10.webp",
+          "length": 25088,
+          "sha256": "86c1949b1b3a61db3c7b4678b96791474c02bdfa477073042e526108ad71a1be"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 11,
+          "relativePath": "world-tree/4/7/11.webp",
+          "length": 2510,
+          "sha256": "3e907541168641666044ed54f66d08728dc357ff7f56a40a06953b1c58962b7e"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 12,
+          "relativePath": "world-tree/4/7/12.webp",
+          "length": 668,
+          "sha256": "28cc3a9858d7ca203c3cdda3d35a2dcca7af9d32c828c161fb729c7bf50b94ba"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 13,
+          "relativePath": "world-tree/4/7/13.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 14,
+          "relativePath": "world-tree/4/7/14.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 7,
+          "y": 15,
+          "relativePath": "world-tree/4/7/15.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 0,
+          "relativePath": "world-tree/4/8/0.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 1,
+          "relativePath": "world-tree/4/8/1.webp",
+          "length": 636,
+          "sha256": "b504272ef0df23041795bf07a6231f15af9703b6ff6277eb7a7ba3d9b5c4e8e7"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 2,
+          "relativePath": "world-tree/4/8/2.webp",
+          "length": 8842,
+          "sha256": "812f056a4342d0f5adbdfc9393aafb33eb986db5997be88959f64d8fe513e767"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 3,
+          "relativePath": "world-tree/4/8/3.webp",
+          "length": 46722,
+          "sha256": "924831d335ae39ea50e383d4b311abb8d1ba887f1bb7d4f92ec9a5072021353a"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 4,
+          "relativePath": "world-tree/4/8/4.webp",
+          "length": 48468,
+          "sha256": "2244423c10df7015a38bc0f8769faa18e6cc2a4b82d1eb67556238e31f30fb9e"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 5,
+          "relativePath": "world-tree/4/8/5.webp",
+          "length": 32928,
+          "sha256": "e80dd9eb7887c1d448ebf80d4c99d11b39f8e95ce9cb2c8ea540212b95e1898c"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 6,
+          "relativePath": "world-tree/4/8/6.webp",
+          "length": 33436,
+          "sha256": "61a6f31782b2f46d8ccf15c23d6a1af55b276bde736f93b04196cb2a037c4e28"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 7,
+          "relativePath": "world-tree/4/8/7.webp",
+          "length": 26390,
+          "sha256": "433d51344e65915e234265213b87355c71773cc407ea7172aa7f0f60761f51d3"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 8,
+          "relativePath": "world-tree/4/8/8.webp",
+          "length": 27730,
+          "sha256": "bebaa44dbf4abd50451c711f6e4b868af4fb75897e50709cf57018169d682c81"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 9,
+          "relativePath": "world-tree/4/8/9.webp",
+          "length": 31498,
+          "sha256": "cbd68569850223dccb32f2e243cee1da41eff047938814cae670b9b257b1029d"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 10,
+          "relativePath": "world-tree/4/8/10.webp",
+          "length": 4322,
+          "sha256": "90b6ec0e7ab9d43ba1aef9a6476c095c870c0935af7b4a3e76e978c629e5dcf4"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 11,
+          "relativePath": "world-tree/4/8/11.webp",
+          "length": 752,
+          "sha256": "8ac17b201aa35da7f7e77ccd622d17c14e2d873c4c03aa75c65c14f1053e4945"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 12,
+          "relativePath": "world-tree/4/8/12.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 13,
+          "relativePath": "world-tree/4/8/13.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 14,
+          "relativePath": "world-tree/4/8/14.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 8,
+          "y": 15,
+          "relativePath": "world-tree/4/8/15.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 0,
+          "relativePath": "world-tree/4/9/0.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 1,
+          "relativePath": "world-tree/4/9/1.webp",
+          "length": 660,
+          "sha256": "9b7ede33e1acd3386a139a8ea966e83ee49fa67e0836eb30372c810ba484f1f3"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 2,
+          "relativePath": "world-tree/4/9/2.webp",
+          "length": 15878,
+          "sha256": "7e57952327b374cd5ca49b20472b0ffb2fc650fe751283b7eab64842326cad56"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 3,
+          "relativePath": "world-tree/4/9/3.webp",
+          "length": 46264,
+          "sha256": "c81ce7387c5758bffe8be411df9edb39f5186bc9ef3e9bfc888a369fbf74c706"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 4,
+          "relativePath": "world-tree/4/9/4.webp",
+          "length": 47206,
+          "sha256": "03cb7e91a3f28a0de5f4c9002c4c23eab3aec461e70d2c985d25ebd6aafbcf88"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 5,
+          "relativePath": "world-tree/4/9/5.webp",
+          "length": 37448,
+          "sha256": "e06bd3e86e6394928fb5f3e2e630ff089e2f9b39194f3171534f49455628a5d1"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 6,
+          "relativePath": "world-tree/4/9/6.webp",
+          "length": 34728,
+          "sha256": "6f9af45ae9f387cc24ce13f084d9d8e249c4a829c19c2ddebd933eb1a8816121"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 7,
+          "relativePath": "world-tree/4/9/7.webp",
+          "length": 30596,
+          "sha256": "d065d4c7c0bb3b255d3f3d6fedec0e1a2511804355116d0f1afa02b72bc7a867"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 8,
+          "relativePath": "world-tree/4/9/8.webp",
+          "length": 25196,
+          "sha256": "e068d6a7b82ce6630b523632ce057c042ac415cbb6929aa0077ef846ccf5b2fd"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 9,
+          "relativePath": "world-tree/4/9/9.webp",
+          "length": 22858,
+          "sha256": "db2521fce666ed14f7ced2ae06d2ede1dc50dd9b28c8aa61f8ee1751793ffc17"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 10,
+          "relativePath": "world-tree/4/9/10.webp",
+          "length": 1616,
+          "sha256": "99c30d9de63f65d17cebc20c20f5e4d684d3907c59cb6cda3c639400e815464f"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 11,
+          "relativePath": "world-tree/4/9/11.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 12,
+          "relativePath": "world-tree/4/9/12.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 13,
+          "relativePath": "world-tree/4/9/13.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 14,
+          "relativePath": "world-tree/4/9/14.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 9,
+          "y": 15,
+          "relativePath": "world-tree/4/9/15.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 0,
+          "relativePath": "world-tree/4/10/0.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 1,
+          "relativePath": "world-tree/4/10/1.webp",
+          "length": 576,
+          "sha256": "e6d48b2bf9355d946b761784552824e6d3f09500c13ed0c45bf48ceb8d273b32"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 2,
+          "relativePath": "world-tree/4/10/2.webp",
+          "length": 3674,
+          "sha256": "8197b3c218dc1e7c1404b853865c88a617a8eecd873648cfc62c971daa9aed53"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 3,
+          "relativePath": "world-tree/4/10/3.webp",
+          "length": 34080,
+          "sha256": "9d652a7f2ef58e0f7a01eef03e7def2910351b9a7210c2f09a76414a33ac5d36"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 4,
+          "relativePath": "world-tree/4/10/4.webp",
+          "length": 53322,
+          "sha256": "f78c59ab76705d46305a1c852c874ae1187dcdbc455176bb66cfbaf7cd7afa3d"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 5,
+          "relativePath": "world-tree/4/10/5.webp",
+          "length": 44652,
+          "sha256": "caa40e1ad938439ccd24fa8f9103e0715749386767c6a070282b517944f570b2"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 6,
+          "relativePath": "world-tree/4/10/6.webp",
+          "length": 33240,
+          "sha256": "7b31669c7824b1fdf59f7bc16baf625842d1f447657fdc9804f6d970331acba2"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 7,
+          "relativePath": "world-tree/4/10/7.webp",
+          "length": 29258,
+          "sha256": "19089da7bb1f9fc6d3f06a3d62a9562db9918eec638efe619367f054a0fc8341"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 8,
+          "relativePath": "world-tree/4/10/8.webp",
+          "length": 30270,
+          "sha256": "ba216f365c0d5f5626d2f27f4a15e2de179a22f52aafda8a73b625e7501efe23"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 9,
+          "relativePath": "world-tree/4/10/9.webp",
+          "length": 25324,
+          "sha256": "351789e63b2a4cad54e5b00efc532839673f9f73be536f80480790f0b3f60354"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 10,
+          "relativePath": "world-tree/4/10/10.webp",
+          "length": 2094,
+          "sha256": "82f22e3556b2c553e43a9d9d0ada2795068dc86ac1e4ab7b21285af059b7f25c"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 11,
+          "relativePath": "world-tree/4/10/11.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 12,
+          "relativePath": "world-tree/4/10/12.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 13,
+          "relativePath": "world-tree/4/10/13.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 14,
+          "relativePath": "world-tree/4/10/14.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 10,
+          "y": 15,
+          "relativePath": "world-tree/4/10/15.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 0,
+          "relativePath": "world-tree/4/11/0.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 1,
+          "relativePath": "world-tree/4/11/1.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 2,
+          "relativePath": "world-tree/4/11/2.webp",
+          "length": 902,
+          "sha256": "a6e26276f70dc620a4f0e11ec99dcfb6e91dc14c64f27d843e8d0dc99a6ef892"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 3,
+          "relativePath": "world-tree/4/11/3.webp",
+          "length": 17592,
+          "sha256": "eac444d0ef532097dd4c2b164d87febc70c59ffe3544d8af8caa3b5fec61d65c"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 4,
+          "relativePath": "world-tree/4/11/4.webp",
+          "length": 49820,
+          "sha256": "e53c463f95d65d5582ec0b256553bbb839c1e87f323007c11c71147486cae092"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 5,
+          "relativePath": "world-tree/4/11/5.webp",
+          "length": 50258,
+          "sha256": "6900b002acc138d5dd649f185ff8054be738015a3157262bd9d3e0fa1f589744"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 6,
+          "relativePath": "world-tree/4/11/6.webp",
+          "length": 27668,
+          "sha256": "9d049967aa46ebfd24070369749c97146600a174a36673774dfa16929ec24881"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 7,
+          "relativePath": "world-tree/4/11/7.webp",
+          "length": 35618,
+          "sha256": "7594f665a38aa3ac28d9ae78fb48f234a2ad049bc8291640367b2006505ebdb3"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 8,
+          "relativePath": "world-tree/4/11/8.webp",
+          "length": 36132,
+          "sha256": "d1e893c3d344dafce0ddc250cfb16ce50aec98cdb6801a7e3518fcc663f4c060"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 9,
+          "relativePath": "world-tree/4/11/9.webp",
+          "length": 23394,
+          "sha256": "d92f80c9652dae7e67feea2777c2e0e015e8e63b70ac6af9177b3e32e2d81447"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 10,
+          "relativePath": "world-tree/4/11/10.webp",
+          "length": 1458,
+          "sha256": "48247869010a52c66259894ad592d20fa01b1a032492b44abe37c337e2613a35"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 11,
+          "relativePath": "world-tree/4/11/11.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 12,
+          "relativePath": "world-tree/4/11/12.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 13,
+          "relativePath": "world-tree/4/11/13.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 14,
+          "relativePath": "world-tree/4/11/14.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 11,
+          "y": 15,
+          "relativePath": "world-tree/4/11/15.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 0,
+          "relativePath": "world-tree/4/12/0.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 1,
+          "relativePath": "world-tree/4/12/1.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 2,
+          "relativePath": "world-tree/4/12/2.webp",
+          "length": 576,
+          "sha256": "5eb328328146cbd3e2284ddfeab60adb4bd0a38d8d4fa5d1f40e2aba4d7f116c"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 3,
+          "relativePath": "world-tree/4/12/3.webp",
+          "length": 1166,
+          "sha256": "43dd5755ebac3aad1e0f2b146251e24077924802ade2fadbe5ae15a7f0e6d334"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 4,
+          "relativePath": "world-tree/4/12/4.webp",
+          "length": 7898,
+          "sha256": "7dbadd41104ac522819b3ab6cd76761a43fd78fd7cd90a8157e83450b60885c8"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 5,
+          "relativePath": "world-tree/4/12/5.webp",
+          "length": 33576,
+          "sha256": "2e505a9748eac2a82407b2d3d7cc025cf918f40c56a754fe1e7d0d438aba7b72"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 6,
+          "relativePath": "world-tree/4/12/6.webp",
+          "length": 26344,
+          "sha256": "aaf382b1d65bc00330f4ff637fd1c85a0a7bb40b7ec87fbd552d4ffe0dd87fc8"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 7,
+          "relativePath": "world-tree/4/12/7.webp",
+          "length": 32252,
+          "sha256": "94494ca6733e7da7ea9e7be253aaa13b4d2c4feb1bc43b0e1f4b629496b150f5"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 8,
+          "relativePath": "world-tree/4/12/8.webp",
+          "length": 37530,
+          "sha256": "29cd6d5744ca44c966dfaab2b2a0de57f8d5bdd7ad06dbf15d2eeb2211b8ade1"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 9,
+          "relativePath": "world-tree/4/12/9.webp",
+          "length": 26598,
+          "sha256": "5088f6325e4b11954240e2d3320c220e6ce439333c630c690d6af4e7c85a76a6"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 10,
+          "relativePath": "world-tree/4/12/10.webp",
+          "length": 1190,
+          "sha256": "ea13971f1edca60402c5365fdd87799b0d4f4e1e37fe96b6d04a3f148620f70f"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 11,
+          "relativePath": "world-tree/4/12/11.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 12,
+          "relativePath": "world-tree/4/12/12.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 13,
+          "relativePath": "world-tree/4/12/13.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 14,
+          "relativePath": "world-tree/4/12/14.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 12,
+          "y": 15,
+          "relativePath": "world-tree/4/12/15.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 0,
+          "relativePath": "world-tree/4/13/0.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 1,
+          "relativePath": "world-tree/4/13/1.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 2,
+          "relativePath": "world-tree/4/13/2.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 3,
+          "relativePath": "world-tree/4/13/3.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 4,
+          "relativePath": "world-tree/4/13/4.webp",
+          "length": 844,
+          "sha256": "26ec2505e2e0cb626b5f1adc9e9f609b994194357de3785a9986931f11d25fd9"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 5,
+          "relativePath": "world-tree/4/13/5.webp",
+          "length": 4222,
+          "sha256": "74d9175a07cc1bfba95d53aefc530f0864bd1e02b1909fc72021711d21dc671b"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 6,
+          "relativePath": "world-tree/4/13/6.webp",
+          "length": 13008,
+          "sha256": "bcecf8f0bf0faecc84b67cdd0ec9343d0487fde100a64d0b8b0b14a912e27c07"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 7,
+          "relativePath": "world-tree/4/13/7.webp",
+          "length": 37210,
+          "sha256": "addfd1e6f7d7798348ad2bd491c9852eddccc42136930fbcde4d50c813715dc3"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 8,
+          "relativePath": "world-tree/4/13/8.webp",
+          "length": 37934,
+          "sha256": "6b4842e2448b0c0cbab077da6b06633c8dfd243bcf4c35ac37b47899d1e20603"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 9,
+          "relativePath": "world-tree/4/13/9.webp",
+          "length": 12942,
+          "sha256": "24b7da080b39e1b016cc2e12831882695f3b6ca3ac6e16a0f978de52c58b9ae5"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 10,
+          "relativePath": "world-tree/4/13/10.webp",
+          "length": 946,
+          "sha256": "e88ff6c077b2878a71865e357c551c2279f95410f6d8455b86076faef8f08695"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 11,
+          "relativePath": "world-tree/4/13/11.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 12,
+          "relativePath": "world-tree/4/13/12.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 13,
+          "relativePath": "world-tree/4/13/13.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 14,
+          "relativePath": "world-tree/4/13/14.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 13,
+          "y": 15,
+          "relativePath": "world-tree/4/13/15.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 0,
+          "relativePath": "world-tree/4/14/0.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 1,
+          "relativePath": "world-tree/4/14/1.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 2,
+          "relativePath": "world-tree/4/14/2.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 3,
+          "relativePath": "world-tree/4/14/3.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 4,
+          "relativePath": "world-tree/4/14/4.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 5,
+          "relativePath": "world-tree/4/14/5.webp",
+          "length": 588,
+          "sha256": "aaa54c576154f0a23541bafd830c8ac5ee3b535568daea66b32fbed35836460f"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 6,
+          "relativePath": "world-tree/4/14/6.webp",
+          "length": 886,
+          "sha256": "c4d4834cbb48ef5446d700688e940b41f14642dad178a17fbaebf97f01322224"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 7,
+          "relativePath": "world-tree/4/14/7.webp",
+          "length": 6192,
+          "sha256": "f8467265f416b9a63c1f400480f752f68d3889c2556b1fde445b666d66fb6a10"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 8,
+          "relativePath": "world-tree/4/14/8.webp",
+          "length": 16604,
+          "sha256": "da99cae717a48c3e40bb4da198eece669346c12dc03e5cbef3533f1270933ecf"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 9,
+          "relativePath": "world-tree/4/14/9.webp",
+          "length": 1592,
+          "sha256": "2a5f40d90439b784d4f7ff30bb35c45033e85ccb3184afd7de6e13b4107f1350"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 10,
+          "relativePath": "world-tree/4/14/10.webp",
+          "length": 596,
+          "sha256": "d87c34b77387584913945eda53019517f9601ef941d383799bcc0a116327b962"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 11,
+          "relativePath": "world-tree/4/14/11.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 12,
+          "relativePath": "world-tree/4/14/12.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 13,
+          "relativePath": "world-tree/4/14/13.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 14,
+          "relativePath": "world-tree/4/14/14.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 14,
+          "y": 15,
+          "relativePath": "world-tree/4/14/15.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 0,
+          "relativePath": "world-tree/4/15/0.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 1,
+          "relativePath": "world-tree/4/15/1.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 2,
+          "relativePath": "world-tree/4/15/2.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 3,
+          "relativePath": "world-tree/4/15/3.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 4,
+          "relativePath": "world-tree/4/15/4.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 5,
+          "relativePath": "world-tree/4/15/5.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 6,
+          "relativePath": "world-tree/4/15/6.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 7,
+          "relativePath": "world-tree/4/15/7.webp",
+          "length": 730,
+          "sha256": "fa14e70a1f59e24e781bed207cd17f73cf08a3b0d75d280c2efdb9b664490fec"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 8,
+          "relativePath": "world-tree/4/15/8.webp",
+          "length": 998,
+          "sha256": "725aa4926e562620fb9c258ebfe08db8d3c648c0c7331228e5bf327b2dcc117a"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 9,
+          "relativePath": "world-tree/4/15/9.webp",
+          "length": 664,
+          "sha256": "217658816ad90faac1b1dbd531d2c1ea5cbf97cc2073e295680c0eb64d6854b3"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 10,
+          "relativePath": "world-tree/4/15/10.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 11,
+          "relativePath": "world-tree/4/15/11.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 12,
+          "relativePath": "world-tree/4/15/12.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 13,
+          "relativePath": "world-tree/4/15/13.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 14,
+          "relativePath": "world-tree/4/15/14.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        },
+        {
+          "zoom": 4,
+          "x": 15,
+          "y": 15,
+          "relativePath": "world-tree/4/15/15.webp",
+          "length": 532,
+          "sha256": "d5a0e76b766c9ec04db0683ebfffafed273eb0e3118094b50849567c7cfc1d0d"
+        }
+      ]
+    }
+  ]
+}

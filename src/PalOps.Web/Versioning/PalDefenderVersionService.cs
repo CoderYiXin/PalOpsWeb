@@ -1,0 +1,159 @@
+using System.Text.Json;
+using Microsoft.Extensions.Caching.Memory;
+using PalOps.Web.Events;
+using PalOps.Web.External;
+
+namespace PalOps.Web.Versioning;
+
+public sealed record PalDefenderVersionStatus(
+    string CurrentVersion,
+    string LatestVersion,
+    bool CurrentAvailable,
+    bool LatestAvailable,
+    bool UpdateAvailable,
+    bool ComparisonAvailable,
+    string ReleaseUrl,
+    string ReleaseName,
+    string ReleaseBody,
+    DateTimeOffset? PublishedAt,
+    DateTimeOffset CheckedAt,
+    string? Message);
+
+public interface IPalDefenderVersionService
+{
+    Task<PalDefenderVersionStatus> CheckAsync(bool forceRefresh, CancellationToken cancellationToken = default);
+}
+
+public sealed class PalDefenderVersionService(
+    IPalDefenderReleaseClient releaseClient,
+    IPalDefenderApiClient palDefenderClient,
+    IPalOpsEventPublisher eventPublisher,
+    IMemoryCache cache,
+    ILogger<PalDefenderVersionService> logger) : IPalDefenderVersionService
+{
+    private const string CacheKey = "paldefender-version-status";
+    private readonly SemaphoreSlim _checkGate = new(1, 1);
+    private readonly object _stateLock = new();
+    private DateTimeOffset _lastManualCheckAt = DateTimeOffset.MinValue;
+    private string? _lastPublishedTag;
+
+    public async Task<PalDefenderVersionStatus> CheckAsync(bool forceRefresh, CancellationToken cancellationToken = default)
+    {
+        if (!forceRefresh && cache.TryGetValue<PalDefenderVersionStatus>(CacheKey, out var cached) && cached is not null)
+            return cached;
+
+        await _checkGate.WaitAsync(cancellationToken);
+        try
+        {
+            if (!forceRefresh && cache.TryGetValue<PalDefenderVersionStatus>(CacheKey, out cached) && cached is not null)
+                return cached;
+
+            if (forceRefresh)
+            {
+                lock (_stateLock)
+                {
+                    if (DateTimeOffset.UtcNow - _lastManualCheckAt < TimeSpan.FromSeconds(10)
+                        && cache.TryGetValue<PalDefenderVersionStatus>(CacheKey, out cached)
+                        && cached is not null)
+                    {
+                        return cached with { Message = Join(cached.Message, "手动检查冷却时间为 10 秒，已返回最近结果。") };
+                    }
+                    _lastManualCheckAt = DateTimeOffset.UtcNow;
+                }
+            }
+
+            string currentVersion = string.Empty;
+            PalDefenderReleaseInfo? release = null;
+            string? currentError = null;
+            string? latestError = null;
+
+            try
+            {
+                currentVersion = NormalizeCurrentVersion(await palDefenderClient.GetVersionAsync(cancellationToken));
+                if (string.IsNullOrWhiteSpace(currentVersion)) currentError = "PalDefender 返回的当前版本无法识别。";
+            }
+            catch (Exception ex) when (ex is ExternalApiException or HttpRequestException or JsonException or InvalidDataException)
+            {
+                currentError = ex.Message;
+                logger.LogDebug(ex, "Unable to read the current PalDefender version.");
+            }
+
+            try
+            {
+                release = await releaseClient.GetLatestStableAsync(cancellationToken);
+                if (release is null) latestError = "GitHub 未返回可用的稳定版 Release。";
+            }
+            catch (Exception ex) when (ex is HttpRequestException or JsonException or InvalidDataException)
+            {
+                latestError = ex.Message;
+                logger.LogDebug(ex, "Unable to read the latest PalDefender GitHub release.");
+            }
+
+            var currentAvailable = !string.IsNullOrWhiteSpace(currentVersion);
+            var latestVersion = release?.TagName ?? string.Empty;
+            var latestAvailable = !string.IsNullOrWhiteSpace(latestVersion);
+            var currentParsed = SemanticVersionValue.TryParse(currentVersion, out var current);
+            var latestParsed = SemanticVersionValue.TryParse(latestVersion, out var latest);
+            var comparisonAvailable = currentParsed && latestParsed;
+            var updateAvailable = comparisonAvailable && latest.CompareTo(current) > 0;
+            var message = Join(currentError, latestError);
+            if (currentAvailable && latestAvailable && !comparisonAvailable)
+                message = Join(message, "当前版本或最新版本不是可比较的数字版本格式。");
+
+            var status = new PalDefenderVersionStatus(
+                currentVersion,
+                latestVersion,
+                currentAvailable,
+                latestAvailable,
+                updateAvailable,
+                comparisonAvailable,
+                release?.HtmlUrl ?? string.Empty,
+                release?.Name ?? string.Empty,
+                release?.Body ?? string.Empty,
+                release?.PublishedAt,
+                DateTimeOffset.UtcNow,
+                message);
+
+            cache.Set(CacheKey, status, TimeSpan.FromMinutes(30));
+            if (updateAvailable && release is not null && ShouldPublish(release.TagName))
+            {
+                await eventPublisher.PublishAsync(PalOpsEvent.Create(
+                    "paldefender.update-available",
+                    "warning",
+                    metadata: new Dictionary<string, object?>
+                    {
+                        ["currentVersion"] = currentVersion,
+                        ["latestVersion"] = release.TagName,
+                        ["releaseUrl"] = release.HtmlUrl,
+                        ["releaseName"] = release.Name
+                    }), cancellationToken);
+            }
+            return status;
+        }
+        finally
+        {
+            _checkGate.Release();
+        }
+    }
+
+    private bool ShouldPublish(string tag)
+    {
+        lock (_stateLock)
+        {
+            if (string.Equals(_lastPublishedTag, tag, StringComparison.OrdinalIgnoreCase)) return false;
+            _lastPublishedTag = tag;
+            return true;
+        }
+    }
+
+    private static string NormalizeCurrentVersion(string raw) =>
+        PalDefenderVersionPayloadParser.Parse(raw);
+
+    private static string? Join(string? first, string? second)
+    {
+        if (string.IsNullOrWhiteSpace(first)) return string.IsNullOrWhiteSpace(second) ? null : second.Trim();
+        if (string.IsNullOrWhiteSpace(second)) return first.Trim();
+        return first.Trim() + " " + second.Trim();
+    }
+
+}

@@ -1,0 +1,16 @@
+.git
+.github
+.vs
+.idea
+**/node_modules
+**/bin
+**/obj
+**/dist
+artifacts
+src/PalOps.Web/data
+src/PalOps.Web/wwwroot
+*.sav
+*.db
+*.sqlite
+*.sqlite3
+__pycache__

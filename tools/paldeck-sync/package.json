@@ -1,0 +1,13 @@
+{
+  "name": "palops-paldeck-sync",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync": "node sync.mjs",
+    "sync:data-only": "node sync.mjs --skip-images",
+    "sync:items-pals": "node sync.mjs --sources=items,pals"
+  },
+  "devDependencies": {
+    "playwright": "1.61.1"
+  }
+}

@@ -1,0 +1,30 @@
+PalOps Web
+Copyright 2026 PalOps Web contributors
+
+This product is an independent .NET implementation of a Palworld dedicated-
+server operations console. It is not affiliated with or endorsed by Pocketpair.
+Palworld and related names, marks, and game assets belong to their respective
+rights holders.
+
+The integrated distribution is licensed under GNU GPL version 3 or later
+because it includes the GPL-3.0-or-later ooz-wasm/ooz decompressor. Complete
+corresponding decoder source and rebuild material are retained under
+third_party/ooz/.
+
+Community projects consulted for interoperability and workflow research:
+
+- deafdudecomputers/PalworldSaveTools (`src/palsav` / `palsav-flex`)
+  https://github.com/deafdudecomputers/PalworldSaveTools
+  Its GPL-3.0-or-later parser behavior and Palworld path type hints were
+  adapted into the read-only C# GVAS parser.
+- cheahjs/palworld-save-tools
+  https://github.com/cheahjs/palworld-save-tools
+- zaigie/palworld-server-tool
+  https://github.com/zaigie/palworld-server-tool
+- Ultimeit/PalDefender
+  https://github.com/Ultimeit/PalDefender
+
+The embedded WebAssembly decoder comes from SnosMe/ooz-wasm and the open-source
+ooz decompressor. Wasmtime hosts that module in-process. See
+THIRD-PARTY-NOTICES.md, third_party/ooz/, and licenses/ for exact attribution,
+source material, and license texts.
