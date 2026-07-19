@@ -221,6 +221,7 @@ Windows 发布包：
 7. 只通过受信任 LAN、VPN 或 HTTPS 反向代理开放管理入口。
 
 完整说明见 [构建文档](docs/build.md) 和 [部署文档](docs/deployment.md)。
+
 可通过 [Pal-Conf](https://pal-conf.bluefissure.com/) 修改 PalWorldSettings.ini 或 WorldOption.sav，先设置游戏服务器的管理员密码，再启用 RCON 和 REST API。
 ## 文档
 
