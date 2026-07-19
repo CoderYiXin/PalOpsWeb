@@ -75,20 +75,33 @@ PalOps Web 不是通用云面板。它面向**与 PalServer 同机部署的 Wind
 </tr>
 </table>
 
-### 日常运营工具
+### 物资发放三步流程
 
 <table>
 <tr>
-<td width="50%"><img src="docs/images/resource-grant.webp" alt="物资发放"><br><sub><b>物资发放</b>：多目标选择、资源搜索、快捷操作和发放任务</sub></td>
+<td><img src="docs/images/resource-grant-step-1.webp" alt="物资发放第一步：选择在线玩家"><br><sub><b>第一步：选择在线玩家</b>——按玩家、公会和在线状态筛选多个发放目标。</sub></td>
+</tr>
+<tr>
+<td><img src="docs/images/resource-grant-step-2.webp" alt="物资发放第二步：选择资源"><br><sub><b>第二步：选择资源</b>——支持分类、中文名、英文名、内部 ID、多元素搜索和批量加入。</sub></td>
+</tr>
+<tr>
+<td><img src="docs/images/resource-grant-step-3.webp" alt="物资发放第三步：核对发放清单"><br><sub><b>第三步：核对发放清单</b>——确认目标、物品、帕鲁、数量和最终执行范围。</sub></td>
+</tr>
+</table>
+
+### 其他日常运营工具
+
+<table>
+<tr>
 <td width="50%"><img src="docs/images/message-center.webp" alt="消息发送"><br><sub><b>消息发送</b>：公告、警告、私聊和玩家操作</sub></td>
-</tr>
-<tr>
 <td width="50%"><img src="docs/images/rcon-console.webp" alt="RCON 指令控制"><br><sub><b>RCON 指令控制</b>：标准与 PalDefender 指令、风险识别和响应控制台</sub></td>
-<td width="50%"><img src="docs/images/automation-jobs.webp" alt="自动任务"><br><sub><b>自动任务</b>：周期任务、风险等级、下次运行和历史结果</sub></td>
 </tr>
 <tr>
+<td width="50%"><img src="docs/images/automation-jobs.webp" alt="自动任务"><br><sub><b>自动任务</b>：周期任务、风险等级、下次运行和历史结果</sub></td>
 <td width="50%"><img src="docs/images/save-backups.webp" alt="存档备份"><br><sub><b>存档备份</b>：备份统计、校验、下载、恢复和删除</sub></td>
-<td width="50%"><img src="docs/images/save-index.webp" alt="存档解析"><br><sub><b>存档解析</b>：快照状态、自动解析、格式检测和手动任务</sub></td>
+</tr>
+<tr>
+<td colspan="2"><img src="docs/images/save-index.webp" alt="存档解析"><br><sub><b>存档解析</b>：快照状态、自动解析、格式检测和手动任务</sub></td>
 </tr>
 </table>
 

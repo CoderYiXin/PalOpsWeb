@@ -87,6 +87,11 @@ All notable changes are documented here. The project remains pre-1.0 while save-
 
 ## [Unreleased]
 
+### Documentation
+
+- Regenerated the overview, guild base, world map, webhook notification, and resource grant screenshots from the current interface.
+- Replaced the single resource grant image with complete step 1, step 2, and step 3 workflow screenshots in both READMEs.
+
 ### Added
 - Added a complete PalDefender deployment guide covering DLL placement, first-start directory generation, REST tokens, permissions, Windows firewall boundaries, PalOps integration, upgrades, rollback, and troubleshooting.
 - Bundled the fixed world-map configuration, 1,242 multilingual POIs per locale, category statistics, search index, attribution metadata, marker catalog, coordinate resolver, and exploration progress store directly in the Vue application.

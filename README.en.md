@@ -66,20 +66,33 @@ All screenshots below are produced from the current frontend build with sanitize
 </tr>
 </table>
 
-### Operations
+### Three-step resource grant workflow
 
 <table>
 <tr>
-<td width="50%"><img src="docs/images/resource-grant.webp" alt="Resource grants"><br><sub><b>Resource grants</b></sub></td>
+<td><img src="docs/images/resource-grant-step-1.webp" alt="Resource grants step 1: select online players"><br><sub><b>Step 1: Select online players</b> — filter and select multiple targets by player, guild, and online state.</sub></td>
+</tr>
+<tr>
+<td><img src="docs/images/resource-grant-step-2.webp" alt="Resource grants step 2: select resources"><br><sub><b>Step 2: Select resources</b> — browse categories, search by localized name or internal ID, and add multiple results.</sub></td>
+</tr>
+<tr>
+<td><img src="docs/images/resource-grant-step-3.webp" alt="Resource grants step 3: review the grant cart"><br><sub><b>Step 3: Review the grant cart</b> — confirm targets, items, Pals, quantities, and the final execution scope.</sub></td>
+</tr>
+</table>
+
+### Other operations
+
+<table>
+<tr>
 <td width="50%"><img src="docs/images/message-center.webp" alt="Message delivery"><br><sub><b>Message delivery</b></sub></td>
-</tr>
-<tr>
 <td width="50%"><img src="docs/images/rcon-console.webp" alt="RCON command control"><br><sub><b>RCON command control</b></sub></td>
-<td width="50%"><img src="docs/images/automation-jobs.webp" alt="Automation jobs"><br><sub><b>Automation jobs</b></sub></td>
 </tr>
 <tr>
+<td width="50%"><img src="docs/images/automation-jobs.webp" alt="Automation jobs"><br><sub><b>Automation jobs</b></sub></td>
 <td width="50%"><img src="docs/images/save-backups.webp" alt="Save backups"><br><sub><b>Save backups</b></sub></td>
-<td width="50%"><img src="docs/images/save-index.webp" alt="Save indexing"><br><sub><b>Save indexing</b></sub></td>
+</tr>
+<tr>
+<td colspan="2"><img src="docs/images/save-index.webp" alt="Save indexing"><br><sub><b>Save indexing</b></sub></td>
 </tr>
 </table>
 

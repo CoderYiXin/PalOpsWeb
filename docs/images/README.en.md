@@ -12,7 +12,9 @@ This directory contains the product screenshots used by the GitHub README and pu
 | `player-management.webp` | 1920×1080 | Player management | Online/offline players, character attributes, inventories, and Pal profiles |
 | `guild-bases.webp` | 1920×1080 | Guild bases | Guild membership, ownership evidence, and map navigation |
 | `world-map.webp` | 1920×1080 | World map | Palpagos / World Tree, fixed POIs, players, bases, and custom markers |
-| `resource-grant.webp` | 1920×1080 | Resource grants | Multi-target selection, resource search, task cart, and execution result |
+| `resource-grant-step-1.webp` | 1920×1080 | Resource grants · Step 1 | Select online players and multiple grant targets |
+| `resource-grant-step-2.webp` | 1920×1080 | Resource grants · Step 2 | Category filters, multi-term search, selection, and bulk add |
+| `resource-grant-step-3.webp` | 1920×1080 | Resource grants · Step 3 | Review item/Pal cart, quantities, and execution scope |
 | `message-center.webp` | 1920×1080 | Message center | Broadcasts, warnings, direct messages, and player selection |
 | `rcon-console.webp` | 1920×1080 | RCON console | Standard/PalDefender commands, risk detection, and response history |
 | `automation-jobs.webp` | 1920×1080 | Automation jobs | Schedules, risk levels, next execution, and run history |
@@ -32,9 +34,9 @@ This directory contains the product screenshots used by the GitHub README and pu
 
 | File | Size | Purpose |
 |---|---:|---|
-| `overview-light.webp` | 1920×1080 | Additional light-theme view |
-| `overview-dark.webp` | 1920×1080 | Dark theme and long-running operations view |
-| `webhook-notifications.webp` | 1920×1080 | Legacy notification view retained for documentation compatibility |
+| `overview-light.webp` | 1920×1080 | Current light-theme operations overview |
+| `overview-dark.webp` | 1920×1080 | Current dark-theme operations overview for long-running sessions |
+| `webhook-notifications.webp` | 1920×1080 | Current webhook channel, event subscription, and retry configuration |
 | `map-icon-catalog.png` | 1020×756 | Map category icon catalog |
 
 ## README technology badges

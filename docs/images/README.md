@@ -12,7 +12,9 @@
 | `player-management.webp` | 1920×1080 | 玩家管理 | 在线/离线玩家、角色属性、背包与帕鲁档案 |
 | `guild-bases.webp` | 1920×1080 | 公会据点 | 公会成员、据点归属证据和地图定位 |
 | `world-map.webp` | 1920×1080 | 世界地图 | Palpagos / World Tree、固定 POI、玩家、据点和自定义标记 |
-| `resource-grant.webp` | 1920×1080 | 物资发放 | 多目标选择、资源搜索、任务购物车和执行结果 |
+| `resource-grant-step-1.webp` | 1920×1080 | 物资发放 · 第一步 | 选择在线玩家和多个发放目标 |
+| `resource-grant-step-2.webp` | 1920×1080 | 物资发放 · 第二步 | 分类、多元素搜索、资源勾选和批量加入 |
+| `resource-grant-step-3.webp` | 1920×1080 | 物资发放 · 第三步 | 核对物品/帕鲁清单、数量和执行范围 |
 | `message-center.webp` | 1920×1080 | 消息发送 | 公告、警告、私聊和玩家选择 |
 | `rcon-console.webp` | 1920×1080 | RCON 指令控制 | 标准/PalDefender 指令、风险识别和响应历史 |
 | `automation-jobs.webp` | 1920×1080 | 自动任务 | 周期任务、风险等级、下次执行和历史结果 |
@@ -32,9 +34,9 @@
 
 | 文件 | 尺寸 | 用途 |
 |---|---:|---|
-| `overview-light.webp` | 1920×1080 | 浅色主题补充展示 |
-| `overview-dark.webp` | 1920×1080 | 深色主题和长时间运维场景 |
-| `webhook-notifications.webp` | 1920×1080 | 旧版通知配置补充图，保留用于历史文档兼容 |
+| `overview-light.webp` | 1920×1080 | 当前版本浅色运行概览 |
+| `overview-dark.webp` | 1920×1080 | 当前版本深色运行概览和长时间运维场景 |
+| `webhook-notifications.webp` | 1920×1080 | 当前版本 Webhook 渠道、事件订阅和重试配置 |
 | `map-icon-catalog.png` | 1020×756 | 地图分类图标目录 |
 
 ## README 技术徽章
