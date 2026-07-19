@@ -37,6 +37,19 @@
 | `webhook-notifications.webp` | 1920×1080 | 旧版通知配置补充图，保留用于历史文档兼容 |
 | `map-icon-catalog.png` | 1020×756 | 地图分类图标目录 |
 
+## README 技术徽章
+
+`badges/` 保存 README 顶部使用的本地 SVG 技术徽章。徽章文件随仓库发布，不依赖 Shields.io 或其他外部图片代理；README 中的徽章必须链接到对应项目的官方站点或本仓库许可证。
+
+| 文件 | 点击目标 |
+|---|---|
+| `badges/dotnet-10.svg` | .NET 官方站点 |
+| `badges/vue-3.svg` | Vue 官方站点 |
+| `badges/paldefender-integrated.svg` | PalDefender 官方 GitHub 仓库 |
+| `badges/maplibre-offline-map.svg` | MapLibre GL JS 官方文档 |
+| `badges/windows-server.svg` | Microsoft Windows Server 文档 |
+| `badges/license-gpl3.svg` | 仓库根目录 `LICENSE` |
+
 ## 脱敏规则
 
 允许使用保留地址 `192.0.2.10`、域名 `webhook.example.invalid`、虚构玩家名（如 `Aster`、`Birch`）、虚构公会和非用户路径 `C:\PalOpsDemo\...`。

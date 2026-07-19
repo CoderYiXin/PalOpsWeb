@@ -37,6 +37,19 @@ This directory contains the product screenshots used by the GitHub README and pu
 | `webhook-notifications.webp` | 1920×1080 | Legacy notification view retained for documentation compatibility |
 | `map-icon-catalog.png` | 1020×756 | Map category icon catalog |
 
+## README technology badges
+
+`badges/` contains the local SVG technology badges used at the top of the repository README. These files are shipped with the repository and do not depend on Shields.io or another external image proxy. Every badge in the README must link to the official project site or to this repository's license.
+
+| File | Click target |
+|---|---|
+| `badges/dotnet-10.svg` | Official .NET site |
+| `badges/vue-3.svg` | Official Vue site |
+| `badges/paldefender-integrated.svg` | Official PalDefender GitHub repository |
+| `badges/maplibre-offline-map.svg` | Official MapLibre GL JS documentation |
+| `badges/windows-server.svg` | Microsoft Windows Server documentation |
+| `badges/license-gpl3.svg` | Repository-root `LICENSE` |
+
 ## Sanitization policy
 
 Approved demonstration values include the reserved address `192.0.2.10`, `webhook.example.invalid`, fictional player names such as `Aster` and `Birch`, fictional guilds, and the non-user path `C:\PalOpsDemo\...`.

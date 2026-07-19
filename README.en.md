@@ -8,12 +8,12 @@ PalOps Web combines **PalDefender REST, extended RCON, and configuration managem
 
 [简体中文](README.md) · [中文文档](docs/README.md) · [English Docs](docs/README.en.md)
 
-![.NET 10](https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet)
-![Vue 3](https://img.shields.io/badge/Vue-3-42B883?logo=vuedotjs)
-![PalDefender](https://img.shields.io/badge/PalDefender-Integrated-EA4AAA)
-![MapLibre](https://img.shields.io/badge/MapLibre-Offline_Map-396CB2)
-![Windows](https://img.shields.io/badge/Server-Windows-0078D4?logo=windows)
-![License](https://img.shields.io/badge/License-GPL--3.0--or--later-blue)
+<a href="https://dotnet.microsoft.com/"><img src="docs/images/badges/dotnet-10.svg" alt=".NET 10" height="28"></a>
+<a href="https://vuejs.org/"><img src="docs/images/badges/vue-3.svg" alt="Vue 3" height="28"></a>
+<a href="https://github.com/Ultimeit/PalDefender"><img src="docs/images/badges/paldefender-integrated.svg" alt="PalDefender" height="28"></a>
+<a href="https://maplibre.org/maplibre-gl-js/docs/"><img src="docs/images/badges/maplibre-offline-map.svg" alt="MapLibre GL JS" height="28"></a>
+<a href="https://learn.microsoft.com/en-us/windows-server/"><img src="docs/images/badges/windows-server.svg" alt="Windows Server" height="28"></a>
+<a href="LICENSE"><img src="docs/images/badges/license-gpl3.svg" alt="GPL-3.0-or-later" height="28"></a>
 
 </div>
 

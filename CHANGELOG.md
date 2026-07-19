@@ -2,6 +2,7 @@
 
 ### GitHub 首页、双语文档与 CI 修复
 
+- 将 README 顶部技术徽章改为仓库内本地 SVG，并为 .NET、Vue、PalDefender、MapLibre GL JS、Windows Server 与许可证配置明确且可校验的官方点击目标，避免外部徽章代理失效后显示破损图片。
 - 将默认中文 `README.md` 升级为 PalDefender 特色项目首页：完整列出 19 个功能模块，并为每个模块加入脱敏实机界面截图。
 - `docs/*.md` 默认改为中文，并为架构、构建、部署、地图、Paldeck、PalDefender 和发布检查补充对应 `.en.md` 英文说明。
 - 升级 GitHub Actions 到 `actions/checkout@v6`、`actions/setup-dotnet@v5` 和 `actions/setup-node@v6`。
