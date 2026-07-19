@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "PalOps.Web": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:22197;http://localhost:22198"
+    }
+  }
+}

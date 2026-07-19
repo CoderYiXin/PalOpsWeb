@@ -1,0 +1,13 @@
+{
+  "source": "zaigie/palworld-server-tool web assets",
+  "sourceUrl": "https://github.com/zaigie/palworld-server-tool",
+  "license": "Apache-2.0",
+  "catalogGeneratedAt": "2026-07-16",
+  "items": 2463,
+  "pals": 1165,
+  "itemImages": 892,
+  "palImages": 586,
+  "itemEntriesWithImage": 1367,
+  "palEntriesWithImage": 782,
+  "note": "All image URLs are local. IDs without a dedicated upstream icon use a bundled local SVG placeholder."
+}

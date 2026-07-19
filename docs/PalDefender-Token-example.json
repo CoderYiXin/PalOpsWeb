@@ -1,0 +1,14 @@
+{
+  "Name": "PalOpsWeb",
+  "Token": "REPLACE_WITH_A_LONG_RANDOM_TOKEN",
+  "Permissions": [
+    "REST.Version.Read",
+    "REST.Players.Read",
+    "REST.Items.Give",
+    "REST.Pals.Give",
+    "REST.Progression.Give",
+    "REST.Messages.*",
+    "REST.Punishments.Kick",
+    "REST.Reload.Config"
+  ]
+}

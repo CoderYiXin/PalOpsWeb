@@ -1,0 +1,25 @@
+[
+  {
+    "type": "item",
+    "id": "Money",
+    "nameZh": "金币",
+    "nameEn": "Gold Coin",
+    "category": "货币",
+    "aliases": [
+      "钱",
+      "金钱"
+    ],
+    "imageUrl": "/catalog/items/money.webp"
+  },
+  {
+    "type": "pal",
+    "id": "Penguin",
+    "nameZh": "企丸丸",
+    "nameEn": "Pengullet",
+    "category": "水/冰",
+    "aliases": [
+      "企鹅"
+    ],
+    "imageUrl": "/catalog/pals/penguin.png"
+  }
+]

@@ -1,0 +1,3 @@
+type,id,nameZh,nameEn,category,aliases,imageUrl
+item,Money,金币,Gold Coin,货币,钱|金钱,/catalog/items/money.webp
+pal,SheepBall,棉悠悠,Lamball,普通帕鲁,羊咩咩,/catalog/pals/sheepball.png

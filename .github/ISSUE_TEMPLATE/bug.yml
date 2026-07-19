@@ -1,0 +1,43 @@
+name: Bug report
+description: Report a reproducible PalOps Web defect
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Do not include passwords, Tokens, cookies, public IP addresses, or real save files.
+  - type: input
+    id: version
+    attributes:
+      label: PalOps Web version or commit
+    validations:
+      required: true
+  - type: input
+    id: palworld
+    attributes:
+      label: Palworld server version
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Host platform
+      options: [Windows, Linux, Other]
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected result
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual result and sanitized request ID/logs
+    validations:
+      required: true

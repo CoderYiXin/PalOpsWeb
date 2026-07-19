@@ -1,0 +1,1675 @@
+{
+  "generatedAtUtc": "2026-07-16T12:19:44.017917+00:00",
+  "policy": {
+    "runtimeOffline": true,
+    "invalidPlaceholdersRejected": true,
+    "existingCategoriesPreserved": true,
+    "existingImagesPreserved": true,
+    "omittedInternalVariantsPreserved": true
+  },
+  "items": {
+    "sourceCount": 2495,
+    "existingCount": 2463,
+    "commonCount": 2463,
+    "validSourceCount": 2319,
+    "rejectedSourceCount": 176,
+    "replacedCount": 0,
+    "addedCount": 0,
+    "aliasOnlyCount": 0,
+    "replacements": [],
+    "additions": [],
+    "aliasOnly": [],
+    "skippedDifferences": [
+      {
+        "id": "Glider_Legendary",
+        "existing": "传说滑翔伞",
+        "uploaded": "特级滑翔伞",
+        "reason": "existing-name-more-reliable"
+      },
+      {
+        "id": "SkillCard_RootLance",
+        "existing": "草之技能果实：缠根牢狱",
+        "uploaded": "草之技能果实：纏根牢獄",
+        "reason": "existing-name-more-reliable"
+      }
+    ],
+    "rejected": [
+      {
+        "id": "Accessory_AirDash4",
+        "value": "zh-hans text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "AirGrapplingGun",
+        "value": "zh-hans text +1",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "AnimalSkin",
+        "value": "zh-hans text +2",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "AnimalSkin2",
+        "value": "zh-hans text +3",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Antibiotic_Good",
+        "value": "zh-hans text +4",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Antibiotic_Normal",
+        "value": "zh-hans text +5",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Antibiotic_Super",
+        "value": "zh-hans text +6",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "AssaultRifle_NPC",
+        "value": "zh-hans text +7",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "AssaultRifle_NPC_GrassBoss",
+        "value": "zh-hans text +8",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "AssaultRifle_NPC_Otomo",
+        "value": "zh-hans text +9",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Axe_Tier_03",
+        "value": "zh-hans text +2",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Baked_Potato",
+        "value": "zh-hans text +11",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Baked_Unko",
+        "value": "zh-hans text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Bandage_Good",
+        "value": "zh-hans text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Bandage_Normal",
+        "value": "zh-hans text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Bandage_Super",
+        "value": "zh-hans text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Bat_NPC",
+        "value": "zh-hans text +12",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "BAT_NPC",
+        "value": "zh-hans text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Bat_NPC_Otomo",
+        "value": "zh-hans text +13",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "BeamSword_NPC",
+        "value": "zh-hans text +14",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Beer",
+        "value": "zh-hans text +15",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "BelieverFatCane",
+        "value": "zh-hans text +16",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "BelieverFatCane_Otomo",
+        "value": "zh-hans text +17",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Berries2",
+        "value": "zh-hans text +18",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Blueprint_Head013_5",
+        "value": "<クルットリ帽>的设计图5",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Blueprint_HeadEquip025_5",
+        "value": "Unknown Item (Blueprint_HeadEquip025_5)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Blueprint_HeadEquip026_5",
+        "value": "Unknown Item (Blueprint_HeadEquip026_5)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Blueprint_HeadEquip028_5",
+        "value": "Unknown Item (Blueprint_HeadEquip028_5)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Blueprint_HeadEquip031_5",
+        "value": "Unknown Item (Blueprint_HeadEquip031_5)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Blueprint_HeadEquip032_5",
+        "value": "Unknown Item (Blueprint_HeadEquip032_5)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Blueprint_Otomo_PalConfidence_Increase_1",
+        "value": "Unknown Item (Blueprint_Otomo_PalConfidence_Increase_1)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Blueprint_Salvage_FishingBait_1_A",
+        "value": "Unknown Item (Blueprint_Salvage_FishingBait_1_A)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Blueprint_Salvage_FishingBait_1_B",
+        "value": "Unknown Item (Blueprint_Salvage_FishingBait_1_B)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Blueprint_Salvage_FishingBait_2_A",
+        "value": "Unknown Item (Blueprint_Salvage_FishingBait_2_A)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Blueprint_Salvage_FishingBait_2_B",
+        "value": "Unknown Item (Blueprint_Salvage_FishingBait_2_B)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Blueprint_Salvage_FishingBait_3_B",
+        "value": "Unknown Item (Blueprint_Salvage_FishingBait_3_B)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Blueprint_Salvage_TreasureBoxKey01",
+        "value": "Unknown Item (Blueprint_Salvage_TreasureBoxKey01)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "BlueprintTest",
+        "value": "Unknown Item (BlueprintTest)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "BOSS_1",
+        "value": "zh-hans text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "BossDefeatReward_FlowerPrince",
+        "value": "<characterName id=|FlowerPrince|/>的花瓣",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "BossDefeatReward_Mothman",
+        "value": "<characterName id=|Mothman|/>的羽毛",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "BountyProof_2",
+        "value": "zh-hans text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Bow",
+        "value": "zh-hans text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "BowGun_NPC",
+        "value": "zh-hans text +19",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "BowGun_NPC_Otomo",
+        "value": "zh-hans text +20",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "CaptureRope",
+        "value": "zh-hans text +21",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "CashFang",
+        "value": "zh-hans text +22",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "CashScales",
+        "value": "zh-hans text +23",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Claws",
+        "value": "zh-hans text +24",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Claws2",
+        "value": "zh-hans text +25",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "ClawsPendant",
+        "value": "zh-hans text +26",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "ClothHat",
+        "value": "zh-hans text +27",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Corn",
+        "value": "zh-hans text +28",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "CornSoup",
+        "value": "zh-hans text +29",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Curry_old",
+        "value": "zh-hans text +30",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Debug_Handgun_AttackUp",
+        "value": "zh-hans text +31",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Debug_Handgun_Burn",
+        "value": "zh-hans text +32",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Debug_Handgun_Darkness",
+        "value": "zh-hans text +33",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Debug_Handgun_DefenseUp",
+        "value": "zh-hans text +34",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Debug_Handgun_Electrical",
+        "value": "zh-hans text +35",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Debug_Handgun_Freeze",
+        "value": "zh-hans text +36",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Debug_Handgun_IvyCling",
+        "value": "zh-hans text +37",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Debug_Handgun_Muddy",
+        "value": "zh-hans text +38",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Debug_Handgun_Poison",
+        "value": "zh-hans text +39",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Debug_Handgun_Stun",
+        "value": "zh-hans text +40",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Debug_Handgun_Wetness",
+        "value": "zh-hans text +41",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "DebugHandgun",
+        "value": "zh-hans text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "ElectronicCircuit",
+        "value": "zh-hans text +42",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "EnergyDrink",
+        "value": "zh-hans text +43",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Fang",
+        "value": "zh-hans text +44",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Fang2",
+        "value": "zh-hans text +45",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "FangNecklace",
+        "value": "zh-hans text +46",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "FarmCrop_Tmp",
+        "value": "zh-hans text +47",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "FishingRod_Good",
+        "value": "zh-hans text +50",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "FishingRod_Legendary",
+        "value": "zh-hans text +51",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "FishingRod_Old",
+        "value": "zh-hans text +52",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "FishingRod_Super",
+        "value": "zh-hans text +53",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "FishingRod_Test",
+        "value": "Unknown Item (FishingRod_Test)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "FishMeat",
+        "value": "zh-hans text +48",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "FishMeat2",
+        "value": "zh-hans text +49",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "FlameThrower_NPC",
+        "value": "zh-hans text +54",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "FlameThrower_NPC_Otomo",
+        "value": "zh-hans text +55",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Flint",
+        "value": "zh-hans text +56",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "FragGrenade_NPC",
+        "value": "zh-hans text +57",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "FragGrenade_NPC_Otomo",
+        "value": "zh-hans text +58",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Gasoline",
+        "value": "-",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "GatlingGun_NPC",
+        "value": "zh-hans text +59",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "GatlingGun_NPC_GrassBoss",
+        "value": "zh-hans text +60",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "GatlingGun_NPC_Otomo",
+        "value": "zh-hans text +61",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Grape",
+        "value": "zh-hans text +62",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "GrenadeLauncher_NPC",
+        "value": "zh-hans text +63",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "GrenadeLauncher_NPC_Otomo",
+        "value": "zh-hans text +64",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "GrilledFish",
+        "value": "zh-hans text +65",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Gunpowder",
+        "value": "zh-hans text +66",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Handgun_NPC",
+        "value": "zh-hans text +67",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Handgun_NPC_Otomo",
+        "value": "zh-hans text +68",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Hop",
+        "value": "zh-hans text +69",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "IronOre",
+        "value": "zh-hans text +70",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Katana_NPC",
+        "value": "zh-hans text +71",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Katana_NPC_Otomo",
+        "value": "zh-hans text +72",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Kitsunebi_Fire",
+        "value": "zh-hans text +73",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "LargeBullet",
+        "value": "zh-hans text +74",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "LaserRifle_NPC",
+        "value": "zh-hans text +75",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "LaserRifle_NPC_Otomo",
+        "value": "zh-hans text +76",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Launcher_Meat",
+        "value": "zh-hans text +77",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Leather2",
+        "value": "zh-hans text +78",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "LightzHelmet",
+        "value": "zh-hans text +79",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "LuxuryOmelette",
+        "value": "zh-hans text +80",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "MateItem01",
+        "value": "zh-hans text +81",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Meat2",
+        "value": "zh-hans text +82",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "MissileLauncher_NPC",
+        "value": "zh-hans text +83",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "MissileLauncher_NPC_Otomo",
+        "value": "zh-hans text +84",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "MonsterEquipWeapon_Dummy",
+        "value": "zh-hans text +85",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "NightVisionGoggles",
+        "value": "zh-hans text +86",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "NPC_WEAPON",
+        "value": "zh-hans text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Otomo_MoveSpeed_up_1",
+        "value": "Unknown Item (Otomo_MoveSpeed_up_1)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "PAL_Growth_Stone_L",
+        "value": "zh-hans text +87",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "PAL_Growth_Stone_M",
+        "value": "zh-hans text +88",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "PAL_Growth_Stone_S",
+        "value": "zh-hans text +89",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "PAL_Growth_Stone_XL",
+        "value": "zh-hans text +90",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "PalAwakening_Test",
+        "value": "Unknown Item (PalAwakening_Test)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "PalBox_ticket",
+        "value": "zh-hans text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "PalEgg_MutationPal",
+        "value": "zh_Hans_Text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "PalGenderReverseTest",
+        "value": "Unknown Item (PalGenderReverseTest)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "PalPassiveSkillChange_SwimSpeed_ConsumeTest",
+        "value": "Unknown Item (PalPassiveSkillChange_SwimSpeed_ConsumeTest)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "PalPassiveSkillChangeTest",
+        "value": "Unknown Item (PalPassiveSkillChangeTest)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "PalPassiveSkillChangeTest2",
+        "value": "Unknown Item (PalPassiveSkillChangeTest2)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "PalSphere_Debug",
+        "value": "PalSphere_Debug",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "PenguinLauncher",
+        "value": "zh-hans text +91",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Pickaxe_Tier_03",
+        "value": "zh-hans text +2",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Potage",
+        "value": "zh-hans text +93",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Potato_old",
+        "value": "zh-hans text +95",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "PotatoSeedPotatoes",
+        "value": "zh-hans text +94",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Propellant",
+        "value": "- +1",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Pumpkin",
+        "value": "zh-hans text +96",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "PV_Glider_Manta",
+        "value": "Unknown Item (PV_Glider_Manta)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "PV_ITEMS",
+        "value": "zh-hans text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "RecurveBow",
+        "value": "zh-hans text +97",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "RocketLauncher_NPC",
+        "value": "zh-hans text +98",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "RocketLauncher_NPC_Otomo",
+        "value": "zh-hans text +99",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Sand",
+        "value": "zh-hans text +100",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Sandwich",
+        "value": "zh-hans text +101",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Scales",
+        "value": "zh-hans text +102",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Scales2",
+        "value": "zh-hans text +103",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "SeafoodSoup",
+        "value": "zh-hans text +104",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Seed_Tmp",
+        "value": "zh-hans text +105",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Sharkkid_Scale",
+        "value": "zh-hans text +106",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Shield_05",
+        "value": "zh-hans text +4",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Shield_06",
+        "value": "zh-hans text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Shotgun_NPC",
+        "value": "zh-hans text +108",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Shotgun_NPC_Otomo",
+        "value": "zh-hans text +109",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "SkillUnlock_Anubis",
+        "value": "Anubis电源转换器",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "SkillUnlock_BlackFurDragon",
+        "value": "Shadora shot弹枪",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "SkillUnlock_CaptainPenguin",
+        "value": "企丸王的火箭发射器",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "SkillUnlock_DarkMutant",
+        "value": "Daknesis功率转换器",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "SkillUnlock_HerculesBeetle",
+        "value": "抓着鞍",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "SkillUnlock_IceFox",
+        "value": "Fubish Fox马鞍",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "SkillUnlock_LilyQueen",
+        "value": "利利金花装饰",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "SkillUnlock_WingGolem",
+        "value": "Goujin -o马鞍",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "SkyHeavyBullet",
+        "value": "zh_Hans_Text +1",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "SkyLightBullet",
+        "value": "zh_Hans_Text +2",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "SmallBullet",
+        "value": "zh-hans text +110",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "SniperRifle_Default",
+        "value": "zh-hans text +111",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Stew",
+        "value": "zh-hans text +112",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "TEST_BossDefeatReward",
+        "value": "Unknown Item (TEST_BossDefeatReward)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "TEST_CaptureItemModifier",
+        "value": "Unknown Item (TEST_CaptureItemModifier)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "ThrowStone",
+        "value": "zh-hans text +113",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "VenisonBoiledInTomato",
+        "value": "zh-hans text +114",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "WaterBucket",
+        "value": "zh-hans text +115",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "WazaTest",
+        "value": "zh-hans text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "Wine",
+        "value": "zh-hans text +116",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "WingGlider_Test",
+        "value": "Unknown Item (WingGlider_Test)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "WorkSuitability_AddTicket_OilExtraction",
+        "value": "zh-hans text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "YakushimaParts001",
+        "value": "Unknown Item (YakushimaParts001)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "YakushimaParts002",
+        "value": "Unknown Item (YakushimaParts002)",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "YakushimaParts003",
+        "value": "Unknown Item (YakushimaParts003)",
+        "reason": "invalid-or-unresolved"
+      }
+    ]
+  },
+  "pals": {
+    "sourceCount": 322,
+    "existingCount": 1165,
+    "commonCount": 319,
+    "validSourceCount": 311,
+    "rejectedSourceCount": 11,
+    "replacedCount": 0,
+    "addedCount": 0,
+    "aliasOnlyCount": 0,
+    "replacements": [],
+    "additions": [],
+    "aliasOnly": [],
+    "skippedDifferences": [
+      {
+        "id": "POLICE_PalRide",
+        "existing": "自卫队骑士",
+        "uploaded": "自卫队 骑士",
+        "reason": "existing-name-more-descriptive"
+      }
+    ],
+    "rejected": [
+      {
+        "id": "BeardedDragon",
+        "value": "zh_Hans_Text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "BlackFurDragon",
+        "value": "zh_Hans_Text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "CandleWitch",
+        "value": "zh_Hans_Text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "DarkMutant",
+        "value": "zh_Hans_Text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "ElecLion",
+        "value": "zh_Hans_Text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "GrassDragon",
+        "value": "zh_Hans_Text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "PinkKangaroo",
+        "value": "zh_Hans_Text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "StrawHatCat",
+        "value": "zh_Hans_Text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "VolcanicTurtle",
+        "value": "zh_Hans_Text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "VolcanoDragon_omit",
+        "value": "zh_Hans_Text",
+        "reason": "invalid-or-unresolved"
+      },
+      {
+        "id": "WaterLizard",
+        "value": "zh_Hans_Text",
+        "reason": "invalid-or-unresolved"
+      }
+    ]
+  },
+  "runtimeMaps": {
+    "items": {
+      "acceptedCount": 2463,
+      "source": "merged-catalog"
+    },
+    "pals": {
+      "acceptedCount": 1165,
+      "source": "merged-catalog"
+    },
+    "technology": {
+      "sourceCount": 588,
+      "acceptedCount": 581,
+      "rejectedCount": 7,
+      "rejected": [
+        {
+          "id": "Battle_Glider_Grade_04",
+          "value": "Glider_Tera",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "GrapplingGun",
+          "value": "GrapplingGun",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "GrapplingGun2",
+          "value": "GrapplingGun2",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "GrapplingGun3",
+          "value": "GrapplingGun3",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "GrapplingGun4",
+          "value": "GrapplingGun4",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "GrapplingGun5",
+          "value": "GrapplingGun5",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Shield_05",
+          "value": "Shield_Ultra",
+          "reason": "invalid-or-unresolved"
+        }
+      ]
+    },
+    "structures": {
+      "sourceCount": 587,
+      "acceptedCount": 542,
+      "rejectedCount": 45,
+      "rejected": [
+        {
+          "id": "Altar_RaidBossArea",
+          "value": "Unknown (Altar_RaidBossArea)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "AntiAirCamp",
+          "value": "Unknown (AntiAirCamp)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "AntiAircraft_LaserTower",
+          "value": "-",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "AntiAircraft_MachineGun",
+          "value": "-",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "AntiAirMissileLauncher",
+          "value": "Unknown (AntiAirMissileLauncher)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "CommonDropItem3D",
+          "value": "Unknown (CommonDropItem3D)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "CommonDropItem3D_SK",
+          "value": "Unknown (CommonDropItem3D_SK)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "DamagableRock0013",
+          "value": "zh-hans text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "DamagableRock0017",
+          "value": "Unknown (DamagableRock0017)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "DamagableRock0018",
+          "value": "Unknown (DamagableRock0018)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "DamagableRock0021",
+          "value": "Unknown (DamagableRock0021)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "DamagableRock_PV",
+          "value": "Unknown (DamagableRock_PV)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "DamagableTree_Yakushima001",
+          "value": "Unknown (DamagableTree_Yakushima001)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "DamagableTree_Yakushima002",
+          "value": "Unknown (DamagableTree_Yakushima002)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "DamagableTree_Yakushima003",
+          "value": "Unknown (DamagableTree_Yakushima003)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "DamagableWood0001",
+          "value": "Unknown (DamagableWood0001)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "DestroyableWall_Rock01",
+          "value": "Unknown (DestroyableWall_Rock01)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "DestroyableWall_Rock02",
+          "value": "Unknown (DestroyableWall_Rock02)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "DroppedCharacter",
+          "value": "Unknown (DroppedCharacter)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "LockGimmickDestructionTarget_Test",
+          "value": "Unknown (LockGimmickDestructionTarget_Test)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "OilRig",
+          "value": "-",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "PalBox_RaidBossArea",
+          "value": "Unknown (PalBox_RaidBossArea)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "PalEgg_MutationPal",
+          "value": "Unknown (PalEgg_MutationPal)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "PalEgg_WorldTree",
+          "value": "Unknown (PalEgg_WorldTree)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "PalStorage_Terminal",
+          "value": "Unknown (PalStorage_Terminal)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "PickupItem_AffectionFruit",
+          "value": "Unknown (PickupItem_AffectionFruit)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "PickupItem_Flint",
+          "value": "zh-hans text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "PickupItem_IciclePiece",
+          "value": "Unknown (PickupItem_IciclePiece)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "PickupItem_Potato",
+          "value": "zh-hans text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "PickupItem_YakushimaMushroom_01",
+          "value": "Unknown (PickupItem_YakushimaMushroom_01)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "PickupItem_YakushimaMushroom_02",
+          "value": "Unknown (PickupItem_YakushimaMushroom_02)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "PickupItem_YakushimaMushroom_03",
+          "value": "Unknown (PickupItem_YakushimaMushroom_03)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "SkillFruit_Test",
+          "value": "Unknown (SkillFruit_Test)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "TreasureBox",
+          "value": "Unknown (TreasureBox)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "TreasureBox_EnemyCamp",
+          "value": "Unknown (TreasureBox_EnemyCamp)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "TreasureBox_EnemyCampGoal",
+          "value": "Unknown (TreasureBox_EnemyCampGoal)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "TreasureBox_FishingJunk_RequiredLongHold",
+          "value": "Unknown (TreasureBox_FishingJunk_RequiredLongHold)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "TreasureBox_FishingJunk_RequiredLongHold2",
+          "value": "Unknown (TreasureBox_FishingJunk_RequiredLongHold2)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "TreasureBox_Oilrig",
+          "value": "-",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "TreasureBox_VisibleContent",
+          "value": "Unknown (TreasureBox_VisibleContent)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "TreasureBox_VisibleContent_SkillFruits",
+          "value": "Unknown (TreasureBox_VisibleContent_SkillFruits)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "TreasureBox_Yakushima",
+          "value": "Unknown (TreasureBox_Yakushima)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Yakushima_Crystal",
+          "value": "Unknown (Yakushima_Crystal)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Yakushima_HealHeart",
+          "value": "Unknown (Yakushima_HealHeart)",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Yakushima_Pot",
+          "value": "Unknown (Yakushima_Pot)",
+          "reason": "invalid-or-unresolved"
+        }
+      ]
+    },
+    "passives": {
+      "sourceCount": 491,
+      "acceptedCount": 425,
+      "rejectedCount": 66,
+      "rejected": [
+        {
+          "id": "AccuracyDecrease",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "AccuracyIncrease",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "AccuracySuperDecrease",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "BulletSpeed_H",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "BulletSpeed_L",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "CollectItem",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "CollectItem_CuteFox",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "CraftSpeed*3",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "CraftSpeed*5",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "GiveADark",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "GiveADragon",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "GiveAEarth",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "GiveAElectricity",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "GiveAFire",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "GiveAIce",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "GiveALeaf",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "GiveAWater",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Logging_up1",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Logging_up1_Otomo_only",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Logging_up2",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Logging_up2_Otomo_only",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Logging_up3",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Logging_up4",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Logging_up5",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "MeleeAttack_down1",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "MeleeAttack_down2",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "MeleeAttack_up1",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "MeleeAttack_up2",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Mining_up1",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Mining_up1_Otomo_only",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Mining_up2",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Mining_up2_Otomo_only",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Mining_up3",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Mining_up4",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Mining_up5",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Mute_1",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Mute_2",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Mute_3",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Mute_4",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Mute_5",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "RecoilDecrease",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "RecoilIncrease",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "ShotAttack_down1",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "ShotAttack_down2",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "ShotAttack_up1",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "ShotAttack_up2",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "StealExpert_1",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "StealExpert_2",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "StealExpert_3",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "StealExpert_4",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Support_down1",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Support_down2",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Support_up1",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Support_up2",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "TestExplosive_H",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "TestExplosive_L",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "TestHoming_H",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "TestHoming_L",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "TestSkill1",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "TestSkill2",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "TestSkill3",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "TestSkill4",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "TestSkill5",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "TestSkill6",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "TestSkill7",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "TestSkill8",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        }
+      ]
+    },
+    "skills": {
+      "sourceCount": 341,
+      "acceptedCount": 331,
+      "rejectedCount": 10,
+      "rejected": [
+        {
+          "id": "ChaosLaser",
+          "value": "-",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "DarkFog",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Scratch",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Snowstorm",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "StardustArrow",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Throw",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "TidalWave",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "TripleCanon",
+          "value": "-",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Unique_BlackFurDragon_RotationalSlash",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        },
+        {
+          "id": "Unique_DarkMutant_DarkTackle",
+          "value": "zh-Hans Text",
+          "reason": "invalid-or-unresolved"
+        }
+      ]
+    }
+  }
+}

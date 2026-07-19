@@ -1,0 +1,206 @@
+{
+  "schemaVersion": 1,
+  "gameVersion": "1.0",
+  "datasetVersion": "palworld-1.0-thgl-2026-07-16",
+  "defaultLayerId": "palpagos",
+  "layers": [
+    {
+      "id": "palpagos",
+      "displayName": "Palpagos",
+      "localDirectory": "palpagos",
+      "localUrlTemplate": "/map/tiles/palpagos/{z}/{x}/{y}.webp",
+      "remoteUrlTemplate": "https://cdn.th.gl/palworld/map-tiles/default-733001e0986faa3f88b0a970412d7fb9/{z}/{y}/{x}.webp?v=1",
+      "remoteAxisOrder": "zyx",
+      "format": "webp",
+      "tileSize": 512,
+      "minimumZoom": 0,
+      "maximumZoom": 4,
+      "worldBounds": {
+        "minimumX": -1099399,
+        "maximumX": 349399,
+        "minimumY": -724399,
+        "maximumY": 724399
+      },
+      "mapBounds": {
+        "minimumX": -1922.43790849673,
+        "maximumX": 1233.98474945534,
+        "minimumY": -2125.2962962963,
+        "maximumY": 1031.12636165577
+      },
+      "worldToMap": {
+        "a": 0,
+        "b": 0.00217864923747277,
+        "c": -344.226579520697,
+        "d": 0.00217864923747277,
+        "e": 0,
+        "f": 269.908496732026
+      },
+      "mapToPixel": {
+        "a": 0.162208724461623,
+        "b": 0,
+        "c": 311.83655438984,
+        "d": 0,
+        "e": -0.162208724461623,
+        "f": 167.258045278851
+      },
+      "sourceLeafletTransformation": {
+        "a": 0.000353395913859746,
+        "b": 256,
+        "c": -0.000353395913859746,
+        "d": 123.47653230259525
+      },
+      "leafletTransformation": {
+        "a": 0.162208724461623,
+        "b": 311.83655438984,
+        "c": -0.162208724461623,
+        "d": 167.258045278851
+      },
+      "zoomRanges": [
+        { "zoom": 0, "minimumX": 0, "maximumX": 0, "minimumY": 0, "maximumY": 0 },
+        { "zoom": 1, "minimumX": 0, "maximumX": 1, "minimumY": 0, "maximumY": 1 },
+        { "zoom": 2, "minimumX": 0, "maximumX": 3, "minimumY": 0, "maximumY": 3 },
+        { "zoom": 3, "minimumX": 0, "maximumX": 7, "minimumY": 0, "maximumY": 7 },
+        { "zoom": 4, "minimumX": 0, "maximumX": 15, "minimumY": 0, "maximumY": 15 }
+      ],
+      "calibrationSamples": [
+        {
+          "name": "south-west",
+          "worldX": -1099399,
+          "worldY": -724399,
+          "mapX": -1922.43790849673,
+          "mapY": -2125.2962962963,
+          "pixelX": 0,
+          "pixelY": 512,
+          "tolerance": 0.01
+        },
+        {
+          "name": "south-east",
+          "worldX": -1099399,
+          "worldY": 724399,
+          "mapX": 1233.98474945534,
+          "mapY": -2125.2962962963,
+          "pixelX": 512,
+          "pixelY": 512,
+          "tolerance": 0.01
+        },
+        {
+          "name": "north-west",
+          "worldX": 349399,
+          "worldY": -724399,
+          "mapX": -1922.43790849673,
+          "mapY": 1031.12636165577,
+          "pixelX": 0,
+          "pixelY": 0,
+          "tolerance": 0.01
+        }
+      ],
+      "source": {
+        "name": "The Hidden Gaming Lair",
+        "pageUrl": "https://palworld.th.gl/maps/Palpagos%20Island",
+        "mapUpdatedAt": "2026-07-16T12:22:12.704Z",
+        "verifiedAt": "2026-07-17",
+        "rightsNotice": "",
+        "redistributionAllowed": false
+      }
+    },
+    {
+      "id": "world-tree",
+      "displayName": "World Tree",
+      "localDirectory": "world-tree",
+      "localUrlTemplate": "/map/tiles/world-tree/{z}/{x}/{y}.webp",
+      "remoteUrlTemplate": "https://cdn.th.gl/palworld/map-tiles/tree-bd046c3cfb06ee41b25a111f912d407f/{z}/{y}/{x}.webp?v=1",
+      "remoteAxisOrder": "zyx",
+      "format": "webp",
+      "tileSize": 512,
+      "minimumZoom": 0,
+      "maximumZoom": 4,
+      "worldBounds": {
+        "minimumX": 347352.5,
+        "maximumX": 689147.5,
+        "minimumY": -818196,
+        "maximumY": -476401
+      },
+      "mapBounds": {
+        "minimumX": -2126.78867102396,
+        "maximumX": -1382.13725490196,
+        "minimumY": 1026.66775599129,
+        "maximumY": 1771.31917211329
+      },
+      "worldToMap": {
+        "a": 0,
+        "b": 0.00217864923747277,
+        "c": -344.226579520697,
+        "d": 0.00217864923747277,
+        "e": 0,
+        "f": 269.908496732026
+      },
+      "mapToPixel": {
+        "a": 0.68756601140443,
+        "b": 0,
+        "c": 1462.30910160124,
+        "d": 0,
+        "e": -0.68756601140443,
+        "f": 1217.9003560593
+      },
+      "sourceLeafletTransformation": {
+        "a": 0.0014979651664584533,
+        "b": 1225.6306053008072,
+        "c": -0.0014979651664584533,
+        "d": 1032.3204475170935
+      },
+      "leafletTransformation": {
+        "a": 0.68756601140443,
+        "b": 1462.30910160124,
+        "c": -0.68756601140443,
+        "d": 1217.9003560593
+      },
+      "zoomRanges": [
+        { "zoom": 0, "minimumX": 0, "maximumX": 0, "minimumY": 0, "maximumY": 0 },
+        { "zoom": 1, "minimumX": 0, "maximumX": 1, "minimumY": 0, "maximumY": 1 },
+        { "zoom": 2, "minimumX": 0, "maximumX": 3, "minimumY": 0, "maximumY": 3 },
+        { "zoom": 3, "minimumX": 0, "maximumX": 7, "minimumY": 0, "maximumY": 7 },
+        { "zoom": 4, "minimumX": 0, "maximumX": 15, "minimumY": 0, "maximumY": 15 }
+      ],
+      "calibrationSamples": [
+        {
+          "name": "south-west",
+          "worldX": 347352.5,
+          "worldY": -818196,
+          "mapX": -2126.78867102396,
+          "mapY": 1026.66775599129,
+          "pixelX": 0,
+          "pixelY": 512,
+          "tolerance": 0.01
+        },
+        {
+          "name": "south-east",
+          "worldX": 347352.5,
+          "worldY": -476401,
+          "mapX": -1382.13725490196,
+          "mapY": 1026.66775599129,
+          "pixelX": 512,
+          "pixelY": 512,
+          "tolerance": 0.01
+        },
+        {
+          "name": "north-west",
+          "worldX": 689147.5,
+          "worldY": -818196,
+          "mapX": -2126.78867102396,
+          "mapY": 1771.31917211329,
+          "pixelX": 0,
+          "pixelY": 0,
+          "tolerance": 0.01
+        }
+      ],
+      "source": {
+        "name": "The Hidden Gaming Lair",
+        "pageUrl": "https://palworld.th.gl/maps/The%20World%20Tree",
+        "mapUpdatedAt": "2026-07-16T12:22:12.704Z",
+        "verifiedAt": "2026-07-17",
+        "rightsNotice": "",
+        "redistributionAllowed": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "Name": "PalOpsWeb-FullAccess",
+  "Token": "REPLACE_WITH_A_LONG_RANDOM_TOKEN",
+  "Permissions": [
+    "REST.*"
+  ]
+}
