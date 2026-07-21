@@ -19,8 +19,6 @@
 
 ![PalOps Web 1.2.0 Runtime Overview](docs/images/en-US/overview-dashboard.webp)
 
-> Every UI image in this README is rendered from the current 1.2.0 Vue frontend with a dedicated fabricated dataset and reserved network values. The English README references only English UI screenshots; the Chinese README references only Chinese UI screenshots.
-
 ## What is new in 1.2.0
 
 - **Live world-map layer**: runtime player markers stay above fixed POIs; player refresh supports 1/2/3/5/10/15/30 seconds with a 3-second default, while guild bases and custom markers remain on an independent 30-second poll.
