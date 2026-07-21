@@ -1,13 +1,28 @@
 # Changelog
 
+## 1.2.0 - 2026-07-21
+
+- Supplemented the frontend world-map data with nine verified Palworld 1.0 fast-travel records from a pinned PalworldSaveTools revision, including the new Garden, Sakurajima, cape and passage points that were absent from the previous bundle.
+- Added a persisted player-position refresh selector with a 3-second default and 1/2/3/5/10/15/30-second options, while keeping guild-base and custom-marker polling on an independent 30-second schedule.
+- Offset runtime player icons slightly above their exact coordinate so server markers remain on top without completely hiding a co-located fast-travel POI.
+- Reorganized the sidebar into seven role-aware business-domain accordions, keeping all route URLs and permissions unchanged while auto-opening the active group and showing only group icons in collapsed mode.
+- Reworked Palworld configuration diagnostics around the values actually accepted by current server configuration files: blank randomizer seeds are valid, integral decimal forms such as `72.000000` are accepted, current-version fields are preserved without one warning per field, and advisory ranges no longer block saving.
+- Updated the platform, frontend package, assembly and informational version to `1.2.0`.
+- Stabilized the plugin and mod inventory tables by removing sticky action columns, enforcing fixed table layout, containing tab width calculations and isolating horizontal overflow.
+- Changed whitelist operations to use the PalDefender `whitelist_add` / `whitelist_remove` RCON commands first, verify the resulting `WhiteList.json`, and fall back to atomic file mutation plus `reloadcfg` only when the command cannot be verified.
+- Added strict PalDefender UserId validation so player names and save-game PlayerUID GUIDs cannot be written to the whitelist by mistake.
+- Merged PalDefender known players into the discipline identity view immediately, including their latest status, so recently disconnected or kicked accounts remain visible instead of disappearing with the online-player table.
+- Added persistent kick records and a dedicated kick-history tab for kicks initiated through the PalOps management action or PalOps RCON console.
+
 ### GitHub 首页、双语文档与 CI 修复
 
 - 将 README 顶部技术徽章改为仓库内本地 SVG，并为 .NET、Vue、PalDefender、MapLibre GL JS、Windows Server 与许可证配置明确且可校验的官方点击目标，避免外部徽章代理失效后显示破损图片。
-- 将默认中文 `README.md` 升级为 PalDefender 特色项目首页：完整列出 19 个功能模块，并为每个模块加入脱敏实机界面截图。
+- 将默认中文 `README.md` 升级为 PalDefender 特色项目首页：完整列出 25 个功能模块，并使用当前 1.2.0 Vue 页面生成对应语言的伪数据产品截图。
 - `docs/*.md` 默认改为中文，并为架构、构建、部署、地图、Paldeck、PalDefender 和发布检查补充对应 `.en.md` 英文说明。
 - 升级 GitHub Actions 到 `actions/checkout@v6`、`actions/setup-dotnet@v5` 和 `actions/setup-node@v6`。
 - 删除无运行、构建或发布用途的旧 Python 地图生成器；地图 JSON 作为已审查静态资产直接提交，源码与发布校验均禁止 Python 文件。
-- GitHub 发布契约现在持续校验 Action 版本、19 个模块截图、中文默认/英文对应文档，并禁止日文 Markdown 和 Python 源文件。
+- GitHub 发布契约现在持续校验 Action 版本、中英文各 27 张（共 54 张）产品截图、中文默认/英文对应文档，并禁止日文 Markdown 和 Python 源文件。
+- 修正发布源码凭据扫描对 Vue `show-password` 属性的误报，同时继续识别独立的密码、Token、Secret 与 API Key 赋值。
 
 ### Open-source documentation cleanup
 
@@ -93,6 +108,9 @@ All notable changes are documented here. The project remains pre-1.0 while save-
 - Replaced the single resource grant image with complete step 1, step 2, and step 3 workflow screenshots in both READMEs.
 
 ### Added
+- Added an Owner-only Palworld configuration center for `PalWorldSettings.ini`, with structured Chinese/English/Japanese field descriptions, raw-text editing, startup-argument management, range/type validation, effective-listener conflict checks, and restart-impact guidance.
+- Added server-side preview, SHA-256 optimistic concurrency, automatic pre-change backups, same-directory temporary files, write-through flushes, atomic replacement, audited saves, and save-and-safe-restart workflows.
+- Added read-only `WorldOption.sav` detection and explicit warnings that binary world-option editing and partial save writeback are not performed.
 - Added a complete PalDefender deployment guide covering DLL placement, first-start directory generation, REST tokens, permissions, Windows firewall boundaries, PalOps integration, upgrades, rollback, and troubleshooting.
 - Bundled the fixed world-map configuration, 1,242 multilingual POIs per locale, category statistics, search index, attribution metadata, marker catalog, coordinate resolver, and exploration progress store directly in the Vue application.
 - Added frontend architecture gates that reject fixed-map API calls, PBF/vector-source switching, backend coordinate resolution, backend exploration-progress calls, and reintroduction of the map-package upload panel.
@@ -103,6 +121,10 @@ All notable changes are documented here. The project remains pre-1.0 while save-
 - Encrypted multi-provider Webhook channels, registered-variable templates, retries, alert throttling, and delivery history.
 
 ### Fixed
+- Expanded plugin inventory discovery to include direct PalDefender installations, UE4SS root files, UE4SS Mods/Plugins directories, and PAK/IoStore mods under `Pal/Content/Paks/~mods` and `LogicMods`; an empty scan now reports every searched location instead of showing an unexplained blank table.
+- Kept server runtime map layers, labels, and selection highlights above all fixed POI resources, and refreshed player positions every five seconds while the map page is active.
+- Fixed raw-to-structured editor synchronization so a later structured-field edit cannot overwrite changes made in the raw `PalWorldSettings.ini` editor.
+- Hardened configuration-path handling against symbolic links/reparse points and made loaded content and SHA-256 originate from the same byte snapshot before optimistic-concurrency checks.
 - Fixed normal PalServer shutdown getting stuck after the engine or PalDefender REST stopped: PalOps now confirms `Shutdown 1 Server will shut down in 1 seconds`, shows a live ten-second grace countdown, terminates the originally verified PID, then removes verified launcher/Shipping residue and verifies full exit.
 - Fixed the runtime operation dialog permanently displaying the initial `queued/running` POST response. The overview now polls `/api/v1/server-runtime/operations/{operationId}` until `completed` or `failed`, refreshes the runtime snapshot, releases the loading state, and displays the terminal backend error code when applicable.
 - Removed the fixed-POI PBF/GeoJSON dual-render race completely. The map now has one local GeoJSON source for fixed POIs and separate runtime GeoJSON sources only for players, guild bases, and custom markers.
@@ -134,6 +156,9 @@ All notable changes are documented here. The project remains pre-1.0 while save-
 - Restored the login and legacy business-page style contract after the desktop workbench stylesheet split omitted their global layout rules.
 
 ### Changed
+- Changed the seven business-domain navigation groups to remain expanded by default and removed per-group manual collapse behavior; the compact sidebar mode still hides child links.
+- Corrected Palworld port semantics: `PublicPort` is treated as an advertised public endpoint, while the effective game listener is resolved from `-port` or the default `8211`; disabled RCON/REST endpoints no longer participate in listener-conflict checks.
+- Extended structured startup arguments with the documented performance switches and worker-thread parameter while preserving unknown command-line options in raw form.
 - Removed the map-package management panel from System Settings because the production map page no longer consumes fixed-map packages.
 - Rebuilt the guild workspace with a compact selectable guild list, summary strip, improved member identity/status rows, and separate resolved/pending base cards containing coordinate source, association reason, worker/object counts, and map actions.
 - Replaced temporary text-in-shape map markers with a shared 34-icon game-map catalog used by both MapLibre and the left filter tree, with category palettes, silhouettes, outlined badges, zoom-aware sizing, and high-contrast labels.
@@ -149,6 +174,7 @@ All notable changes are documented here. The project remains pre-1.0 while save-
 - Added source/release verification for secrets, runtime data, documentation links, and required notices.
 
 ### Known limitations
+- `WorldOption.sav` is detected and reported but remains read-only; this phase intentionally avoids binary save mutation, per-player restoration, and partial world-save writeback.
 - PalServer process control is supported only on the same Windows host as PalOps Web.
 - Server FPS and maximum-player capacity require the configured Palworld REST API to expose and authorize `/metrics`; the UI reports partial unavailability when that request fails.
 - Offline release packaging requires complete Palpagos and World Tree tile sets.

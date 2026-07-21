@@ -1,4 +1,11 @@
 <Solution>
   <Project Path="src/PalOps.Web/PalOps.Web.csproj" />
   <Project Path="tools/PalOps.Tooling/PalOps.Tooling.csproj" />
+  <Project Path="tests/PalOps.Versioning.Verifier/PalOps.Versioning.Verifier.csproj" />
+  <Project Path="tests/PalOps.PalworldConfiguration.Verifier/PalOps.PalworldConfiguration.Verifier.csproj" />
+  <Project Path="tests/PalOps.Maintenance.Verifier/PalOps.Maintenance.Verifier.csproj" />
+  <Project Path="tests/PalOps.Statistics.Verifier/PalOps.Statistics.Verifier.csproj" />
+  <Project Path="tests/PalOps.SaveDiff.Verifier/PalOps.SaveDiff.Verifier.csproj" />
+  <Project Path="tests/PalOps.PlayerDiscipline.Verifier/PalOps.PlayerDiscipline.Verifier.csproj" />
+  <Project Path="tests/PalOps.PluginManagement.Verifier/PalOps.PluginManagement.Verifier.csproj" />
 </Solution>

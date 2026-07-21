@@ -1,5 +1,4 @@
 using System.Net.Http.Headers;
-using System.Reflection;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -17,7 +16,9 @@ public interface IPalDefenderReleaseClient
     Task<PalDefenderReleaseInfo?> GetLatestStableAsync(CancellationToken cancellationToken = default);
 }
 
-public sealed class PalDefenderReleaseClient(HttpClient httpClient) : IPalDefenderReleaseClient
+public sealed class PalDefenderReleaseClient(
+    HttpClient httpClient,
+    IApplicationVersionProvider versionProvider) : IPalDefenderReleaseClient
 {
     private const int MaximumResponseBytes = 2 * 1024 * 1024;
     private static readonly JsonSerializerOptions JsonOptions = new(JsonSerializerDefaults.Web);
@@ -27,12 +28,7 @@ public sealed class PalDefenderReleaseClient(HttpClient httpClient) : IPalDefend
         using var request = new HttpRequestMessage(HttpMethod.Get, "repos/Ultimeit/PalDefender/releases?per_page=30");
         request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
         request.Headers.TryAddWithoutValidation("X-GitHub-Api-Version", "2022-11-28");
-        if (!request.Headers.UserAgent.Any())
-        {
-            var informationalVersion = Assembly.GetEntryAssembly()?
-                .GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion ?? "1.1.0";
-            request.Headers.UserAgent.ParseAdd($"PalOps-Web/{SanitizeProductVersion(informationalVersion)}");
-        }
+        request.Headers.UserAgent.ParseAdd($"PalOps-Web/{versionProvider.Get().ProductHeaderVersion}");
 
         using var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
         response.EnsureSuccessStatusCode();
@@ -50,14 +46,6 @@ public sealed class PalDefenderReleaseClient(HttpClient httpClient) : IPalDefend
             stable.HtmlUrl?.Trim() ?? string.Empty,
             stable.PublishedAt,
             Limit(stable.Body ?? string.Empty, 4000));
-    }
-
-    private static string SanitizeProductVersion(string value)
-    {
-        var normalized = value.Split('+', 2)[0].Trim();
-        return string.IsNullOrWhiteSpace(normalized)
-            ? "1.1.0"
-            : new string(normalized.Where(character => char.IsLetterOrDigit(character) || character is '.' or '-').ToArray());
     }
 
     private static string Limit(string value, int length) => value.Length <= length ? value : value[..length];

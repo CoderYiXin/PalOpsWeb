@@ -138,6 +138,7 @@ The normal NuGet publish process supplies platform-specific Wasmtime native runt
 - Public factual-coordinate references: PinDrop Palworld listings / paldb-derived marker listings.
 - Attribution reference: Palworld Wiki map material under CC BY-SA 4.0.
 - Implementation and coordinate-method reference: ARXII-13/Palworld-Interactive-Map under Apache-2.0.
+- Current fast-travel coordinate supplement: `deafdudecomputers/PalworldSaveTools` revision `e4e1439b274c1140eed5690051ce59ab14b68027`, `resources/game_data/fast_travel_points.json`, under MIT; local license copy: `licenses/palworld-save-tools-MIT.txt`.
 
 The bundled snapshot contains no remote scripts or copied third-party marker icons. PalOps assigns its own stable IDs, uses its own generated marker symbols, and serves the resulting data locally. Palworld names and underlying game-derived facts remain subject to Pocketpair's rights and applicable law.
 

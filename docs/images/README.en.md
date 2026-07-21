@@ -1,68 +1,58 @@
-# Documentation Images and Product Screenshots
+# Documentation Images and Bilingual Product Screenshots
 
 > Language: [简体中文](README.md) | **English**
 
-This directory contains the product screenshots used by the GitHub README and public documentation. Every screenshot is generated from the current PalOps Web frontend with a sanitized local demonstration profile. Server, account, player, guild, path, coordinate, token, webhook, and operation-result values are fabricated. The map uses the repository's offline tiles and POI data and does not include responses from a private server.
+`zh-CN/` contains the UI used by the Chinese README and `en-US/` contains the UI used by the English README. Both sets are rendered from the same 1.2.0 Vue build with identical business scenarios, locale-specific fabricated data, and reserved network values. Promotional posters, composite cover art, and cross-locale substitutions are not accepted.
 
-## Module screenshots
+## English screenshot inventory
 
 | File | Size | Module | Public purpose |
 |---|---:|---|---|
-| `overview-dashboard.webp` | 1920×1080 | Operations overview | README hero image covering PalServer, host, save, PalDefender, and event status |
-| `player-management.webp` | 1920×1080 | Player management | Online/offline players, character attributes, inventories, and Pal profiles |
-| `guild-bases.webp` | 1920×1080 | Guild bases | Guild membership, ownership evidence, and map navigation |
-| `world-map.webp` | 1920×1080 | World map | Palpagos / World Tree, fixed POIs, players, bases, and custom markers |
-| `resource-grant-step-1.webp` | 1920×1080 | Resource grants · Step 1 | Select online players and multiple grant targets |
-| `resource-grant-step-2.webp` | 1920×1080 | Resource grants · Step 2 | Category filters, multi-term search, selection, and bulk add |
-| `resource-grant-step-3.webp` | 1920×1080 | Resource grants · Step 3 | Review item/Pal cart, quantities, and execution scope |
-| `message-center.webp` | 1920×1080 | Message center | Broadcasts, warnings, direct messages, and player selection |
-| `rcon-console.webp` | 1920×1080 | RCON console | Standard/PalDefender commands, risk detection, and response history |
-| `automation-jobs.webp` | 1920×1080 | Automation jobs | Schedules, risk levels, next execution, and run history |
-| `save-backups.webp` | 1920×1080 | Save backups | Backup creation, SHA-256 verification, download, restore, and deletion |
-| `notification-channels.webp` | 1920×1080 | Notification channels | Multi-provider webhooks, subscriptions, templates, and retry policy |
-| `notification-history.webp` | 1920×1080 | Delivery history | Delivery status, HTTP result, latency, and failure reason |
-| `system-settings.webp` | 1920×1080 | System settings | Palworld, PalDefender, RCON, save, backup, and automation settings |
-| `paldefender-console.webp` | 1920×1080 | Protection component | PalDefender connectivity, versions, configuration files, and field help |
-| `save-index.webp` | 1920×1080 | Save indexing | Snapshot index, automatic parsing, format detection, and fallback state |
-| `catalog-management.webp` | 1920×1080 | Catalog management | Item/Pal catalogs, categories, favorites, and aliases |
-| `audit-log.webp` | 1920×1080 | Audit log | Sensitive operations, outcomes, source addresses, and structured details |
-| `system-logs.webp` | 1920×1080 | System logs | Noise-reduced business logs, level filters, and exception details |
-| `user-management.webp` | 1920×1080 | Access management | Role-based accounts, enable/disable state, and recent sign-in data |
-| `about-project.webp` | 1920×1080 | About | Version, referenced projects, data sources, and open-source notices |
+| `en-US/overview-dashboard.webp` | 1920×1080 | Runtime overview | PalServer, host metrics, versions, saves, and live incidents |
+| `en-US/server-statistics.webp` | 1920×1080 | Server statistics | Player, FPS, resource, and operations trends |
+| `en-US/player-management.webp` | 1920×1080 | Player archive | Live/indexed players, attributes, inventories, and Pal profiles |
+| `en-US/guild-bases.webp` | 1920×1080 | Guilds & bases | Membership, ownership evidence, base details, and map navigation |
+| `en-US/world-map.webp` | 1920×1080 | World map | Offline maps, Fast Travel, live players, bases, and custom markers |
+| `en-US/resource-grant-step-1.webp` | 1920×1080 | Resource grants · Select players | Target multiple players by identity, guild, and online state |
+| `en-US/resource-grant-step-2.webp` | 1920×1080 | Resource grants · Select resources | Categories, multi-term search, item/Pal selection, and bulk add |
+| `en-US/resource-grant-step-3.webp` | 1920×1080 | Resource grants · Review | Confirm targets, resources, quantities, and execution scope |
+| `en-US/message-center.webp` | 1920×1080 | Messages | Broadcasts, alerts, direct messages, and player actions |
+| `en-US/rcon-console.webp` | 1920×1080 | RCON console | Command presets, risk acknowledgement, capability probing, and response history |
+| `en-US/palworld-configuration.webp` | 1920×1080 | Palworld Configuration Center | Structured settings, launch arguments, validation, and safe persistence |
+| `en-US/automation-jobs.webp` | 1920×1080 | Automation | Schedules, risk levels, next execution, and run history |
+| `en-US/maintenance-center.webp` | 1920×1080 | Maintenance & Crash Guard | Maintenance orchestration, recovery, health verification, and circuit state |
+| `en-US/catalog-management.webp` | 1920×1080 | Item & Pal catalog | Offline catalog, icons, categories, aliases, favorites, and imports |
+| `en-US/player-discipline.webp` | 1920×1080 | Player discipline | Whitelist, bans, identity history, violations, kicks, and audit |
+| `en-US/paldefender-console.webp` | 1920×1080 | PalDefender | Connectivity, versions, config files, field help, and atomic persistence |
+| `en-US/plugin-management.webp` | 1920×1080 | Plugins & mods | Versions, dependencies, compatibility, updates, backups, and rollback |
+| `en-US/user-management.webp` | 1920×1080 | Users & roles | Role-based accounts, status, and recent sign-ins |
+| `en-US/audit-log.webp` | 1920×1080 | Audit log | Sensitive actions, outcomes, source addresses, and structured details |
+| `en-US/save-backups.webp` | 1920×1080 | Backups | Backup statistics, verification, download, restore, and deletion |
+| `en-US/save-diff.webp` | 1920×1080 | Save differences | Snapshot comparison, categorized changes, and anomaly alerts |
+| `en-US/save-index.webp` | 1920×1080 | Save Index | Snapshot status, automatic parsing, format detection, and manual jobs |
+| `en-US/notification-channels.webp` | 1920×1080 | Notification channels | Multi-provider webhooks, subscriptions, templates, and retries |
+| `en-US/notification-history.webp` | 1920×1080 | Delivery history | Delivery status, HTTP results, duration, and failure details |
+| `en-US/system-logs.webp` | 1920×1080 | System logs | Operational logs, level filtering, and exception investigation |
+| `en-US/system-settings.webp` | 1920×1080 | System settings | Connections, saves, backups, automation, and security configuration |
+| `en-US/about-project.webp` | 1920×1080 | About | Version, references, data provenance, and open-source notices |
 
-## Supporting images
+## Chinese screenshot inventory
 
-| File | Size | Purpose |
-|---|---:|---|
-| `overview-light.webp` | 1920×1080 | Current light-theme operations overview |
-| `overview-dark.webp` | 1920×1080 | Current dark-theme operations overview for long-running sessions |
-| `webhook-notifications.webp` | 1920×1080 | Current webhook channel, event subscription, and retry configuration |
-| `map-icon-catalog.png` | 1020×756 | Map category icon catalog |
+The Chinese directory contains the matching 27 `zh-CN/*.webp` images. The Chinese README must not reference `en-US/`.
 
-## README technology badges
+## Generation and acceptance rules
 
-`badges/` contains the local SVG technology badges used at the top of the repository README. These files are shipped with the repository and do not depend on Shields.io or another external image proxy. Every badge in the README must link to the official project site or to this repository's license.
+- Use a **1920×1080** viewport, light theme, and expanded sidebar.
+- Render the current buildable Vue code; APIs may be fulfilled by a local fabricated-data interceptor.
+- Wait for MapLibre, offline raster tiles, runtime markers, and static POIs before capturing the world map.
+- Chinese images use `zh-CN`; English images use `en-US`.
+- Resource grants require separate select-player, select-resource, and review screenshots.
+- Images must not contain real servers, players, accounts, tokens, webhooks, cookies, or local user paths.
 
-| File | Click target |
-|---|---|
-| `badges/dotnet-10.svg` | Official .NET site |
-| `badges/vue-3.svg` | Official Vue site |
-| `badges/paldefender-integrated.svg` | Official PalDefender GitHub repository |
-| `badges/maplibre-offline-map.svg` | Official MapLibre GL JS documentation |
-| `badges/windows-server.svg` | Microsoft Windows Server documentation |
-| `badges/license-gpl3.svg` | Repository-root `LICENSE` |
+## Approved demonstration values
 
-## Sanitization policy
+Reserved ranges `192.0.2.0/24` and `198.51.100.0/24`, `example.invalid`, fictional players such as Aster and Birch, fictional guilds, and `C:\PalOpsDemo\...` are acceptable. Blurring is not a substitute for removing the secret from the data source.
 
-Approved demonstration values include the reserved address `192.0.2.10`, `webhook.example.invalid`, fictional player names such as `Aster` and `Birch`, fictional guilds, and the non-user path `C:\PalOpsDemo\...`.
+## Technology badges and supporting assets
 
-Before replacing or adding an image, verify that it contains no:
-
-- real IP address, hostname, server port, or public endpoint;
-- Windows username, installation path, save path, or backup path;
-- player UID, SteamID, real guild name, or private chat content;
-- cookie, token, RCON password, or PalDefender key;
-- webhook secret, signed URL, QR code, or request header;
-- browser bookmark, notification, account avatar, or unrelated personal data.
-
-Blur is not a substitute for removing the underlying secret. Public screenshots must be regenerated with a dedicated demonstration profile and fabricated data.
+`badges/` stores the local SVG badges used by the READMEs. `map-icon-catalog.png` documents map category icons. Neither is a product UI screenshot.

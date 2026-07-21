@@ -1,1 +1,0 @@
-function e(e,t){return!t?.length||t.includes(e)}var t=t=>e(t,[`Owner`,`Administrator`,`Operator`]),n=e=>e===`Owner`;export{e as n,n as r,t};

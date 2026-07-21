@@ -4,7 +4,7 @@
 
 ## Runtime boundary
 
-PalOps Web 1.1.0 does **not** support server-side map package upload, import, signature validation, activation, rollback, health checks, or fixed-POI APIs. Those legacy backend paths were removed.
+PalOps Web 1.2.0 does **not** support server-side map package upload, import, signature validation, activation, rollback, health checks, or fixed-POI APIs. Those legacy backend paths were removed.
 
 The production map is shipped as part of the compiled Vue application:
 
@@ -27,7 +27,7 @@ The frontend owns:
 - Palpagos and World Tree layer descriptors;
 - parallel runtime/static startup with a style-scaffold pending-state flush, so data arriving while raster tiles load is rendered without waiting for a later refresh or checkbox toggle;
 - 682 local raster tiles;
-- 1,242 fixed POIs in each supported locale;
+- 1,251 fixed POIs in each supported locale;
 - categories, icons, aliases, search, visibility state, and layer bounds;
 - world-to-map coordinate transforms and runtime bounds checks;
 - browser-local exploration progress.

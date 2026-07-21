@@ -1,6 +1,7 @@
 using System.Globalization;
 using PalOps.Web.Events;
 using PalOps.Web.SaveGames.Binary;
+using PalOps.Web.SaveGames.Diff;
 using PalOps.Web.SaveGames.Index;
 using PalOps.Web.SaveGames.Projection;
 using PalOps.Web.Settings;
@@ -26,6 +27,8 @@ public sealed class SaveIndexingService : ISaveIndexingService, IDisposable
     private readonly IPlayerSaveProjector _playerProjector;
     private readonly IWorldSaveProjector _worldProjector;
     private readonly ISaveIndexRepository _repository;
+    private readonly ISaveChangeSnapshotProjector _changeSnapshotProjector;
+    private readonly ISaveChangeSnapshotRepository _changeSnapshotRepository;
     private readonly IPalOpsEventPublisher _eventPublisher;
     private readonly ILogger<SaveIndexingService> _logger;
     private readonly SemaphoreSlim _startGate = new(1, 1);
@@ -42,6 +45,8 @@ public sealed class SaveIndexingService : ISaveIndexingService, IDisposable
         IPlayerSaveProjector playerProjector,
         IWorldSaveProjector worldProjector,
         ISaveIndexRepository repository,
+        ISaveChangeSnapshotProjector changeSnapshotProjector,
+        ISaveChangeSnapshotRepository changeSnapshotRepository,
         IPalOpsEventPublisher eventPublisher,
         ILogger<SaveIndexingService> logger)
     {
@@ -53,6 +58,8 @@ public sealed class SaveIndexingService : ISaveIndexingService, IDisposable
         _playerProjector = playerProjector;
         _worldProjector = worldProjector;
         _repository = repository;
+        _changeSnapshotProjector = changeSnapshotProjector;
+        _changeSnapshotRepository = changeSnapshotRepository;
         _eventPublisher = eventPublisher;
         _logger = logger;
     }
@@ -189,6 +196,7 @@ public sealed class SaveIndexingService : ISaveIndexingService, IDisposable
 
             _progress.Report(SaveIndexState.WritingIndex, "writingIndex", 95);
             await _repository.PublishAsync(snapshot, cancellationToken);
+            await PublishChangeSnapshotBestEffortAsync(snapshot);
             _progress.Complete(snapshot.SnapshotId, SaveClock.BeijingNow());
             _logger.LogInformation(
                 "Save index {SnapshotId} completed with {Players} players, {Items} items and {Pals} pals.",
@@ -239,6 +247,29 @@ public sealed class SaveIndexingService : ISaveIndexingService, IDisposable
         finally
         {
             if (manifest is not null) TryDeleteSnapshot(manifest.SnapshotDirectory);
+        }
+    }
+
+    private async Task PublishChangeSnapshotBestEffortAsync(SaveIndexSnapshot snapshot)
+    {
+        try
+        {
+            await _changeSnapshotRepository.PublishAsync(
+                _changeSnapshotProjector.Project(snapshot),
+                CancellationToken.None);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Compact save change snapshot {SnapshotId} could not be published.", snapshot.SnapshotId);
+            await PublishBestEffortAsync(PalOpsEvent.Create(
+                "save-diff.snapshot.failed",
+                metadata: new Dictionary<string, object?>
+                {
+                    ["message"] = "存档差异快照写入失败。",
+                    ["snapshotId"] = snapshot.SnapshotId,
+                    ["worldId"] = snapshot.WorldId,
+                    ["error"] = ex.Message
+                }));
         }
     }
 

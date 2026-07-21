@@ -20,3 +20,5 @@ frontend-vue/public/map/tiles/world-tree/**/*.webp
 frontend-vue/public/map/tiles/**/*.part-*
 !frontend-vue/public/map/tiles/dataset.json
 !frontend-vue/public/map/tiles/.gitkeep
+
+.worktrees/

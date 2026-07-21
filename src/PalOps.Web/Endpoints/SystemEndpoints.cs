@@ -6,6 +6,7 @@ using PalOps.Web.Players;
 using PalOps.Web.SaveGames;
 using PalOps.Web.SaveGames.Index;
 using PalOps.Web.Settings;
+using PalOps.Web.Versioning;
 
 namespace PalOps.Web.Endpoints;
 
@@ -74,17 +75,19 @@ public static class SystemEndpoints
             return Results.Ok(new ApiResponse<IReadOnlyList<HealthComponentV1>>(service.Components, context.TraceIdentifier, []));
         });
 
-        group.MapGet("/version", (HttpContext context) =>
+        group.MapGet("/version", (
+            IApplicationVersionProvider versionProvider,
+            HttpContext context) =>
         {
-            var assembly = typeof(Program).Assembly.GetName();
+            var version = versionProvider.Get();
             var data = new
             {
-                application = assembly.Name,
-                version = assembly.Version?.ToString() ?? "0.0.0",
-                runtime = System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription,
-                operatingSystem = System.Runtime.InteropServices.RuntimeInformation.OSDescription,
-                architecture = System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture.ToString(),
-                buildTime = File.GetLastWriteTimeUtc(typeof(Program).Assembly.Location)
+                application = version.Application,
+                version = version.CurrentVersion,
+                runtime = version.Runtime,
+                operatingSystem = version.OperatingSystem,
+                architecture = version.Architecture,
+                buildTime = version.BuildTime
             };
             return Results.Ok(new ApiResponse<object>(data, context.TraceIdentifier, []));
         });

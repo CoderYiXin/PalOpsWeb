@@ -8,6 +8,7 @@ public interface ISaveIndexRepository
     Task PublishAsync(SaveIndexSnapshot snapshot, CancellationToken cancellationToken = default);
     Task RecordFailureAsync(SaveIndexFailure failure, CancellationToken cancellationToken = default);
     Task<SaveIndexRepositoryHistory> GetHistoryAsync(CancellationToken cancellationToken = default);
+    Task<IReadOnlyList<SaveIndexSnapshot>> GetRecentSnapshotsAsync(int limit, CancellationToken cancellationToken = default);
 }
 
 /// <summary>
@@ -167,6 +168,46 @@ public sealed class JsonSaveIndexRepository : ISaveIndexRepository
             }
 
             return new SaveIndexRepositoryHistory(entries, failures.OrderByDescending(x => x.FailedAt).ToArray());
+        }
+        finally
+        {
+            _gate.Release();
+        }
+    }
+
+    public async Task<IReadOnlyList<SaveIndexSnapshot>> GetRecentSnapshotsAsync(int limit, CancellationToken cancellationToken = default)
+    {
+        var safeLimit = Math.Clamp(limit, 1, 100);
+        await _gate.WaitAsync(cancellationToken);
+        try
+        {
+            var snapshots = new List<SaveIndexSnapshot>(safeLimit);
+            foreach (var path in Directory.EnumerateFiles(_snapshotsRoot, "*.json", SearchOption.TopDirectoryOnly)
+                         .OrderByDescending(File.GetLastWriteTimeUtc))
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                try
+                {
+                    await using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite, 128 * 1024, true);
+                    var snapshot = await JsonSerializer.DeserializeAsync<SaveIndexSnapshot>(stream, JsonOptions, cancellationToken);
+                    if (snapshot is null) continue;
+                    snapshots.Add(NormalizeSnapshot(snapshot));
+                    if (snapshots.Count >= safeLimit) break;
+                }
+                catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+                {
+                    throw;
+                }
+                catch (Exception)
+                {
+                    // One damaged or inaccessible historical index must not block backfill of the remaining snapshots.
+                }
+            }
+            return snapshots
+                .OrderByDescending(snapshot => snapshot.ParsedAt)
+                .ThenBy(snapshot => snapshot.SnapshotId, StringComparer.OrdinalIgnoreCase)
+                .Take(safeLimit)
+                .ToArray();
         }
         finally
         {

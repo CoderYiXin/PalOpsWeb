@@ -5,6 +5,7 @@ using PalOps.Web.External;
 using PalOps.Web.Grants;
 using PalOps.Web.Rcon;
 using PalOps.Web.SaveGames;
+using PalOps.Web.SaveGames.Diff;
 
 namespace PalOps.Web.Infrastructure;
 
@@ -50,6 +51,7 @@ public sealed class ApiExceptionMiddleware(RequestDelegate next, ILogger<ApiExce
         {
             PalOpsApiException ex => (ex.StatusCode, ex.Code, ex.Message, null, ex.Detail, ex.SuggestedAction),
             GrantValidationException ex => (StatusCodes.Status400BadRequest, ex.Code, ex.Message, null, null, null),
+            SaveDiffValidationException ex => (StatusCodes.Status422UnprocessableEntity, ex.Code, ex.Message, null, null, null),
             AntiforgeryValidationException => (StatusCodes.Status400BadRequest, "CSRF_VALIDATION_FAILED", "安全校验失败，请刷新页面后重试。", null, null, null),
             KeyNotFoundException ex => (StatusCodes.Status404NotFound, "NOT_FOUND", ex.Message, null, null, null),
             FileNotFoundException ex => (StatusCodes.Status404NotFound, "FILE_NOT_FOUND", ex.Message, new { traceId }, null, null),

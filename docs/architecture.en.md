@@ -74,7 +74,7 @@ Player-save files contribute identity, platform diagnostics, transforms, last-on
 
 ## Coordinate placement and map layers
 
-Fixed map assets are a frontend-only boundary. The release tree contains both raster layer descriptors, 682 local tiles, marker icons, category metadata, bounds, coordinate transforms, and three cacheable locale POI JSON files with 1,242 records each. The POI arrays are not synchronously imported into the map route chunk. The backend does not scan tiles, validate a basemap, load fixed POIs, import map packages, or project runtime entities.
+Fixed map assets are a frontend-only boundary. The release tree contains both raster layer descriptors, 682 local tiles, marker icons, category metadata, bounds, coordinate transforms, and three cacheable locale POI JSON files with 1,251 records each. The POI arrays are not synchronously imported into the map route chunk. The backend does not scan tiles, validate a basemap, load fixed POIs, import map packages, or project runtime entities.
 
 Runtime map data follows this path:
 
@@ -258,7 +258,7 @@ Workbench idle preload
 
 Adding the raster source after MapLibre's initial `load` can temporarily make `map.isStyleLoaded()` false. This state describes outstanding raster/style work, not whether existing GeoJSON sources are writable. Map update functions therefore gate on the application's `styleScaffoldReady` flag and retain early updates in `pendingMapStateFlush`; they never discard runtime entities or default POIs during tile loading. `styledata` performs a bounded retry only when pending state exists.
 
-The 1,242 fixed POIs are stored as three locale-aligned frontend JSON files and rendered through one local GeoJSON source. Runtime and static acquisition run in parallel. Only currently visible fixed-category layers are created during first entry, while hidden categories remain lazy. Only players, guild bases, and custom markers are loaded from authenticated runtime APIs into separate GeoJSON sources. `WorldMapPage` displays localized engine/runtime/static milestones until both the server markers and the default-selected fixed markers have produced a render frame.
+The 1,251 fixed POIs are stored as three locale-aligned frontend JSON files and rendered through one local GeoJSON source. Runtime and static acquisition run in parallel. Only currently visible fixed-category layers are created during first entry, while hidden categories remain lazy. Only players, guild bases, and custom markers are loaded from authenticated runtime APIs into separate GeoJSON sources. `WorldMapPage` displays localized engine/runtime/static milestones until both the server markers and the default-selected fixed markers have produced a render frame.
 
 Palpagos and World Tree keep independent viewports and visible-layer preferences. Simplified Chinese, English, and Japanese switch local names and search aliases without rebuilding the whole page. Restore Defaults enables all server runtime layers plus Fast Travel and Towers; all other fixed categories remain available but disabled to control density. Map-data attribution and license information is displayed under About System.
 

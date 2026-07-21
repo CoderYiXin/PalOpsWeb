@@ -2,111 +2,98 @@
 
 # Release Checklist
 
-This checklist applies to the supported Windows `win-x64` PalOps Web release.
+This checklist applies to the PalOps Web **1.2.0** GitHub source publication and Windows `win-x64` release.
 
 ## 1. Clean source tree
 
-- No files exist under `src/PalOps.Web/data/` except `.gitkeep`.
-- No `.sav`, `.db`, `.sqlite`, `.pdb`, user settings, passwords, tokens, cookies, or signed webhook URLs are present.
-- `frontend-vue/package-lock.json` matches `frontend-vue/package.json`.
-- Version metadata in `frontend-vue/package.json`, `PalOps.Web.csproj`, About System, release assets, and documentation is `1.1.0`.
-- All screenshots use fabricated server, account, player, guild, and webhook data.
+- [ ] `README.md` is the Chinese project homepage and `README.en.md` is the matching English homepage.
+- [ ] The Chinese README references only `docs/images/zh-CN/`; the English README references only `docs/images/en-US/`.
+- [ ] Each locale contains 27 product screenshots (54 total), all **1920×1080 WebP**, rendered from the current Vue UI with fabricated data.
+- [ ] Public `docs/*.md` files have matching `.en.md` counterparts.
+- [ ] Historical design drafts, internal implementation plans, one-off defect reports, packaging audits, and temporary capture scripts are absent.
+- [ ] `node_modules`, `bin`, `obj`, `dist`, `.git`, caches, runtime data, logs, and secrets are absent.
+- [ ] Version metadata, documentation, publish commands, and release tag are `1.2.0`.
+- [ ] `.github/workflows/build.yml` passes on GitHub Actions.
 
-## 2. Required toolchain
-
-- .NET 10 SDK
-- Node.js 22 LTS or newer
-- npm supplied with Node.js
-- PowerShell 7 recommended; Windows PowerShell 5.1 remains acceptable when the scripts pass
-
-## 3. Source verification
+## 2. Canonical build
 
 ```powershell
 .\scripts\build.ps1
 ```
 
-The command must complete all of the following:
+The command must complete:
 
-1. `npm ci`
-2. Vue TypeScript checking
-3. Vue production build into `src/PalOps.Web/wwwroot`
-4. `npm audit --audit-level=high`
-5. `.NET restore` and Release build
-6. catalog verification
-7. map-definition verification
-8. documentation verification
-9. release-tree secret and file-type verification
+1. lockfile-based dependency installation;
+2. frontend feature and publication contracts;
+3. Vue TypeScript checking;
+4. Vite production compilation;
+5. npm high-severity auditing;
+6. .NET 10 restore/build;
+7. catalog, map, documentation, and release-tree verification.
 
-## 4. Runtime smoke matrix
+## 3. Runtime smoke matrix
 
 | Area | Required result |
 |---|---|
-| Startup | Console shows version, environment, data directory, save directory, listening URLs, and startup completion without secrets. |
-| Authentication | Owner, Administrator, Operator, Auditor, and Viewer retain their intended permissions. |
-| Runtime discovery | A local save path discovers the expected PalServer root and presents script/EXE candidates for confirmation. |
-| Start safety | Repeated Start requests do not create a second managed PalServer instance. |
-| Normal stop | The current PID identity is verified; `Shutdown 1 Server will shut down in 1 seconds` is accepted; the operation dialog displays a live 10-to-1 second countdown; remaining verified engine PID, launcher, and race-created Shipping residue are removed; final state is Stopped. |
-| Force stop | Only Owner can invoke it after typed confirmation; the action is audited. |
-| Metrics and logs | System and PalServer metrics render; the default presentation/live-status interval is 10 seconds; `manual` produces no periodic metric snapshots; successful typed-HttpClient lifecycle records do not flood console or System Logs, while warnings/errors remain visible. |
-| Real-time events | Player presence, operations, backups, and alerts continue immediately in every refresh mode. |
-| PalDefender | Manual version check works; automatic prompt appears once per browser per release tag; installation, REST token, firewall and rollback checks follow [`paldefender-deployment.md`](paldefender-deployment.md). |
-| Webhooks | Test delivery, encrypted secrets, retry history, and SSRF restrictions work. |
-| Save projection | Teammate bases appear or are retained as unresolved instead of being discarded. |
-| Coordinates | The frontend transform resolves `158474.03, -60787.92, -832.60` to Palpagos near `-476.66, 615.17`; invalid coordinates are not rendered outside the map, and no backend projection/health endpoint is called. |
-| Map | `/map` stays inside `WorkbenchShell`; server entities render in the first runtime frame before fixed-POI fetch/parse/layer creation; 1,242 frontend-local POIs remain available across 30 nonempty categories; `zh-CN` uses Chinese labels; Restore Defaults selects only server data, Fast Travel, and Towers. |
-| Themes | Light is default; dark preference survives reload. |
-| Viewports | Normal pages are usable at 1366×768 and 1920×1080; map remains full-screen. |
+| Startup | Console reports version, environment, data/save directories, and listening URLs without secrets. |
+| Authorization | Owner, Administrator, Operator, Auditor, and Viewer permissions match navigation; backend policy cannot be bypassed. |
+| Overview/statistics | Process, host, online-player, FPS, version, save, and historical trend data render correctly. |
+| Players/guilds | Live/indexed players, guild membership, base ownership evidence, and map navigation work. |
+| World map | Palpagos / World Tree offline maps, 94 Fast Travel markers, live players, and bases render correctly. |
+| Map refresh | Player refresh supports 1/2/3/5/10/15/30 seconds with a 3-second default; bases/custom markers remain on an independent 30-second schedule. |
+| Configuration | Structured/raw editing, validation, diff, backup, atomic persistence, and safe restart work. |
+| Maintenance/Crash Guard | Maintenance orchestration, recovery, health verification, and circuit status are correct. |
+| Normal stop | `Shutdown 1` succeeds, a 10-to-1 countdown is shown, verified residual PIDs are cleaned up, and final state is Stopped. |
+| Force stop | Owner-only, audited, with process identity revalidation. |
+| RCON | High-risk commands require acknowledgement; formatting and response history are correct. |
+| Saves | Indexing, backup, restore preflight, and differences remain protected; failures retain the last good index. |
+| Player discipline | Whitelist, bans, identities, violations, and kick history are complete; UserId validation blocks incorrect writes. |
+| Plugins/mods | Inventory, versions, dependencies, compatibility, backups, and rollback information are available. |
+| Notifications | Channel tests, templates, retry, and delivery history work with secrets redacted. |
+| Themes/viewports | Light is default, dark persists, and 1366×768 plus 1920×1080 are usable. |
 
-### PalDefender configuration manager
+## 4. World-map checks
 
-- [ ] List/read succeeds for the allowlisted PalDefender files on a non-production server.
-- [ ] Viewer/Auditor cannot mutate configuration; Owner/Administrator can validate and save.
-- [ ] Invalid JSON, wrong field types, path traversal, unknown directories, reparse points, and files over 2 MiB are rejected.
-- [ ] A stale SHA-256 value prevents overwriting an externally modified file.
-- [ ] Successful save creates a timestamped backup and the saved file can be parsed again.
-- [ ] Audit records contain metadata but no configuration body or secret values.
-- [ ] `reloadcfg` or restart applies the test change, then the original configuration is restored.
+- [ ] Palpagos and World Tree configuration and raster tiles are present.
+- [ ] All three locale indexes contain 1,251 POIs and 30 nonempty static categories.
+- [ ] The local Fast Travel layer contains 94 records and explicitly shows the gap to 149 known upstream records.
+- [ ] Restore Defaults enables only server data, Fast Travel, and Towers.
+- [ ] Player markers render above fixed POIs while a co-located Fast Travel marker remains discoverable.
+- [ ] Runtime entities and default POIs render after the layer scaffold is ready even when raster tiles are throttled.
+- [ ] The backend does not enumerate, hash, or health-check raster tiles.
 
-### World-map runtime fast path
+## 5. PalDefender checks
 
-- [ ] After login, the workbench preloads the map route during an idle period without navigating.
-- [ ] Entering `/map` starts guild-base/custom-marker and player requests during setup, before MapLibre load completion.
-- [ ] Throttle/offline-test raster tiles and confirm runtime entities plus default-selected fixed markers still appear without refreshing or toggling a checkbox.
-- [ ] Confirm the first-entry loading overlay advances through engine, server-data, server-marker, static-data, and static-marker stages, then closes only after render acknowledgements.
-- [ ] Guild bases and custom markers appear even when the player/PalDefender endpoint is delayed.
-- [ ] Navigating from a guild base places the known coordinate immediately, focuses it after activation, and reuses prefetched/in-flight requests.
-- [ ] Leave `/map`, return through the sidebar, and confirm the retained MapLibre instance resizes and displays cached/runtime data without rebuilding the complete workspace.
-- [ ] `/api/v1/map/entities` runtime requests do not enumerate or hash raster tiles.
-- [ ] The map canvas no longer renders the removed English game-imagery warning.
+- [ ] Installation directory and DLL placement are correct.
+- [ ] REST uses a real token rather than `TokenExample.json`.
+- [ ] Whitelist operations prefer `whitelist_add` / `whitelist_remove` and verify `WhiteList.json`.
+- [ ] Strict UserId validation prevents player names and save PlayerUID values from being written by mistake.
+- [ ] Path allowlists, JSON types, file size, traversal, and reparse-point checks are effective.
+- [ ] A stale SHA-256 blocks overwrite of external changes.
+- [ ] Successful persistence creates a parseable backup.
+- [ ] Audit records contain no configuration bodies or secrets.
 
-### HTTP logging and polling
-
-- [ ] With all upstream REST endpoints healthy, the console and System Logs do not continuously record `System.Net.Http.HttpClient.*` request-start/request-end information lines.
-- [ ] A simulated HTTP timeout or 500 response remains visible as Warning/Error with useful endpoint and trace context.
-- [ ] Default browser/runtime status delivery uses 10 seconds and does not query the player list when `/metrics` already provides `currentplayernum`.
-
-## 5. Strict publish
-
-Both offline map layers must be present before packaging:
+## 6. Strict publish
 
 ```powershell
-.\scripts\publish-win-x64.ps1 -Version 1.1.0
+.\scripts\fetch-map-tiles.ps1 -Layer all
+.\scripts\publish-win-x64.ps1 -Version 1.2.0
 ```
 
 Expected outputs:
 
-- `artifacts/palops-web-1.1.0-win-x64/`
-- `artifacts/palops-web-1.1.0-win-x64.zip`
-- `artifacts/palops-web-1.1.0-win-x64.sha256`
+- `artifacts/palops-web-1.2.0-win-x64/`
+- `artifacts/palops-web-1.2.0-win-x64.zip`
+- `artifacts/palops-web-1.2.0-win-x64.sha256`
 
-## 6. Archive inspection
-
-The extracted archive must start with `start.cmd`, preserve all required notices, contain current `wwwroot`, and contain no runtime `data` files. Verify the ZIP hash against the adjacent `.sha256` file before upload.
+The extracted archive must start with `start.cmd`, contain the current `wwwroot`, preserve required notices, and contain no runtime data or secrets.
 
 ## 7. GitHub release
 
-- Release tag for this plan: `v1.1.0`
-- Attach the ZIP and its `.sha256` file.
-- Paste the matching `CHANGELOG.md` section into the release notes.
-- State that lifecycle control is Windows-local-only.
-- State that operators should back up the save and data directories before upgrading.
+- [ ] Create tag `v1.2.0`.
+- [ ] Attach the ZIP and adjacent SHA-256 file.
+- [ ] Use the 1.2.0 section of `CHANGELOG.md` as the release-note basis.
+- [ ] State that lifecycle control is Windows-local-only.
+- [ ] Require a backup of saves, PalOps data, and PalDefender configuration before upgrade.
+
+See [PalDefender deployment](paldefender-deployment.en.md) for the detailed integration checklist.

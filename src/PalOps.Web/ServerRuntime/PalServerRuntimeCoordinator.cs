@@ -193,7 +193,7 @@ public sealed class PalServerRuntimeCoordinator(
             logger.LogWarning(ex, "Failed to write unexpected-exit audit record.");
         }
         logger.LogError("PalServer process {ProcessId} exited unexpectedly.", previous.Process.ProcessId);
-        PublishRuntimeEvent("server.exited-unexpectedly", "error", operationId, "unexpected-exit", "PALSERVER_EXITED_UNEXPECTEDLY");
+        PublishRuntimeEvent("server.exited-unexpectedly", "error", operationId, "unexpected-exit", "PALSERVER_EXITED_UNEXPECTEDLY", previous.Process.ProcessId, previous.Process.ExecutablePath);
     }
 
     public void ReportMonitorFailure(Exception exception)
@@ -476,7 +476,14 @@ public sealed class PalServerRuntimeCoordinator(
         PublishRuntimeEvent(eventType, severity, operation.OperationId, operation.Type, errorCode);
     }
 
-    private void PublishRuntimeEvent(string eventType, string severity, string? operationId, string? operationType, string? errorCode)
+    private void PublishRuntimeEvent(
+        string eventType,
+        string severity,
+        string? operationId,
+        string? operationType,
+        string? errorCode,
+        int? processIdOverride = null,
+        string? executablePathOverride = null)
     {
         var snapshot = Current;
         _ = eventPublisher.PublishAsync(PalOpsEvent.Create(
@@ -485,8 +492,8 @@ public sealed class PalServerRuntimeCoordinator(
             server: new Dictionary<string, object?>
             {
                 ["state"] = snapshot.State,
-                ["processId"] = snapshot.Process.ProcessId,
-                ["executablePath"] = snapshot.Process.ExecutablePath,
+                ["processId"] = processIdOverride ?? snapshot.Process.ProcessId,
+                ["executablePath"] = executablePathOverride ?? snapshot.Process.ExecutablePath,
                 ["operationId"] = operationId
             },
             metadata: new Dictionary<string, object?>

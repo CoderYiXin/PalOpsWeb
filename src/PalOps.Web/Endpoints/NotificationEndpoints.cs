@@ -30,6 +30,15 @@ public static class NotificationEndpoints
         new("grant.completed", "发放完成", "管理事件"),
         new("grant.failed", "发放失败", "管理事件"),
         new("paldefender.update-available", "防护更新", "管理事件"),
+        new("palops.update-available", "平台更新", "管理事件"),
+        new("maintenance.completed", "维护完成", "维护事件"),
+        new("maintenance.failed", "维护失败", "维护事件"),
+        new("maintenance.cancelled", "维护取消", "维护事件"),
+        new("maintenance.interrupted", "维护中断", "维护事件"),
+        new("maintenance.crash-guard.circuit-opened", "崩溃守护熔断", "维护事件"),
+        new("maintenance.crash-guard.restarting", "崩溃守护正在重启", "维护事件"),
+        new("maintenance.crash-guard.recovered", "崩溃守护恢复成功", "维护事件"),
+        new("maintenance.crash-guard.failed", "崩溃守护恢复失败", "维护事件"),
         new("webhook.delivery.failed", "推送失败", "管理事件"),
         new("system.cpu.high", "CPU过高", "系统告警"),
         new("system.cpu.recovered", "CPU恢复", "系统告警"),
@@ -228,7 +237,7 @@ public static class NotificationEndpoints
             ["message"] = isTest ? "这是一条 PalOps 测试通知。" : "模板预览消息。",
             ["isTest"] = isTest,
             ["currentVersion"] = "1.0.0",
-            ["latestVersion"] = "1.1.0",
+            ["latestVersion"] = "1.2.0",
             ["releaseUrl"] = "https://github.com/Ultimeit/PalDefender/releases"
         });
 

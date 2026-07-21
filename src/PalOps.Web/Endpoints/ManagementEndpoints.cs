@@ -5,6 +5,7 @@ using PalOps.Web.External;
 using PalOps.Web.Events;
 using PalOps.Web.Infrastructure;
 using PalOps.Web.Management;
+using PalOps.Web.PlayerDiscipline;
 using PalOps.Web.Rcon;
 using PalOps.Web.Security;
 using PalOps.Web.Settings;
@@ -70,6 +71,7 @@ public static class ManagementEndpoints
             KickRequest request,
             HttpContext context,
             IPalDefenderApiClient api,
+            IPlayerDisciplineService disciplineService,
             IPalOpsEventPublisher eventPublisher,
             IAuditLogService audit,
             ILoggerFactory loggerFactory,
@@ -78,6 +80,21 @@ public static class ManagementEndpoints
             var player = EndpointHelpers.ValidatePlayerIdentifier(request.PlayerIdentifier);
             var reason = string.IsNullOrWhiteSpace(request.Reason) ? null : ValidateMessage(request.Reason, 300);
             await api.KickAsync(player, reason, cancellationToken);
+            try
+            {
+                await disciplineService.RecordKickAsync(
+                    userId: player,
+                    displayName: null,
+                    reason: reason,
+                    actor: context.User.Identity?.Name ?? "unknown",
+                    source: "palops",
+                    cancellationToken: CancellationToken.None);
+            }
+            catch (Exception ex)
+            {
+                loggerFactory.CreateLogger("PalOps.PlayerDiscipline")
+                    .LogWarning(ex, "Kick record for player {Player} could not be persisted.", player);
+            }
             await audit.WriteBestEffortAsync(
                 loggerFactory.CreateLogger("PalOps.Audit"),
                 "management.kick",
@@ -97,7 +114,9 @@ public static class ManagementEndpoints
                     metadata: new Dictionary<string, object?>
                     {
                         ["message"] = $"玩家 {player} 已被管理员踢出。",
-                        ["reason"] = reason
+                        ["reason"] = reason,
+                        ["actor"] = context.User.Identity?.Name ?? "unknown",
+                        ["source"] = "palops"
                     }), CancellationToken.None);
             }
             catch (Exception ex)

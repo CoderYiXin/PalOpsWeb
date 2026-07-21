@@ -24,7 +24,7 @@ Do not expose PalOps management, Palworld REST, PalDefender, or RCON ports direc
 Use the official `win-x64` ZIP and verify its adjacent SHA-256 value before extraction. For a source build, use the canonical commands in [`build.md`](build.md) and publish only through:
 
 ```powershell
-.\scripts\publish-win-x64.ps1 -Version 1.1.0
+.\scripts\publish-win-x64.ps1 -Version 1.2.0
 ```
 
 ## First deployment
@@ -108,11 +108,11 @@ Cookies, CSRF protection, and SignalR authentication assume one trusted origin. 
 4. Extract the new release into a new directory.
 5. Copy the previous `data` directory and Data Protection keys into the corresponding configured locations.
 6. Start the new release and inspect console startup diagnostics.
-7. Confirm login, save indexing, runtime identity, Webhook channel state, both raster maps, the 1,242 frontend-local fixed POIs, Chinese labels, default layer selection, and runtime player/base markers before removing the old release directory.
+7. Confirm login, save indexing, runtime identity, Webhook channel state, both raster maps, the 1,251 frontend-local fixed POIs, Chinese labels, default layer selection, and runtime player/base markers before removing the old release directory.
 8. Roll back by stopping the new release and starting the old directory with the untouched backups.
 
 Do not overwrite the only known-good installation in place. Keep the previous release directory until the smoke matrix is complete.
 
 ## Release verification
 
-Run the full checklist in [`release-checklist.md`](release-checklist.md). The strict publication gate requires both Palpagos and World Tree local raster layers. Fixed POIs, coordinate transforms, visibility state, and exploration progress are frontend-local in version 1.1.0; preserving the browser profile retains local exploration state. There is no backend map package, activation record, tile health scan, or map import directory to migrate. Server FPS must display `暂不支持` when no configured authoritative endpoint exposes an FPS field.
+Run the full checklist in [`release-checklist.md`](release-checklist.md). The strict publication gate requires both Palpagos and World Tree local raster layers. Fixed POIs, coordinate transforms, visibility state, and exploration progress are frontend-local in version 1.2.0; preserving the browser profile retains local exploration state. There is no backend map package, activation record, tile health scan, or map import directory to migrate. Server FPS must display `暂不支持` when no configured authoritative endpoint exposes an FPS field.

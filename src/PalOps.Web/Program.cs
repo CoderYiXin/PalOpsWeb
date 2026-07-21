@@ -25,6 +25,7 @@ using PalOps.Web.Security;
 using PalOps.Web.Settings;
 using PalOps.Web.SaveGames;
 using PalOps.Web.SaveGames.Binary;
+using PalOps.Web.SaveGames.Diff;
 using PalOps.Web.SaveGames.Index;
 using PalOps.Web.SaveGames.Projection;
 using PalOps.Web.SaveGames.RawData;
@@ -32,6 +33,11 @@ using PalOps.Web.ServerRuntime;
 using PalOps.Web.Notifications;
 using PalOps.Web.Notifications.Providers;
 using PalOps.Web.PalDefender.Configuration;
+using PalOps.Web.PalworldConfiguration;
+using PalOps.Web.PlayerDiscipline;
+using PalOps.Web.PluginManagement;
+using PalOps.Web.Maintenance;
+using PalOps.Web.Statistics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -177,9 +183,30 @@ builder.Services.AddSingleton<IPalServerMetricsCollector, PalServerMetricsCollec
 builder.Services.AddSingleton<IPalServerLiveStatusCollector, PalServerLiveStatusCollector>();
 builder.Services.AddSingleton<IServerOperationHistoryStore, ServerOperationHistoryStore>();
 builder.Services.AddSingleton<IPalServerRuntimeCoordinator, PalServerRuntimeCoordinator>();
+builder.Services.AddSingleton<IStatisticsRepository, JsonlStatisticsRepository>();
+builder.Services.AddSingleton<IStatisticsStateStore, StatisticsStateStore>();
+builder.Services.AddSingleton<StatisticsRecorder>();
+builder.Services.AddSingleton<IStatisticsRecorder>(services => services.GetRequiredService<StatisticsRecorder>());
+builder.Services.AddSingleton<IStatisticsQueryService, StatisticsQueryService>();
+builder.Services.AddSingleton<IPlayerDisciplineRepository, JsonPlayerDisciplineRepository>();
+builder.Services.AddSingleton<IPalDefenderAccessControlReader, PalDefenderAccessControlReader>();
+builder.Services.AddSingleton<IPalDefenderAccessControlWriter, PalDefenderAccessControlWriter>();
+builder.Services.AddSingleton<IPlayerDisciplineService, PlayerDisciplineService>();
+builder.Services.AddHostedService<TemporaryBanExpiryService>();
+builder.Services.AddHostedService<PlayerIdentitySyncService>();
+builder.Services.AddSingleton<IMaintenanceRepository, JsonMaintenanceRepository>();
+builder.Services.AddSingleton<MaintenanceValidator>();
+builder.Services.AddSingleton<CrashGuardEvaluator>();
+builder.Services.AddSingleton<IMaintenanceScriptRunner, MaintenanceScriptRunner>();
+builder.Services.AddSingleton<IMaintenanceActivityGate, MaintenanceActivityGate>();
+builder.Services.AddSingleton<IServerOperationWaiter, ServerOperationWaiter>();
+builder.Services.AddSingleton<IMaintenanceExecutionService, MaintenanceExecutionService>();
+builder.Services.AddHostedService<CrashGuardService>();
 builder.Services.AddHostedService<PalServerRuntimeMonitorService>();
+builder.Services.AddHostedService<MaintenanceSchedulerService>();
 builder.Services.AddHostedService<RealtimeSnapshotDispatcherService>();
 builder.Services.AddHostedService<PlayerPresenceMonitorService>();
+builder.Services.AddHostedService<StatisticsCollectorService>();
 builder.Services.AddSingleton<ISavePathGuard, SavePathGuard>();
 builder.Services.AddSingleton<ISaveSourceResolver, SaveSourceResolver>();
 builder.Services.AddSingleton<IStableSaveSnapshotService, StableSaveSnapshotService>();
@@ -190,6 +217,16 @@ builder.Services.AddSingleton<IPalworldRawDataDecoder, PalworldRawDataDecoder>()
 builder.Services.AddSingleton<IPlayerSaveProjector, PlayerSaveProjector>();
 builder.Services.AddSingleton<IGuildBaseReconciliationService, GuildBaseReconciliationService>();
 builder.Services.AddSingleton<IWorldSaveProjector, WorldSaveProjector>();
+builder.Services.AddSingleton<ISaveChangeSnapshotProjector, SaveChangeSnapshotProjector>();
+builder.Services.AddSingleton<ISaveChangeSnapshotRepository>(services =>
+{
+    var environment = services.GetRequiredService<IHostEnvironment>();
+    var options = services.GetRequiredService<Microsoft.Extensions.Options.IOptions<AppRuntimeOptions>>().Value;
+    var root = Path.IsPathRooted(options.DataDirectory)
+        ? options.DataDirectory
+        : Path.Combine(environment.ContentRootPath, options.DataDirectory);
+    return new JsonSaveChangeSnapshotRepository(Path.Combine(root, "save-diff"));
+});
 builder.Services.AddSingleton<ISaveIndexRepository>(services =>
 {
     var environment = services.GetRequiredService<IHostEnvironment>();
@@ -200,7 +237,10 @@ builder.Services.AddSingleton<ISaveIndexRepository>(services =>
     return new JsonSaveIndexRepository(Path.Combine(root, "save-index"));
 });
 builder.Services.AddSingleton<ISaveIndexingService, SaveIndexingService>();
+builder.Services.AddSingleton<ISaveDiffService, SaveDiffService>();
+builder.Services.AddSingleton<ISaveDiffReportWriter, SaveDiffReportWriter>();
 builder.Services.AddHostedService<SaveIndexMonitorService>();
+builder.Services.AddHostedService<SaveDiffBackfillService>();
 builder.Services.AddHostedService<AutomationSchedulerService>();
 builder.Services.AddSingleton<SystemHealthService>();
 builder.Services.AddSingleton<ISystemHealthService>(services => services.GetRequiredService<SystemHealthService>());
@@ -216,6 +256,9 @@ builder.Services.AddSingleton<WebhookDispatcherService>();
 builder.Services.AddSingleton<IWebhookDeliveryService>(services => services.GetRequiredService<WebhookDispatcherService>());
 builder.Services.AddHostedService<WebhookDispatcherService>(services => services.GetRequiredService<WebhookDispatcherService>());
 
+builder.Services.AddSingleton<IApplicationVersionProvider, ApplicationVersionProvider>();
+builder.Services.AddSingleton(TimeProvider.System);
+
 builder.Services.AddHttpClient("webhooks")
     .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
     {
@@ -230,10 +273,42 @@ builder.Services.AddHttpClient<IPalDefenderReleaseClient, PalDefenderReleaseClie
     client.BaseAddress = new Uri("https://api.github.com/");
     client.Timeout = TimeSpan.FromSeconds(12);
 });
+builder.Services.AddHttpClient<IPalOpsReleaseClient, PalOpsReleaseClient>(client =>
+{
+    client.BaseAddress = new Uri("https://api.github.com/");
+    client.Timeout = TimeSpan.FromSeconds(12);
+})
+.ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
+{
+    AllowAutoRedirect = false,
+    UseCookies = false,
+    AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate | DecompressionMethods.Brotli
+});
+builder.Services.AddHttpClient<IPluginReleaseClient, PluginReleaseClient>(client =>
+{
+    client.BaseAddress = new Uri("https://api.github.com/");
+    client.Timeout = TimeSpan.FromSeconds(15);
+})
+.ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
+{
+    AllowAutoRedirect = false,
+    UseCookies = false,
+    AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate | DecompressionMethods.Brotli
+});
+builder.Services.AddSingleton<IPlatformVersionService, PlatformVersionService>();
 builder.Services.AddSingleton<IPalDefenderVersionService, PalDefenderVersionService>();
 builder.Services.AddSingleton<IPalDefenderConfigurationPathResolver, PalDefenderConfigurationPathResolver>();
 builder.Services.AddSingleton<IPalDefenderConfigurationValidator, PalDefenderConfigurationValidator>();
 builder.Services.AddSingleton<IPalDefenderConfigurationService, PalDefenderConfigurationService>();
+builder.Services.AddSingleton(PalworldConfigurationMetadata.Create());
+builder.Services.AddSingleton<PalworldSettingsIniCodec>();
+builder.Services.AddSingleton<PalworldConfigurationValidator>();
+builder.Services.AddSingleton<IPalworldConfigurationPathResolver, PalworldConfigurationPathResolver>();
+builder.Services.AddSingleton<IPalworldConfigurationService, PalworldConfigurationService>();
+builder.Services.AddSingleton<IPluginManagementPathResolver, PluginManagementPathResolver>();
+builder.Services.AddSingleton<IPluginManagementRepository, PluginManagementRepository>();
+builder.Services.AddSingleton<IPluginInventoryScanner, PluginInventoryScanner>();
+builder.Services.AddSingleton<IPluginPackageService, PluginPackageService>();
 
 var app = builder.Build();
 
@@ -283,6 +358,7 @@ app.MapPlayerEndpoints();
 app.MapPlayerV1Endpoints();
 app.MapSaveGameEndpoints();
 app.MapSystemEndpoints();
+app.MapPlatformVersionEndpoints();
 app.MapGuildEndpoints();
 app.MapMapEndpoints();
 app.MapGrantEndpoints();
@@ -290,11 +366,17 @@ app.MapCatalogEndpoints();
 app.MapManagementEndpoints();
 app.MapPalDefenderVersionEndpoints();
 app.MapPalDefenderConfigurationEndpoints();
+app.MapPalworldConfigurationEndpoints();
 app.MapNotificationEndpoints();
 app.MapRconEndpoints();
 app.MapServerRuntimeEndpoints();
 app.MapBackupEndpoints();
 app.MapAutomationEndpoints();
+app.MapMaintenanceEndpoints();
+app.MapStatisticsEndpoints();
+app.MapSaveDiffEndpoints();
+app.MapPlayerDisciplineEndpoints();
+app.MapPluginManagementEndpoints();
 app.MapSystemLogEndpoints();
 app.MapUserEndpoints();
 app.MapAuditEndpoints();

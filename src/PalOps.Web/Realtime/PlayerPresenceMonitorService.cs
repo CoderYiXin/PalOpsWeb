@@ -1,6 +1,7 @@
 using PalOps.Web.Contracts;
 using PalOps.Web.Events;
 using PalOps.Web.Players;
+using PalOps.Web.Statistics;
 
 namespace PalOps.Web.Realtime;
 
@@ -8,6 +9,7 @@ public sealed class PlayerPresenceMonitorService(
     IServiceScopeFactory scopeFactory,
     IPalOpsEventBus eventBus,
     IPalOpsEventPublisher publisher,
+    IStatisticsRecorder statisticsRecorder,
     ILogger<PlayerPresenceMonitorService> logger) : BackgroundService
 {
     private IReadOnlyDictionary<string, PlayerResponse>? _baseline;
@@ -43,6 +45,10 @@ public sealed class PlayerPresenceMonitorService(
                 var current = players
                     .GroupBy(Key, StringComparer.OrdinalIgnoreCase)
                     .ToDictionary(group => group.Key, group => group.First(), StringComparer.OrdinalIgnoreCase);
+                await statisticsRecorder.RecordPlayerPresenceAsync(
+                    current.Values.ToArray(),
+                    DateTimeOffset.UtcNow,
+                    stoppingToken);
 
                 if (_baseline is null || Interlocked.Exchange(ref _resetBaseline, 0) == 1)
                 {

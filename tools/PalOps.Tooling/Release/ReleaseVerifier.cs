@@ -261,7 +261,7 @@ public static partial class ReleaseVerifier
     private static partial Regex AuthorizationPattern();
 
     [GeneratedRegex(
-        @"(?i)(adminpassword|rconpassword|password|token|secret|apikey)\s*[:=]\s*[""']([^""']+)[""']")]
+        @"(?i)(?<![\w-])[""']?(adminpassword|rconpassword|password|token|secret|apikey)[""']?(?![\w-])\s*[:=]\s*[""']([^""']+)[""']")]
     private static partial Regex AssignmentPattern();
 
     [GeneratedRegex(@"(?im)^\s*(?:python|python3)(?:\.exe)?\s+[^\r\n]+")]

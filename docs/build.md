@@ -95,15 +95,15 @@ frontend-vue/public/map/tiles/world-tree/
 ## Windows 发布
 
 ```powershell
-.\scripts\publish-win-x64.ps1 -Version 1.1.0
+.\scripts\publish-win-x64.ps1 -Version 1.2.0
 ```
 
 输出：
 
 ```text
-artifacts/palops-web-1.1.0-win-x64/
-artifacts/palops-web-1.1.0-win-x64.zip
-artifacts/palops-web-1.1.0-win-x64.sha256
+artifacts/palops-web-1.2.0-win-x64/
+artifacts/palops-web-1.2.0-win-x64.zip
+artifacts/palops-web-1.2.0-win-x64.sha256
 ```
 
 发布脚本会重新构建前端和后端，验证严格发布树，并生成 SHA-256。

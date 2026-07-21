@@ -1,0 +1,1 @@
+import{J as e,T as t,Z as n,j as r,st as i}from"./vue-i18n-CIubIkY4.js";import{t as a}from"./PageToolbar-B-0RJML8.js";var o=r({__name:`PageHeader`,props:{title:{},description:{}},setup(r){return(o,s)=>(e(),t(a,{title:r.title,description:r.description},{actions:i(()=>[n(o.$slots,`default`)]),_:3},8,[`title`,`description`]))}});export{o as t};

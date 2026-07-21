@@ -2,6 +2,7 @@ using PalOps.Web.Audit;
 using PalOps.Web.Contracts;
 using PalOps.Web.Management;
 using PalOps.Web.Infrastructure;
+using PalOps.Web.PlayerDiscipline;
 using PalOps.Web.Rcon;
 using PalOps.Web.Security;
 using PalOps.Web.Settings;
@@ -39,6 +40,7 @@ public static class RconEndpoints
         HttpContext context,
         IServerSettingsStore settingsStore,
         IRconClient rcon,
+        IPlayerDisciplineService disciplineService,
         IAuditLogService audit,
         CancellationToken cancellationToken)
     {
@@ -69,6 +71,25 @@ public static class RconEndpoints
                     result.ElapsedMilliseconds,
                     responseLength = result.Response.Length
                 });
+            if (interpretation.Success && TryParseKickCommand(command, out var kickedUserId, out var kickReason))
+            {
+                try
+                {
+                    await disciplineService.RecordKickAsync(
+                        kickedUserId,
+                        displayName: null,
+                        reason: kickReason,
+                        actor: context.User.Identity?.Name ?? "unknown",
+                        source: "rcon",
+                        cancellationToken: CancellationToken.None);
+                }
+                catch (Exception ex)
+                {
+                    context.RequestServices.GetRequiredService<ILoggerFactory>()
+                        .CreateLogger("PalOps.PlayerDiscipline")
+                        .LogWarning(ex, "Successful RCON player.kick for {UserId} could not be persisted.", kickedUserId);
+                }
+            }
             return Results.Ok(new RconExecuteResponse(
                 interpretation.Success,
                 risk.ToString(),
@@ -88,6 +109,29 @@ public static class RconEndpoints
                 new { commandName = CommandName(command), risk = risk.ToString(), reason = EndpointHelpers.LimitForAudit(request.Reason ?? string.Empty) });
             throw;
         }
+    }
+
+
+    internal static bool TryParseKickCommand(string command, out string userId, out string? reason)
+    {
+        userId = string.Empty;
+        reason = null;
+        var normalized = RconCommandNormalizer.Normalize(command);
+        var separator = normalized.IndexOfAny([' ', '\t']);
+        var name = separator < 0 ? normalized : normalized[..separator];
+        if (!name.Equals("kick", StringComparison.OrdinalIgnoreCase) || separator < 0) return false;
+
+        var arguments = normalized[(separator + 1)..].Trim();
+        if (arguments.Length == 0) return false;
+        var identifierEnd = arguments.IndexOfAny([' ', '\t']);
+        userId = identifierEnd < 0 ? arguments : arguments[..identifierEnd];
+        if (identifierEnd < 0) return userId.Length > 0;
+
+        var rawReason = arguments[(identifierEnd + 1)..].Trim();
+        if (rawReason.Length >= 2 && rawReason[0] == '"' && rawReason[^1] == '"')
+            rawReason = rawReason[1..^1].Replace("\\\"", "\"", StringComparison.Ordinal).Replace("\\\\", "\\", StringComparison.Ordinal);
+        reason = string.IsNullOrWhiteSpace(rawReason) ? null : rawReason;
+        return userId.Length > 0;
     }
 
     private static bool IsAdministrator(HttpContext context)

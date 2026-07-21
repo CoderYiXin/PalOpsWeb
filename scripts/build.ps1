@@ -66,6 +66,9 @@ try {
     $toolProject = Join-Path $root 'tools\PalOps.Tooling'
     Invoke-Native 'dotnet' @('restore', '.\PalOpsWeb.slnx')
     Invoke-Native 'dotnet' @('build', '.\PalOpsWeb.slnx', '-c', 'Release', '--no-restore')
+    $versionVerifierProject = Join-Path $root 'tests\PalOps.Versioning.Verifier'
+    Invoke-Native 'dotnet' @(
+        'run', '--project', $versionVerifierProject, '-c', 'Release', '--no-build')
     Invoke-Native 'dotnet' @(
         'run', '--project', $toolProject, '-c', 'Release', '--no-build', '--',
         'catalog', 'verify', '--root', $root)
