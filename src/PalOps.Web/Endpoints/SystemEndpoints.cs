@@ -4,6 +4,7 @@ using PalOps.Web.Backups;
 using PalOps.Web.Contracts;
 using PalOps.Web.Health;
 using PalOps.Web.Players;
+using PalOps.Web.Platform.Readiness;
 using PalOps.Web.SaveGames;
 using PalOps.Web.SaveGames.Index;
 using PalOps.Web.Settings;
@@ -22,6 +23,7 @@ public static class SystemEndpoints
             ISaveIndexRepository repository,
             ISaveIndexingService indexingService,
             IPlayerAggregationService players,
+            IOperationalReadinessGate operationalReadiness,
             ISystemHealthService health,
             IBackupService backups,
             IAutomationRepository automationRepository,
@@ -31,8 +33,12 @@ public static class SystemEndpoints
         {
             var settings = await settingsStore.GetAsync(cancellationToken);
             var snapshot = await repository.GetCurrentAsync(cancellationToken);
+            var operational = await operationalReadiness.GetSnapshotAsync(cancellationToken);
             var onlinePlayers = 0;
-            try { onlinePlayers = (await players.GetOnlinePlayersAsync(cancellationToken)).Count; } catch { }
+            if (operational.HasAny(OperationalCapability.PlayerSources))
+            {
+                try { onlinePlayers = (await players.GetOnlinePlayersAsync(cancellationToken)).Count; } catch { }
+            }
             var backupSummary = await backups.GetSummaryAsync(cancellationToken);
             var jobs = await automationRepository.ListJobsAsync(cancellationToken);
             var running = automationExecution.RunningJobIds;
@@ -84,6 +90,16 @@ public static class SystemEndpoints
         {
             if (refresh == true) await service.RefreshAsync(cancellationToken);
             return Results.Ok(new ApiResponse<IReadOnlyList<HealthComponentV1>>(service.Components, context.TraceIdentifier, []));
+        });
+
+        group.MapGet("/health/dashboard", async (
+            bool? refresh,
+            ISystemHealthService service,
+            HttpContext context,
+            CancellationToken cancellationToken) =>
+        {
+            if (refresh == true) await service.RefreshAsync(cancellationToken);
+            return Results.Ok(new ApiResponse<SystemHealthDashboardV1>(service.Dashboard, context.TraceIdentifier, []));
         });
 
         group.MapGet("/version", (

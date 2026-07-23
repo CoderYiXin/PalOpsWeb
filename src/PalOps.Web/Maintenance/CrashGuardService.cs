@@ -1,6 +1,8 @@
 using PalOps.Web.Audit;
 using PalOps.Web.Events;
 using PalOps.Web.ServerRuntime;
+using PalOps.Web.Platform.Readiness;
+using PalOps.Web.Platform.Workers;
 
 namespace PalOps.Web.Maintenance;
 
@@ -12,27 +14,60 @@ public sealed class CrashGuardService(
     IMaintenanceActivityGate activityGate,
     IPalOpsEventBus eventBus,
     IAuditLogService audit,
-    ILogger<CrashGuardService> logger) : BackgroundService
+    IBackgroundWorkerSupervisor workerSupervisor,
+    ILogger<CrashGuardService> logger,
+    IOperationalReadinessGate readinessGate) : BackgroundService
 {
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    protected override Task ExecuteAsync(CancellationToken stoppingToken) =>
+        workerSupervisor.RunAsync("crash-guard", RunLoopAsync, stoppingToken);
+
+    private async Task RunLoopAsync(CancellationToken stoppingToken)
     {
         await using var subscription = eventBus.Subscribe("crash-guard", 200);
-        await foreach (var palOpsEvent in subscription.ReadAllAsync(stoppingToken))
+        using var linkedCts = CancellationTokenSource.CreateLinkedTokenSource(stoppingToken);
+        var heartbeatTask = RunHeartbeatAsync(linkedCts.Token);
+
+        try
         {
-            if (!palOpsEvent.EventType.Equals("server.exited-unexpectedly", StringComparison.OrdinalIgnoreCase)) continue;
-            try
+            await foreach (var palOpsEvent in subscription.ReadAllAsync(linkedCts.Token))
             {
-                await HandleUnexpectedExitAsync(palOpsEvent, stoppingToken);
-            }
-            catch (OperationCanceledException) when (stoppingToken.IsCancellationRequested)
-            {
-                break;
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Crash guard failed to handle unexpected server exit event {EventId}.", palOpsEvent.EventId);
+                workerSupervisor.Heartbeat("crash-guard");
+                if (!palOpsEvent.EventType.Equals("server.exited-unexpectedly", StringComparison.OrdinalIgnoreCase)) continue;
+                var operational = await readinessGate.GetSnapshotAsync(linkedCts.Token).ConfigureAwait(false);
+                if (!operational.HasAnyOperationalConfiguration) continue;
+                try
+                {
+                    await HandleUnexpectedExitAsync(palOpsEvent, linkedCts.Token);
+                }
+                catch (OperationCanceledException) when (linkedCts.IsCancellationRequested)
+                {
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    logger.LogError(ex, "Crash guard failed to handle unexpected server exit event {EventId}.", palOpsEvent.EventId);
+                }
             }
         }
+        finally
+        {
+            linkedCts.Cancel();
+            try
+            {
+                await heartbeatTask;
+            }
+            catch (OperationCanceledException) when (linkedCts.IsCancellationRequested)
+            {
+            }
+        }
+    }
+
+    private async Task RunHeartbeatAsync(CancellationToken cancellationToken)
+    {
+        using var timer = new PeriodicTimer(TimeSpan.FromSeconds(15));
+        workerSupervisor.Heartbeat("crash-guard");
+        while (await timer.WaitForNextTickAsync(cancellationToken))
+            workerSupervisor.Heartbeat("crash-guard");
     }
 
     private async Task HandleUnexpectedExitAsync(PalOpsEvent source, CancellationToken cancellationToken)

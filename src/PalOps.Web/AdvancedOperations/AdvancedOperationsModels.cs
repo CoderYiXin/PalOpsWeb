@@ -310,7 +310,14 @@ public sealed record ConfigurationVersionSnapshot(
     DateTimeOffset CreatedAt,
     string CreatedBy,
     bool CurrentMatch,
-    string SourcePath);
+    string SourcePath)
+{
+    public string SourceType { get; init; } = "manual";
+    public IReadOnlyList<string> Sections { get; init; } = ["palworldConfiguration"];
+    public IReadOnlyDictionary<string, string> SanitizedSettings { get; init; } = new Dictionary<string, string>();
+    public DateTimeOffset? RestoredAt { get; init; }
+    public string? RestoredBy { get; init; }
+}
 
 public sealed record ConfigurationVersionDiff(
     string FromId,
@@ -318,7 +325,11 @@ public sealed record ConfigurationVersionDiff(
     bool Identical,
     IReadOnlyList<string> ChangedKeys,
     string LaunchArgumentsBefore,
-    string LaunchArgumentsAfter);
+    string LaunchArgumentsAfter)
+{
+    public IReadOnlyList<string> ChangedSections { get; init; } = [];
+    public IReadOnlyList<string> ChangedSettingKeys { get; init; } = [];
+}
 
 public sealed record ConfigurationVersionDashboard(
     string CurrentSha256,
@@ -526,6 +537,11 @@ public sealed class StoredConfigurationVersion
     public string RawContent { get; set; } = string.Empty;
     public string LaunchArguments { get; set; } = string.Empty;
     public Dictionary<string, string> Settings { get; set; } = new(StringComparer.OrdinalIgnoreCase);
+    public string SourceType { get; set; } = "manual";
+    public List<string> Sections { get; set; } = ["palworldConfiguration"];
+    public Dictionary<string, string> SanitizedSettings { get; set; } = new(StringComparer.OrdinalIgnoreCase);
+    public DateTimeOffset? RestoredAt { get; set; }
+    public string? RestoredBy { get; set; }
 }
 
 public sealed class AdvancedOperationsStateDocument

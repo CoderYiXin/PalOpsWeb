@@ -3,6 +3,7 @@ using Microsoft.Extensions.Options;
 using PalOps.Web.Configuration;
 using PalOps.Web.External;
 using PalOps.Web.Players;
+using PalOps.Web.Platform.Readiness;
 
 namespace PalOps.Web.ServerRuntime;
 
@@ -17,7 +18,8 @@ public interface IPalServerLiveStatusCollector
 public sealed class PalServerLiveStatusCollector(
     IServiceScopeFactory scopeFactory,
     IOptions<AppRuntimeOptions> options,
-    ILogger<PalServerLiveStatusCollector> logger) : IPalServerLiveStatusCollector
+    ILogger<PalServerLiveStatusCollector> logger,
+    IOperationalReadinessGate readinessGate) : IPalServerLiveStatusCollector
 {
     private readonly SemaphoreSlim _gate = new(1, 1);
     private PalServerLiveStatusSnapshot? _cached;
@@ -43,6 +45,30 @@ public sealed class PalServerLiveStatusCollector(
             if (!process.ProcessId.HasValue && process.State == PalServerRuntimeState.Stopped.ToString())
             {
                 _cached = new(null, 0, null, null, now, "process", null);
+                return _cached;
+            }
+
+            var readiness = await readinessGate.GetSnapshotAsync(cancellationToken).ConfigureAwait(false);
+            if (!readiness.HasAny(OperationalCapability.PalworldRest))
+            {
+                if (readiness.HasAny(OperationalCapability.PalDefender))
+                {
+                    using var defenderScope = scopeFactory.CreateScope();
+                    var defenderPlayerResult = await TryGetPlayersAsync(
+                        defenderScope.ServiceProvider.GetRequiredService<IPlayerAggregationService>(),
+                        cancellationToken).ConfigureAwait(false);
+                    _cached = new(
+                        null,
+                        defenderPlayerResult.Success ? defenderPlayerResult.Count : null,
+                        null,
+                        null,
+                        now,
+                        defenderPlayerResult.Success ? "players" : "unavailable",
+                        defenderPlayerResult.Error);
+                    return _cached;
+                }
+
+                _cached = new(null, null, null, null, now, "not-configured", "Palworld REST API 未配置，实时状态自动查询保持暂停。");
                 return _cached;
             }
 

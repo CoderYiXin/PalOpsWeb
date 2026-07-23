@@ -1,8 +1,8 @@
-# PalOps Web 1.3.0 Complete Feature Reference
+# PalOps Web 1.3.1 Complete Feature Reference
 
 > Language: [简体中文](features.md) | **English**
 
-This document follows the current 1.3.0 routes and server-side authorization boundaries. English screenshots are stored under [`images/en-US/`](images/en-US/) and are rendered from the current Vue pages with fabricated demonstration data.
+This document follows the current 1.3.1 routes and server-side authorization boundaries. English screenshots are stored under [`images/en-US/`](images/en-US/) and are rendered from the current Vue pages with fabricated demonstration data.
 
 ## Server intelligence
 

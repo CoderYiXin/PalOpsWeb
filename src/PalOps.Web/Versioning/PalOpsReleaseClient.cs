@@ -9,7 +9,8 @@ public sealed record PalOpsReleaseInfo(
     string Name,
     string HtmlUrl,
     DateTimeOffset? PublishedAt,
-    string Body);
+    string Body,
+    string Source = ReleaseSource.GitHubApi);
 
 public interface IPalOpsReleaseClient
 {
@@ -25,6 +26,47 @@ public sealed class PalOpsReleaseClient(
 
     public async Task<PalOpsReleaseInfo?> GetLatestStableAsync(CancellationToken cancellationToken = default)
     {
+        Exception? apiFailure = null;
+        try
+        {
+            var release = await GetFromApiAsync(cancellationToken).ConfigureAwait(false);
+            if (release is not null) return release;
+            apiFailure = new InvalidDataException("GitHub API did not return an available stable PalOps Web Release.");
+        }
+        catch (Exception apiException) when (CanUseFallback(apiException, cancellationToken))
+        {
+            apiFailure = apiException;
+        }
+
+        try
+        {
+            var application = versionProvider.Get();
+            var fallback = await GitHubLatestReleaseResolver.ResolveAsync(
+                httpClient,
+                "CoderYiXin",
+                "PalOpsWeb",
+                application.ProductHeaderVersion,
+                cancellationToken).ConfigureAwait(false);
+
+            return new PalOpsReleaseInfo(
+                fallback.TagName,
+                fallback.TagName,
+                fallback.HtmlUrl,
+                null,
+                string.Empty,
+                ReleaseSource.GitHubWeb);
+        }
+        catch (Exception webException) when (CanUseFallback(webException, cancellationToken))
+        {
+            throw new GitHubReleaseLookupException(
+                "CoderYiXin/PalOpsWeb",
+                apiFailure ?? new InvalidDataException("GitHub API returned no release."),
+                webException);
+        }
+    }
+
+    private async Task<PalOpsReleaseInfo?> GetFromApiAsync(CancellationToken cancellationToken)
+    {
         using var request = new HttpRequestMessage(
             HttpMethod.Get,
             "repos/CoderYiXin/PalOpsWeb/releases/latest");
@@ -35,21 +77,31 @@ public sealed class PalOpsReleaseClient(
         using var response = await httpClient.SendAsync(
             request,
             HttpCompletionOption.ResponseHeadersRead,
-            cancellationToken);
+            cancellationToken).ConfigureAwait(false);
         response.EnsureSuccessStatusCode();
         if (response.Content.Headers.ContentLength is > MaximumResponseBytes)
             throw new InvalidDataException("GitHub Release response exceeded the 2 MiB limit.");
 
-        await using var stream = await response.Content.ReadAsStreamAsync(cancellationToken);
+        await using var stream = await response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
         await using var bounded = new BoundedReadStream(stream, MaximumResponseBytes);
-        var release = await JsonSerializer.DeserializeAsync<ReleaseDto>(bounded, JsonOptions, cancellationToken);
-        if (release is null || release.Draft || release.Prerelease || string.IsNullOrWhiteSpace(release.TagName)) return null;
-        return new(
+        var release = await JsonSerializer.DeserializeAsync<ReleaseDto>(bounded, JsonOptions, cancellationToken)
+            .ConfigureAwait(false);
+        if (release is null || release.Draft || release.Prerelease || string.IsNullOrWhiteSpace(release.TagName))
+            return null;
+
+        return new PalOpsReleaseInfo(
             release.TagName.Trim(),
             string.IsNullOrWhiteSpace(release.Name) ? release.TagName.Trim() : release.Name.Trim(),
             NormalizeReleaseUrl(release.HtmlUrl),
             release.PublishedAt,
-            Limit(release.Body ?? string.Empty, 4000));
+            Limit(release.Body ?? string.Empty, 4000),
+            ReleaseSource.GitHubApi);
+    }
+
+    private static bool CanUseFallback(Exception exception, CancellationToken cancellationToken)
+    {
+        if (exception is OperationCanceledException && cancellationToken.IsCancellationRequested) return false;
+        return exception is HttpRequestException or JsonException or InvalidDataException or IOException or OperationCanceledException;
     }
 
     private static string NormalizeReleaseUrl(string? value)
@@ -89,13 +141,13 @@ public sealed class PalOpsReleaseClient(
             if (remaining <= 0)
             {
                 var probe = new byte[1];
-                if (await inner.ReadAsync(probe, cancellationToken) > 0)
+                if (await inner.ReadAsync(probe, cancellationToken).ConfigureAwait(false) > 0)
                     throw new InvalidDataException("GitHub Release response exceeded the 2 MiB limit.");
                 return 0;
             }
             var count = await inner.ReadAsync(
                 buffer[..(int)Math.Min(buffer.Length, remaining)],
-                cancellationToken);
+                cancellationToken).ConfigureAwait(false);
             _read += count;
             return count;
         }
@@ -103,6 +155,6 @@ public sealed class PalOpsReleaseClient(
         public override void SetLength(long value) => throw new NotSupportedException();
         public override void Write(byte[] buffer, int offset, int count) => throw new NotSupportedException();
         protected override void Dispose(bool disposing) { if (disposing) inner.Dispose(); base.Dispose(disposing); }
-        public override async ValueTask DisposeAsync() { await inner.DisposeAsync(); GC.SuppressFinalize(this); }
+        public override async ValueTask DisposeAsync() { await inner.DisposeAsync().ConfigureAwait(false); GC.SuppressFinalize(this); }
     }
 }

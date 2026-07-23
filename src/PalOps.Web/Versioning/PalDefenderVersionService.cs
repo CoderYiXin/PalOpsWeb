@@ -2,6 +2,7 @@ using System.Text.Json;
 using Microsoft.Extensions.Caching.Memory;
 using PalOps.Web.Events;
 using PalOps.Web.External;
+using PalOps.Web.Platform.Readiness;
 
 namespace PalOps.Web.Versioning;
 
@@ -29,7 +30,8 @@ public sealed class PalDefenderVersionService(
     IPalDefenderApiClient palDefenderClient,
     IPalOpsEventPublisher eventPublisher,
     IMemoryCache cache,
-    ILogger<PalDefenderVersionService> logger) : IPalDefenderVersionService
+    ILogger<PalDefenderVersionService> logger,
+    IOperationalReadinessGate readinessGate) : IPalDefenderVersionService
 {
     private const string CacheKey = "paldefender-version-status";
     private readonly SemaphoreSlim _checkGate = new(1, 1);
@@ -39,13 +41,17 @@ public sealed class PalDefenderVersionService(
 
     public async Task<PalDefenderVersionStatus> CheckAsync(bool forceRefresh, CancellationToken cancellationToken = default)
     {
-        if (!forceRefresh && cache.TryGetValue<PalDefenderVersionStatus>(CacheKey, out var cached) && cached is not null)
+        var readiness = await readinessGate.GetSnapshotAsync(cancellationToken).ConfigureAwait(false);
+        var canReadCurrentVersion = readiness.HasAny(OperationalCapability.PalDefender);
+        var cacheKey = canReadCurrentVersion ? CacheKey + ":local-and-remote" : CacheKey + ":remote-only";
+
+        if (!forceRefresh && cache.TryGetValue<PalDefenderVersionStatus>(cacheKey, out var cached) && cached is not null)
             return cached;
 
         await _checkGate.WaitAsync(cancellationToken);
         try
         {
-            if (!forceRefresh && cache.TryGetValue<PalDefenderVersionStatus>(CacheKey, out cached) && cached is not null)
+            if (!forceRefresh && cache.TryGetValue<PalDefenderVersionStatus>(cacheKey, out cached) && cached is not null)
                 return cached;
 
             if (forceRefresh)
@@ -53,7 +59,7 @@ public sealed class PalDefenderVersionService(
                 lock (_stateLock)
                 {
                     if (DateTimeOffset.UtcNow - _lastManualCheckAt < TimeSpan.FromSeconds(10)
-                        && cache.TryGetValue<PalDefenderVersionStatus>(CacheKey, out cached)
+                        && cache.TryGetValue<PalDefenderVersionStatus>(cacheKey, out cached)
                         && cached is not null)
                     {
                         return cached with { Message = Join(cached.Message, "手动检查冷却时间为 10 秒，已返回最近结果。") };
@@ -67,25 +73,40 @@ public sealed class PalDefenderVersionService(
             string? currentError = null;
             string? latestError = null;
 
-            try
+            if (canReadCurrentVersion)
             {
-                currentVersion = NormalizeCurrentVersion(await palDefenderClient.GetVersionAsync(cancellationToken));
-                if (string.IsNullOrWhiteSpace(currentVersion)) currentError = "PalDefender 返回的当前版本无法识别。";
+                try
+                {
+                    currentVersion = NormalizeCurrentVersion(await palDefenderClient.GetVersionAsync(cancellationToken));
+                    if (string.IsNullOrWhiteSpace(currentVersion)) currentError = "PalDefender 返回的当前版本无法识别。";
+                }
+                catch (Exception ex) when (ex is ExternalApiException or HttpRequestException or JsonException or InvalidDataException)
+                {
+                    currentError = ex.Message;
+                    logger.LogDebug(ex, "Unable to read the current PalDefender version.");
+                }
             }
-            catch (Exception ex) when (ex is ExternalApiException or HttpRequestException or JsonException or InvalidDataException)
+            else
             {
-                currentError = ex.Message;
-                logger.LogDebug(ex, "Unable to read the current PalDefender version.");
+                currentError = "PalDefender 尚未配置，已跳过本地版本读取；GitHub 远端版本仍会正常检查。";
             }
 
             try
             {
                 release = await releaseClient.GetLatestStableAsync(cancellationToken);
-                if (release is null) latestError = "GitHub 未返回可用的稳定版 Release。";
+                if (release is null)
+                    latestError = "GitHub 未返回可用的 PalDefender 稳定版。";
+                else if (release.Source == ReleaseSource.GitHubWeb)
+                    latestError = "GitHub API 不可用，已通过 GitHub 网页备用通道完成远端版本检查。";
             }
-            catch (Exception ex) when (ex is HttpRequestException or JsonException or InvalidDataException)
+            catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested)
             {
-                latestError = ex.Message;
+                latestError = "GitHub 版本检查超时，API 与网页备用通道均未返回结果。";
+                logger.LogDebug("PalDefender GitHub Release check timed out.");
+            }
+            catch (Exception ex) when (ex is HttpRequestException or JsonException or InvalidDataException or IOException)
+            {
+                latestError = "GitHub 远端版本检查失败：" + ex.Message;
                 logger.LogDebug(ex, "Unable to read the latest PalDefender GitHub release.");
             }
 
@@ -114,7 +135,10 @@ public sealed class PalDefenderVersionService(
                 DateTimeOffset.UtcNow,
                 message);
 
-            cache.Set(CacheKey, status, TimeSpan.FromMinutes(30));
+            cache.Set(
+                cacheKey,
+                status,
+                latestAvailable ? TimeSpan.FromMinutes(30) : TimeSpan.FromMinutes(2));
             if (updateAvailable && release is not null && ShouldPublish(release.TagName))
             {
                 await eventPublisher.PublishAsync(PalOpsEvent.Create(

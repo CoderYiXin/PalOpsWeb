@@ -1,6 +1,8 @@
 using PalOps.Web.SaveGames.Index;
 using PalOps.Web.ServerRuntime;
 using PalOps.Web.Settings;
+using PalOps.Web.Platform.Readiness;
+using PalOps.Web.Platform.Workers;
 
 namespace PalOps.Web.SaveGames;
 
@@ -10,15 +12,25 @@ public sealed class SaveIndexMonitorService(
     ISaveIndexRepository repository,
     ISaveIndexingService indexingService,
     IPalServerRuntimeCoordinator runtimeCoordinator,
-    ILogger<SaveIndexMonitorService> logger) : BackgroundService
+    ILogger<SaveIndexMonitorService> logger,
+    IBackgroundWorkerSupervisor workerSupervisor,
+    IOperationalReadinessGate readinessGate) : BackgroundService
 {
     private static readonly TimeSpan MinimumAutomaticInterval = TimeSpan.FromMinutes(10);
     private SaveFileFingerprint? _lastObserved;
 
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    protected override Task ExecuteAsync(CancellationToken stoppingToken) =>
+        workerSupervisor.RunAsync("save-index-monitor", RunLoopAsync, stoppingToken);
+
+    private async Task RunLoopAsync(CancellationToken stoppingToken)
     {
         while (!stoppingToken.IsCancellationRequested)
         {
+            await readinessGate.WaitUntilReadyAsync(
+                "save-index-monitor",
+                allOf: OperationalCapability.SaveAutoIndex,
+                cancellationToken: stoppingToken);
+            workerSupervisor.Heartbeat("save-index-monitor");
             var delay = MinimumAutomaticInterval;
             try
             {
@@ -75,7 +87,7 @@ public sealed class SaveIndexMonitorService(
 
             try
             {
-                await Task.Delay(delay, stoppingToken);
+                await workerSupervisor.DelayWithHeartbeatAsync("save-index-monitor", delay, stoppingToken);
             }
             catch (OperationCanceledException) when (stoppingToken.IsCancellationRequested)
             {

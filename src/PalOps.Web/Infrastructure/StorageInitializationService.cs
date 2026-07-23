@@ -16,9 +16,79 @@ public sealed record StorageInitializationResult(
     bool Writable,
     IReadOnlyList<StorageInitializationItem> Items);
 
+public sealed record StorageInitializationStatus(
+    string State,
+    bool Ready,
+    bool RepairRequired,
+    DateTimeOffset? AttemptedAt,
+    DateTimeOffset? CompletedAt,
+    string? Error,
+    StorageInitializationResult? Result);
+
 public interface IStorageInitializationService
 {
     Task<StorageInitializationResult> InitializeAsync(CancellationToken cancellationToken = default);
+}
+
+public interface IStorageInitializationState
+{
+    StorageInitializationStatus Status { get; }
+    Task<StorageInitializationResult> RunAsync(CancellationToken cancellationToken = default);
+}
+
+/// <summary>
+/// Stores the latest initialization outcome. Failures are retained so the web UI can expose
+/// a repair entry without preventing the application from starting.
+/// </summary>
+public sealed class StorageInitializationState(
+    IStorageInitializationService initializer,
+    ILogger<StorageInitializationState> logger) : IStorageInitializationState
+{
+    private readonly SemaphoreSlim _stateGate = new(1, 1);
+    private readonly object _sync = new();
+    private StorageInitializationStatus _status = new("pending", false, false, null, null, null, null);
+
+    public StorageInitializationStatus Status
+    {
+        get { lock (_sync) return _status; }
+    }
+
+    public async Task<StorageInitializationResult> RunAsync(CancellationToken cancellationToken = default)
+    {
+        await _stateGate.WaitAsync(cancellationToken);
+        try
+        {
+            var attemptedAt = DateTimeOffset.UtcNow;
+            var previous = Status;
+            SetStatus(new StorageInitializationStatus("running", false, false, attemptedAt, null, null, previous.Result));
+            try
+            {
+                var result = await initializer.InitializeAsync(cancellationToken);
+                SetStatus(new StorageInitializationStatus("ready", true, false, attemptedAt, DateTimeOffset.UtcNow, null, result));
+                return result;
+            }
+            catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+            {
+                SetStatus(previous);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Local storage initialization failed. The repair entry will be exposed in system settings.");
+                SetStatus(new StorageInitializationStatus("failed", false, true, attemptedAt, DateTimeOffset.UtcNow, ex.Message, null));
+                throw;
+            }
+        }
+        finally
+        {
+            _stateGate.Release();
+        }
+    }
+
+    private void SetStatus(StorageInitializationStatus value)
+    {
+        lock (_sync) _status = value;
+    }
 }
 
 /// <summary>
@@ -30,13 +100,29 @@ public sealed class StorageInitializationService(
     IRuntimePathResolver paths,
     ILogger<StorageInitializationService> logger) : IStorageInitializationService
 {
+    private sealed record StorageMetadata(int SchemaVersion, string Engine, DateTimeOffset InitializedAt);
+
     private static readonly JsonSerializerOptions JsonOptions = new(JsonSerializerDefaults.Web)
     {
         WriteIndented = true
     };
+    private readonly SemaphoreSlim _initializationGate = new(1, 1);
 
     public async Task<StorageInitializationResult> InitializeAsync(
         CancellationToken cancellationToken = default)
+    {
+        await _initializationGate.WaitAsync(cancellationToken);
+        try
+        {
+            return await InitializeCoreAsync(cancellationToken);
+        }
+        finally
+        {
+            _initializationGate.Release();
+        }
+    }
+
+    private async Task<StorageInitializationResult> InitializeCoreAsync(CancellationToken cancellationToken)
     {
         var items = new List<StorageInitializationItem>();
         var directories = new[]
@@ -76,19 +162,7 @@ public sealed class StorageInitializationService(
         await EnsureTextFileAsync(paths.ResolveDataPath("automation", "runs.ndjson"), items, cancellationToken);
         await EnsureTextFileAsync(paths.ResolveDataPath("save-index", "failures.ndjson"), items, cancellationToken);
 
-        var metadataPath = paths.ResolveDataPath("storage-state.json");
-        var metadata = new
-        {
-            schemaVersion = 1,
-            engine = "atomic-json-jsonl",
-            initializedAt = DateTimeOffset.UtcNow
-        };
-        await AtomicWriteJsonAsync(metadataPath, metadata, cancellationToken);
-        items.Add(new StorageInitializationItem(
-            "storage-state",
-            metadataPath,
-            "updated",
-            "存储元数据已更新。"));
+        var metadata = await ReadMetadataAsync(paths.ResolveDataPath("storage-state.json"), items, cancellationToken);
 
         var probePath = paths.ResolveDataPath($".write-probe-{Guid.NewGuid():N}.tmp");
         var readable = false;
@@ -115,12 +189,34 @@ public sealed class StorageInitializationService(
             throw new IOException("本地数据目录读写验证失败，请检查运行账户的目录权限。");
 
         return new StorageInitializationResult(
-            "atomic-json-jsonl",
+            metadata.Engine,
             paths.DataDirectory,
-            DateTimeOffset.UtcNow,
+            metadata.InitializedAt,
             readable,
             writable,
             items);
+    }
+
+    private static async Task<StorageMetadata> ReadMetadataAsync(
+        string path,
+        ICollection<StorageInitializationItem> items,
+        CancellationToken cancellationToken)
+    {
+        if (File.Exists(path))
+        {
+            await using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite, 64 * 1024, true);
+            var metadata = await JsonSerializer.DeserializeAsync<StorageMetadata>(stream, JsonOptions, cancellationToken)
+                ?? throw new InvalidDataException("storage-state.json 内容为空或格式无效。");
+            if (metadata.SchemaVersion != 1 || !string.Equals(metadata.Engine, "atomic-json-jsonl", StringComparison.Ordinal))
+                throw new InvalidDataException("storage-state.json 的存储架构版本或引擎不受支持。");
+            items.Add(new StorageInitializationItem("storage-state", path, "existing", "存储元数据已存在且有效。"));
+            return metadata;
+        }
+
+        var created = new StorageMetadata(1, "atomic-json-jsonl", DateTimeOffset.UtcNow);
+        await AtomicWriteJsonAsync(path, created, cancellationToken);
+        items.Add(new StorageInitializationItem("storage-state", path, "created", "存储元数据已创建。"));
+        return created;
     }
 
     private static async Task EnsureJsonFileAsync<T>(
@@ -131,7 +227,6 @@ public sealed class StorageInitializationService(
     {
         if (File.Exists(path))
         {
-            // Validate existing JSON without rewriting user data.
             await using var stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite, 64 * 1024, true);
             if (stream.Length > 0) _ = await JsonDocument.ParseAsync(stream, cancellationToken: cancellationToken);
             items.Add(new StorageInitializationItem(Path.GetFileName(path), path, "existing", "数据文件已存在且 JSON 有效。"));

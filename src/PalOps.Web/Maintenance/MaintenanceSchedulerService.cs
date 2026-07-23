@@ -1,12 +1,24 @@
+using PalOps.Web.Platform.Readiness;
+using PalOps.Web.Platform.Workers;
 namespace PalOps.Web.Maintenance;
 
 public sealed class MaintenanceSchedulerService(
     IMaintenanceRepository repository,
     IMaintenanceExecutionService execution,
-    ILogger<MaintenanceSchedulerService> logger) : BackgroundService
+    ILogger<MaintenanceSchedulerService> logger,
+    IBackgroundWorkerSupervisor workerSupervisor,
+    IOperationalReadinessGate readinessGate) : BackgroundService
 {
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    protected override Task ExecuteAsync(CancellationToken stoppingToken) =>
+        workerSupervisor.RunAsync("maintenance-scheduler", RunLoopAsync, stoppingToken);
+
+    private async Task RunLoopAsync(CancellationToken stoppingToken)
     {
+        await readinessGate.WaitUntilReadyAsync(
+            "maintenance-scheduler",
+            anyOf: OperationalCapability.Core,
+            cancellationToken: stoppingToken);
+
         try
         {
             await execution.RecoverInterruptedRunsAsync(stoppingToken);
@@ -23,6 +35,11 @@ public sealed class MaintenanceSchedulerService(
         using var timer = new PeriodicTimer(TimeSpan.FromSeconds(15));
         while (!stoppingToken.IsCancellationRequested)
         {
+            await readinessGate.WaitUntilReadyAsync(
+                "maintenance-scheduler",
+                anyOf: OperationalCapability.Core,
+                cancellationToken: stoppingToken);
+            workerSupervisor.Heartbeat("maintenance-scheduler");
             try
             {
                 var now = DateTimeOffset.UtcNow;

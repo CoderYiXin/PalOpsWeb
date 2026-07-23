@@ -3,11 +3,14 @@ using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.Options;
 using PalOps.Web.Configuration;
 using PalOps.Web.Contracts;
+using PalOps.Web.Platform.Caching;
 
 namespace PalOps.Web.Settings;
 
 public interface IServerSettingsStore
 {
+    event EventHandler? Changed;
+
     Task<ServerSettings> GetAsync(CancellationToken cancellationToken = default);
     Task<ServerSettingsSummaryResponse> GetSummaryAsync(CancellationToken cancellationToken = default);
     Task SaveAsync(ServerSettingsUpdateRequest request, CancellationToken cancellationToken = default);
@@ -15,6 +18,7 @@ public interface IServerSettingsStore
 
 public sealed class ServerSettingsStore : IServerSettingsStore
 {
+    public event EventHandler? Changed;
     private static readonly JsonSerializerOptions JsonOptions = new(JsonSerializerDefaults.Web)
     {
         WriteIndented = true,
@@ -24,11 +28,13 @@ public sealed class ServerSettingsStore : IServerSettingsStore
     private readonly string _path;
     private readonly IDataProtector _protector;
     private readonly SemaphoreSlim _gate = new(1, 1);
+    private readonly IPlatformCache _cache;
 
     public ServerSettingsStore(
         IHostEnvironment environment,
         IOptions<AppRuntimeOptions> options,
-        IDataProtectionProvider protectionProvider)
+        IDataProtectionProvider protectionProvider,
+        IPlatformCache cache)
     {
         var configured = options.Value.DataDirectory;
         var directory = Path.IsPathRooted(configured)
@@ -37,9 +43,18 @@ public sealed class ServerSettingsStore : IServerSettingsStore
         Directory.CreateDirectory(directory);
         _path = Path.Combine(directory, "server-settings.json");
         _protector = protectionProvider.CreateProtector("PalOps.Web.ServerSettings.v1");
+        _cache = cache;
     }
 
-    public async Task<ServerSettings> GetAsync(CancellationToken cancellationToken = default)
+    public Task<ServerSettings> GetAsync(CancellationToken cancellationToken = default) =>
+        _cache.GetOrCreateAsync(
+            "settings:full",
+            TimeSpan.FromMinutes(5),
+            LoadSettingsAsync,
+            ["settings"],
+            cancellationToken);
+
+    private async Task<ServerSettings> LoadSettingsAsync(CancellationToken cancellationToken)
     {
         var stored = await ReadStoredAsync(cancellationToken) ?? StoredServerSettings.CreateDefault();
         return new ServerSettings(
@@ -75,7 +90,15 @@ public sealed class ServerSettingsStore : IServerSettingsStore
                 NormalizeRange(stored.AutomationMaximumHistoryEntries, 20, 5000, 500)));
     }
 
-    public async Task<ServerSettingsSummaryResponse> GetSummaryAsync(CancellationToken cancellationToken = default)
+    public Task<ServerSettingsSummaryResponse> GetSummaryAsync(CancellationToken cancellationToken = default) =>
+        _cache.GetOrCreateAsync(
+            "settings:summary",
+            TimeSpan.FromMinutes(5),
+            LoadSummaryAsync,
+            ["settings"],
+            cancellationToken);
+
+    private async Task<ServerSettingsSummaryResponse> LoadSummaryAsync(CancellationToken cancellationToken)
     {
         var settings = await GetAsync(cancellationToken);
         var stored = await ReadStoredAsync(cancellationToken) ?? StoredServerSettings.CreateDefault();
@@ -152,11 +175,15 @@ public sealed class ServerSettingsStore : IServerSettingsStore
             }
 
             File.Move(temporaryPath, _path, true);
+            _cache.RemoveByTag("settings");
+            _cache.RemoveByTag("readiness");
         }
         finally
         {
             _gate.Release();
         }
+
+        Changed?.Invoke(this, EventArgs.Empty);
     }
 
     private async Task<StoredServerSettings?> ReadStoredAsync(CancellationToken cancellationToken)
@@ -225,7 +252,7 @@ public sealed class ServerSettingsStore : IServerSettingsStore
         public int BackupCompressionLevel { get; set; } = 6;
         public bool BackupExecuteSaveFirst { get; set; } = true;
         public bool BackupRestoreEnabled { get; set; }
-        public bool AutomationEnabled { get; set; } = true;
+        public bool AutomationEnabled { get; set; } = false;
         public int AutomationPollIntervalSeconds { get; set; } = 15;
         public int AutomationMaximumHistoryEntries { get; set; } = 500;
 

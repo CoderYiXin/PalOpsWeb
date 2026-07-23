@@ -1,5 +1,7 @@
 using PalOps.Web.Events;
 using PalOps.Web.ServerRuntime;
+using PalOps.Web.Platform.Readiness;
+using PalOps.Web.Platform.Workers;
 
 namespace PalOps.Web.Statistics;
 
@@ -7,9 +9,14 @@ public sealed class StatisticsCollectorService(
     IPalServerRuntimeCoordinator runtime,
     IStatisticsRecorder recorder,
     IPalOpsEventBus eventBus,
-    ILogger<StatisticsCollectorService> logger) : BackgroundService
+    ILogger<StatisticsCollectorService> logger,
+    IBackgroundWorkerSupervisor workerSupervisor,
+    IOperationalReadinessGate readinessGate) : BackgroundService
 {
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    protected override Task ExecuteAsync(CancellationToken stoppingToken) =>
+        workerSupervisor.RunAsync("statistics-collector", RunLoopAsync, stoppingToken);
+
+    private async Task RunLoopAsync(CancellationToken stoppingToken)
     {
         await using var subscription = eventBus.Subscribe("statistics", 2000);
         await Task.WhenAll(
@@ -22,6 +29,11 @@ public sealed class StatisticsCollectorService(
         using var timer = new PeriodicTimer(TimeSpan.FromSeconds(10));
         while (!stoppingToken.IsCancellationRequested)
         {
+            await readinessGate.WaitUntilReadyAsync(
+                "statistics-collector",
+                anyOf: OperationalCapability.Core,
+                cancellationToken: stoppingToken);
+            workerSupervisor.Heartbeat("statistics-collector");
             try
             {
                 await recorder.RecordRuntimeAsync(runtime.Current, DateTimeOffset.UtcNow, stoppingToken);
@@ -52,6 +64,10 @@ public sealed class StatisticsCollectorService(
     {
         await foreach (var palOpsEvent in subscription.ReadAllAsync(stoppingToken))
         {
+            await readinessGate.WaitUntilReadyAsync(
+                "statistics-collector",
+                anyOf: OperationalCapability.Core,
+                cancellationToken: stoppingToken);
             try
             {
                 await recorder.RecordEventAsync(palOpsEvent, stoppingToken);

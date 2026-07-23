@@ -3,6 +3,8 @@ using PalOps.Web.Contracts;
 using PalOps.Web.Health;
 using PalOps.Web.Infrastructure;
 using PalOps.Web.PalworldConfiguration;
+using PalOps.Web.Platform.Caching;
+using PalOps.Web.Platform.Readiness;
 using PalOps.Web.SaveGames.Index;
 using PalOps.Web.Settings;
 
@@ -20,11 +22,16 @@ public sealed class AdvancedOperationsReadinessService(
     IPalworldConfigurationService configurationService,
     IRuntimePathResolver paths,
     ISystemHealthService health,
+    IPlatformCache cache,
+    IOperationalReadinessGate operationalReadiness,
     ILogger<AdvancedOperationsReadinessService> logger) : IAdvancedOperationsReadinessService
 {
     private static readonly HashSet<string> SupportedModules = new(StringComparer.OrdinalIgnoreCase)
     {
         "system-onboarding",
+        "setup-center",
+        "task-center",
+        "health-center",
         "overview",
         "players",
         "guilds",
@@ -64,6 +71,9 @@ public sealed class AdvancedOperationsReadinessService(
     private static readonly HashSet<string> SelfConfigurationModules = new(StringComparer.OrdinalIgnoreCase)
     {
         "system-onboarding",
+        "setup-center",
+        "task-center",
+        "health-center",
         "overview",
         "map",
         "palworld-configuration",
@@ -77,13 +87,25 @@ public sealed class AdvancedOperationsReadinessService(
         "save-index"
     };
 
-    public async Task<AdvancedModuleReadiness> GetAsync(string module, CancellationToken cancellationToken = default)
+    public Task<AdvancedModuleReadiness> GetAsync(string module, CancellationToken cancellationToken = default)
     {
         var normalized = (module ?? string.Empty).Trim().ToLowerInvariant();
         if (!SupportedModules.Contains(normalized))
             throw new ArgumentException("Unsupported configuration readiness module.", nameof(module));
 
-        var signals = await ReadSignalsAsync(cancellationToken);
+        return cache.GetOrCreateAsync(
+            $"readiness:{normalized}",
+            TimeSpan.FromSeconds(10),
+            token => GetUncachedAsync(normalized, token),
+            ["readiness"],
+            cancellationToken);
+    }
+
+    private async Task<AdvancedModuleReadiness> GetUncachedAsync(string normalized, CancellationToken cancellationToken)
+    {
+
+        var operational = await operationalReadiness.GetSnapshotAsync(cancellationToken);
+        var signals = await ReadSignalsAsync(operational.HasAnyOperationalConfiguration, cancellationToken);
         var catalog = BuildCheckCatalog(signals);
         var selected = SelectChecks(normalized, catalog);
 
@@ -171,6 +193,7 @@ public sealed class AdvancedOperationsReadinessService(
         switch (module)
         {
             case "system-onboarding":
+            case "setup-center":
                 Add("save-directory", true);
                 Add("palworld-rest", false);
                 Add("rcon", false);
@@ -179,6 +202,14 @@ public sealed class AdvancedOperationsReadinessService(
                 Add("save-index", false);
                 Add("palworld-configuration", false);
                 Add("automation", false);
+                break;
+            case "task-center":
+                Add("automation", false);
+                break;
+            case "health-center":
+                Add("server-connection", false);
+                Add("save-directory", false);
+                Add("backup-directory", false);
                 break;
             case "overview":
                 Add("server-connection", false);
@@ -358,7 +389,7 @@ public sealed class AdvancedOperationsReadinessService(
 
         var storage = signals.StorageReady
             ? Check("storage", "PalOps 本地数据", "ready", "PalOps 数据目录可读写。", "查看系统配置", "/system/settings#settings-storage")
-            : Check("storage", "PalOps 本地数据", "missing", "请在“系统配置”中执行“初始化数据库”，确保 PalOps 数据目录可读写。", "初始化本地数据", "/system/settings#settings-storage");
+            : Check("storage", "PalOps 本地数据", "missing", "自动初始化本地数据失败，请在“系统配置”中查看原因并执行修复。", "修复本地数据", "/system/settings#settings-storage");
         var saveDirectory = signals.SaveDirectoryReady
             ? Check("save-directory", "世界存档目录", "ready", "世界存档目录存在且可访问。", "查看系统配置", "/system/settings#settings-save")
             : Check("save-directory", "世界存档目录", "missing", signals.SaveDirectoryConfigured
@@ -411,7 +442,9 @@ public sealed class AdvancedOperationsReadinessService(
         return (int)Math.Round(completed * 100d / checks.Count, MidpointRounding.AwayFromZero);
     }
 
-    private async Task<ReadinessSignals> ReadSignalsAsync(CancellationToken cancellationToken)
+    private async Task<ReadinessSignals> ReadSignalsAsync(
+        bool hasAnyOperationalConfiguration,
+        CancellationToken cancellationToken)
     {
         var storageReady = Directory.Exists(paths.DataDirectory)
                            && File.Exists(paths.ResolveDataPath("storage-state.json"));
@@ -456,22 +489,25 @@ public sealed class AdvancedOperationsReadinessService(
         }
 
         var backupAvailable = false;
-        try
-        {
-            var summary = await backupService.GetSummaryAsync(cancellationToken);
-            backupDirectoryReady |= Directory.Exists(summary.Directory);
-            backupAvailable = summary.Count > 0;
-        }
-        catch (Exception ex) when (!cancellationToken.IsCancellationRequested)
-        {
-            logger.LogDebug(ex, "Configuration readiness could not read the backup summary.");
-        }
-
         var palworldConfigurationAvailable = false;
-        try { palworldConfigurationAvailable = (await configurationService.GetAsync(cancellationToken)).ConfigurationExists; }
-        catch (Exception ex) when (!cancellationToken.IsCancellationRequested)
+        if (hasAnyOperationalConfiguration)
         {
-            logger.LogDebug(ex, "Configuration readiness could not inspect Palworld configuration.");
+            try
+            {
+                var summary = await backupService.GetSummaryAsync(cancellationToken);
+                backupDirectoryReady |= Directory.Exists(summary.Directory);
+                backupAvailable = summary.Count > 0;
+            }
+            catch (Exception ex) when (!cancellationToken.IsCancellationRequested)
+            {
+                logger.LogDebug(ex, "Configuration readiness could not read the backup summary.");
+            }
+
+            try { palworldConfigurationAvailable = (await configurationService.GetAsync(cancellationToken)).ConfigurationExists; }
+            catch (Exception ex) when (!cancellationToken.IsCancellationRequested)
+            {
+                logger.LogDebug(ex, "Configuration readiness could not inspect Palworld configuration.");
+            }
         }
 
         return new ReadinessSignals(

@@ -2,6 +2,8 @@ using PalOps.Web.Contracts;
 using PalOps.Web.Events;
 using PalOps.Web.Players;
 using PalOps.Web.Statistics;
+using PalOps.Web.Platform.Readiness;
+using PalOps.Web.Platform.Workers;
 
 namespace PalOps.Web.Realtime;
 
@@ -10,12 +12,17 @@ public sealed class PlayerPresenceMonitorService(
     IPalOpsEventBus eventBus,
     IPalOpsEventPublisher publisher,
     IStatisticsRecorder statisticsRecorder,
-    ILogger<PlayerPresenceMonitorService> logger) : BackgroundService
+    ILogger<PlayerPresenceMonitorService> logger,
+    IBackgroundWorkerSupervisor workerSupervisor,
+    IOperationalReadinessGate readinessGate) : BackgroundService
 {
     private IReadOnlyDictionary<string, PlayerResponse>? _baseline;
     private int _resetBaseline;
 
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    protected override Task ExecuteAsync(CancellationToken stoppingToken) =>
+        workerSupervisor.RunAsync("player-presence-monitor", RunLoopAsync, stoppingToken);
+
+    private async Task RunLoopAsync(CancellationToken stoppingToken)
     {
         await using var subscription = eventBus.Subscribe("player-presence-control", 100);
         var control = ListenForServerStartsAsync(subscription, stoppingToken);
@@ -37,6 +44,11 @@ public sealed class PlayerPresenceMonitorService(
         using var timer = new PeriodicTimer(TimeSpan.FromSeconds(10));
         while (!stoppingToken.IsCancellationRequested)
         {
+            await readinessGate.WaitUntilReadyAsync(
+                "player-presence-monitor",
+                anyOf: OperationalCapability.PlayerSources,
+                cancellationToken: stoppingToken);
+            workerSupervisor.Heartbeat("player-presence-monitor");
             try
             {
                 using var scope = scopeFactory.CreateScope();

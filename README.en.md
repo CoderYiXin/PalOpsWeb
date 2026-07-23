@@ -4,7 +4,7 @@
 
 ### An integrated Palworld server operations console built around the PalDefender anti-cheat plugin
 
-**1.3.0** brings PalServer lifecycle control, live monitoring, offline world maps, players and guilds, resource grants, save parsing, configuration, diagnostics, disaster recovery, security, and integrations into one modern web workspace.
+**1.3.1** brings PalServer lifecycle control, live monitoring, offline world maps, players and guilds, resource grants, save parsing, configuration, diagnostics, disaster recovery, security, and integrations into one modern web workspace.
 
 [简体中文](README.md) · [Chinese Docs](docs/README.md) · [English Docs](docs/README.en.md) · [Feature Reference](docs/features.en.md)
 
@@ -17,19 +17,20 @@
 
 </div>
 
-![PalOps Web V1.3.0 runtime overview](docs/images/en-US/overview-dashboard.webp)
+![PalOps Web V1.3.1 runtime overview](docs/images/en-US/overview-dashboard.webp)
 
-> **Screenshot policy:** Every UI image in this README was captured from the current V1.3.0 frontend with dedicated synthetic data, fictional players and guilds, and reserved addresses. No production server IP, world ID, account, token, webhook, cookie, save path, or live operator data is included.
+> **Screenshot policy:** Every UI image in this README was captured from the current V1.3.1 frontend pages using dedicated synthetic data, fictional players and guilds, reserved addresses, and the bundled offline map tiles. No production server IP, world ID, account, token, webhook, cookie, save path, or live operator data is included.
 
-## What is new in V1.3.0
+## What is new in V1.3.1
 
-- **Unified configuration readiness** — every page that depends on Palworld REST, RCON, PalDefender, save paths, save indexing, or backups shows inline readiness guidance; the notice disappears automatically when the dependency becomes available.
-- **First-run onboarding** — System Settings now provides an ordered setup checklist, completion progress, required/optional distinctions, and direct navigation to each configuration area.
-- **Diagnostics and incident lifecycle** — health checks, support bundles, alert rules, aggregation, acknowledgement, assignment, recovery, and timelines.
-- **Player and world governance** — player timelines, activity and risk signals, base governance, orphaned-base candidates, and inactivity review.
-- **Platform operations** — disaster recovery, update orchestration, configuration versions, operations playbooks, security, and external integrations.
-- **Hardened security boundaries** — high-risk confirmation, one-time API tokens, scopes, expiry/revocation, HTTPS subscriptions, SSRF protection, retries, and audit.
-- **Open-source presentation refresh** — both READMEs and every module screenshot were rebuilt, including a clear three-step resource-grant workflow.
+- **Player-first map markers**: online-player markers are always rendered above guild bases; overlapping players remain visible and receive click priority.
+- **Point-and-click teleportation**: map clicks now send the PalDefender map X/Y coordinate space directly and can teleport one or more online players to any valid point.
+- **Automatic terrain height**: point teleportation omits Z by default so PalDefender resolves a safe terrain height; manual Z remains available for caves, underground areas, and exceptional locations.
+- **Live player-to-player teleportation**: move player A to player B's position resolved at execution time instead of relying on stale coordinates.
+- **Redesigned exploration progress**: overall completion, per-category progress, discovered/remaining counts, and incomplete-only filtering make long-running map exploration easier to manage.
+- **Automatic local-data initialization**: first startup creates local data structures automatically and idempotently; the repair entry appears only after a real initialization failure.
+- **Faster navigation**: dependency readiness is cached and refreshed silently in the background, eliminating repeated full-page “checking dependencies” states and reducing duplicate requests and remounts.
+- **Rebuilt open-source publication**: the Chinese and English READMEs now use 37 freshly captured feature views each—74 synthetic-data screenshots in total—with a clear three-image “players → resources → review and execute” grant workflow.
 
 ## Why PalOps Web
 
@@ -135,7 +136,7 @@ Review players, resources, quantities, experience/technology points, and final e
 |---|---|
 | <img src="docs/images/en-US/player-discipline.webp" alt="Player discipline" width="100%"><br><sub>Whitelist, bans, identity, violations, kicks, and audit.</sub> | <img src="docs/images/en-US/plugin-management.webp" alt="Plugins and mods" width="100%"><br><sub>Versions, dependencies, compatibility, updates, backups, and rollback.</sub> |
 
-### V1.3.0 diagnostics, incidents, and insights
+### V1.3.1 diagnostics, incidents, and insights
 
 | Diagnostic center | Incident center |
 |---|---|
@@ -145,7 +146,7 @@ Review players, resources, quantities, experience/technology points, and final e
 |---|---|
 | <img src="docs/images/en-US/player-insights.webp" alt="Player insights" width="100%"><br><sub>Player timelines, activity, churn signals, and operator notes.</sub> | <img src="docs/images/en-US/world-governance.webp" alt="World governance" width="100%"><br><sub>Base ownership, governance candidates, review status, and human notes.</sub> |
 
-### V1.3.0 platform capabilities
+### V1.3.1 platform capabilities
 
 | Disaster recovery | Update center |
 |---|---|
@@ -245,7 +246,7 @@ Create a Windows x64 release package:
 
 ```powershell
 .\scripts\fetch-map-tiles.ps1 -Layer all
-.\scripts\publish-win-x64.ps1 -Version 1.3.0
+.\scripts\publish-win-x64.ps1 -Version 1.3.1
 ```
 
 Or build the layers separately:

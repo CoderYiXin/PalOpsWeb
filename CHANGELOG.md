@@ -1,5 +1,33 @@
 # Changelog
 
+## Unreleased - Platform foundations
+
+- 修复 `PalServerLiveStatusCollector` 中 PalDefender 分支与 REST 聚合分支重复声明 `playerResult` 导致的 C# `CS0136` 编译错误，并加入发布回归门禁。
+- 新增统一任务中心：后台操作统一支持队列、优先级、互斥资源、超时、取消、自动重试、人工重试、进度、关联 ID 与持久化历史。
+- 将存档解析、维护执行以及 PalServer 启动、停止、重启、强停接入任务中心，移除这些流程中的裸 `Task.Run`。
+- 新增统一内存缓存层，支持标签失效、防击穿、命中率与命名空间统计，并接入系统设置、玩家聚合和配置就绪度。
+- 扩展配置版本库为多分区脱敏快照，支持自动变更前快照、恢复前自动快照、系统设置差异和最近恢复记录。
+- 新增平台健康中心，聚合连接、存档、任务、缓存、后台工作器、日志、磁盘和进程状态，输出健康评分与修复建议。
+- 升级系统日志中心，支持级别、类别、时间、异常与全文筛选，提供统计、详情和 CSV/JSONL 导出。
+- 新增首次使用配置中心，按必需项和可选项展示配置完成度、缺失项及直接处理入口。
+- 统一 API 成功/失败元数据，增加请求追踪响应头，并为长期后台服务加入心跳、故障记录和自动恢复监督。
+- 首次未配置时新增能力级静默启动门控：Palworld REST、RCON、PalDefender 本地接口、存档索引、备份、巡检、统计、维护和实时刷新保持暂停；保存对应系统设置后按能力即时激活，无需重启。
+- PalOps 与 PalDefender 的 GitHub 远端版本检查不受首次配置门控影响；PalDefender 未配置时只跳过本地 `/version` 读取，版本中心显示“仅远端已检查”，配置完成后自动补读本地版本并进行比较。
+- GitHub 版本检查新增双通道容错：优先调用 `api.github.com`，失败后通过 `github.com/<owner>/<repo>/releases/latest` 重定向解析最新标签；版本中心直接显示主通道、备用通道的失败原因或备用通道成功状态。
+- 首次安装默认关闭自动化调度；手动连接测试、手动版本检查与系统配置接口仍可使用，并新增首次启动后台静默回归门禁。
+
+## 1.3.1 - 2026-07-23
+
+- Kept online-player markers above guild-base markers and made overlapping players visible and click-prioritized with an expanded hit target.
+- Corrected point teleportation to send PalDefender map X/Y coordinates instead of Unreal world coordinates, with server-side coordinate bounds protection.
+- Made terrain-aware teleportation the default by omitting Z so PalDefender resolves the destination ground height; retained manual Z as an administrator fallback.
+- Added player-to-player teleportation that resolves the destination player's live position at execution time.
+- Rebuilt exploration progress with overall completion, category progress, discovered/remaining totals, and unfinished-only filtering.
+- Added automatic, idempotent first-start local data initialization and exposed repair actions only after a real initialization failure.
+- Reworked page dependency readiness checks to use cached state, shared in-flight requests, and silent background refreshes so configured systems no longer block every navigation.
+- Updated package, assembly, file, informational, frontend, documentation, and release metadata to `1.3.1`.
+- Rebuilt the Chinese and English GitHub READMEs and recaptured all 37 product views per locale at 1920×1080 using synthetic data, including three distinct resource-grant workflow screenshots.
+
 ## 1.3.0 - 2026-07-22
 
 - Rebuilt the Chinese and English GitHub READMEs and recaptured every product module at 1920×1080 with synthetic data, including a dedicated three-step resource-grant walkthrough.

@@ -40,16 +40,19 @@ public sealed class PlatformVersionService(
             try
             {
                 release = await releaseClient.GetLatestStableAsync(cancellationToken);
-                if (release is null) message = "GitHub did not return an available stable PalOps Web Release.";
+                if (release is null)
+                    message = "GitHub 未返回可用的 PalOps Web 稳定版。";
+                else if (release.Source == ReleaseSource.GitHubWeb)
+                    message = "GitHub API 不可用，已通过 GitHub 网页备用通道完成检查。";
             }
             catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested)
             {
-                message = "GitHub version check timed out.";
+                message = "GitHub 版本检查超时，API 与网页备用通道均未返回结果。";
                 logger.LogDebug("PalOps Web GitHub Release check timed out.");
             }
-            catch (Exception ex) when (ex is HttpRequestException or JsonException or IOException)
+            catch (Exception ex) when (ex is HttpRequestException or JsonException or IOException or InvalidDataException)
             {
-                message = "GitHub version check is currently unavailable.";
+                message = "GitHub 远端版本检查失败：" + ex.Message;
                 logger.LogDebug(ex, "Unable to read the latest PalOps Web GitHub Release.");
             }
 

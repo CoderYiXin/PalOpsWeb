@@ -7,6 +7,7 @@ using PalOps.Web.External;
 using PalOps.Web.Rcon;
 using PalOps.Web.ServerRuntime;
 using PalOps.Web.Settings;
+using PalOps.Web.Platform.Tasks;
 
 namespace PalOps.Web.Maintenance;
 
@@ -40,7 +41,7 @@ public sealed class MaintenanceExecutionService(
     CrashGuardEvaluator crashGuardEvaluator,
     IAuditLogService audit,
     IPalOpsEventPublisher eventPublisher,
-    IHostApplicationLifetime applicationLifetime,
+    IPlatformTaskCoordinator taskCenter,
     IMaintenanceActivityGate activityGate,
     ILogger<MaintenanceExecutionService> logger) : IMaintenanceExecutionService
 {
@@ -92,7 +93,6 @@ public sealed class MaintenanceExecutionService(
 
         MaintenancePlan? plan = null;
         MaintenanceRun? run = null;
-        CancellationTokenSource? runCancellation = null;
         try
         {
             plan = await repository.FindPlanAsync(planId, cancellationToken)
@@ -132,16 +132,41 @@ public sealed class MaintenanceExecutionService(
 
             var scheduledPlan = plan ?? throw new InvalidOperationException("维护计划初始化失败。");
             var scheduledRun = run ?? throw new InvalidOperationException("维护运行记录初始化失败。");
-            runCancellation = CancellationTokenSource.CreateLinkedTokenSource(applicationLifetime.ApplicationStopping);
-            if (!_activeRuns.TryAdd(scheduledRun.Id, new ActiveRun(scheduledPlan.Id, runCancellation, activityLease)))
+            var platformTaskId = "maintenance-" + scheduledRun.Id;
+            if (!_activeRuns.TryAdd(scheduledRun.Id, new ActiveRun(scheduledPlan.Id, platformTaskId, activityLease)))
                 throw new InvalidOperationException("无法登记维护流程运行状态。");
-            _ = Task.Run(() => ExecuteAsync(scheduledPlan, scheduledRun, runCancellation.Token), CancellationToken.None);
+
+            await taskCenter.EnqueueAsync(
+                new PlatformTaskSubmission(
+                    "maintenance",
+                    "执行维护计划：" + scheduledPlan.Name,
+                    scheduledRun.StartedBy,
+                    scheduledRun.RemoteIp,
+                    ResourceKey: "server-maintenance",
+                    Priority: 50,
+                    TimeoutSeconds: Math.Max(600, scheduledPlan.ScriptTimeoutSeconds + scheduledPlan.HealthTimeoutSeconds + scheduledPlan.AnnouncementCountdownSeconds + 600),
+                    MaximumAttempts: 1,
+                    CorrelationId: scheduledRun.Id,
+                    Metadata: new Dictionary<string, string>
+                    {
+                        ["runId"] = scheduledRun.Id,
+                        ["planId"] = scheduledPlan.Id,
+                        ["trigger"] = scheduledRun.Trigger
+                    },
+                    TaskId: platformTaskId),
+                async (context, token) =>
+                {
+                    await context.ReportProgressAsync(1, "starting", "维护流程开始执行。", token);
+                    await ExecuteAsync(scheduledPlan, scheduledRun, token);
+                    await context.ReportProgressAsync(100, "completed", "维护流程已完成。", CancellationToken.None);
+                },
+                cancellationToken);
             return scheduledRun;
         }
         catch (Exception ex)
         {
-            runCancellation?.Dispose();
-            activityLease.Dispose();
+            if (run is not null && _activeRuns.TryRemove(run.Id, out var active)) active.ActivityLease.Dispose();
+            else activityLease.Dispose();
             if (run is not null)
                 await MarkStartFailureAsync(plan, run, ex, CancellationToken.None);
             throw;
@@ -181,12 +206,11 @@ public sealed class MaintenanceExecutionService(
         }
     }
 
-    public Task<bool> CancelAsync(string runId, CancellationToken cancellationToken = default)
+    public async Task<bool> CancelAsync(string runId, CancellationToken cancellationToken = default)
     {
         cancellationToken.ThrowIfCancellationRequested();
-        if (!_activeRuns.TryGetValue((runId ?? string.Empty).Trim(), out var active)) return Task.FromResult(false);
-        active.Cancellation.Cancel();
-        return Task.FromResult(true);
+        if (!_activeRuns.TryGetValue((runId ?? string.Empty).Trim(), out var active)) return false;
+        return await taskCenter.CancelAsync(active.TaskId, cancellationToken);
     }
 
 
@@ -273,6 +297,7 @@ public sealed class MaintenanceExecutionService(
             await UpdatePlanOutcomeAsync(plan, context.Run, CancellationToken.None);
             await PublishAsync("maintenance.cancelled", "warning", context.Run, "MAINTENANCE_CANCELLED", CancellationToken.None);
             await AuditAsync(context.Run, "cancelled", CancellationToken.None);
+            throw;
         }
         catch (Exception ex)
         {
@@ -290,12 +315,12 @@ public sealed class MaintenanceExecutionService(
             await PublishAsync("maintenance.failed", "error", context.Run, errorCode, CancellationToken.None);
             await AuditAsync(context.Run, "failed", CancellationToken.None);
             logger.LogError(ex, "Maintenance run {RunId} failed at {Stage}.", context.Run.Id, context.Run.CurrentStage);
+            throw;
         }
         finally
         {
             if (_activeRuns.TryRemove(seed.Id, out var active))
             {
-                active.Cancellation.Dispose();
                 active.ActivityLease.Dispose();
             }
         }
@@ -637,5 +662,5 @@ public sealed class MaintenanceExecutionService(
         public MaintenanceRun Run { get; set; } = run;
     }
 
-    private sealed record ActiveRun(string PlanId, CancellationTokenSource Cancellation, IDisposable ActivityLease);
+    private sealed record ActiveRun(string PlanId, string TaskId, IDisposable ActivityLease);
 }

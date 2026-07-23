@@ -1,4 +1,5 @@
 using PalOps.Web.Contracts;
+using PalOps.Web.Platform.Readiness;
 using PalOps.Web.Security;
 using PalOps.Web.ServerRuntime;
 
@@ -17,9 +18,16 @@ public static class ServerRuntimeEndpoints
 
         group.MapPost("/refresh", async (
             IPalServerRuntimeCoordinator service,
+            IOperationalReadinessGate readinessGate,
             HttpContext context,
             CancellationToken cancellationToken) =>
-            Results.Ok(Response(await service.RefreshAsync(true, cancellationToken), context)))
+        {
+            var readiness = await readinessGate.GetSnapshotAsync(cancellationToken);
+            var snapshot = readiness.HasAnyOperationalConfiguration
+                ? await service.RefreshAsync(true, cancellationToken)
+                : service.Current;
+            return Results.Ok(Response(snapshot, context));
+        })
             .AddEndpointFilter<CsrfValidationFilter>();
 
         group.MapPost("/discover", async (

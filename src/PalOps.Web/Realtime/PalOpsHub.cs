@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
+using PalOps.Web.Platform.Readiness;
 using PalOps.Web.ServerRuntime;
 
 namespace PalOps.Web.Realtime;
@@ -8,7 +9,8 @@ namespace PalOps.Web.Realtime;
 [Authorize]
 public sealed class PalOpsHub(
     IRealtimeConnectionRegistry connections,
-    IPalServerRuntimeCoordinator runtime) : Hub
+    IPalServerRuntimeCoordinator runtime,
+    IOperationalReadinessGate readinessGate) : Hub
 {
     public override async Task OnConnectedAsync()
     {
@@ -39,7 +41,10 @@ public sealed class PalOpsHub(
 
     public async Task RequestRuntimeSnapshot()
     {
-        var snapshot = await runtime.RefreshAsync(true, Context.ConnectionAborted);
+        var readiness = await readinessGate.GetSnapshotAsync(Context.ConnectionAborted);
+        var snapshot = readiness.HasAnyOperationalConfiguration
+            ? await runtime.RefreshAsync(true, Context.ConnectionAborted)
+            : runtime.Current;
         await Clients.Caller.SendAsync("RuntimeSnapshotUpdated", snapshot, Context.ConnectionAborted);
     }
 }

@@ -8,6 +8,7 @@ using PalOps.Web.Rcon;
 using PalOps.Web.SaveGames.Binary;
 using PalOps.Web.Security;
 using PalOps.Web.Settings;
+using PalOps.Web.AdvancedOperations;
 
 namespace PalOps.Web.Endpoints;
 
@@ -20,6 +21,7 @@ public static class SettingsEndpoints
             => Results.Ok(await store.GetSummaryAsync(cancellationToken)));
         group.MapPut("/server", SaveAsync).AddEndpointFilter<CsrfValidationFilter>();
         group.MapPost("/test", TestAsync).AddEndpointFilter<CsrfValidationFilter>();
+        group.MapGet("/storage/status", (IStorageInitializationState storage) => Results.Ok(storage.Status));
         group.MapPost("/storage/initialize", InitializeStorageAsync)
             .AddEndpointFilter<CsrfValidationFilter>();
         return endpoints;
@@ -27,12 +29,12 @@ public static class SettingsEndpoints
 
     private static async Task<IResult> InitializeStorageAsync(
         HttpContext context,
-        IStorageInitializationService storage,
+        IStorageInitializationState storage,
         IAuditLogService audit,
         ILoggerFactory loggerFactory,
         CancellationToken cancellationToken)
     {
-        var result = await storage.InitializeAsync(cancellationToken);
+        var result = await storage.RunAsync(cancellationToken);
         await audit.WriteBestEffortAsync(
             loggerFactory.CreateLogger("PalOps.Audit"),
             "storage.initialize",
@@ -56,10 +58,15 @@ public static class SettingsEndpoints
         IServerSettingsStore store,
         IPrivateNetworkValidator validator,
         IOptions<AppRuntimeOptions> options,
+        IConfigurationVersionService configurationVersions,
         IAuditLogService audit,
         CancellationToken cancellationToken)
     {
         await ValidateAsync(request, validator, options.Value.AllowPublicServerTargets, cancellationToken);
+        _ = await configurationVersions.CaptureAutomaticAsync(
+            "server-settings-before-change",
+            context.User.Identity?.Name ?? "unknown",
+            cancellationToken);
         await store.SaveAsync(request, cancellationToken);
         await audit.WriteAsync(
             "settings.update",

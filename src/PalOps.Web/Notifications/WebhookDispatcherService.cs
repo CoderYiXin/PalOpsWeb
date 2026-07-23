@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Channels;
 using PalOps.Web.Events;
 using PalOps.Web.Infrastructure;
+using PalOps.Web.Platform.Readiness;
+using PalOps.Web.Platform.Workers;
 
 namespace PalOps.Web.Notifications;
 
@@ -38,6 +40,8 @@ public sealed class WebhookDispatcherService : BackgroundService, IWebhookDelive
     private readonly IWebhookHistoryStore _history;
     private readonly IHttpClientFactory _httpClientFactory;
     private readonly ILogger<WebhookDispatcherService> _logger;
+    private readonly IBackgroundWorkerSupervisor _workerSupervisor;
+    private readonly IOperationalReadinessGate _readinessGate;
     private readonly Channel<WebhookDeliveryWorkItem> _queue;
     private IPalOpsEventSubscription? _subscription;
 
@@ -50,6 +54,8 @@ public sealed class WebhookDispatcherService : BackgroundService, IWebhookDelive
         IWebhookDestinationValidator destinationValidator,
         IWebhookHistoryStore history,
         IHttpClientFactory httpClientFactory,
+        IBackgroundWorkerSupervisor workerSupervisor,
+        IOperationalReadinessGate readinessGate,
         ILogger<WebhookDispatcherService> logger)
     {
         _bus = bus;
@@ -60,6 +66,8 @@ public sealed class WebhookDispatcherService : BackgroundService, IWebhookDelive
         _destinationValidator = destinationValidator;
         _history = history;
         _httpClientFactory = httpClientFactory;
+        _workerSupervisor = workerSupervisor;
+        _readinessGate = readinessGate;
         _logger = logger;
         _queue = Channel.CreateBounded<WebhookDeliveryWorkItem>(new BoundedChannelOptions(QueueCapacity)
         {
@@ -70,12 +78,40 @@ public sealed class WebhookDispatcherService : BackgroundService, IWebhookDelive
         });
     }
 
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    protected override Task ExecuteAsync(CancellationToken stoppingToken) =>
+        _workerSupervisor.RunAsync("webhook-dispatcher", RunLoopAsync, stoppingToken);
+
+    private async Task RunLoopAsync(CancellationToken stoppingToken)
     {
+        await _readinessGate.WaitUntilReadyAsync(
+            "webhook-dispatcher",
+            anyOf: OperationalCapability.Core,
+            cancellationToken: stoppingToken).ConfigureAwait(false);
+
+        if (_subscription is not null) await _subscription.DisposeAsync();
         _subscription = _bus.Subscribe("webhook-dispatcher", QueueCapacity);
-        var routingTask = RouteEventsAsync(_subscription, stoppingToken);
-        var deliveryTask = ProcessQueueAsync(stoppingToken);
-        await Task.WhenAll(routingTask, deliveryTask);
+        using var linked = CancellationTokenSource.CreateLinkedTokenSource(stoppingToken);
+        var routingTask = RouteEventsAsync(_subscription, linked.Token);
+        var deliveryTask = ProcessQueueAsync(linked.Token);
+        var heartbeatTask = HeartbeatAsync(linked.Token);
+        var completed = await Task.WhenAny(routingTask, deliveryTask).ConfigureAwait(false);
+        linked.Cancel();
+        try { await completed.ConfigureAwait(false); }
+        finally
+        {
+            try { await Task.WhenAll(routingTask, deliveryTask, heartbeatTask).ConfigureAwait(false); }
+            catch (OperationCanceledException) when (linked.IsCancellationRequested) { }
+        }
+    }
+
+    private async Task HeartbeatAsync(CancellationToken cancellationToken)
+    {
+        using var timer = new PeriodicTimer(TimeSpan.FromSeconds(15));
+        while (!cancellationToken.IsCancellationRequested)
+        {
+            _workerSupervisor.Heartbeat("webhook-dispatcher");
+            if (!await timer.WaitForNextTickAsync(cancellationToken).ConfigureAwait(false)) break;
+        }
     }
 
     public override async Task StopAsync(CancellationToken cancellationToken)
@@ -207,6 +243,10 @@ public sealed class WebhookDispatcherService : BackgroundService, IWebhookDelive
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
         {
+        }
+        catch (Exception exception)
+        {
+            _logger.LogError(exception, "Failed to schedule webhook retry for event {EventType} and channel {ChannelId}.", workItem.Event.EventType, workItem.ChannelId);
         }
     }
 

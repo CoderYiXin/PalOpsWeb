@@ -4,6 +4,7 @@ using PalOps.Web.Configuration;
 using PalOps.Web.Audit;
 using PalOps.Web.Events;
 using PalOps.Web.Settings;
+using PalOps.Web.Platform.Tasks;
 
 namespace PalOps.Web.ServerRuntime;
 
@@ -31,6 +32,7 @@ public sealed class PalServerRuntimeCoordinator(
     IServerSettingsStore settingsStore,
     IAuditLogService audit,
     IPalOpsEventPublisher eventPublisher,
+    IPlatformTaskCoordinator platformTasks,
     IOptions<AppRuntimeOptions> options,
     ILogger<PalServerRuntimeCoordinator> logger) : IPalServerRuntimeCoordinator
 {
@@ -254,7 +256,30 @@ public sealed class PalServerRuntimeCoordinator(
                 "操作已排队");
             _operations[operation.OperationId] = operation;
             SetOperation(operation, "running", "queued", 0, "操作已排队", InitialState(type));
-            _ = Task.Run(() => ExecuteAsync(configuration, process, operation, user, remoteIp, reason, action), CancellationToken.None);
+            await platformTasks.EnqueueAsync(
+                new PlatformTaskSubmission(
+                    "palserver-runtime",
+                    $"PalServer {type}",
+                    user,
+                    remoteIp,
+                    ResourceKey: "palserver-runtime",
+                    Priority: 90,
+                    TimeoutSeconds: Math.Clamp(Math.Max(configuration.StartupTimeoutSeconds, configuration.ShutdownTimeoutSeconds) + configuration.SaveWaitSeconds + configuration.RestartCooldownSeconds + 120, 120, 3600),
+                    MaximumAttempts: 1,
+                    CorrelationId: operation.OperationId,
+                    Metadata: new Dictionary<string, string>
+                    {
+                        ["operationId"] = operation.OperationId,
+                        ["operationType"] = type
+                    },
+                    TaskId: $"palserver-{operation.OperationId}"),
+                async (taskContext, token) =>
+                {
+                    await taskContext.ReportProgressAsync(5, "server-operation", "PalServer 操作开始执行。", token);
+                    await ExecuteAsync(configuration, process, operation, user, remoteIp, reason, action, token);
+                    await taskContext.ReportProgressAsync(100, "completed", "PalServer 操作执行完成。", CancellationToken.None);
+                },
+                cancellationToken);
             return operation;
         }
         catch
@@ -271,7 +296,8 @@ public sealed class PalServerRuntimeCoordinator(
         string user,
         string remoteIp,
         string? reason,
-        Func<PalServerRuntimeConfiguration, PalServerProcessSnapshot, ServerOperationSnapshot, CancellationToken, Task> action)
+        Func<PalServerRuntimeConfiguration, PalServerProcessSnapshot, ServerOperationSnapshot, CancellationToken, Task> action,
+        CancellationToken cancellationToken)
     {
         var outcome = "success";
         string? errorCode = null;
@@ -279,7 +305,7 @@ public sealed class PalServerRuntimeCoordinator(
         int? resultProcessId = initialProcess.ProcessId;
         try
         {
-            await action(configuration, initialProcess, operation, CancellationToken.None);
+            await action(configuration, initialProcess, operation, cancellationToken);
             var process = locator.Locate(configuration);
             resultProcessId = process.ProcessId ?? resultProcessId;
             ValidateFinalState(operation.Type, process);
@@ -298,8 +324,18 @@ public sealed class PalServerRuntimeCoordinator(
                 "force-stop" => "强制停止流程完成",
                 _ => "操作完成"
             };
-            var metric = await metrics.CollectAsync(process, true, CancellationToken.None);
+            var metric = await metrics.CollectAsync(process, true, cancellationToken);
             CompleteOperation(operation, "completed", "completed", message, finalState, null, process, metric);
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            outcome = "cancelled";
+            errorCode = "PALSERVER_OPERATION_CANCELLED";
+            message = "PalServer 操作已取消。";
+            var failureProcess = locator.Locate(configuration);
+            var state = ResolveFailureState(operation.Type, errorCode, failureProcess);
+            CompleteOperation(operation, "cancelled", "cancelled", message, state, errorCode, failureProcess, Current.Metrics);
+            throw;
         }
         catch (PalServerRuntimeException ex)
         {
@@ -336,7 +372,7 @@ public sealed class PalServerRuntimeCoordinator(
                 resultProcessId,
                 reason,
                 errorCode,
-                message));
+                message), CancellationToken.None);
             try
             {
                 await audit.WriteAsync(
@@ -344,7 +380,8 @@ public sealed class PalServerRuntimeCoordinator(
                     outcome,
                     remoteIp,
                     $"PalServer {operation.Type} {outcome}。",
-                    new { operation.OperationId, user, processId = resultProcessId, reason, errorCode, message });
+                    new { operation.OperationId, user, processId = resultProcessId, reason, errorCode, message },
+                    CancellationToken.None);
             }
             catch (Exception ex)
             {
@@ -486,7 +523,7 @@ public sealed class PalServerRuntimeCoordinator(
         string? executablePathOverride = null)
     {
         var snapshot = Current;
-        _ = eventPublisher.PublishAsync(PalOpsEvent.Create(
+        _ = PublishRuntimeEventBestEffortAsync(PalOpsEvent.Create(
             eventType,
             severity,
             server: new Dictionary<string, object?>
@@ -501,6 +538,18 @@ public sealed class PalServerRuntimeCoordinator(
                 ["operationType"] = operationType,
                 ["errorCode"] = errorCode
             }));
+    }
+
+    private async Task PublishRuntimeEventBestEffortAsync(PalOpsEvent palOpsEvent)
+    {
+        try
+        {
+            await eventPublisher.PublishAsync(palOpsEvent).ConfigureAwait(false);
+        }
+        catch (Exception exception)
+        {
+            logger.LogWarning(exception, "Failed to publish runtime event {EventType}.", palOpsEvent.EventType);
+        }
     }
 
     private static PalServerRuntimeState InitialState(string type) => type switch

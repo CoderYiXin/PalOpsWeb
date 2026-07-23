@@ -1,5 +1,7 @@
 using PalOps.Web.Contracts;
 using PalOps.Web.External;
+using PalOps.Web.Platform.Caching;
+using PalOps.Web.Platform.Readiness;
 
 namespace PalOps.Web.Players;
 
@@ -14,40 +16,35 @@ public interface IPlayerAggregationCache
     void UpdateDefender(IReadOnlyList<PalDefenderPlayer> players);
 }
 
-public sealed class PlayerAggregationCache : IPlayerAggregationCache
+public sealed class PlayerAggregationCache(IPlatformCache cache) : IPlayerAggregationCache
 {
-    private readonly object _sync = new();
-    private IReadOnlyList<PalDefenderPlayer> _defenderPlayers = [];
-    private DateTimeOffset _defenderUpdatedAt = DateTimeOffset.MinValue;
+    private const string CacheKey = "players:paldefender";
+    private sealed record CacheEntry(IReadOnlyList<PalDefenderPlayer> Players, DateTimeOffset UpdatedAt);
 
     public bool TryGetDefender(TimeSpan maximumAge, out IReadOnlyList<PalDefenderPlayer> players)
     {
-        lock (_sync)
+        if (cache.TryGet<CacheEntry>(CacheKey, out var entry) && entry is not null)
         {
-            if (_defenderPlayers.Count == 0 || DateTimeOffset.UtcNow - _defenderUpdatedAt > maximumAge)
+            if (entry.Players.Count > 0 && DateTimeOffset.UtcNow - entry.UpdatedAt <= maximumAge)
             {
-                players = [];
-                return false;
+                players = entry.Players;
+                return true;
             }
-            players = _defenderPlayers;
-            return true;
+            cache.Remove(CacheKey);
         }
+        players = [];
+        return false;
     }
 
-    public void UpdateDefender(IReadOnlyList<PalDefenderPlayer> players)
-    {
-        lock (_sync)
-        {
-            _defenderPlayers = players.ToArray();
-            _defenderUpdatedAt = DateTimeOffset.UtcNow;
-        }
-    }
+    public void UpdateDefender(IReadOnlyList<PalDefenderPlayer> players) =>
+        cache.Set(CacheKey, new CacheEntry(players.ToArray(), DateTimeOffset.UtcNow), TimeSpan.FromMinutes(5), ["players"]);
 }
 
 public sealed class PlayerAggregationService(
     IPalworldApiClient palworldApi,
     IPalDefenderApiClient palDefenderApi,
-    IPlayerAggregationCache cache) : IPlayerAggregationService
+    IPlayerAggregationCache cache,
+    IOperationalReadinessGate readinessGate) : IPlayerAggregationService
 {
     // PalDefender only enriches the official player snapshot. It must not delay map marker first paint.
     private static readonly TimeSpan DefenderMergeBudget = TimeSpan.FromMilliseconds(300);
@@ -55,8 +52,23 @@ public sealed class PlayerAggregationService(
 
     public async Task<IReadOnlyList<PlayerResponse>> GetOnlinePlayersAsync(CancellationToken cancellationToken = default)
     {
-        var officialTask = TryGetOfficialAsync(cancellationToken);
-        var defenderTask = TryGetDefenderAsync(cancellationToken);
+        var readiness = await readinessGate.GetSnapshotAsync(cancellationToken).ConfigureAwait(false);
+        var officialConfigured = readiness.HasAny(OperationalCapability.PalworldRest);
+        var defenderConfigured = readiness.HasAny(OperationalCapability.PalDefender);
+
+        if (!officialConfigured && !defenderConfigured)
+        {
+            throw new ExternalApiException(
+                "PLAYER_SOURCES_NOT_CONFIGURED",
+                "尚未配置 Palworld REST 或 PalDefender，玩家自动查询保持暂停。");
+        }
+
+        var officialTask = officialConfigured
+            ? TryGetOfficialAsync(cancellationToken)
+            : Task.FromResult(new SourceResult<PalworldPlayer>(false, [], "Palworld REST API 未配置。"));
+        var defenderTask = defenderConfigured
+            ? TryGetDefenderAsync(cancellationToken)
+            : Task.FromResult(new SourceResult<PalDefenderPlayer>(false, [], "PalDefender REST API 未配置。"));
         var official = await officialTask.ConfigureAwait(false);
 
         if (official.Success)
@@ -65,7 +77,7 @@ public sealed class PlayerAggregationService(
             return MergeOfficialPlayers(official.Players, defender.Players);
         }
 
-        if (cache.TryGetDefender(DefenderCacheMaximumAge, out var cachedDefender))
+        if (defenderConfigured && cache.TryGetDefender(DefenderCacheMaximumAge, out var cachedDefender))
             return CreateDefenderFallback(cachedDefender, "paldefender-cache");
 
         var defenderFallback = await defenderTask.ConfigureAwait(false);
@@ -74,7 +86,7 @@ public sealed class PlayerAggregationService(
 
         throw new ExternalApiException(
             "PLAYER_SOURCES_UNAVAILABLE",
-            "Palworld 与 PalDefender 玩家接口均不可用。",
+            "已配置的玩家数据接口当前不可用。",
             details: new { officialError = official.Error, defenderError = defenderFallback.Error });
     }
 

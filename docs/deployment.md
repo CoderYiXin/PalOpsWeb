@@ -24,7 +24,7 @@ PalOps Web、PalServer、目标世界存档和可选 PalDefender 必须位于同
 
 ## 首次部署
 
-1. 将发布包解压到独立目录，例如 `D:\PalOpsWeb\1.3.0`；
+1. 将发布包解压到独立目录，例如 `D:\PalOpsWeb\1.3.1`；
 2. 不要直接覆盖旧版本目录；
 3. 运行 `start.cmd` 或 `PalOps.Web.exe`；
 4. 从控制台读取监听地址；

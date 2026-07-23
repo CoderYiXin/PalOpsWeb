@@ -263,7 +263,23 @@ public sealed class PlayerQuickActionService(
             && request.Amount is not (> 0 and <= 100_000))
             throw new ArgumentException("点数必须在 1 到 100000 之间。");
 
+        if (action == "teleport-coordinates")
+            ValidateTeleportCoordinates(request.X, request.Y, request.Z);
+
         if (action == "learn-tech" && string.IsNullOrWhiteSpace(request.TechId))
             throw new ArgumentException("请输入科技 ID；输入 all 可解锁全部科技。");
     }
+
+    private static void ValidateTeleportCoordinates(double? x, double? y, double? z)
+    {
+        // PalDefender /tp expects in-game map coordinates (the values displayed on the M map),
+        // not Unreal world coordinates. The current supported maps stay well inside +/- 5000.
+        if (!x.HasValue || !double.IsFinite(x.Value) || Math.Abs(x.Value) > 5_000)
+            throw new ArgumentException("X 必须是绝对值不超过 5000 的有效地图坐标。");
+        if (!y.HasValue || !double.IsFinite(y.Value) || Math.Abs(y.Value) > 5_000)
+            throw new ArgumentException("Y 必须是绝对值不超过 5000 的有效地图坐标。");
+        if (z.HasValue && (!double.IsFinite(z.Value) || Math.Abs(z.Value) > 100_000))
+            throw new ArgumentException("手动 Z 必须是绝对值不超过 100000 的有效高度坐标。");
+    }
+
 }

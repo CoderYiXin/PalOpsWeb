@@ -1,6 +1,8 @@
 using Microsoft.Extensions.Options;
 using PalOps.Web.Configuration;
 using PalOps.Web.Notifications;
+using PalOps.Web.Platform.Readiness;
+using PalOps.Web.Platform.Workers;
 
 namespace PalOps.Web.ServerRuntime;
 
@@ -8,14 +10,24 @@ public sealed class PalServerRuntimeMonitorService(
     IPalServerRuntimeCoordinator coordinator,
     IOptions<AppRuntimeOptions> options,
     INotificationAlertPolicyService alerts,
-    ILogger<PalServerRuntimeMonitorService> logger) : BackgroundService
+    ILogger<PalServerRuntimeMonitorService> logger,
+    IBackgroundWorkerSupervisor workerSupervisor,
+    IOperationalReadinessGate readinessGate) : BackgroundService
 {
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    protected override Task ExecuteAsync(CancellationToken stoppingToken) =>
+        workerSupervisor.RunAsync("server-runtime-monitor", RunLoopAsync, stoppingToken);
+
+    private async Task RunLoopAsync(CancellationToken stoppingToken)
     {
         var interval = TimeSpan.FromSeconds(Math.Clamp(options.Value.RuntimeMonitorIntervalSeconds, 5, 60));
         using var timer = new PeriodicTimer(interval);
         while (!stoppingToken.IsCancellationRequested)
         {
+            await readinessGate.WaitUntilReadyAsync(
+                "server-runtime-monitor",
+                anyOf: OperationalCapability.Core,
+                cancellationToken: stoppingToken);
+            workerSupervisor.Heartbeat("server-runtime-monitor");
             try
             {
                 var previous = coordinator.Current;

@@ -2,17 +2,17 @@
 
 > 语言：**简体中文** | [English](release-checklist.en.md)
 
-本清单用于 PalOps Web **1.3.0** 的 GitHub 源码与 Windows `win-x64` 发布。
+本清单用于 PalOps Web **1.3.1** 的 GitHub 源码与 Windows `win-x64` 发布。
 
 ## 1. 源码仓库
 
 - [ ] 根目录 `README.md` 为中文项目首页，`README.en.md` 为对应英文项目首页；
 - [ ] 中文 README 只引用 `docs/images/zh-CN/`，英文 README 只引用 `docs/images/en-US/`；
-- [ ] 两种语言各有 27 张、共 54 张 **1920×1080 WebP** 产品截图，全部来自当前 Vue 页面并使用伪数据；
+- [ ] 两种语言各有 37 张、共 74 张 **1920×1080 WebP** 产品截图，全部来自当前 Vue 页面并使用伪数据；
 - [ ] `docs/*.md` 默认中文，并存在对应 `.en.md`；
 - [ ] 不包含历史设计稿、内部实施计划、单次缺陷报告、打包审计或临时截图脚本；
 - [ ] 不包含 `node_modules`、`bin`、`obj`、`dist`、`.git`、缓存、运行数据、日志或密钥；
-- [ ] 版本元数据、README、发布命令与标签均为 `1.3.0`；
+- [ ] 版本元数据、README、发布命令与标签均为 `1.3.1`；
 - [ ] `.github/workflows/build.yml` 可通过 GitHub Actions。
 
 ## 2. 标准构建
@@ -77,12 +77,12 @@
 
 ```powershell
 .\scripts\fetch-map-tiles.ps1 -Layer all
-.\scripts\publish-win-x64.ps1 -Version 1.3.0
+.\scripts\publish-win-x64.ps1 -Version 1.3.1
 ```
 
 检查：
 
-- [ ] `artifacts/palops-web-1.3.0-win-x64/`、ZIP 与 `.sha256` 同时生成；
+- [ ] `artifacts/palops-web-1.3.1-win-x64/`、ZIP 与 `.sha256` 同时生成；
 - [ ] 解压后可由 `start.cmd` 启动；
 - [ ] `wwwroot` 为当前构建；
 - [ ] 发布树不含 Python、源码缓存、运行数据和密钥；
@@ -90,9 +90,9 @@
 
 ## 7. GitHub Release
 
-- [ ] 创建 `v1.3.0` 标签；
+- [ ] 创建 `v1.3.1` 标签；
 - [ ] 上传 ZIP 和 SHA-256；
-- [ ] 发布说明引用 `CHANGELOG.md` 的 1.3.0 条目；
+- [ ] 发布说明引用 `CHANGELOG.md` 的 1.3.1 条目；
 - [ ] 明确生命周期控制仅支持 Windows 本机；
 - [ ] 提醒升级前备份存档、PalOps 数据和 PalDefender 配置。
 

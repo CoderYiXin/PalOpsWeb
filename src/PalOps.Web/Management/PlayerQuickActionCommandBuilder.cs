@@ -30,7 +30,7 @@ public static class PlayerQuickActionCommandBuilder
         {
             "get-position" => $"/getpos {player}",
             "teleport-player" => $"/tp {player} {ValidateToken(parameters.TargetPlayerIdentifier, "目标玩家标识")}",
-            "teleport-coordinates" => $"/tp {player} {FormatCoordinate(parameters.X, "X")} {FormatCoordinate(parameters.Y, "Y")} {FormatCoordinate(parameters.Z, "Z")}",
+            "teleport-coordinates" => BuildTeleportCoordinates(player, parameters.X, parameters.Y, parameters.Z),
             "give-experience" => $"/give_exp {player} {RequireAmount(parameters.Amount)}",
             "give-stat-points" => $"/givestats {player} {RequireAmount(parameters.Amount)}",
             "give-tech-points" => $"/givetechpoints {player} {RequireAmount(parameters.Amount)}",
@@ -38,6 +38,18 @@ public static class PlayerQuickActionCommandBuilder
             "learn-tech" => $"/learntech {player} {ValidateToken(parameters.TechId, "科技 ID")}",
             _ => throw new ArgumentException("不支持的玩家快捷操作。", nameof(action))
         };
+    }
+
+    private static string BuildTeleportCoordinates(string player, double? x, double? y, double? z)
+    {
+        var xValue = FormatCoordinate(x, "X");
+        var yValue = FormatCoordinate(y, "Y");
+        if (!z.HasValue)
+        {
+            return $"/tp {player} {xValue} {yValue}";
+        }
+
+        return $"/tp {player} {xValue} {yValue} {FormatCoordinate(z, "Z")}";
     }
 
     private static string ValidateToken(string? value, string label)

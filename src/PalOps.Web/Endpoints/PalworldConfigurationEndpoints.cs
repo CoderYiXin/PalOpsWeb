@@ -1,6 +1,8 @@
 using PalOps.Web.Contracts;
 using PalOps.Web.PalworldConfiguration;
 using PalOps.Web.Security;
+using PalOps.Web.AdvancedOperations;
+using PalOps.Web.Platform.Caching;
 
 namespace PalOps.Web.Endpoints;
 
@@ -21,9 +23,16 @@ public static class PalworldConfigurationEndpoints
         group.MapPut("/path", async (
             PalworldConfigurationPathRequest request,
             IPalworldConfigurationService service,
+            IConfigurationVersionService versions,
+            IPlatformCache cache,
             HttpContext context,
             CancellationToken cancellationToken) =>
-            Results.Ok(Response(await service.SetPathAsync(request.Path, cancellationToken), context)))
+        {
+            _ = await versions.CaptureAutomaticAsync("palworld-path-before-change", User(context), cancellationToken);
+            var result = await service.SetPathAsync(request.Path, cancellationToken);
+            cache.RemoveByTag("readiness");
+            return Results.Ok(Response(result, context));
+        })
             .AddEndpointFilter<CsrfValidationFilter>();
 
         group.MapPost("/preview", async (
@@ -37,19 +46,33 @@ public static class PalworldConfigurationEndpoints
         group.MapPut("/save", async (
             PalworldConfigurationSaveRequest request,
             IPalworldConfigurationService service,
+            IConfigurationVersionService versions,
+            IPlatformCache cache,
             HttpContext context,
             CancellationToken cancellationToken) =>
-            Results.Ok(Response(await service.SaveAsync(request, false, User(context), EndpointHelpers.RemoteIp(context), cancellationToken), context)))
+        {
+            _ = await versions.CaptureAutomaticAsync("palworld-configuration-before-save", User(context), cancellationToken);
+            var result = await service.SaveAsync(request, false, User(context), EndpointHelpers.RemoteIp(context), cancellationToken);
+            cache.RemoveByTag("readiness");
+            return Results.Ok(Response(result, context));
+        })
             .AddEndpointFilter<CsrfValidationFilter>();
 
         group.MapPost("/save-and-restart", async (
             PalworldConfigurationSaveRequest request,
             IPalworldConfigurationService service,
+            IConfigurationVersionService versions,
+            IPlatformCache cache,
             HttpContext context,
             CancellationToken cancellationToken) =>
-            Results.Accepted(
+        {
+            _ = await versions.CaptureAutomaticAsync("palworld-configuration-before-restart", User(context), cancellationToken);
+            var result = await service.SaveAsync(request, true, User(context), EndpointHelpers.RemoteIp(context), cancellationToken);
+            cache.RemoveByTag("readiness");
+            return Results.Accepted(
                 "/api/v1/server-runtime/status",
-                Response(await service.SaveAsync(request, true, User(context), EndpointHelpers.RemoteIp(context), cancellationToken), context)))
+                Response(result, context));
+        })
             .AddEndpointFilter<CsrfValidationFilter>();
 
         return endpoints;

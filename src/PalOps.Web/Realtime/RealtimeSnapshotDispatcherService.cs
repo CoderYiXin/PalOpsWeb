@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.SignalR;
 using PalOps.Web.Events;
 using PalOps.Web.ServerRuntime;
+using PalOps.Web.Platform.Readiness;
+using PalOps.Web.Platform.Workers;
 
 namespace PalOps.Web.Realtime;
 
@@ -9,9 +11,14 @@ public sealed class RealtimeSnapshotDispatcherService(
     IRealtimeConnectionRegistry connections,
     IPalServerRuntimeCoordinator runtime,
     IPalOpsEventBus eventBus,
-    ILogger<RealtimeSnapshotDispatcherService> logger) : BackgroundService
+    ILogger<RealtimeSnapshotDispatcherService> logger,
+    IBackgroundWorkerSupervisor workerSupervisor,
+    IOperationalReadinessGate readinessGate) : BackgroundService
 {
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    protected override Task ExecuteAsync(CancellationToken stoppingToken) =>
+        workerSupervisor.RunAsync("realtime-dispatcher", RunLoopAsync, stoppingToken);
+
+    private async Task RunLoopAsync(CancellationToken stoppingToken)
     {
         await using var subscription = eventBus.Subscribe("signalr", 2000);
         var snapshots = DispatchSnapshotsAsync(stoppingToken);
@@ -24,19 +31,28 @@ public sealed class RealtimeSnapshotDispatcherService(
         using var timer = new PeriodicTimer(TimeSpan.FromSeconds(1));
         while (await timer.WaitForNextTickAsync(stoppingToken))
         {
+            workerSupervisor.Heartbeat("realtime-dispatcher");
             var now = DateTimeOffset.UtcNow;
             var due = connections.GetDue(now);
             if (due.Count == 0) continue;
 
             PalServerRuntimeSnapshot snapshot;
-            try
+            var readiness = await readinessGate.GetSnapshotAsync(stoppingToken).ConfigureAwait(false);
+            if (!readiness.HasAnyOperationalConfiguration)
             {
-                snapshot = await runtime.RefreshAsync(false, stoppingToken);
-            }
-            catch (Exception ex) when (ex is not OperationCanceledException)
-            {
-                logger.LogDebug(ex, "Unable to refresh runtime snapshot for realtime clients.");
                 snapshot = runtime.Current;
+            }
+            else
+            {
+                try
+                {
+                    snapshot = await runtime.RefreshAsync(false, stoppingToken);
+                }
+                catch (Exception ex) when (ex is not OperationCanceledException)
+                {
+                    logger.LogDebug(ex, "Unable to refresh runtime snapshot for realtime clients.");
+                    snapshot = runtime.Current;
+                }
             }
 
             foreach (var preference in due)

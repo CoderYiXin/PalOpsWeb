@@ -7,6 +7,39 @@ public sealed record HealthComponentV1(
     DateTimeOffset CheckedAt,
     string? Message);
 
+public sealed record HealthCategorySummaryV1(
+    string Name,
+    string Status,
+    int Healthy,
+    int Total);
+
+public sealed record HostRuntimeHealthV1(
+    long WorkingSetBytes,
+    long ManagedHeapBytes,
+    int ThreadCount,
+    long DiskFreeBytes,
+    long DiskTotalBytes,
+    double DiskFreePercent,
+    long UptimeSeconds);
+
+public sealed record TaskCenterHealthV1(int Queued, int Running, int FailedLast24Hours, int CompletedLast24Hours);
+public sealed record CacheHealthV1(long Hits, long Misses, double HitRate, int Entries, long Evictions);
+public sealed record WorkerHealthV1(int Total, int Running, int Failed, int Stale, int Restarts);
+public sealed record LoggingHealthV1(long WrittenEntries, long DroppedEntries, int FileCount, long TotalSizeBytes, DateTimeOffset? LastWriteAt);
+
+public sealed record SystemHealthDashboardV1(
+    string OverallStatus,
+    int Score,
+    DateTimeOffset GeneratedAt,
+    IReadOnlyList<HealthComponentV1> Components,
+    IReadOnlyList<HealthCategorySummaryV1> Categories,
+    HostRuntimeHealthV1 Host,
+    TaskCenterHealthV1 Tasks,
+    CacheHealthV1 Cache,
+    WorkerHealthV1 Workers,
+    LoggingHealthV1 Logging,
+    IReadOnlyList<string> Remediations);
+
 public sealed record BackupSummaryV1(
     string Directory,
     int Count,

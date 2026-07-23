@@ -2,17 +2,17 @@
 
 # Release Checklist
 
-This checklist applies to the PalOps Web **1.3.0** GitHub source publication and Windows `win-x64` release.
+This checklist applies to the PalOps Web **1.3.1** GitHub source publication and Windows `win-x64` release.
 
 ## 1. Clean source tree
 
 - [ ] `README.md` is the Chinese project homepage and `README.en.md` is the matching English homepage.
 - [ ] The Chinese README references only `docs/images/zh-CN/`; the English README references only `docs/images/en-US/`.
-- [ ] Each locale contains 27 product screenshots (54 total), all **1920×1080 WebP**, rendered from the current Vue UI with fabricated data.
+- [ ] Each locale contains 37 product screenshots (74 total), all **1920×1080 WebP**, rendered from the current Vue UI with fabricated data.
 - [ ] Public `docs/*.md` files have matching `.en.md` counterparts.
 - [ ] Historical design drafts, internal implementation plans, one-off defect reports, packaging audits, and temporary capture scripts are absent.
 - [ ] `node_modules`, `bin`, `obj`, `dist`, `.git`, caches, runtime data, logs, and secrets are absent.
-- [ ] Version metadata, documentation, publish commands, and release tag are `1.3.0`.
+- [ ] Version metadata, documentation, publish commands, and release tag are `1.3.1`.
 - [ ] `.github/workflows/build.yml` passes on GitHub Actions.
 
 ## 2. Canonical build
@@ -77,22 +77,22 @@ The command must complete:
 
 ```powershell
 .\scripts\fetch-map-tiles.ps1 -Layer all
-.\scripts\publish-win-x64.ps1 -Version 1.3.0
+.\scripts\publish-win-x64.ps1 -Version 1.3.1
 ```
 
 Expected outputs:
 
-- `artifacts/palops-web-1.3.0-win-x64/`
-- `artifacts/palops-web-1.3.0-win-x64.zip`
-- `artifacts/palops-web-1.3.0-win-x64.sha256`
+- `artifacts/palops-web-1.3.1-win-x64/`
+- `artifacts/palops-web-1.3.1-win-x64.zip`
+- `artifacts/palops-web-1.3.1-win-x64.sha256`
 
 The extracted archive must start with `start.cmd`, contain the current `wwwroot`, preserve required notices, and contain no runtime data or secrets.
 
 ## 7. GitHub release
 
-- [ ] Create tag `v1.3.0`.
+- [ ] Create tag `v1.3.1`.
 - [ ] Attach the ZIP and adjacent SHA-256 file.
-- [ ] Use the 1.3.0 section of `CHANGELOG.md` as the release-note basis.
+- [ ] Use the 1.3.1 section of `CHANGELOG.md` as the release-note basis.
 - [ ] State that lifecycle control is Windows-local-only.
 - [ ] Require a backup of saves, PalOps data, and PalDefender configuration before upgrade.
 

@@ -4,7 +4,12 @@ using PalOps.Web.SaveGames.Index;
 namespace PalOps.Web.Contracts;
 
 public sealed record ApiWarning(string Code, string Message);
-public sealed record ApiResponse<T>(T Data, string RequestId, IReadOnlyList<ApiWarning> Warnings);
+public sealed record ApiResponse<T>(T Data, string RequestId, IReadOnlyList<ApiWarning> Warnings)
+{
+    public bool Success => true;
+    public string Message { get; init; } = "OK";
+    public DateTimeOffset Timestamp { get; init; } = DateTimeOffset.UtcNow;
+}
 
 public sealed record PagedData<T>(IReadOnlyList<T> Items, int Total, int Page, int PageSize);
 

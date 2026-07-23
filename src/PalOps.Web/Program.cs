@@ -39,6 +39,10 @@ using PalOps.Web.PlayerDiscipline;
 using PalOps.Web.PluginManagement;
 using PalOps.Web.Maintenance;
 using PalOps.Web.Statistics;
+using PalOps.Web.Platform.Caching;
+using PalOps.Web.Platform.Tasks;
+using PalOps.Web.Platform.Readiness;
+using PalOps.Web.Platform.Workers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -106,6 +110,12 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("Auditor", policy => policy.RequireRole(PalOpsRoles.Owner, PalOpsRoles.Administrator, PalOpsRoles.Auditor));
 });
 builder.Services.AddMemoryCache();
+builder.Services.AddSingleton<IPlatformCache, PlatformMemoryCache>();
+builder.Services.AddSingleton<IBackgroundWorkerSupervisor, BackgroundWorkerSupervisor>();
+builder.Services.AddSingleton<IPlatformTaskRepository, PlatformTaskRepository>();
+builder.Services.AddSingleton<PlatformTaskCoordinator>();
+builder.Services.AddSingleton<IPlatformTaskCoordinator>(services => services.GetRequiredService<PlatformTaskCoordinator>());
+builder.Services.AddHostedService<PlatformTaskCoordinator>(services => services.GetRequiredService<PlatformTaskCoordinator>());
 builder.Services.AddSignalR(options =>
 {
     options.EnableDetailedErrors = false;
@@ -167,11 +177,13 @@ builder.Services.AddSingleton<ILoginAttemptTracker, LoginAttemptTracker>();
 builder.Services.AddSingleton<IPrivateNetworkValidator, PrivateNetworkValidator>();
 builder.Services.AddSingleton<IRuntimePathResolver, RuntimePathResolver>();
 builder.Services.AddSingleton<IStorageInitializationService, StorageInitializationService>();
+builder.Services.AddSingleton<IStorageInitializationState, StorageInitializationState>();
 builder.Services.AddSingleton<FileSystemLoggerProvider>();
 builder.Services.AddSingleton<ISystemLogStore>(services => services.GetRequiredService<FileSystemLoggerProvider>());
 builder.Services.AddSingleton<ILoggerProvider>(services => services.GetRequiredService<FileSystemLoggerProvider>());
 builder.Services.AddHostedService<FileSystemLoggerProvider>(services => services.GetRequiredService<FileSystemLoggerProvider>());
 builder.Services.AddSingleton<IServerSettingsStore, ServerSettingsStore>();
+builder.Services.AddSingleton<IOperationalReadinessGate, OperationalReadinessGate>();
 builder.Services.AddHostedService<StartupDiagnosticsHostedService>();
 builder.Services.AddSingleton<IAuditLogService, AuditLogService>();
 builder.Services.AddSingleton<IBackupRepository, JsonBackupRepository>();
@@ -282,6 +294,12 @@ builder.Services.AddHttpClient<IPalDefenderReleaseClient, PalDefenderReleaseClie
 {
     client.BaseAddress = new Uri("https://api.github.com/");
     client.Timeout = TimeSpan.FromSeconds(12);
+})
+.ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
+{
+    AllowAutoRedirect = false,
+    UseCookies = false,
+    AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate | DecompressionMethods.Brotli
 });
 builder.Services.AddHttpClient<IPalOpsReleaseClient, PalOpsReleaseClient>(client =>
 {
@@ -337,10 +355,12 @@ builder.Services.AddHostedService<AdvancedOperationsMonitorService>();
 
 var app = builder.Build();
 
+await RunStorageInitializationAsync(app.Services);
 await app.Services.GetRequiredService<IAuthStateStore>().EnsureBootstrapPasswordAsync();
 await app.Services.GetRequiredService<IUserAccountStore>().EnsureOwnerFromLegacyAsync();
 
 app.UseMiddleware<ApiExceptionMiddleware>();
+app.UseMiddleware<ApiResponseMetadataMiddleware>();
 app.Use(async (context, next) =>
 {
     context.Response.Headers["X-Content-Type-Options"] = "nosniff";
@@ -407,10 +427,26 @@ app.MapSystemLogEndpoints();
 app.MapUserEndpoints();
 app.MapAuditEndpoints();
 app.MapAdvancedOperationsEndpoints();
+app.MapTaskCenterEndpoints();
 app.MapHub<PalOpsHub>("/hubs/palops").RequireAuthorization();
 app.MapGet("/api/health", () => Results.Ok(new { status = "ok", timestamp = DateTimeOffset.UtcNow }));
 app.MapFallbackToFile("index.html");
 
 app.Run();
+
+static async Task RunStorageInitializationAsync(IServiceProvider services)
+{
+    var storage = services.GetRequiredService<IStorageInitializationState>();
+    try
+    {
+        _ = await storage.RunAsync();
+    }
+    catch (Exception ex)
+    {
+        services.GetRequiredService<ILoggerFactory>()
+            .CreateLogger("PalOps.StorageStartup")
+            .LogError(ex, "PalOps local storage could not be initialized automatically. The application will continue so an administrator can use the repair entry.");
+    }
+}
 
 public partial class Program;

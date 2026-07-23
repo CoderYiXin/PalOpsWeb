@@ -2,7 +2,7 @@
 
 > Language: [简体中文](README.md) | **English**
 
-`zh-CN/` and `en-US/` contain the V1.3.0 Chinese and English README screenshots. Both sets use the same synthetic business scenarios and a fixed **1920×1080** viewport.
+`zh-CN/` and `en-US/` contain the V1.3.1 Chinese and English README screenshots. Both sets use the same synthetic business scenarios and a fixed **1920×1080** viewport. Each locale contains **37 screenshots**, for **74 product screenshots** in total.
 
 ## English screenshot inventory
 
@@ -48,7 +48,7 @@
 
 ## Generation and acceptance rules
 
-- Capture the current V1.3.0 Vue pages; promotional posters and cross-locale substitutions are not accepted.
+- Capture the current V1.3.1 Vue pages; promotional posters and cross-locale substitutions are not accepted.
 - APIs and SignalR may be fulfilled by a local synthetic-data interceptor, but demo data must not enter runtime source or release configuration.
 - The Chinese README references only `zh-CN/`; the English README references only `en-US/`.
 - Resource grants require three complete screenshots: select players, select resources, and review/execute.

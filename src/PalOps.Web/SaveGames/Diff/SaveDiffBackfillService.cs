@@ -1,4 +1,5 @@
 using PalOps.Web.SaveGames.Index;
+using PalOps.Web.Platform.Readiness;
 
 namespace PalOps.Web.SaveGames.Diff;
 
@@ -8,21 +9,29 @@ public sealed class SaveDiffBackfillService : BackgroundService
     private readonly ISaveChangeSnapshotProjector _projector;
     private readonly ISaveChangeSnapshotRepository _changeRepository;
     private readonly ILogger<SaveDiffBackfillService> _logger;
+    private readonly IOperationalReadinessGate _readinessGate;
 
     public SaveDiffBackfillService(
         ISaveIndexRepository indexRepository,
         ISaveChangeSnapshotProjector projector,
         ISaveChangeSnapshotRepository changeRepository,
-        ILogger<SaveDiffBackfillService> logger)
+        ILogger<SaveDiffBackfillService> logger,
+        IOperationalReadinessGate readinessGate)
     {
         _indexRepository = indexRepository;
         _projector = projector;
         _changeRepository = changeRepository;
         _logger = logger;
+        _readinessGate = readinessGate;
     }
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
+        await _readinessGate.WaitUntilReadyAsync(
+            workerName: null,
+            allOf: OperationalCapability.SaveDirectory,
+            cancellationToken: stoppingToken);
+
         try
         {
             var existing = await _indexRepository.GetRecentSnapshotsAsync(30, stoppingToken);

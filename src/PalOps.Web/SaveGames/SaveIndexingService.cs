@@ -5,6 +5,7 @@ using PalOps.Web.SaveGames.Diff;
 using PalOps.Web.SaveGames.Index;
 using PalOps.Web.SaveGames.Projection;
 using PalOps.Web.Settings;
+using PalOps.Web.Platform.Tasks;
 
 namespace PalOps.Web.SaveGames;
 
@@ -31,10 +32,10 @@ public sealed class SaveIndexingService : ISaveIndexingService, IDisposable
     private readonly ISaveChangeSnapshotRepository _changeSnapshotRepository;
     private readonly IPalOpsEventPublisher _eventPublisher;
     private readonly ILogger<SaveIndexingService> _logger;
+    private readonly IPlatformTaskCoordinator _taskCenter;
     private readonly SemaphoreSlim _startGate = new(1, 1);
     private readonly SaveIndexProgressTracker _progress = new();
-    private CancellationTokenSource? _currentCancellation;
-    private Task? _currentTask;
+    private string? _currentTaskId;
 
     public SaveIndexingService(
         IServerSettingsStore settingsStore,
@@ -48,6 +49,7 @@ public sealed class SaveIndexingService : ISaveIndexingService, IDisposable
         ISaveChangeSnapshotProjector changeSnapshotProjector,
         ISaveChangeSnapshotRepository changeSnapshotRepository,
         IPalOpsEventPublisher eventPublisher,
+        IPlatformTaskCoordinator taskCenter,
         ILogger<SaveIndexingService> logger)
     {
         _settingsStore = settingsStore;
@@ -61,6 +63,7 @@ public sealed class SaveIndexingService : ISaveIndexingService, IDisposable
         _changeSnapshotProjector = changeSnapshotProjector;
         _changeSnapshotRepository = changeSnapshotRepository;
         _eventPublisher = eventPublisher;
+        _taskCenter = taskCenter;
         _logger = logger;
     }
 
@@ -73,16 +76,41 @@ public sealed class SaveIndexingService : ISaveIndexingService, IDisposable
         await _startGate.WaitAsync(cancellationToken);
         try
         {
-            if (_currentTask is { IsCompleted: false })
-                return new SaveIndexTriggerResult(false, "SAVE_PARSE_ALREADY_RUNNING", "已有存档解析任务正在运行。", Status.CurrentSnapshotId);
+            if (!string.IsNullOrWhiteSpace(_currentTaskId))
+            {
+                var current = await _taskCenter.FindAsync(_currentTaskId, cancellationToken);
+                if (current?.Status is PlatformTaskStatus.Queued or PlatformTaskStatus.Running)
+                    return new SaveIndexTriggerResult(false, "SAVE_PARSE_ALREADY_RUNNING", "已有存档解析任务正在运行。", Status.CurrentSnapshotId);
+            }
 
             var jobId = $"parse-{SaveClock.BeijingNow():yyyyMMddHHmmssfff}-{Guid.NewGuid():N}";
-            _currentCancellation?.Dispose();
-            _currentCancellation = new CancellationTokenSource();
+            var platformTaskId = "save-index-" + Guid.NewGuid().ToString("N");
             _progress.Begin(jobId, SaveClock.BeijingNow());
-            _currentTask = Task.Run(
-                () => ExecuteAsync(jobId, reason, _currentCancellation.Token),
-                CancellationToken.None);
+            var task = await _taskCenter.EnqueueAsync(
+                new PlatformTaskSubmission(
+                    "save-index",
+                    "解析 Palworld 世界存档",
+                    "system",
+                    "local",
+                    ResourceKey: "save-world",
+                    Priority: 20,
+                    TimeoutSeconds: 3600,
+                    MaximumAttempts: 1,
+                    CorrelationId: jobId,
+                    Metadata: new Dictionary<string, string>
+                    {
+                        ["reason"] = reason,
+                        ["saveJobId"] = jobId
+                    },
+                    TaskId: platformTaskId),
+                async (context, token) =>
+                {
+                    await context.ReportProgressAsync(1, "starting", "正在准备存档解析。", token);
+                    await ExecuteAsync(jobId, reason, token);
+                    await context.ReportProgressAsync(100, "completed", "存档解析已完成。", CancellationToken.None);
+                },
+                cancellationToken);
+            _currentTaskId = task.Id;
             return new SaveIndexTriggerResult(true, "SAVE_PARSE_STARTED", "存档解析任务已启动。", jobId);
         }
         finally
@@ -96,9 +124,8 @@ public sealed class SaveIndexingService : ISaveIndexingService, IDisposable
         await _startGate.WaitAsync(cancellationToken);
         try
         {
-            if (_currentTask is not { IsCompleted: false } || _currentCancellation is null) return false;
-            _currentCancellation.Cancel();
-            return true;
+            return !string.IsNullOrWhiteSpace(_currentTaskId)
+                   && await _taskCenter.CancelAsync(_currentTaskId, cancellationToken);
         }
         finally
         {
@@ -223,6 +250,7 @@ public sealed class SaveIndexingService : ISaveIndexingService, IDisposable
         {
             _progress.Cancel(SaveClock.BeijingNow());
             _logger.LogInformation("Save indexing job {JobId} was cancelled.", jobId);
+            throw;
         }
         catch (Exception ex)
         {
@@ -243,6 +271,7 @@ public sealed class SaveIndexingService : ISaveIndexingService, IDisposable
                     ["durationMs"] = (completedAt - startedAt).TotalMilliseconds
                 }));
             _logger.LogError(ex, "Save indexing job {JobId} failed; previous successful snapshot remains active.", jobId);
+            throw;
         }
         finally
         {
@@ -592,8 +621,6 @@ public sealed class SaveIndexingService : ISaveIndexingService, IDisposable
 
     public void Dispose()
     {
-        _currentCancellation?.Cancel();
-        _currentCancellation?.Dispose();
         _startGate.Dispose();
     }
 

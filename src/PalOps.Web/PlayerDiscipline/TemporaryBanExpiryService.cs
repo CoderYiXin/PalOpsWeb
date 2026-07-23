@@ -1,15 +1,28 @@
+using PalOps.Web.Platform.Readiness;
+using PalOps.Web.Platform.Workers;
+
 namespace PalOps.Web.PlayerDiscipline;
 
 public sealed class TemporaryBanExpiryService(
     IPlayerDisciplineService service,
-    ILogger<TemporaryBanExpiryService> logger) : BackgroundService
+    IBackgroundWorkerSupervisor workerSupervisor,
+    ILogger<TemporaryBanExpiryService> logger,
+    IOperationalReadinessGate readinessGate) : BackgroundService
 {
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    protected override Task ExecuteAsync(CancellationToken stoppingToken) =>
+        workerSupervisor.RunAsync("temporary-ban-expiry", RunLoopAsync, stoppingToken);
+
+    private async Task RunLoopAsync(CancellationToken stoppingToken)
     {
+        await readinessGate.WaitUntilReadyAsync(
+            "temporary-ban-expiry",
+            allOf: OperationalCapability.PalDefender,
+            cancellationToken: stoppingToken);
         await RunOnceAsync(stoppingToken);
         using var timer = new PeriodicTimer(TimeSpan.FromMinutes(1));
         while (true)
         {
+            workerSupervisor.Heartbeat("temporary-ban-expiry");
             try
             {
                 if (!await timer.WaitForNextTickAsync(stoppingToken)) break;
@@ -18,6 +31,10 @@ public sealed class TemporaryBanExpiryService(
             {
                 break;
             }
+            await readinessGate.WaitUntilReadyAsync(
+                "temporary-ban-expiry",
+                allOf: OperationalCapability.PalDefender,
+                cancellationToken: stoppingToken);
             await RunOnceAsync(stoppingToken);
         }
     }
@@ -32,13 +49,23 @@ public sealed class TemporaryBanExpiryService(
 
 public sealed class PlayerIdentitySyncService(
     IPlayerDisciplineService service,
-    ILogger<PlayerIdentitySyncService> logger) : BackgroundService
+    IBackgroundWorkerSupervisor workerSupervisor,
+    ILogger<PlayerIdentitySyncService> logger,
+    IOperationalReadinessGate readinessGate) : BackgroundService
 {
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    protected override Task ExecuteAsync(CancellationToken stoppingToken) =>
+        workerSupervisor.RunAsync("player-identity-sync", RunLoopAsync, stoppingToken);
+
+    private async Task RunLoopAsync(CancellationToken stoppingToken)
     {
         using var timer = new PeriodicTimer(TimeSpan.FromMinutes(1));
         while (!stoppingToken.IsCancellationRequested)
         {
+            await readinessGate.WaitUntilReadyAsync(
+                "player-identity-sync",
+                allOf: OperationalCapability.PalDefender,
+                cancellationToken: stoppingToken);
+            workerSupervisor.Heartbeat("player-identity-sync");
             try { await service.SyncIdentitiesAsync(stoppingToken); }
             catch (OperationCanceledException) when (stoppingToken.IsCancellationRequested) { break; }
             catch (Exception ex) { logger.LogDebug(ex, "Player identity synchronization failed."); }

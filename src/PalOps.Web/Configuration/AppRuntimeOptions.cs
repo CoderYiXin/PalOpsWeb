@@ -20,4 +20,8 @@ public sealed class AppRuntimeOptions
     public int RuntimeSaveWaitSeconds { get; set; } = 5;
     public int RuntimeRestartCooldownSeconds { get; set; } = 3;
     public int RuntimeHistoryLimit { get; set; } = 1000;
+    public int TaskCenterConcurrency { get; set; } = 2;
+    public int TaskCenterHistoryLimit { get; set; } = 1000;
+    public int TaskCenterDefaultTimeoutSeconds { get; set; } = 900;
+    public int WorkerStaleAfterSeconds { get; set; } = 180;
 }

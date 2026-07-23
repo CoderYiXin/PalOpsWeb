@@ -1,7 +1,12 @@
 namespace PalOps.Web.Contracts;
 
 public sealed record ApiError(string Code, string Message, object? Details = null, string? Detail = null, string? SuggestedAction = null);
-public sealed record ApiErrorEnvelope(ApiError Error, string? RequestId = null);
+public sealed record ApiErrorEnvelope(ApiError Error, string? RequestId = null)
+{
+    public bool Success => false;
+    public string Message => Error.Message;
+    public DateTimeOffset Timestamp { get; init; } = DateTimeOffset.UtcNow;
+}
 
 public sealed record LoginRequest(string Password, string? UserName = null);
 public sealed record ReauthenticateRequest(string Password);
