@@ -4,6 +4,7 @@ using System.Net;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.DataProtection;
 using PalOps.Web.Audit;
+using PalOps.Web.AdvancedOperations;
 using PalOps.Web.Backups;
 using PalOps.Web.Automation;
 using PalOps.Web.Map;
@@ -144,6 +145,15 @@ builder.Services.AddRateLimiter(options =>
         static _ => new FixedWindowRateLimiterOptions
         {
             PermitLimit = 20,
+            Window = TimeSpan.FromMinutes(1),
+            QueueLimit = 0,
+            AutoReplenishment = true
+        }));
+    options.AddPolicy("integration", context => RateLimitPartition.GetFixedWindowLimiter(
+        "ip:" + (context.Connection.RemoteIpAddress?.ToString() ?? "unknown"),
+        static _ => new FixedWindowRateLimiterOptions
+        {
+            PermitLimit = 120,
             Window = TimeSpan.FromMinutes(1),
             QueueLimit = 0,
             AutoReplenishment = true
@@ -310,6 +320,21 @@ builder.Services.AddSingleton<IPluginManagementRepository, PluginManagementRepos
 builder.Services.AddSingleton<IPluginInventoryScanner, PluginInventoryScanner>();
 builder.Services.AddSingleton<IPluginPackageService, PluginPackageService>();
 
+builder.Services.AddSingleton<IAdvancedOperationsRepository, JsonAdvancedOperationsRepository>();
+builder.Services.AddSingleton<AdvancedOperationsValidator>();
+builder.Services.AddSingleton<IAdvancedOperationsReadinessService, AdvancedOperationsReadinessService>();
+builder.Services.AddSingleton<IDiagnosticCenterService, DiagnosticCenterService>();
+builder.Services.AddSingleton<IIncidentCenterService, IncidentCenterService>();
+builder.Services.AddSingleton<IPlayerInsightsService, PlayerInsightsService>();
+builder.Services.AddSingleton<IWorldGovernanceService, WorldGovernanceService>();
+builder.Services.AddSingleton<IDisasterRecoveryService, DisasterRecoveryService>();
+builder.Services.AddSingleton<IUpdateCenterService, UpdateCenterService>();
+builder.Services.AddSingleton<IConfigurationVersionService, ConfigurationVersionService>();
+builder.Services.AddSingleton<IOperationsPlaybookService, OperationsPlaybookService>();
+builder.Services.AddSingleton<ISecurityCenterService, SecurityCenterService>();
+builder.Services.AddSingleton<IIntegrationCenterService, IntegrationCenterService>();
+builder.Services.AddHostedService<AdvancedOperationsMonitorService>();
+
 var app = builder.Build();
 
 await app.Services.GetRequiredService<IAuthStateStore>().EnsureBootstrapPasswordAsync();
@@ -325,6 +350,7 @@ app.Use(async (context, next) =>
     await next();
 });
 app.UseRateLimiter();
+app.UseMiddleware<IntegrationApiTokenMiddleware>();
 app.UseStaticFiles(new StaticFileOptions
 {
     OnPrepareResponse = context =>
@@ -380,6 +406,7 @@ app.MapPluginManagementEndpoints();
 app.MapSystemLogEndpoints();
 app.MapUserEndpoints();
 app.MapAuditEndpoints();
+app.MapAdvancedOperationsEndpoints();
 app.MapHub<PalOpsHub>("/hubs/palops").RequireAuthorization();
 app.MapGet("/api/health", () => Results.Ok(new { status = "ok", timestamp = DateTimeOffset.UtcNow }));
 app.MapFallbackToFile("index.html");

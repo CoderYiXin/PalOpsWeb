@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.3.0 - 2026-07-22
+
+- Rebuilt the Chinese and English GitHub READMEs and recaptured every product module at 1920×1080 with synthetic data, including a dedicated three-step resource-grant walkthrough.
+- Added the Diagnostics Center, Incident Center, Player Insights, World Governance, Disaster Recovery, Update Center, Configuration Versions, Operations Playbooks, Security Center, and Integration Center.
+- Added shared atomic JSON persistence, role-aware endpoints, CSRF enforcement, structured audit events, high-risk confirmation phrases, and background incident-rule evaluation.
+- Added one-time API token disclosure with SHA-256 storage, fixed-time verification, scopes, expiry, revocation, inbound rate limiting, and default-deny external API authorization.
+- Connected HTTPS integration subscriptions to the existing webhook queue, retry policy, SSRF validation, and delivery history.
+- Updated frontend package, assembly, file, informational, documentation, and release metadata to `1.3.0`.
+- Integrated the V1.3.0 Vue production output into `src/PalOps.Web/wwwroot`.
+- Fixed all ten V1.3.0 advanced-operation pages opening modal dialogs on initial navigation or reopening immediately after close; Vue refs are now unwrapped through the runtime ref marker rather than own-property detection.
+- Prevented reactive objects from rendering as `[object Object]` in filters, notes, review forms, and dialog fields.
+- Added a first-deployment readiness endpoint and inline setup guidance for every advanced-operation module, with safe empty-state degradation when REST, RCON, PalDefender, save indexing, backup, or Palworld configuration has not been initialized.
+- Extended configuration readiness guidance to every operational page, including configured-but-unavailable service states, automatic 30-second recovery checks, and safe page blocking while required dependencies are missing or still being verified.
+- Added a first-use setup checklist and completion progress to System Settings, moved local-data initialization to the first configuration card, and added inline tutorials for storage, world saves, Palworld REST, PalDefender REST, RCON, backups, and automation.
+
 ## 1.2.0 - 2026-07-21
 
 - Supplemented the frontend world-map data with nine verified Palworld 1.0 fast-travel records from a pinned PalworldSaveTools revision, including the new Garden, Sakurajima, cape and passage points that were absent from the previous bundle.

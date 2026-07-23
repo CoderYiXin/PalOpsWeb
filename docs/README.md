@@ -2,13 +2,13 @@
 
 # PalOps Web 文档
 
-本目录只保留当前 1.2.0 开源发布需要的运营、开发、架构、数据和发布文档。历史设计稿、一次性缺陷报告、内部计划和打包审计不进入公开源码。
+本目录只保留当前 1.3.0 开源发布需要的运营、开发、架构、数据和发布文档。历史设计稿、一次性缺陷报告、内部计划和打包审计不进入公开源码。
 
 ## 产品与运营
 
 | 文档 | 内容 | English |
 |---|---|---|
-| [完整功能参考](features.md) | 1.2.0 全部功能模块、角色、数据来源和安全边界 | [Feature Reference](features.en.md) |
+| [完整功能参考](features.md) | 1.3.0 全部功能模块、角色、数据来源和安全边界 | [Feature Reference](features.en.md) |
 | [部署说明](deployment.md) | Windows 部署、升级、恢复、反向代理和上线验证 | [Deployment](deployment.en.md) |
 | [PalDefender 部署](paldefender-deployment.md) | 安装、REST、Token、防火墙、升级与回滚 | [PalDefender Deployment](paldefender-deployment.en.md) |
 | [PalDefender 配置管理](paldefender-configuration-management.md) | 支持文件、校验、备份、并发控制与重载行为 | [Configuration Management](paldefender-configuration-management.en.md) |

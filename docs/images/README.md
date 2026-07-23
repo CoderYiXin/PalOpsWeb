@@ -2,57 +2,62 @@
 
 > 语言：**简体中文** | [English](README.en.md)
 
-`zh-CN/` 保存中文 README 使用的界面，`en-US/` 保存英文 README 使用的界面。两套截图来自同一份 1.2.0 Vue 前端构建，使用相同业务场景、对应语言的伪数据和保留网络地址。不得用宣传海报、合成封面或另一语言截图替代实际页面。
+`zh-CN/` 和 `en-US/` 分别保存 V1.3.0 中文、英文 README 使用的真实前端页面截图。两套截图使用同一批业务场景和专用伪数据，视口均为 **1920×1080**。
 
 ## 中文截图清单
 
-| 文件 | 尺寸 | 模块 | 公开用途 |
-|---|---:|---|---|
-| `zh-CN/overview-dashboard.webp` | 1920×1080 | 运行概览 | PalServer、主机指标、版本、存档与实时事件集中监控 |
-| `zh-CN/server-statistics.webp` | 1920×1080 | 服务器统计 | 玩家、FPS、资源和运营事件趋势 |
-| `zh-CN/player-management.webp` | 1920×1080 | 玩家管理 | 在线/离线玩家、角色属性、背包与帕鲁档案 |
-| `zh-CN/guild-bases.webp` | 1920×1080 | 公会据点 | 成员、归属证据、据点详情与地图定位 |
-| `zh-CN/world-map.webp` | 1920×1080 | 世界地图 | 离线底图、快速传送、实时玩家、据点与自定义标记 |
-| `zh-CN/resource-grant-step-1.webp` | 1920×1080 | 物资发放 · 选择玩家 | 按玩家、公会和在线状态选择多个目标 |
-| `zh-CN/resource-grant-step-2.webp` | 1920×1080 | 物资发放 · 选择资源 | 分类、多元素搜索、物品/帕鲁选择与批量加入 |
-| `zh-CN/resource-grant-step-3.webp` | 1920×1080 | 物资发放 · 核对清单 | 确认目标、资源、数量和最终执行范围 |
-| `zh-CN/message-center.webp` | 1920×1080 | 消息发送 | 公告、警告、定向消息和玩家操作 |
-| `zh-CN/rcon-console.webp` | 1920×1080 | RCON 控制台 | 命令模板、风险确认、能力探测与返回历史 |
-| `zh-CN/palworld-configuration.webp` | 1920×1080 | Palworld 配置中心 | 结构化参数、启动参数、校验与安全保存 |
-| `zh-CN/automation-jobs.webp` | 1920×1080 | 自动任务 | 周期任务、风险等级、下次运行和执行历史 |
-| `zh-CN/maintenance-center.webp` | 1920×1080 | 维护中心与崩溃守护 | 维护编排、自动恢复、健康验证和熔断状态 |
-| `zh-CN/catalog-management.webp` | 1920×1080 | 物品与帕鲁目录 | 离线目录、图标、分类、别名、收藏和导入 |
-| `zh-CN/player-discipline.webp` | 1920×1080 | 玩家纪律 | 白名单、封禁、身份、违规、踢出与审计 |
-| `zh-CN/paldefender-console.webp` | 1920×1080 | PalDefender 防护组件 | 连接、版本、配置文件、字段说明与原子保存 |
-| `zh-CN/plugin-management.webp` | 1920×1080 | 插件与模组 | 版本、依赖、兼容性、升级、备份和回滚 |
-| `zh-CN/user-management.webp` | 1920×1080 | 权限管理 | 多角色账户、启停状态和最近登录 |
-| `zh-CN/audit-log.webp` | 1920×1080 | 审计日志 | 关键操作、结果、来源地址和结构化详情 |
-| `zh-CN/save-backups.webp` | 1920×1080 | 存档备份 | 备份统计、校验、下载、恢复和删除 |
-| `zh-CN/save-diff.webp` | 1920×1080 | 存档差异 | 快照比较、变化分类和异常提示 |
-| `zh-CN/save-index.webp` | 1920×1080 | 存档解析 | 快照状态、自动解析、格式检测和手动任务 |
-| `zh-CN/notification-channels.webp` | 1920×1080 | 消息通知 | 多渠道 Webhook、事件订阅、模板与重试 |
-| `zh-CN/notification-history.webp` | 1920×1080 | 推送记录 | 投递状态、HTTP 结果、耗时和失败原因 |
-| `zh-CN/system-logs.webp` | 1920×1080 | 系统日志 | 业务日志、级别筛选和异常定位 |
-| `zh-CN/system-settings.webp` | 1920×1080 | 系统设置 | 连接、存档、备份、自动任务和安全配置 |
-| `zh-CN/about-project.webp` | 1920×1080 | 关于系统 | 版本、参考项目、数据来源和开源声明 |
+| 文件 | 模块 | 公开用途 |
+|---|---|---|
+| `zh-CN/overview-dashboard.webp` | 运行概览 | PalServer、主机资源、版本、存档与实时事件 |
+| `zh-CN/player-management.webp` | 玩家管理 | 在线/存档玩家、角色、背包与帕鲁档案 |
+| `zh-CN/guild-bases.webp` | 公会据点 | 成员、归属证据、据点详情与地图定位 |
+| `zh-CN/world-map.webp` | 世界地图 | 离线地图、固定 POI、玩家、据点与自定义标记 |
+| `zh-CN/palworld-configuration.webp` | Palworld 配置 | 结构化参数、启动参数、诊断与安全保存 |
+| `zh-CN/resource-grant-step-1.webp` | 物资发放 · 第一步 | 选择一个或多个在线玩家 |
+| `zh-CN/resource-grant-step-2.webp` | 物资发放 · 第二步 | 搜索并批量选择物品/帕鲁 |
+| `zh-CN/resource-grant-step-3.webp` | 物资发放 · 第三步 | 核对玩家、资源、数量与执行范围 |
+| `zh-CN/message-center.webp` | 消息发送 | 公告、警告、定向消息与玩家操作 |
+| `zh-CN/rcon-console.webp` | RCON 控制台 | 命令模板、能力探测、风险确认与历史 |
+| `zh-CN/automation-jobs.webp` | 自动任务 | 周期任务、风险等级、下次运行与结果 |
+| `zh-CN/maintenance-center.webp` | 维护中心 | 维护编排、崩溃守护、健康验证与恢复 |
+| `zh-CN/server-statistics.webp` | 服务器统计 | 玩家、FPS、资源与运营趋势 |
+| `zh-CN/save-diff.webp` | 存档差异 | 快照变化、分类与异常提示 |
+| `zh-CN/player-discipline.webp` | 玩家纪律 | 白名单、封禁、身份、违规、踢出与审计 |
+| `zh-CN/save-backups.webp` | 存档备份 | 备份、校验、下载、恢复预检与保留策略 |
+| `zh-CN/diagnostic-center.webp` | 诊断中心 | 进程、网络、文件、配置、资源与支持包 |
+| `zh-CN/incident-center.webp` | 事件与故障中心 | 告警规则、确认、分派、恢复与时间线 |
+| `zh-CN/player-insights.webp` | 玩家洞察 | 玩家时间线、活跃度、流失信号与备注 |
+| `zh-CN/world-governance.webp` | 世界治理 | 据点归属、治理候选、复核与人工说明 |
+| `zh-CN/disaster-recovery.webp` | 灾备中心 | 灾备目标、RPO/RTO、验证与恢复演练 |
+| `zh-CN/update-center.webp` | 更新中心 | 组件盘点、版本、预检、审批与健康验证 |
+| `zh-CN/configuration-versions.webp` | 配置版本库 | 快照、差异、当前匹配与受控回滚 |
+| `zh-CN/operations-playbooks.webp` | 运维剧本 | 白名单动作、步骤、执行历史与确认 |
+| `zh-CN/security-center.webp` | 安全中心 | 策略、API Token、作用域、有效期与吊销 |
+| `zh-CN/integration-center.webp` | 对外集成 | HTTPS 订阅、签名引用、重试与投递历史 |
+| `zh-CN/notification-channels.webp` | 消息通知 | 多渠道 Webhook、订阅、模板与重试 |
+| `zh-CN/notification-history.webp` | 推送记录 | 状态、HTTP 结果、耗时与失败原因 |
+| `zh-CN/system-settings.webp` | 系统设置 | 首次使用教程、就绪清单、连接、存档与备份 |
+| `zh-CN/paldefender-console.webp` | PalDefender 防护组件 | 连接、版本、配置文件、说明与原子保存 |
+| `zh-CN/plugin-management.webp` | 插件与模组 | 版本、依赖、兼容性、更新、备份与回滚 |
+| `zh-CN/save-index.webp` | 存档解析 | 快照、自动解析、格式检测与手动任务 |
+| `zh-CN/catalog-management.webp` | 目录管理 | 物品/帕鲁目录、分类、别名、收藏与导入 |
+| `zh-CN/audit-log.webp` | 审计日志 | 关键操作、结果、来源与结构化详情 |
+| `zh-CN/system-logs.webp` | 系统日志 | 业务日志、级别筛选、搜索与异常定位 |
+| `zh-CN/user-management.webp` | 权限管理 | 角色账户、启停状态与最近登录 |
+| `zh-CN/about-project.webp` | 关于系统 | 版本、数据来源、依赖与许可证 |
 
-## 英文截图清单
+## 截图生成与验收规则
 
-英文目录包含与上表一一对应的 27 张 `en-US/*.webp` 图片；英文 README 不得引用 `zh-CN/`。
+- 截图必须来自当前 V1.3.0 Vue 页面，不得用宣传海报或另一语言界面替代。
+- API 和 SignalR 可由本地拦截器提供伪数据，但伪数据不得写入运行时源码或发布配置。
+- 中文 README 只引用 `zh-CN/`；英文 README 只引用 `en-US/`。
+- 物资发放必须独立展示“选择玩家 → 选择资源 → 核对执行”三张完整截图。
+- 世界地图应显示离线底图、固定 POI、服务器玩家、据点和自定义标记。
+- 所有页面不得出现自动弹窗、`[object Object]`、错误遮罩或未处理异常。
+- 不得包含真实 IP、世界 ID、玩家、账号、Token、Webhook、Cookie、Data Protection 密钥或本机用户目录。
 
-## 生成与验收规则
+## 允许的演示数据
 
-- 浏览器视口固定为 **1920×1080**，浅色主题，侧边栏展开；
-- 页面必须来自当前可构建的 Vue 代码，API 可由本地拦截器返回伪数据；
-- 世界地图必须等待 MapLibre、离线瓦片、服务器标记和静态 POI 渲染完成；
-- 中文图应使用 `zh-CN` UI，英文图应使用 `en-US` UI；
-- 物资发放必须提供选择玩家、选择资源、核对清单三张独立截图；
-- 所有图片不得包含真实服务器、玩家、账号、Token、Webhook、Cookie 或本机用户目录。
+允许使用 `192.0.2.0/24`、`198.51.100.0/24`、`example.invalid`、虚构玩家/公会及 `C:\PalOpsDemo\...` 路径。模糊处理不能替代从数据源删除秘密。
 
-## 允许的演示值
-
-可使用 `192.0.2.0/24`、`198.51.100.0/24`、`example.invalid`、虚构玩家（如 Aster、Birch）、虚构公会和 `C:\PalOpsDemo\...` 路径。模糊处理不能替代从数据源删除敏感值。
-
-## 技术徽章与辅助资源
-
-`badges/` 保存 README 顶部本地 SVG 徽章；`map-icon-catalog.png` 是地图分类图标目录。徽章和图标目录不是产品界面截图。
+`badges/` 保存 README 使用的本地 SVG 技术徽章，不计入产品截图数量。

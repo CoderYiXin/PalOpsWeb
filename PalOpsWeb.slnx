@@ -8,4 +8,5 @@
   <Project Path="tests/PalOps.SaveDiff.Verifier/PalOps.SaveDiff.Verifier.csproj" />
   <Project Path="tests/PalOps.PlayerDiscipline.Verifier/PalOps.PlayerDiscipline.Verifier.csproj" />
   <Project Path="tests/PalOps.PluginManagement.Verifier/PalOps.PluginManagement.Verifier.csproj" />
+  <Project Path="tests/PalOps.AdvancedOperations.Verifier/PalOps.AdvancedOperations.Verifier.csproj" />
 </Solution>

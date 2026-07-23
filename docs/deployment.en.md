@@ -24,7 +24,7 @@ Do not expose PalOps management, Palworld REST, PalDefender, or RCON ports direc
 Use the official `win-x64` ZIP and verify its adjacent SHA-256 value before extraction. For a source build, use the canonical commands in [`build.md`](build.md) and publish only through:
 
 ```powershell
-.\scripts\publish-win-x64.ps1 -Version 1.2.0
+.\scripts\publish-win-x64.ps1 -Version 1.3.0
 ```
 
 ## First deployment
@@ -115,4 +115,4 @@ Do not overwrite the only known-good installation in place. Keep the previous re
 
 ## Release verification
 
-Run the full checklist in [`release-checklist.md`](release-checklist.md). The strict publication gate requires both Palpagos and World Tree local raster layers. Fixed POIs, coordinate transforms, visibility state, and exploration progress are frontend-local in version 1.2.0; preserving the browser profile retains local exploration state. There is no backend map package, activation record, tile health scan, or map import directory to migrate. Server FPS must display `暂不支持` when no configured authoritative endpoint exposes an FPS field.
+Run the full checklist in [`release-checklist.md`](release-checklist.md). The strict publication gate requires both Palpagos and World Tree local raster layers. Fixed POIs, coordinate transforms, visibility state, and exploration progress are frontend-local in version 1.3.0; preserving the browser profile retains local exploration state. There is no backend map package, activation record, tile health scan, or map import directory to migrate. Server FPS must display `暂不支持` when no configured authoritative endpoint exposes an FPS field.

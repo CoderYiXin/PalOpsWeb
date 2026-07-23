@@ -2,57 +2,62 @@
 
 > Language: [简体中文](README.md) | **English**
 
-`zh-CN/` contains the UI used by the Chinese README and `en-US/` contains the UI used by the English README. Both sets are rendered from the same 1.2.0 Vue build with identical business scenarios, locale-specific fabricated data, and reserved network values. Promotional posters, composite cover art, and cross-locale substitutions are not accepted.
+`zh-CN/` and `en-US/` contain the V1.3.0 Chinese and English README screenshots. Both sets use the same synthetic business scenarios and a fixed **1920×1080** viewport.
 
 ## English screenshot inventory
 
-| File | Size | Module | Public purpose |
-|---|---:|---|---|
-| `en-US/overview-dashboard.webp` | 1920×1080 | Runtime overview | PalServer, host metrics, versions, saves, and live incidents |
-| `en-US/server-statistics.webp` | 1920×1080 | Server statistics | Player, FPS, resource, and operations trends |
-| `en-US/player-management.webp` | 1920×1080 | Player archive | Live/indexed players, attributes, inventories, and Pal profiles |
-| `en-US/guild-bases.webp` | 1920×1080 | Guilds & bases | Membership, ownership evidence, base details, and map navigation |
-| `en-US/world-map.webp` | 1920×1080 | World map | Offline maps, Fast Travel, live players, bases, and custom markers |
-| `en-US/resource-grant-step-1.webp` | 1920×1080 | Resource grants · Select players | Target multiple players by identity, guild, and online state |
-| `en-US/resource-grant-step-2.webp` | 1920×1080 | Resource grants · Select resources | Categories, multi-term search, item/Pal selection, and bulk add |
-| `en-US/resource-grant-step-3.webp` | 1920×1080 | Resource grants · Review | Confirm targets, resources, quantities, and execution scope |
-| `en-US/message-center.webp` | 1920×1080 | Messages | Broadcasts, alerts, direct messages, and player actions |
-| `en-US/rcon-console.webp` | 1920×1080 | RCON console | Command presets, risk acknowledgement, capability probing, and response history |
-| `en-US/palworld-configuration.webp` | 1920×1080 | Palworld Configuration Center | Structured settings, launch arguments, validation, and safe persistence |
-| `en-US/automation-jobs.webp` | 1920×1080 | Automation | Schedules, risk levels, next execution, and run history |
-| `en-US/maintenance-center.webp` | 1920×1080 | Maintenance & Crash Guard | Maintenance orchestration, recovery, health verification, and circuit state |
-| `en-US/catalog-management.webp` | 1920×1080 | Item & Pal catalog | Offline catalog, icons, categories, aliases, favorites, and imports |
-| `en-US/player-discipline.webp` | 1920×1080 | Player discipline | Whitelist, bans, identity history, violations, kicks, and audit |
-| `en-US/paldefender-console.webp` | 1920×1080 | PalDefender | Connectivity, versions, config files, field help, and atomic persistence |
-| `en-US/plugin-management.webp` | 1920×1080 | Plugins & mods | Versions, dependencies, compatibility, updates, backups, and rollback |
-| `en-US/user-management.webp` | 1920×1080 | Users & roles | Role-based accounts, status, and recent sign-ins |
-| `en-US/audit-log.webp` | 1920×1080 | Audit log | Sensitive actions, outcomes, source addresses, and structured details |
-| `en-US/save-backups.webp` | 1920×1080 | Backups | Backup statistics, verification, download, restore, and deletion |
-| `en-US/save-diff.webp` | 1920×1080 | Save differences | Snapshot comparison, categorized changes, and anomaly alerts |
-| `en-US/save-index.webp` | 1920×1080 | Save Index | Snapshot status, automatic parsing, format detection, and manual jobs |
-| `en-US/notification-channels.webp` | 1920×1080 | Notification channels | Multi-provider webhooks, subscriptions, templates, and retries |
-| `en-US/notification-history.webp` | 1920×1080 | Delivery history | Delivery status, HTTP results, duration, and failure details |
-| `en-US/system-logs.webp` | 1920×1080 | System logs | Operational logs, level filtering, and exception investigation |
-| `en-US/system-settings.webp` | 1920×1080 | System settings | Connections, saves, backups, automation, and security configuration |
-| `en-US/about-project.webp` | 1920×1080 | About | Version, references, data provenance, and open-source notices |
-
-## Chinese screenshot inventory
-
-The Chinese directory contains the matching 27 `zh-CN/*.webp` images. The Chinese README must not reference `en-US/`.
+| File | Module | Public purpose |
+|---|---|---|
+| `en-US/overview-dashboard.webp` | Runtime overview | PalServer, host resources, versions, saves, and live events |
+| `en-US/player-management.webp` | Player management | Live/indexed players, characters, inventories, and Pal profiles |
+| `en-US/guild-bases.webp` | Guilds & bases | Membership, ownership evidence, base details, and map navigation |
+| `en-US/world-map.webp` | World map | Offline map, fixed POIs, players, bases, and custom markers |
+| `en-US/palworld-configuration.webp` | Palworld configuration | Structured settings, launch arguments, diagnostics, and safe persistence |
+| `en-US/resource-grant-step-1.webp` | Resource grants · Step 1 | Select one or more target players |
+| `en-US/resource-grant-step-2.webp` | Resource grants · Step 2 | Search and bulk-select items/Pals |
+| `en-US/resource-grant-step-3.webp` | Resource grants · Step 3 | Review targets, resources, quantities, and scope |
+| `en-US/message-center.webp` | Messages | Broadcasts, warnings, direct messages, and player actions |
+| `en-US/rcon-console.webp` | RCON console | Presets, capability probing, risk acknowledgement, and history |
+| `en-US/automation-jobs.webp` | Automation | Schedules, risk levels, next execution, and results |
+| `en-US/maintenance-center.webp` | Maintenance center | Maintenance orchestration, crash guard, health checks, and recovery |
+| `en-US/server-statistics.webp` | Server statistics | Player, FPS, resource, and operations trends |
+| `en-US/save-diff.webp` | Save differences | Snapshot changes, categories, and anomaly signals |
+| `en-US/player-discipline.webp` | Player discipline | Whitelist, bans, identity, violations, kicks, and audit |
+| `en-US/save-backups.webp` | Save backups | Backup, verification, download, restore preflight, and retention |
+| `en-US/diagnostic-center.webp` | Diagnostic center | Process, network, files, configuration, resources, and support bundles |
+| `en-US/incident-center.webp` | Incident center | Alert rules, acknowledgement, assignment, recovery, and timelines |
+| `en-US/player-insights.webp` | Player insights | Player timelines, activity, churn signals, and notes |
+| `en-US/world-governance.webp` | World governance | Base ownership, governance candidates, review, and human notes |
+| `en-US/disaster-recovery.webp` | Disaster recovery | DR targets, RPO/RTO, validation, and recovery drills |
+| `en-US/update-center.webp` | Update center | Component inventory, versions, preflight, approval, and health validation |
+| `en-US/configuration-versions.webp` | Configuration versions | Snapshots, diffs, current match, and controlled rollback |
+| `en-US/operations-playbooks.webp` | Operations playbooks | Allow-listed actions, steps, run history, and confirmation |
+| `en-US/security-center.webp` | Security center | Policy, API tokens, scopes, expiry, and revocation |
+| `en-US/integration-center.webp` | External integrations | HTTPS subscriptions, secret references, retries, and delivery history |
+| `en-US/notification-channels.webp` | Notification channels | Multi-provider webhooks, subscriptions, templates, and retries |
+| `en-US/notification-history.webp` | Delivery history | Status, HTTP results, latency, and failure details |
+| `en-US/system-settings.webp` | System settings | First-run tutorial, readiness checklist, connections, saves, and backups |
+| `en-US/paldefender-console.webp` | PalDefender | Connectivity, versions, config files, help, and atomic persistence |
+| `en-US/plugin-management.webp` | Plugins & mods | Versions, dependencies, compatibility, updates, backups, and rollback |
+| `en-US/save-index.webp` | Save Index | Snapshots, automatic parsing, format inspection, and manual jobs |
+| `en-US/catalog-management.webp` | Catalog management | Item/Pal catalog, categories, aliases, favorites, and imports |
+| `en-US/audit-log.webp` | Audit log | Sensitive actions, outcomes, sources, and structured details |
+| `en-US/system-logs.webp` | System logs | Operational logs, level filters, search, and exception investigation |
+| `en-US/user-management.webp` | Users & roles | Role-based accounts, state, and recent sign-ins |
+| `en-US/about-project.webp` | About | Version, data provenance, dependencies, and license |
 
 ## Generation and acceptance rules
 
-- Use a **1920×1080** viewport, light theme, and expanded sidebar.
-- Render the current buildable Vue code; APIs may be fulfilled by a local fabricated-data interceptor.
-- Wait for MapLibre, offline raster tiles, runtime markers, and static POIs before capturing the world map.
-- Chinese images use `zh-CN`; English images use `en-US`.
-- Resource grants require separate select-player, select-resource, and review screenshots.
-- Images must not contain real servers, players, accounts, tokens, webhooks, cookies, or local user paths.
+- Capture the current V1.3.0 Vue pages; promotional posters and cross-locale substitutions are not accepted.
+- APIs and SignalR may be fulfilled by a local synthetic-data interceptor, but demo data must not enter runtime source or release configuration.
+- The Chinese README references only `zh-CN/`; the English README references only `en-US/`.
+- Resource grants require three complete screenshots: select players, select resources, and review/execute.
+- The world map must show the offline basemap, fixed POIs, runtime players, bases, and custom markers.
+- Pages must not contain auto-open dialogs, `[object Object]`, error overlays, or unhandled exceptions.
+- Images must not contain real IP addresses, world IDs, players, accounts, tokens, webhooks, cookies, Data Protection keys, or local user directories.
 
-## Approved demonstration values
+## Approved demonstration data
 
-Reserved ranges `192.0.2.0/24` and `198.51.100.0/24`, `example.invalid`, fictional players such as Aster and Birch, fictional guilds, and `C:\PalOpsDemo\...` are acceptable. Blurring is not a substitute for removing the secret from the data source.
+Reserved ranges `192.0.2.0/24` and `198.51.100.0/24`, `example.invalid`, fictional players/guilds, and `C:\PalOpsDemo\...` paths are allowed. Blurring is not a substitute for removing secrets from the data source.
 
-## Technology badges and supporting assets
-
-`badges/` stores the local SVG badges used by the READMEs. `map-icon-catalog.png` documents map category icons. Neither is a product UI screenshot.
+`badges/` stores local SVG technology badges used by the READMEs and is not part of the product screenshot count.

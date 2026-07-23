@@ -27,7 +27,7 @@ The compiled `wwwroot` files are retained in source archives. Rebuilding the fro
 
 Do not use `dotnet build` alone as release evidence because it does not rebuild the Vue application, verify documentation, audit npm dependencies, or run repository tooling.
 
-The script performs frontend dependency installation, TypeScript checking, production compilation, npm auditing, .NET restore/build, catalog verification, map verification, documentation verification, and source-tree release verification. The frontend build also enforces the 1.2.0 map contract: 1,251 aligned locale records, at least 30 nonempty fixed categories, Chinese `zh-CN` display names, Restore Defaults limited to runtime data plus Fast Travel and Towers, source/license attribution on About System, idle route preloading, parallel runtime/static acquisition, pending-state recovery while raster tiles load, render-frame readiness milestones, a localized first-entry loading overlay, and lazy hidden-category construction. It also verifies the 10-second live-status default and routine typed-HttpClient log suppression.
+The script performs frontend dependency installation, TypeScript checking, production compilation, npm auditing, .NET restore/build, catalog verification, map verification, documentation verification, and source-tree release verification. The frontend build also enforces the 1.3.0 map contract: 1,251 aligned locale records, at least 30 nonempty fixed categories, Chinese `zh-CN` display names, Restore Defaults limited to runtime data plus Fast Travel and Towers, source/license attribution on About System, idle route preloading, parallel runtime/static acquisition, pending-state recovery while raster tiles load, render-frame readiness milestones, a localized first-entry loading overlay, and lazy hidden-category construction. It also verifies the 10-second live-status default and routine typed-HttpClient log suppression.
 
 ## Manual diagnostic sequence
 
@@ -74,7 +74,7 @@ The supported lifecycle-control release target is Windows `win-x64`:
 
 ```powershell
 .\scripts\fetch-map-tiles.ps1 -Layer all
-.\scripts\publish-win-x64.ps1 -Version 1.2.0
+.\scripts\publish-win-x64.ps1 -Version 1.3.0
 ```
 
 The publication script rebuilds and verifies the project, publishes the ASP.NET Core application, stages required documentation and notices, writes an internal SHA-256 manifest, creates the release ZIP, and writes the adjacent ZIP checksum.

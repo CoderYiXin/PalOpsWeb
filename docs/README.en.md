@@ -2,13 +2,13 @@
 
 # PalOps Web Documentation
 
-This directory contains only the operator, developer, architecture, data, and release documentation required for the current 1.2.0 open-source publication. Historical design drafts, one-off defect reports, internal plans, and packaging audits are excluded.
+This directory contains only the operator, developer, architecture, data, and release documentation required for the current 1.3.0 open-source publication. Historical design drafts, one-off defect reports, internal plans, and packaging audits are excluded.
 
 ## Product and operations
 
 | Document | Scope | 中文 |
 |---|---|---|
-| [Complete feature reference](features.en.md) | Every 1.2.0 module, role, data source, and security boundary | [功能参考](features.md) |
+| [Complete feature reference](features.en.md) | Every 1.3.0 module, role, data source, and security boundary | [功能参考](features.md) |
 | [Deployment](deployment.en.md) | Windows deployment, upgrade, restore, reverse proxy, and acceptance | [部署说明](deployment.md) |
 | [PalDefender deployment](paldefender-deployment.en.md) | Installation, REST, token, firewall, upgrade, and rollback | [PalDefender 部署](paldefender-deployment.md) |
 | [PalDefender configuration](paldefender-configuration-management.en.md) | Supported files, validation, backup, concurrency, and reload behavior | [配置管理](paldefender-configuration-management.md) |

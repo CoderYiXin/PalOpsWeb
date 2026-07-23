@@ -1,3 +1,4 @@
+using PalOps.Web.AdvancedOperations;
 using PalOps.Web.Automation;
 using PalOps.Web.Backups;
 using PalOps.Web.Contracts;
@@ -63,6 +64,16 @@ public static class SystemEndpoints
                 backupSummary,
                 automationSummary);
             return Results.Ok(new ApiResponse<SystemOverviewV1>(data, context.TraceIdentifier, []));
+        });
+
+        group.MapGet("/configuration-readiness/{module}", async (
+            string module,
+            IAdvancedOperationsReadinessService service,
+            HttpContext context,
+            CancellationToken cancellationToken) =>
+        {
+            var data = await service.GetAsync(module, cancellationToken);
+            return Results.Ok(new ApiResponse<AdvancedModuleReadiness>(data, context.TraceIdentifier, []));
         });
 
         group.MapGet("/health/components", async (

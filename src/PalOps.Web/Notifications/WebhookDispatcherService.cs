@@ -146,7 +146,10 @@ public sealed class WebhookDispatcherService : BackgroundService, IWebhookDelive
                 return false;
             return true;
         }
-        return exact || channel.EventTypes.Contains("*", StringComparer.OrdinalIgnoreCase);
+        var prefixWildcard = channel.EventTypes.Any(value =>
+            value.EndsWith(".*", StringComparison.Ordinal)
+            && palOpsEvent.EventType.StartsWith(value[..^1], StringComparison.OrdinalIgnoreCase));
+        return exact || prefixWildcard || channel.EventTypes.Contains("*", StringComparer.OrdinalIgnoreCase);
     }
 
     private async Task ProcessQueueAsync(CancellationToken cancellationToken)

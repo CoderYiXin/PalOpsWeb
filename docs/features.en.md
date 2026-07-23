@@ -1,8 +1,8 @@
-# PalOps Web 1.2.0 Complete Feature Reference
+# PalOps Web 1.3.0 Complete Feature Reference
 
 > Language: [简体中文](features.md) | **English**
 
-This document follows the current 1.2.0 routes and server-side authorization boundaries. English screenshots are stored under [`images/en-US/`](images/en-US/) and are rendered from the current Vue pages with fabricated demonstration data.
+This document follows the current 1.3.0 routes and server-side authorization boundaries. English screenshots are stored under [`images/en-US/`](images/en-US/) and are rendered from the current Vue pages with fabricated demonstration data.
 
 ## Server intelligence
 
@@ -121,6 +121,48 @@ Centralizes Palworld REST, PalDefender REST, RCON, saves, backups, automation, r
 ### About
 
 Shows the PalOps Web version, major dependencies, map-data provenance, licensing, project boundaries, and release metadata.
+
+## Advanced operations and governance
+
+### Diagnostics Center
+
+Runs centralized process, REST, RCON, save, backup, disk, automation, and plugin baseline checks with graded results, remediation guidance, and protected support-bundle export.
+
+### Incident Center
+
+Aggregates health anomalies into incidents that can be acknowledged, assigned, commented, resolved, and reopened. Rules support severity, duplicate aggregation, and an auditable timeline.
+
+### Player Insights
+
+Builds player timelines, activity indicators, and advisory risk signals from live sessions, save indexes, discipline records, and administrator notes. Risk signals never trigger automatic bans.
+
+### World Governance
+
+Analyzes guilds, bases, and activity to identify inactive, orphaned, or review-worthy governance candidates. It never deletes or moves bases automatically.
+
+### Disaster Recovery Center
+
+Manages local, UNC, WebDAV, and S3-compatible target definitions, validation, and recovery drills. A drill copies a verified backup into an isolated directory and never overwrites the production save.
+
+### Update Center
+
+Provides preflight checks, risks, approval records, and plans for PalServer, PalDefender, and plugin components. It currently orchestrates review and approval only; it never silently replaces server binaries.
+
+### Configuration Version Library
+
+Creates immutable snapshots of Palworld configuration and launch arguments with hash verification, key-level differences, and Owner-only exact-confirmation restore.
+
+### Operations Playbooks
+
+Combines health refresh, backup, save indexing, notification events, and maintenance into allowlisted steps. Playbooks cannot execute arbitrary processes, shell commands, or PowerShell.
+
+### Security Center
+
+Manages API-token policy, scopes, expiration, revocation, and usage observations. Plaintext is shown once at creation; persistence stores only the SHA-256 hash.
+
+### Integration Center
+
+Provides scoped Bearer-token APIs and HTTPS event subscriptions. Subscriptions reuse the existing webhook queue, retries, SSRF validation, and delivery history. Inbound events require an `external.*` type and cannot invoke arbitrary RCON or shell actions.
 
 ## Roles and mutations
 

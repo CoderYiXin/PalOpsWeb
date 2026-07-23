@@ -12,7 +12,7 @@ src/PalOps.Web/data/*
 !src/PalOps.Web/data/.gitkeep
 !src/PalOps.Web/wwwroot/.gitkeep
 artifacts/
-data/
+/data/
 *.sav
 *.sav.json
 frontend-vue/public/map/tiles/palpagos/**/*.webp

@@ -237,7 +237,7 @@ public static class NotificationEndpoints
             ["message"] = isTest ? "这是一条 PalOps 测试通知。" : "模板预览消息。",
             ["isTest"] = isTest,
             ["currentVersion"] = "1.0.0",
-            ["latestVersion"] = "1.2.0",
+            ["latestVersion"] = "1.3.0",
             ["releaseUrl"] = "https://github.com/Ultimeit/PalDefender/releases"
         });
 

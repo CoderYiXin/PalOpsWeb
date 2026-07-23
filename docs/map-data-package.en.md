@@ -4,7 +4,7 @@
 
 ## Runtime boundary
 
-PalOps Web 1.2.0 does **not** support server-side map package upload, import, signature validation, activation, rollback, health checks, or fixed-POI APIs. Those legacy backend paths were removed.
+PalOps Web 1.3.0 does **not** support server-side map package upload, import, signature validation, activation, rollback, health checks, or fixed-POI APIs. Those legacy backend paths were removed.
 
 The production map is shipped as part of the compiled Vue application:
 

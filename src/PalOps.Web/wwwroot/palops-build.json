@@ -1,0 +1,28 @@
+{
+  "product": "PalOps Web",
+  "version": "1.3.0",
+  "mode": "offline-render-functions",
+  "integratedInto": "src/PalOps.Web/wwwroot",
+  "builtAt": "2026-07-22T15:53:10.003Z",
+  "routes": [
+    "/operations/diagnostics",
+    "/operations/incidents",
+    "/insights/players",
+    "/insights/world-governance",
+    "/platform/disaster-recovery",
+    "/platform/updates",
+    "/platform/configuration-versions",
+    "/platform/playbooks",
+    "/platform/security",
+    "/platform/integrations"
+  ],
+  "assets": [
+    "assets/AdvancedOperations-V130.css",
+    "assets/AdvancedOperations-V130.js",
+    "assets/ConfigurationGuidance-V130.css",
+    "assets/ConfigurationGuidance-V130.js",
+    "assets/SettingsPage-Bbh6FHTW.js",
+    "assets/WorkbenchShell-DFEmCvuW.js",
+    "assets/index-h5iO1lFG.js"
+  ]
+}
